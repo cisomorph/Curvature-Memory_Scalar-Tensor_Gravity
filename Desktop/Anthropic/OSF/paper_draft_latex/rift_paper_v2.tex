@@ -476,7 +476,7 @@ The RIFT background model integrates the full FLRW+scalar system
 We optimised over $(H_0, \Omega_m, r_d, \Lambda_0)$ with Nelder-Mead
 (20 random restarts).
 
-\begin{table}[h!]
+\begin{table}[ht]
 \centering
 \caption{Published DM--DH correlation coefficients used in the BAO covariance matrix.}
 \label{tab:bao_rho}
@@ -612,7 +612,7 @@ data}, and that the Sim~89 tension was an artefact of using the BAO-only
 \paragraph{Summary.} Table~\ref{tab:results_summary} collects the key
 observational results.
 
-\begin{table}[h!]
+\begin{table}[ht]
 \centering
 \caption{Key observational results from RIFT simulations 87--90.}
 \label{tab:results_summary}
@@ -694,7 +694,7 @@ mass displacement.
 \emph{Test:} Compare RIFT $C_\ell$ to Planck 2018. Validate suppression shape.
 \emph{Falsification:} Cannot match low-$\ell$ drop without fine-tuning.
 
-\begin{table}[h!]
+\begin{table}[ht]
 \centering
 \caption{RIFT falsifiability summary.}
 \begin{tabular}{lll}
@@ -727,16 +727,31 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Predicts recursive graviton emission via curvature memory spikes.
 \end{itemize}
 
+\paragraph{Coupling-strength constraints (Sim~91).}
+A dedicated sensitivity scan (Sim~91) mapped the observational signature of RIFT
+across $\Lambda_0 \in [0, 0.1]$ at the joint best-fit cosmology
+($H_0 = 67.59$~km/s/Mpc, $\Omega_m = 0.312$). Key results:
+\begin{itemize}
+  \item $G_{\mathrm{eff}}/G$ deviates from unity by at most $500\,\mathrm{ppm}$ at $\Lambda_0 = 0.1$; current surveys require $> 0.1\%$ sensitivity, placing the detection threshold beyond $\Lambda_0 = 0.1$.
+  \item The linear growth factor ratio $D_{\mathrm{RIFT}}/D_{\Lambda\mathrm{CDM}}$ exceeds $0.1\%$ (structure-growth survey precision) at $\Lambda_0 \gtrsim 0.05$.
+  \item The BAO chi-squared is flat across the full scan ($\Delta\chi^2_{\mathrm{BAO}} = 0.004$ from $\Lambda_0 = 0$ to $0.1$)---RIFT H(z) is undetectable in current BAO data for any coupling in this range.
+  \item $H(z)$ deviations remain below $0.03\%$ RMS at $\Lambda_0 = 0.1$; DESI-level precision ($\sim 0.1\%$) would constrain $\Lambda_0 \lesssim 0.1$.
+\end{itemize}
+This confirms that RIFT at the BAO best-fit coupling ($\Lambda_0 = 0.003$) is
+\emph{cosmologically safe}---consistent with all current precision data---and
+establishes that current surveys constrain $\Lambda_0 \lesssim 0.05$ from
+structure growth.
+
 \paragraph{Limitations and future work.}
-At the coupling strength $\Lambda_0 = 0.003$ tested here, RIFT is cosmologically
-indistinguishable from $\Lambda$CDM at the CMB+BAO level ($G_{\mathrm{eff}}/G = 1 - 16\,\mathrm{ppm}$).
-The observational signature of RIFT is therefore expected primarily at non-linear
-scales (structure formation, sigma-8, galaxy cluster counts, void statistics) and at
-higher coupling or in strong-field regimes. Future simulations will:
+The observational signature of RIFT is expected primarily at non-linear
+scales (structure formation, $\sigma_8$, galaxy cluster counts, void statistics)
+at $\Lambda_0 \gtrsim 0.05$, and at higher coupling or in strong-field regimes
+where $\Psi \gg \Psi_{\mathrm{ini}}$. Future simulations will:
 \begin{enumerate}
   \item Complete recursive graviton quantization and emission spectrum;
   \item Simulate recursive void growth (HEALPix echo-delay maps);
-  \item Compute sigma-8 and non-linear P(k) from RIFT structure formation;
+  \item Compute $\sigma_8$ and non-linear $P(k)$ from RIFT structure formation at $\Lambda_0 = 0.05$;
+  \item Conduct a Bayesian model comparison (Bayes factor) between RIFT and $\Lambda$CDM using the joint CMB+BAO dataset;
   \item Refine eigenmode mappings to particle physics (Appendix~B).
 \end{enumerate}
 

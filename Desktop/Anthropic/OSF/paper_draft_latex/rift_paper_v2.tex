@@ -504,6 +504,18 @@ $H_0 \cdot r_d \approx \mathrm{const}$ (H$_0$ and $r_d$ individually degenerate
 in BAO-only fits; only $H_0 r_d$ is constrained). The $\chi^2/\mathrm{dof} = 1.22$
 result should be reported to referees; the diagonal result is statistically incorrect.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.82\textwidth]{fig1_bao_residuals.pdf}
+\caption{BAO full-covariance fit residuals (Sim~87). Each panel shows the
+  normalised pull $(d_\mathrm{obs} - d_\mathrm{pred})/\sigma$ for $D_H/r_d$
+  (top), $D_M/r_d$ (middle), and $D_V/r_d$ (bottom) at the RIFT best-fit
+  parameters ($H_0=68.1$~km/s/Mpc, $\Omega_m=0.294$, $\Lambda_0=0.003$,
+  $r_d=148.0$~Mpc). All 12 data points lie within $\pm2\sigma$;
+  $\chi^2/\mathrm{dof} = 9.78/8 = 1.22$.}
+\label{fig:bao_residuals}
+\end{figure}
+
 \subsection{CMB Full CLASS Injection (Sim~88)}
 \label{sec:obs_cmb}
 
@@ -532,6 +544,20 @@ The dominant RIFT CMB signal is the acoustic peak shift from the modified
 background ($H_0 = 68.14$ vs.\ $67.36$, $\Omega_m = 0.294$ vs.\ $0.315$),
 not the $G_{\mathrm{eff}}$ correction (16~ppm). The 2.93\% RMS deviation
 is within Planck error bars at most multipoles.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig2_cmb_Cl.pdf}
+\caption{CMB TT power spectrum comparison from full CLASS Boltzmann computation
+  (Sim~88). \emph{Top:} $D_\ell^{TT}$ for RIFT (blue dashed, BAO best-fit
+  parameters) and $\Lambda$CDM (red, Planck 2018 best-fit). \emph{Bottom:}
+  fractional residual $\Delta D_\ell / D_\ell^{\Lambda\mathrm{CDM}}$ with
+  20-mode running mean; dotted lines mark $\pm\mathrm{RMS} = \pm2.93\%$.
+  The acoustic-peak shift is driven by the different background cosmologies
+  ($H_0$, $\Omega_m$), not by the $G_\mathrm{eff}$ correction (16~ppm).
+  The joint CMB+BAO fit (Sim~90) resolves this difference.}
+\label{fig:cmb_Cl}
+\end{figure}
 
 \subsection{Planck TT Likelihood (Sim~89)}
 \label{sec:obs_planck}
@@ -749,7 +775,23 @@ across $\Lambda_0 \in [0, 0.1]$ at the joint best-fit cosmology
 This confirms that RIFT at the BAO best-fit coupling ($\Lambda_0 = 0.003$) is
 \emph{cosmologically safe}---consistent with all current precision data---and
 establishes that current surveys constrain $\Lambda_0 \lesssim 0.05$ from
-structure growth.
+structure growth. Figure~\ref{fig:lambda0_scan} summarises these results.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig3_lambda0_scan.pdf}
+\caption{RIFT coupling-strength sensitivity scan (Sim~91) at the joint
+  CMB+BAO best-fit cosmology ($H_0=67.6$, $\Omega_m=0.312$). \emph{Left:}
+  $|G_\mathrm{eff}/G - 1|$ in ppm; the dashed orange line marks the 0.1\%
+  ($10^3$~ppm) strong-lensing detection threshold.
+  \emph{Centre:} linear growth factor deviation $|D_\mathrm{RIFT}/D_{\Lambda\mathrm{CDM}}-1|$;
+  the threshold $>0.1\%$ is first exceeded at $\Lambda_0 \gtrsim 0.05$
+  (vertical dot-dashed line).
+  \emph{Right:} BAO $\chi^2$ relative to $\Lambda_0=0$; the curve is flat
+  ($\Delta\chi^2 < 0.004$ across the full range), confirming RIFT is
+  cosmologically silent in current BAO data.}
+\label{fig:lambda0_scan}
+\end{figure}
 
 \paragraph{Model selection (AIC/BIC).}
 Because RIFT and $\Lambda$CDM achieve identical $\chi^2_{\min} = 11.245$ on the joint

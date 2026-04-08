@@ -76,7 +76,7 @@ GR in the $\Psi\to 0$ limit.
 
 Observational consistency tests against precision cosmological data (Sims~87--90) yield:
 (i)~BAO full-covariance chi-squared $\chi^2/\mathrm{dof} = 9.78/8 = 1.22$ (BOSS DR12 + eBOSS DR16 + Ly-$\alpha$, 12 data points);
-(ii)~RIFT CMB power spectrum computed via full CLASS Boltzmann solver deviates from $\Lambda$CDM by RMS~$= 2.93\%$ (l$=2$--1500), with gravitational growth ratio $D_{\mathrm{RIFT}}/D_{\Lambda\mathrm{CDM}} = 1.000000$ ($G_{\mathrm{eff}}/G = 1-16\,\mathrm{ppm}$ at $\Lambda_0=0.003$);
+(ii)~RIFT CMB power spectrum computed via full CLASS Boltzmann solver deviates from $\Lambda$CDM by RMS~$= 2.93\%$ ($\ell=2$--1500), with gravitational growth ratio $D_{\mathrm{RIFT}}/D_{\Lambda\mathrm{CDM}} = 1.000000$ ($G_{\mathrm{eff}}/G = 1-16\,\mathrm{ppm}$ at $\Lambda_0=0.003$);
 (iii)~joint CMB+BAO parameter fit gives $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = 0.000$, confirming RIFT is observationally consistent with standard cosmology at this coupling. The framework is falsifiable through rotation curve reconstruction, void lensing phase shifts, and CMB low-$\ell$ suppression.
 \end{abstract}
 
@@ -618,7 +618,8 @@ value quoted throughout is $\Lambda_0 = 0.003$; both are consistent with all cur
 data.
 
 \paragraph{Summary.} Table~\ref{tab:results_summary} collects the key
-observational results.
+observational results. Best-fit parameter values for all simulations are
+tabulated in Appendix~\ref{app:params}.
 
 \begin{table}[ht]
 \centering
@@ -673,7 +674,7 @@ lensing interference from memory collapse (not binary mergers), nonthermal gravi
 bursts unaligned with mass-based models.
 
 % ============================================================
-\section{Falsifiability and Observational Tests}
+\section{Falsifiability Predictions}
 \label{sec:falsifiability}
 
 RIFT stands apart from speculative models by offering clear, testable predictions with
@@ -697,7 +698,7 @@ mass displacement.
 \emph{Test:} Simulate lensing profiles with recursive memory; compare to $\kappa$ maps.
 \emph{Falsification:} Cannot reproduce lensing peak without dark mass.
 
-\subsection{CMB Low-$\ell$ Anomalies}
+\subsection{CMB Low-\texorpdfstring{$\ell$}{ell} Anomalies}
 \emph{Prediction:} Recursive memory decay suppresses low-$\ell$ power.
 \emph{Test:} Compare RIFT $C_\ell$ to Planck 2018. Validate suppression shape.
 \emph{Falsification:} Cannot match low-$\ell$ drop without fine-tuning.
@@ -727,7 +728,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
 
 \paragraph{Key results.}
 \begin{itemize}
-  \item Unified Lagrangian (eq.~\ref{eq:action}) couples mass, curvature, and entropy through a single field $\Psi$.
+  \item Unified Lagrangian (eq.~\eqref{eq:action}) couples mass, curvature, and entropy through a single field $\Psi$.
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--90): BAO $\chi^2/\mathrm{dof} = 1.22$; CMB RMS deviation $= 2.93\%$; joint CMB+BAO $\Delta\chi^2 = 0$.
@@ -760,7 +761,7 @@ With $k$ free parameters and $N_{\mathrm{eff}} = 14$ data constraints (12 BAO po
   \mathrm{BIC} &= k\ln N_{\mathrm{eff}} + \chi^2_{\min}, & \Delta\mathrm{BIC}_{\mathrm{RIFT}-\Lambda\mathrm{CDM}} &= \ln 14 \approx +2.64.
 \end{align}
 Both criteria favour $\Lambda$CDM by the minimum Occam penalty; $|\Delta\mathrm{BIC}| < 6$
-is conventionally characterised as ``weak'' evidence (Jeffreys 1961), reflecting the
+is conventionally characterised as ``weak'' evidence \citep{Jeffreys1961}, reflecting the
 fact that $\Lambda_0$ is currently unconstrained by data rather than actively
 disfavoured. RIFT is neither strongly preferred nor strongly excluded: it is
 \emph{cosmologically equivalent} to $\Lambda$CDM at the BAO best-fit coupling
@@ -889,6 +890,11 @@ Sofue, Y.\ 2016, \textit{PASJ}, 68, 2.
 Hamimeche, S.\ \& Lewis, A.\ 2008,
 \textit{Phys.\ Rev.\ D}, 77, 103013.
 [Approximate CMB likelihood formalism]
+
+\bibitem[Jeffreys(1961)]{Jeffreys1961}
+Jeffreys, H.\ 1961,
+\textit{Theory of Probability}, 3rd edn.\ Oxford University Press.
+[Bayes factor / model comparison scale]
 
 \end{thebibliography}
 

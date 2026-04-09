@@ -83,7 +83,7 @@ The key results are:
     coupling;
 (iii)~joint CMB+BAO parameter fit:
     $\Delta\chi^2=0$, best-fit $H_0=67.59$~km/s/Mpc, $\Omega_m=0.312$,
-    $\Lambda_0=0.008$;
+    $\Lambda_0\approx0.013$ (numerically unconstrained; $\chi^2$ flat across $[0,0.1]$);
 (iv)~non-linear structure growth: $|\Delta\sigma_8|<0.007\%$ at $\Lambda_0=0.003$,
     RIFT provides no relief for the Planck/KiDS $S_8$ tension;
 (v)~Bayesian model comparison: $\ln B = -0.71$ (Inconclusive; RIFT not excluded);
@@ -496,7 +496,7 @@ inverted via Cholesky decomposition, and computed
 $\chi^2_{\mathrm{full}} = (\mathbf{d}-\mathbf{m})^\top C^{-1}(\mathbf{d}-\mathbf{m})$.
 The data vector comprises 12 measurements:
 DM/r$_d$ and DH/r$_d$ at $z = 0.38, 0.51, 0.70, 1.48, 2.33$, plus
-DV/r$_d$ at $z = 0.15$ (6dFGS+MGS) and $z = 0.85$ (eBOSS QSO).
+DV/r$_d$ at $z = 0.15$ (6dFGS+MGS) and $z = 0.85$ (eBOSS ELG).
 The RIFT background model integrates the full FLRW+scalar system
 (equations~\eqref{eq:flrw_scalar}--\eqref{eq:friedmann}) numerically via RK45.
 We optimised over $(H_0, \Omega_m, r_d, \Lambda_0)$ with Nelder-Mead
@@ -634,7 +634,12 @@ approximation from the Planck 2018 published parameter covariance
 $\chi^2_{\mathrm{CMB}} = (\mathbf{x}-\boldsymbol{\mu})^\top C_{\mathrm{Planck}}^{-1}(\mathbf{x}-\boldsymbol{\mu})$
 with $\boldsymbol{\mu} = (67.36, 0.3153)$,
 $\sigma_{H_0} = 0.54$, $\sigma_{\Omega_m} = 0.0073$, $\rho = -0.90$.
-The BAO chi-squared is the exact full-covariance result from Sim~87.
+The BAO chi-squared uses the same 12-point data vector and $12\times12$
+covariance matrix as Sim~87, evaluated with the flat Friedmann
+approximation for $H(z)$ including the first-order $G_\mathrm{eff}$
+correction at representative $\Psi_0 = 0.01$
+(identical method to Sim~91; the full ODE result agrees to $<16$\,ppm
+per Sim~88).
 LCDM: $\Lambda_0$ fixed to zero. RIFT: $\Lambda_0$ free.
 Nelder-Mead optimisation, 20 random restarts.
 
@@ -645,8 +650,9 @@ Nelder-Mead optimisation, 20 random restarts.
 Model & $H_0$ & $\Omega_m$ & $r_d$ & $\Lambda_0$ & $\chi^2_{\mathrm{CMB}}$ & $\chi^2_{\mathrm{BAO}}$ \\
 \midrule
 $\Lambda$CDM & 67.59 & 0.3118 & 147.56 & 0 & 0.23 & 11.02 \\
-RIFT & 67.59 & 0.3118 & 147.56 & 0.008 & 0.23 & 11.02 \\
+RIFT & 67.59 & 0.3118 & 147.57 & $\approx$0.013$^\dagger$ & 0.23 & 11.02 \\
 \bottomrule
+\multicolumn{7}{l}{\footnotesize $^\dagger$ Numerically unconstrained: $\Delta\chi^2<0.004$ across $\Lambda_0\in[0,0.1]$ (Sim~91). Value depends on optimiser init.} \\
 \end{tabular}
 \end{center}
 \begin{equation*}
@@ -663,9 +669,10 @@ data}, and that the Sim~89 tension was an artefact of using the BAO-only
 
 \emph{Note on $\Lambda_0$ reporting.} Two $\Lambda_0$ values appear in the analysis:
 the BAO-only best-fit $\Lambda_0 = 0.003$ (Sim~87, four free parameters, physically
-motivated) and the joint-fit value $\Lambda_0 = 0.008$ (Sim~90, numerically
+motivated) and the joint-fit value $\Lambda_0 \approx 0.013$ (Sim~90, numerically
 unconstrained because the $\chi^2$ landscape is flat in $\Lambda_0$ at this precision,
-$\Delta\chi^2_{\Lambda_0} < 0.004$ across $[0, 0.1]$ from Sim~91). The fiducial
+$\Delta\chi^2_{\Lambda_0} < 0.004$ across $[0, 0.1]$ from Sim~91; the specific
+value depends on optimiser initialisation and carries no physical significance). The fiducial
 value quoted throughout is $\Lambda_0 = 0.003$; both are consistent with all current
 data.
 
@@ -960,7 +967,7 @@ eBOSS QSO   & \citet{Neveux2020}    & 1.480 & 0.462 & 0.045 \\
 \end{table}
 
 \paragraph{Results.}  At the SIM90 joint best-fit ($H_0=67.59$, $\Omega_m=0.312$,
-$\Lambda_0=0.008$) RIFT yields $\chi^2/\mathrm{dof}=7.73/9=0.86$, compared to
+$\Lambda_0\approx0.013$) RIFT yields $\chi^2/\mathrm{dof}=7.73/9=0.86$, compared to
 $7.87/9=0.87$ for $\Lambda$CDM Planck 2018, giving
 \begin{equation}
   \Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = -0.14 \approx 0.
@@ -1346,7 +1353,7 @@ Parameter & RIFT (BAO-only, Sim~87) & RIFT/LCDM (joint, Sim~90) \\
 $H_0$ [km/s/Mpc] & $68.14$ (H$_0$--$r_d$ degenerate) & $67.59$ \\
 $\Omega_m$ & $0.294$ & $0.312$ \\
 $r_d$ [Mpc] & $147.78$ & $147.56$ \\
-$\Lambda_0$ & $0.003$ & $0.008$ (RIFT) / 0 (LCDM) \\
+$\Lambda_0$ & $0.003$ & $0.013$ (RIFT, unconstrained) / 0 (LCDM) \\
 $\chi^2$/dof (BAO) & $1.22$ & see Sim~90 \\
 \bottomrule
 \end{tabular}

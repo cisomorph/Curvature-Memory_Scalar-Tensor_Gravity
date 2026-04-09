@@ -154,7 +154,13 @@ prim = P['fixed']
 _call_count = [0]
 
 def run_class(H0, Omega_m, Lambda0, label='cosmo', fast=True):
-    """Run CLASS. Returns dict with ell, TT, EE, TE, Geff_z0. fast=True uses k_per_decade=20."""
+    """Run CLASS for CMB power spectra.
+
+    CLASS is run with standard ΛCDM physics (no G_eff injection, no external_Pk).
+    The RIFT G_eff correction to the CMB is negligible: at Λ₀=0.005, G_eff/G = 1-24 ppm
+    (validated by SIM88 and SIM91). The RIFT background is integrated separately to
+    measure Geff_z0 and to compute H(z) for the BAO chi2 (see chi2_bao).
+    """
     a_arr, H_arr, Psi_arr, Geff_arr = integrate_rift_background(H0, Omega_m, Lambda0)
     Geff_z0 = float(np.interp(1.0, a_arr, Geff_arr))
 

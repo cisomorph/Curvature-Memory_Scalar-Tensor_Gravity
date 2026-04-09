@@ -99,7 +99,7 @@ BAO_DATA = [
     (0.51, "DM_over_rd", 13.36,                     0.21,                   "BOSS DR12"),
     (0.70, "DH_over_rd", 19.33,                     0.53,                   "eBOSS DR16 LRG"),
     (0.70, "DM_over_rd", 17.86,                     0.33,                   "eBOSS DR16 LRG"),
-    (0.85, "DV_over_rd", 18.33,                     0.595,                  "eBOSS DR16 QSO"),
+    (0.85, "DV_over_rd", 18.33,                     0.595,                  "eBOSS DR16 ELG"),
     (1.48, "DH_over_rd", 13.26,                     0.55,                   "eBOSS DR16 QSO"),
     (1.48, "DM_over_rd", 30.69,                     0.80,                   "eBOSS DR16 QSO"),
     (2.33, "DH_over_rd", 8.990618556701030,          0.21614046597277392,   "Ly-alpha DR16"),
@@ -129,44 +129,46 @@ for z_key, rho in RHO_DM_DH.items():
         C_bao[i, j] = cov_off;  C_bao[j, i] = cov_off
 C_bao_cho = cho_factor(C_bao)
 
-# ── RIFT H(z) — fast flat Friedmann (G_eff ≈ 1 at Lambda0=0.003) ─────────────
+# ── RIFT H(z) — flat Friedmann with G_eff correction ────────────────────────
 # From SIM87 H_from_friedmann: at Psi≈Psi_ini, Pi≈0,
 #   H^2 = G_eff * [3*Omega_bg + 4pi*m2*Psi^2] / 3
 # with Omega_bg = Omega_m/a^3 + Omega_r/a^4 + Omega_L  (Omega_L = 1-Omega_m-Omega_r)
-# At Lambda0=0.003, G_eff = 1/(1+16pi*Lambda0*Psi^2) ≈ 1 - 4.7e-3*Psi^2 ≈ 1 (Psi=0.01)
-# 4pi*m2*Psi^2 ≈ 4pi*1^2*0.0001 = 0.00126 (negligible)
-# => H^2 ≈ Omega_bg * H0^2  (standard flat LCDM Friedmann)
+# G_eff = 1/(1+16pi*Lambda0*Psi^2) evaluated at representative Psi0=0.01 (SIM86 stable value).
+# At Lambda0=0.003: G_eff/G = 1 - 16 ppm (SIM88-verified). At Lambda0=0.1: ~5e-4.
+# 4pi*m2*Psi^2 term negligible (≈0.00126 at Psi=0.01, m=1).
+# This is the same approximation used in SIM91; the full ODE (SIM87) agrees to <16 ppm.
 
 Omega_r_fid = 9.2e-5
+Psi0 = 0.01  # representative stable field amplitude (SIM86)
 
-def H_flat(H0_kms, Omega_m, z):
-    """H(z) [km/s/Mpc] for flat cosmology: Omega_L = 1-Omega_m-Omega_r."""
+def H_flat(H0_kms, Omega_m, z, Lambda0=0.0):
+    """H(z) [km/s/Mpc]. Flat Friedmann with RIFT G_eff correction at Psi=Psi0."""
     a = 1.0 / (1.0 + z)
     Omega_L = 1.0 - Omega_m - Omega_r_fid
     E2 = Omega_m / a**3 + Omega_r_fid / a**4 + Omega_L
-    return H0_kms * math.sqrt(max(E2, 1e-30))
+    Geff = 1.0 / max(1.0 + 16.0 * math.pi * Lambda0 * Psi0**2, 1e-10)
+    return H0_kms * math.sqrt(max(Geff * E2, 1e-30))
 
-def DC_flat(H0_kms, Omega_m, z_target, N=600):
-    """Comoving distance D_C(z) [Mpc] for flat cosmology."""
+def DC_flat(H0_kms, Omega_m, z_target, Lambda0=0.0, N=600):
+    """Comoving distance D_C(z) [Mpc] for flat cosmology with RIFT G_eff."""
     zz = np.linspace(0.0, z_target, N)
-    Hz = np.array([H_flat(H0_kms, Omega_m, zi) for zi in zz])
+    Hz = np.array([H_flat(H0_kms, Omega_m, zi, Lambda0) for zi in zz])
     integrand = 1.0 / np.maximum(Hz, 1e-30)
     return c_km_s * float(np.trapz(integrand, zz))
 
 def predict_bao(H0_kms, Omega_m, Lambda0, rd):
     """
-    Predict 12-element BAO data vector.
-    Lambda0 modifies G_eff, but at Lambda0<0.03 the correction is <0.5%
-    on H(z), so we use the flat Friedmann approximation (valid to 16 ppm
-    at Lambda0=0.003, per SIM88 G_eff measurement).
+    Predict 12-element BAO data vector with RIFT G_eff correction.
+    G_eff = 1/(1+16π Λ₀ Ψ₀²) at Ψ₀=0.01; correction is 16 ppm at Λ₀=0.003.
+    Lambda0 is now genuinely propagated through H(z) via G_eff.
     """
     pred = np.zeros(N_DATA)
     z_done = {}
     for i, (z, qty, *_) in enumerate(BAO_DATA):
         z = float(z)
         if z not in z_done:
-            DH = c_km_s / H_flat(H0_kms, Omega_m, z)
-            DC = DC_flat(H0_kms, Omega_m, z)
+            DH = c_km_s / H_flat(H0_kms, Omega_m, z, Lambda0)
+            DC = DC_flat(H0_kms, Omega_m, z, Lambda0)
             DV = (z * DH * DC**2)**(1.0/3.0) if z > 0 else 0.0
             z_done[z] = {"DH_over_rd": DH/rd, "DM_over_rd": DC/rd, "DV_over_rd": DV/rd}
         pred[i] = z_done[z][qty]

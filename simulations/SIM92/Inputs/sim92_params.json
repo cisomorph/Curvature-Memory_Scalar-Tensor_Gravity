@@ -1,0 +1,73 @@
+{
+  "description": "Sim 92 — RIFT non-linear structure growth. Computes non-linear P(k) via HALOFIT (Takahashi+2012) and sigma_8 for a Lambda0 scan, comparing to Planck CMB and weak lensing (KiDS-1000, DES Y3) observational constraints. Tests whether RIFT at moderate Lambda0 naturally alleviates the sigma_8 tension. Primary output: sigma_8(Lambda0) and S8(Lambda0) = sigma_8*(Omega_m/0.3)^0.5.",
+
+  "lambda0_scan": {
+    "values": [0.0, 0.001, 0.003, 0.005, 0.008, 0.010, 0.015, 0.020, 0.030, 0.040,
+               0.050, 0.060, 0.075, 0.090, 0.100],
+    "note": "15 values covering 0 to 0.1; dense near BAO best-fit (0.003) and detection threshold (0.05)"
+  },
+
+  "base_cosmology": {
+    "H0":      67.59,
+    "Omega_m": 0.3118,
+    "Omega_b": 0.049,
+    "Omega_r": 9.2e-5,
+    "n_s":     0.9649,
+    "A_s":     2.101e-9,
+    "note": "Joint CMB+BAO best-fit from SIM90. Held fixed so only Lambda0 varies."
+  },
+
+  "rift_field": {
+    "m0":      1.0,
+    "alpha":   0.1,
+    "beta":    0.05,
+    "Psi_ini": 0.01,
+    "Pi_ini":  0.0,
+    "note": "Lambda form: Lambda0*Psi^2. G_eff = 1/(1+16*pi*Lambda0*Psi^2). Same as SIM91."
+  },
+
+  "linear_pk": {
+    "transfer_function": "BBKS",
+    "k_min":  1e-4,
+    "k_max":  1e2,
+    "N_k":    500,
+    "note": "Linear P(k) = A_s*(k/k_pivot)^(n_s-1)*T(k)^2 * (D_RIFT/D_LCDM)^2. k in h/Mpc."
+  },
+
+  "halofit": {
+    "version": "Takahashi2012",
+    "z_output": 0.0,
+    "note": "Non-linear P(k) via Takahashi+2012 HALOFIT fitting formulae. Applied to RIFT linear P(k) with G_eff-modified growth."
+  },
+
+  "sigma8": {
+    "R_filter":  8.0,
+    "k_min":    1e-4,
+    "k_max":    1e2,
+    "N_k":      2000,
+    "note": "sigma_8 = sqrt(integral P(k)*W^2(k*8)*k^2/(2*pi^2) dk), W = top-hat."
+  },
+
+  "S8": {
+    "Omega_m_pivot": 0.3,
+    "alpha_S8":      0.5,
+    "note": "S8 = sigma_8 * (Omega_m/0.3)^0.5. Standard weak-lensing amplitude parameter."
+  },
+
+  "observational_targets": {
+    "Planck2018_sigma8":      0.811,
+    "Planck2018_sigma8_err":  0.006,
+    "KiDS1000_S8":            0.766,
+    "KiDS1000_S8_err":        0.020,
+    "DES_Y3_S8":              0.776,
+    "DES_Y3_S8_err":          0.017,
+    "note": "Planck: Aghanim+2020 Table 2. KiDS-1000: Asgari+2021. DES Y3: Abbott+2022."
+  },
+
+  "integration": {
+    "a_ini": 1e-5,
+    "a_fin": 1.0,
+    "N_bg":  5000,
+    "note": "RK45 integration of RIFT FLRW+scalar system for growth factor."
+  }
+}

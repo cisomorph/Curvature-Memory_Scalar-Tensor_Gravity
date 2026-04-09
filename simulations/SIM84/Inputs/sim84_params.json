@@ -1,0 +1,17 @@
+{
+  "description": "Sim 84 — RIFT Coupling Survey: scan Lambda(Psi) functional forms, verify G_eff > 0 and GR recovery",
+  "G_Newton": 1.0,
+  "Psi_range": {"min": 0.0, "max": 5.0, "N": 500},
+  "coupling_models": [
+    {"name": "linear",      "form": "Lambda0 * Psi",         "Lambda0": 0.01},
+    {"name": "quadratic",   "form": "Lambda0 * Psi^2",        "Lambda0": 0.005},
+    {"name": "gaussian",    "form": "Lambda0 * (1 - exp(-beta*Psi^2))", "Lambda0": 0.02, "beta": 0.5},
+    {"name": "tanh",        "form": "Lambda0 * tanh(Psi^2)",  "Lambda0": 0.015},
+    {"name": "saturating",  "form": "Lambda0 * Psi^2 / (1 + Psi^2)", "Lambda0": 0.02}
+  ],
+  "acceptance": {
+    "G_eff_positive_tol": 0.0,
+    "GR_recovery_Psi_threshold": 0.01,
+    "GR_recovery_Lambda_tol": 1e-6
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "description": "Sim 86 — RIFT Observer Field: self-consistent back-reaction test. The field Psi sources R through G_eff and T^Psi, which in turn sources Psi via the retarded kernel. Tests whether the closed RIFT loop has stable fixed points or runaways.",
+  "G_Newton": 1.0,
+  "field": {
+    "m0": 1.0,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "Lambda0": 0.003,
+    "Lambda_form": "Lambda0 * Psi^2"
+  },
+  "grid": {
+    "a_ini": 1e-6,
+    "a_fin": 1.0,
+    "N_steps": 80000
+  },
+  "initial_conditions": [
+    {"name": "zero",     "Psi_ini": 0.0,   "dPsi_ini": 0.0},
+    {"name": "small",    "Psi_ini": 0.01,  "dPsi_ini": 0.0},
+    {"name": "moderate", "Psi_ini": 0.1,   "dPsi_ini": 0.0},
+    {"name": "large",    "Psi_ini": 0.5,   "dPsi_ini": 0.0}
+  ],
+  "acceptance": {
+    "GR_limit_max_Psi": 1e-8,
+    "stability_max_Psi": 10.0,
+    "constraint_tol": 1e-2
+  }
+}

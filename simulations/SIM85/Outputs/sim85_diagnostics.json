@@ -1,0 +1,82 @@
+{
+  "params": {
+    "description": "Sim 85 \u2014 RIFT FLRW Friedmann Test: verify modified Friedmann equations reduce to GR in limits, and demonstrate memory feedback",
+    "G_Newton": 1.0,
+    "cosmology": {
+      "a_ini": 1e-06,
+      "a_fin": 1.0,
+      "N_steps": 50000,
+      "omega_m": 0.3,
+      "omega_r": 9e-05
+    },
+    "scalar_field": {
+      "Psi_ini": 0.0,
+      "dPsi_dt_ini": 0.0,
+      "m0": 1.0,
+      "alpha": 0.1,
+      "beta": 0.05
+    },
+    "coupling_models": [
+      {
+        "name": "GR_limit",
+        "Lambda0": 0.0,
+        "form": "Lambda0 * Psi^2"
+      },
+      {
+        "name": "weak_RIFT",
+        "Lambda0": 0.001,
+        "form": "Lambda0 * Psi^2"
+      },
+      {
+        "name": "mid_RIFT",
+        "Lambda0": 0.005,
+        "form": "Lambda0 * Psi^2"
+      }
+    ],
+    "acceptance": {
+      "radiation_era_a_max": 5e-05,
+      "GR_scaling_power_rtol": 0.1,
+      "matter_era_a_min": 0.01,
+      "matter_era_a_max": 0.1
+    }
+  },
+  "friedmann_equation": {
+    "form": "3H^2 = 8*pi*G_eff * [rho_m + rho_r + rho_Psi - 6*H*Lambda'(Psi)*dPsi/dt]",
+    "memory_feedback_term": "-6*H*Lambda'(Psi)*dPsi/dt",
+    "note": "Verified analytically: (2 nabla_0 nabla_0 Lambda - 2 g_00 Box Lambda) = -6H Lambda' dPsi/dt"
+  },
+  "model_results": [
+    {
+      "model": "GR_limit",
+      "radiation_exponent": -1.9839872616060532,
+      "radiation_scaling_passed": true,
+      "max_constraint_violation": 2.958072719217807e-16,
+      "constraint_passed": true,
+      "H_final": 0.553510945307873,
+      "Psi_final": 0.0
+    },
+    {
+      "model": "weak_RIFT",
+      "radiation_exponent": -1.9839872616060532,
+      "radiation_scaling_passed": true,
+      "max_constraint_violation": 2.958072719217807e-16,
+      "constraint_passed": true,
+      "H_final": 0.553510945307873,
+      "Psi_final": 0.0
+    },
+    {
+      "model": "mid_RIFT",
+      "radiation_exponent": -1.9839872616060532,
+      "radiation_scaling_passed": true,
+      "max_constraint_violation": 2.958072719217807e-16,
+      "constraint_passed": true,
+      "H_final": 0.553510945307873,
+      "Psi_final": 0.0
+    }
+  ],
+  "artifacts": {
+    "hubble": "Outputs/sim85_hubble.png",
+    "Psi_evolution": "Outputs/sim85_Psi_evolution.png",
+    "constraint_violation": "Outputs/sim85_constraint_violation.png"
+  }
+}

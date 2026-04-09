@@ -1,0 +1,105 @@
+{
+  "params": {
+    "description": "Sim 84 \u2014 RIFT Coupling Survey: scan Lambda(Psi) functional forms, verify G_eff > 0 and GR recovery",
+    "G_Newton": 1.0,
+    "Psi_range": {
+      "min": 0.0,
+      "max": 5.0,
+      "N": 500
+    },
+    "coupling_models": [
+      {
+        "name": "linear",
+        "form": "Lambda0 * Psi",
+        "Lambda0": 0.01
+      },
+      {
+        "name": "quadratic",
+        "form": "Lambda0 * Psi^2",
+        "Lambda0": 0.005
+      },
+      {
+        "name": "gaussian",
+        "form": "Lambda0 * (1 - exp(-beta*Psi^2))",
+        "Lambda0": 0.02,
+        "beta": 0.5
+      },
+      {
+        "name": "tanh",
+        "form": "Lambda0 * tanh(Psi^2)",
+        "Lambda0": 0.015
+      },
+      {
+        "name": "saturating",
+        "form": "Lambda0 * Psi^2 / (1 + Psi^2)",
+        "Lambda0": 0.02
+      }
+    ],
+    "acceptance": {
+      "G_eff_positive_tol": 0.0,
+      "GR_recovery_Psi_threshold": 0.01,
+      "GR_recovery_Lambda_tol": 1e-06
+    }
+  },
+  "results": [
+    {
+      "model": "linear",
+      "form": "Lambda0 * Psi",
+      "G_eff_positive": true,
+      "GR_recovery": true,
+      "Lambda_at_Psi1": 0.01002004008016032,
+      "dLambda_dPsi_at_Psi1": 0.009999999999999959,
+      "G_eff_at_Psi1": 0.6650430089964655,
+      "passed": true
+    },
+    {
+      "model": "quadratic",
+      "form": "Lambda0 * Psi^2",
+      "G_eff_positive": true,
+      "GR_recovery": true,
+      "Lambda_at_Psi1": 0.005020060160400961,
+      "dLambda_dPsi_at_Psi1": 0.010020040080160292,
+      "G_eff_at_Psi1": 0.7985079107193058,
+      "passed": true
+    },
+    {
+      "model": "gaussian",
+      "form": "Lambda0 * (1 - exp(-beta*Psi^2))",
+      "G_eff_positive": true,
+      "GR_recovery": true,
+      "Lambda_at_Psi1": 0.007893696619301149,
+      "dLambda_dPsi_at_Psi1": 0.012130159355766576,
+      "G_eff_at_Psi1": 0.7159321183504183,
+      "passed": true
+    },
+    {
+      "model": "tanh",
+      "form": "Lambda0 * tanh(Psi^2)",
+      "G_eff_positive": true,
+      "GR_recovery": true,
+      "Lambda_at_Psi1": 0.011449109471264258,
+      "dLambda_dPsi_at_Psi1": 0.012546818547483832,
+      "G_eff_at_Psi1": 0.63472114658545,
+      "passed": true
+    },
+    {
+      "model": "saturating",
+      "form": "Lambda0 * Psi^2 / (1 + Psi^2)",
+      "G_eff_positive": true,
+      "GR_recovery": true,
+      "Lambda_at_Psi1": 0.01002001999995992,
+      "dLambda_dPsi_at_Psi1": 0.009979961977058664,
+      "G_eff_at_Psi1": 0.6650434554103097,
+      "passed": true
+    }
+  ],
+  "acceptance_summary": {
+    "n_models": 5,
+    "n_failed": 0
+  },
+  "artifacts": {
+    "coupling_survey": "Outputs/sim84_coupling_survey.png",
+    "Geff_survey": "Outputs/sim84_Geff_survey.png",
+    "derivatives": "Outputs/sim84_derivatives.png"
+  }
+}

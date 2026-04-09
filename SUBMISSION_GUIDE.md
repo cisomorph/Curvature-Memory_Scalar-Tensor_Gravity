@@ -17,7 +17,7 @@ Recursive Intelligence-Field Theory (RIFT): A Lagrangian-Based Framework for Cur
 
 **Authors:**
 ```
-Christopher Wilson
+Christopher Robert Barrick Wilson
 ```
 
 **Abstract** (plain text, no LaTeX math — paste this):
@@ -90,7 +90,7 @@ Dear JCAP Editors,
 
 We submit for your consideration "Recursive Intelligence-Field Theory (RIFT):
 A Lagrangian-Based Framework for Curvature Memory and Emergent Gravitation"
-by Christopher Wilson (Independent Researcher).
+by Christopher Robert Barrick Wilson (Independent Researcher).
 
 **Summary.** RIFT is a covariant scalar-tensor modified gravity theory
 in which a non-minimally coupled scalar field Psi produces *curvature memory*:
@@ -127,7 +127,7 @@ predictions for DESI Y5, Euclid, and CMB-S4.
 The manuscript has not been submitted elsewhere. There are no conflicts of interest.
 
 Sincerely,  
-Christopher Wilson  
+Christopher Robert Barrick Wilson  
 C.Isomorph@gmail.com  
 https://github.com/cisomorph/rift-cosmology
 

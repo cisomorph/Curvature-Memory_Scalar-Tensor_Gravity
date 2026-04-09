@@ -102,5 +102,5 @@ python Published_Scripts/simulation_runner_rift.py
 
 CC BY-NC 4.0 — Attribution-NonCommercial. Free to share and adapt with credit; commercial use prohibited.
 
-Author: cisomorph  
+Author: Christopher Robert Barrick Wilson  
 Date: 2026-04-09

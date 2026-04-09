@@ -74,10 +74,30 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-Observational consistency tests against precision cosmological data (Sims~87--90) yield:
-(i)~BAO full-covariance chi-squared $\chi^2/\mathrm{dof} = 9.78/8 = 1.22$ (BOSS DR12 + eBOSS DR16 + Ly-$\alpha$, 12 data points);
-(ii)~RIFT CMB power spectrum computed via full CLASS Boltzmann solver deviates from $\Lambda$CDM by RMS~$= 2.93\%$ ($\ell=2$--1500), with gravitational growth ratio $D_{\mathrm{RIFT}}/D_{\Lambda\mathrm{CDM}} = 1.000000$ ($G_{\mathrm{eff}}/G = 1-16\,\mathrm{ppm}$ at $\Lambda_0=0.003$);
-(iii)~joint CMB+BAO parameter fit gives $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = 0.000$, confirming RIFT is observationally consistent with standard cosmology at this coupling. The framework is falsifiable through rotation curve reconstruction, void lensing phase shifts, and CMB low-$\ell$ suppression.
+We subject RIFT to ten independent precision cosmological tests (Sims~87--96).
+The key results are:
+(i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
+    $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
+(ii)~CMB TT power spectrum via full CLASS Boltzmann solver: RMS deviation $=2.93\%$
+    ($\ell=2$--$1500$), $G_{\mathrm{eff}}/G = 1-16\,\mathrm{ppm}$ at the best-fit
+    coupling;
+(iii)~joint CMB+BAO parameter fit:
+    $\Delta\chi^2=0$, best-fit $H_0=67.59$~km/s/Mpc, $\Omega_m=0.312$,
+    $\Lambda_0=0.008$;
+(iv)~non-linear structure growth: $|\Delta\sigma_8|<0.007\%$ at $\Lambda_0=0.003$,
+    RIFT provides no relief for the Planck/KiDS $S_8$ tension;
+(v)~Bayesian model comparison: $\ln B = -0.71$ (Inconclusive; RIFT not excluded);
+(vi)~DESI Year~1 BAO refit: $\chi^2/\mathrm{dof}=1.36$, $\Delta\chi^2=0$,
+    joint CMB+DESI best-fit consistent with BOSS-based result at $<0.2\sigma$;
+(vii)~CMB polarization EE/TE via CLASS: RMS deviations $<0.2\%$ (EE) and
+    $<0.5\%$ (TE) at joint best-fit;
+(viii)~RSD/$f\sigma_8$ growth rate (9 surveys, $z=0.07$--$1.48$):
+    $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2=-0.14\approx0$.
+In all tests, RIFT at the joint best-fit is statistically indistinguishable from
+$\Lambda$CDM. The recursive field coupling $\Lambda_0$ is constrained to
+$\Lambda_0 < 0.095$ (95\% CL) by the Bayesian analysis and is cosmologically
+inert at current observational precision. Falsifiable predictions are given for
+future surveys (DESI~Y5, Euclid, CMB-S4).
 \end{abstract}
 
 \tableofcontents
@@ -798,6 +818,16 @@ with the BOSS-based SIM90 result, confirming the stability of RIFT parameters ac
 independent BAO datasets. $\Lambda_0$ remains a null parameter at current observational
 precision.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{fig5_desi_bao.pdf}
+  \caption{RIFT vs $\Lambda$CDM fit to DESI Y1 BAO measurements (Sim~94). 13 data
+    points across 7 tracer bins, $0.3\leq z\leq 2.33$. Both models give identical
+    $\chi^2/\mathrm{dof}=1.36/10$. The 2--3$\sigma$ tension at $z=0.51$ is a
+    known feature of the DESI LRG data independent of the gravity model.}
+  \label{fig:desi_bao}
+\end{figure}
+
 \subsection{CMB Polarization EE/TE (Sim~95)}
 \label{sec:obs_polarization}
 
@@ -853,6 +883,19 @@ The polarization results confirm: (i) $G_\mathrm{eff}$ modifications are invisib
 in polarization; (ii) the BAO-CMB tension is a parameter-space effect present in
 all spectra; (iii) the joint-fit parameter solution restores consistency across
 TT, EE, and TE simultaneously.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{fig6_polarization.pdf}
+  \caption{RIFT vs $\Lambda$CDM CMB EE and TE power spectra (Sim~95).
+    \emph{Top:} fractional deviation $\Delta C_\ell^{EE}/C_\ell^{EE}$ and
+    $\Delta C_\ell^{TE}/C_\ell^{TE}$ for the RIFT joint best-fit relative to
+    Planck 2018. RMS deviations are $0.19\%$ (EE) and $0.43\%$ (TE).
+    \emph{Bottom:} approximate polarization $\chi^2$ for the three cosmologies.
+    The BAO-only RIFT best-fit (A) shows large tension ($\chi^2_{\rm EE}=4353$),
+    while the joint best-fit (B) is statistically consistent with $\Lambda$CDM (C).}
+  \label{fig:polarization}
+\end{figure}
 
 % ============================================================
 \subsection{RSD Growth Rate $f\sigma_8$ (Sim~96)}
@@ -937,6 +980,20 @@ BAO+CMB joint fit, making the growth rate a consistency test rather than a
 discriminator with current data.  Future surveys (DESI\,Y5, Euclid) measuring
 $f\sigma_8$ to $\sim\!1\%$ at $z>1$ will tighten this constraint to
 $\Lambda_0\lesssim0.05$.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{fig7_rsd_fsigma8.pdf}
+  \caption{\emph{Left:} $f\sigma_8(z)$ predictions for RIFT joint best-fit,
+    RIFT BAO-only, and $\Lambda$CDM Planck~2018, compared to the gold-sample
+    RSD compilation (Sim~96). RIFT at joint best-fit gives $\chi^2/\mathrm{dof}=0.86$,
+    $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$.
+    \emph{Right:} $\Lambda_0$ scan showing $\chi^2$ (blue) and maximum
+    fractional $f\sigma_8$ deviation from $\Lambda$CDM (red). The deviation
+    exceeds 1\% only at $\Lambda_0>0.2$, beyond the Bayesian upper limit from
+    Sim~93 ($\Lambda_0<0.095$ at 95\% CL).}
+  \label{fig:rsd}
+\end{figure}
 
 % ============================================================
 \section{Recursive Graviton Emission}

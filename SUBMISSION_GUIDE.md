@@ -1,4 +1,4 @@
-# RIFT Paper v2 — Submission Guide
+# RIFT Paper — Submission Guide
 Generated: 2026-04-09
 
 ---
@@ -6,7 +6,7 @@ Generated: 2026-04-09
 ## STEP 1: arXiv (submit first, before JCAP)
 
 **URL:** https://arxiv.org/submit  
-**File to upload:** `rift_paper_v2_arxiv.tar.gz` (400K)
+**File to upload:** `rift_paper_arxiv.tar.gz` (400K)
 
 ### Metadata to paste in:
 
@@ -67,7 +67,7 @@ for DESI Y5, Euclid, and CMB-S4.
 **Submission portal:** https://www.sissa.it/app/jcap/ (or via https://iopscience.iop.org/journal/1475-7516)
 
 **Files to upload:**
-- `rift_paper_v2.tex` (main manuscript)
+- `rift_paper.tex` (main manuscript)
 - `fig1_bao_residuals.pdf`
 - `fig2_cmb_Cl.pdf`
 - `fig3_lambda0_scan.pdf`
@@ -77,7 +77,7 @@ for DESI Y5, Euclid, and CMB-S4.
 - `fig7_rsd_fsigma8.pdf`
 - Cover letter (paste text below)
 
-**OR** upload the single `rift_paper_v2_arxiv.tar.gz` if the portal accepts archives.
+**OR** upload the single `rift_paper_arxiv.tar.gz` if the portal accepts archives.
 
 **Article type:** Regular article  
 **Section:** Modified gravity / Dark energy / Cosmological perturbations

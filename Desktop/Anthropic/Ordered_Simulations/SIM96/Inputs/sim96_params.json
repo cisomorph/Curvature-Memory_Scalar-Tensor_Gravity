@@ -1,0 +1,51 @@
+{
+  "description": "SIM96 — RIFT RSD / f·sigma_8 Growth Rate. Tests RIFT against redshift-space distortion (RSD) measurements from 6dFGRS, SDSS MGS, BOSS DR12, VIPERS, and eBOSS DR16 (9 gold-sample data points, z=0.067–1.48). RIFT modifies the effective gravitational constant G_eff(Psi), suppressing the linear growth rate f = d ln D / d ln a and hence f·sigma_8. Tests: (1) chi2 fit RIFT vs LCDM at joint best-fit; (2) Lambda0 scan for f·sigma_8 deviation; (3) Compare RIFT-predicted sigma_8 tension with current KiDS/DES tension.",
+
+  "sigma8_0": 0.824,
+  "note_sigma8": "Linear sigma_8 at z=0 from SIM90 joint best-fit cosmology (H0=67.59, Omega_m=0.312). Confirmed by SIM92.",
+
+  "cosmologies": {
+    "rift_joint": {
+      "H0": 67.59, "Omega_m": 0.312, "Omega_b": 0.0492,
+      "Lambda0": 0.008, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "RIFT joint CMB+BAO best-fit (SIM90)."
+    },
+    "rift_bao_only": {
+      "H0": 68.14, "Omega_m": 0.294, "Omega_b": 0.0487,
+      "Lambda0": 0.003, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "RIFT BAO-only best-fit (SIM87)."
+    },
+    "lcdm_planck": {
+      "H0": 67.36, "Omega_m": 0.3153, "Omega_b": 0.04934,
+      "Lambda0": 0.0, "Psi_ini": 0.0, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "LCDM Planck 2018 best-fit (Aghanim+2020). Baseline."
+    }
+  },
+
+  "rsd_data": [
+    {"survey": "6dFGRS",     "z": 0.067, "fsigma8": 0.423, "error": 0.055, "ref": "Beutler+2012"},
+    {"survey": "SDSS MGS",   "z": 0.15,  "fsigma8": 0.490, "error": 0.145, "ref": "Howlett+2015"},
+    {"survey": "BOSS DR12",  "z": 0.38,  "fsigma8": 0.497, "error": 0.045, "ref": "Alam+2017"},
+    {"survey": "BOSS DR12",  "z": 0.51,  "fsigma8": 0.458, "error": 0.038, "ref": "Alam+2017"},
+    {"survey": "BOSS DR12",  "z": 0.61,  "fsigma8": 0.436, "error": 0.034, "ref": "Alam+2017"},
+    {"survey": "VIPERS",     "z": 0.60,  "fsigma8": 0.550, "error": 0.120, "ref": "Pezzotta+2017"},
+    {"survey": "eBOSS LRG",  "z": 0.70,  "fsigma8": 0.473, "error": 0.041, "ref": "Gil-Marin+2020"},
+    {"survey": "eBOSS ELG",  "z": 0.85,  "fsigma8": 0.315, "error": 0.095, "ref": "de Mattia+2021"},
+    {"survey": "eBOSS QSO",  "z": 1.48,  "fsigma8": 0.462, "error": 0.045, "ref": "Neveux+2020"}
+  ],
+  "note_data": "Gold-sample RSD compilation. BOSS DR12 and eBOSS DR16 covariance: BOSS DR12 bins are correlated (off-diagonal ~0.4–0.5 from Alam+2017 Table 9). For chi2 we use the diagonal approximation; a note flags this for future work.",
+
+  "lambda0_scan": {
+    "values": [0.0, 0.003, 0.008, 0.01, 0.02, 0.05, 0.08, 0.10, 0.15, 0.20],
+    "note": "Scan Lambda0 to find detection threshold in f·sigma_8. At SIM91 result: H(z) dev <0.03% at Lambda0=0.1, growth dev >0.1% at Lambda0>=0.05."
+  },
+
+  "acceptance": {
+    "chi2_per_dof_max": 2.5,
+    "delta_fsigma8_max_pct": 1.0,
+    "note": "PASS if chi2/dof < 2.5 at joint best-fit; RIFT/LCDM f·sigma_8 deviation < 1% at Lambda0=0.008."
+  }
+}

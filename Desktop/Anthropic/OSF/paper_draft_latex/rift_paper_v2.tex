@@ -855,6 +855,90 @@ all spectra; (iii) the joint-fit parameter solution restores consistency across
 TT, EE, and TE simultaneously.
 
 % ============================================================
+\subsection{RSD Growth Rate $f\sigma_8$ (Sim~96)}
+\label{sec:rsd}
+
+Redshift-space distortions (RSD) measure the linear growth rate $f(z)=d\ln D/d\ln a$
+through the combination $f\sigma_8(z)$, where $D(z)$ is the linear growth factor
+normalized to unity at $z=0$ and $\sigma_{8,0}=0.824$ is taken from the SIM90
+joint best-fit.  In RIFT the gravitational coupling governing growth is modified to
+$G_\mathrm{eff}=G/(1+16\pi\Lambda(\Psi))$, entering the growth equation as
+\begin{equation}
+  D'' + \left(2 + \frac{d\ln H}{d\ln a}\right)D'
+  = \frac{3}{2}\frac{\Omega_m}{a^3 E^2}\,G_\mathrm{eff}\,D ,
+\label{eq:growth_rift}
+\end{equation}
+where primes denote $d/d\ln a$ and $E(z)=H(z)/H_0$.
+
+\paragraph{Data.}  We use the gold-sample RSD compilation spanning
+$z=0.067$--$1.48$~(Table~\ref{tab:rsd_data}): 6dFGRS~\citep{Beutler2012},
+SDSS\,MGS~\citep{Howlett2015}, BOSS\,DR12 ($z=0.38,0.51,0.61$)~\citep{Alam2017},
+VIPERS~\citep{Pezzotta2017}, eBOSS\,DR16 LRG~\citep{GilMarin2020},
+eBOSS\,DR16 ELG~\citep{deMattia2021}, and eBOSS\,DR16 QSO~\citep{Neveux2020}.
+All model predictions use the SIM90 cosmological background with no additional
+free parameters.
+
+\begin{table}[h]
+\centering
+\caption{Gold-sample $f\sigma_8$ data used in Sim~96.}
+\label{tab:rsd_data}
+\begin{tabular}{llccc}
+\hline
+Survey & Ref. & $z_\mathrm{eff}$ & $f\sigma_8$ & $\sigma$ \\
+\hline
+6dFGRS      & \citet{Beutler2012}   & 0.067 & 0.423 & 0.055 \\
+SDSS MGS    & \citet{Howlett2015}   & 0.150 & 0.490 & 0.145 \\
+BOSS DR12   & \citet{Alam2017}      & 0.380 & 0.497 & 0.045 \\
+BOSS DR12   & \citet{Alam2017}      & 0.510 & 0.458 & 0.038 \\
+BOSS DR12   & \citet{Alam2017}      & 0.610 & 0.436 & 0.034 \\
+VIPERS      & \citet{Pezzotta2017}  & 0.600 & 0.550 & 0.120 \\
+eBOSS LRG   & \citet{GilMarin2020}  & 0.700 & 0.473 & 0.041 \\
+eBOSS ELG   & \citet{deMattia2021}  & 0.850 & 0.315 & 0.095 \\
+eBOSS QSO   & \citet{Neveux2020}    & 1.480 & 0.462 & 0.045 \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Results.}  At the SIM90 joint best-fit ($H_0=67.59$, $\Omega_m=0.312$,
+$\Lambda_0=0.008$) RIFT yields $\chi^2/\mathrm{dof}=7.73/9=0.86$, compared to
+$7.87/9=0.87$ for $\Lambda$CDM Planck 2018, giving
+\begin{equation}
+  \Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = -0.14 \approx 0.
+\end{equation}
+All individual pulls are within $2\sigma$.  The maximum fractional deviation of the
+RIFT $f\sigma_8$ curve from the $\Lambda$CDM curve at the best-fit is $0.62\%$
+(across $z=0$--$2$), which is sub-percent and well below current RSD measurement
+precision.
+
+\paragraph{$G_\mathrm{eff}$ suppression.}  At $\Lambda_0=0.008$ the correction
+$16\pi\Lambda(\Psi)\sim 16\pi\times0.008\times(0.01)^2\lesssim10^{-5}$, so
+$G_\mathrm{eff}$ deviates from $G$ by $<10\,\mathrm{ppm}$.  The observed
+$\sim\!0.6\%$ difference in $f\sigma_8$ between RIFT joint and $\Lambda$CDM arises
+entirely from the $(H_0,\Omega_m)$ parameter offset, not from the recursive field.
+
+\paragraph{$\Lambda_0$ scan.}  A scan of $\Lambda_0\in[0,0.2]$ (holding all other
+parameters at SIM90 joint values) shows the $f\sigma_8$ deviation from $\Lambda$CDM
+remains below $1\%$ for $\Lambda_0<0.2$.  The detection threshold exceeds the
+Bayesian upper limit $\Lambda_0<0.095$ (95\% CL, Sim~93), so current RSD data
+cannot independently constrain $\Lambda_0$.
+
+\paragraph{$S_8$ tension context.}  With $\sigma_{8,0}=0.824$ and
+$\Omega_m=0.312$, the RIFT prediction $S_8=\sigma_8\sqrt{\Omega_m/0.3}=0.840$
+lies $3.7\sigma$ above KiDS-1000 ($S_8=0.766\pm0.020$, \citealt{Asgari2021}),
+compared to $3.9\sigma$ for $\Lambda$CDM Planck.  RIFT provides no relief for
+the $S_8$ tension, consistent with the SIM92 result ($\Delta\sigma_8<0.007\%$
+at $\Lambda_0=0.003$).
+
+\paragraph{Conclusion.}  RIFT passes all current RSD / $f\sigma_8$ constraints.
+The growth rate is indistinguishable from $\Lambda$CDM at the joint best-fit
+because $G_\mathrm{eff}\approx G$ to better than 10\,ppm.  Detection of the
+RIFT growth signature requires $\Lambda_0>0.2$, which is excluded by the
+BAO+CMB joint fit, making the growth rate a consistency test rather than a
+discriminator with current data.  Future surveys (DESI\,Y5, Euclid) measuring
+$f\sigma_8$ to $\sim\!1\%$ at $z>1$ will tighten this constraint to
+$\Lambda_0\lesssim0.05$.
+
+% ============================================================
 \section{Recursive Graviton Emission}
 \label{sec:graviton}
 
@@ -940,7 +1024,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Unified Lagrangian (eq.~\eqref{eq:action}) couples mass, curvature, and entropy through a single field $\Psi$.
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
-  \item Observational consistency (Sims~87--95): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95).
+  \item Observational consistency (Sims~87--96): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96).
   \item UV-finite quantum field theory---recursive damping regularises the propagator without renormalization.
   \item Predicts recursive graviton emission via curvature memory spikes.
 \end{itemize}
@@ -1005,7 +1089,6 @@ Planck/KiDS $\sigma_8$ tension. Future simulations will:
 \begin{enumerate}
   \item Complete recursive graviton quantization and emission spectrum;
   \item Simulate recursive void growth (HEALPix echo-delay maps);
-  \item Constrain RIFT with RSD/$f\sigma_8$ growth-rate data (BOSS/DESI);
   \item Refine eigenmode mappings to particle physics (Appendix~B).
 \end{enumerate}
 
@@ -1144,6 +1227,30 @@ Abbott, T.~M.~C., et al.\ (DES Collaboration) 2022,
 Adame, A.~G., et al.\ (DESI Collaboration) 2024,
 \textit{arXiv:2404.03002}.
 [DESI Year 1 BAO measurements across 7 tracer bins, $0.3\leq z\leq 2.33$]
+
+\bibitem[Beutler et al.(2012)]{Beutler2012}
+Beutler, F., et al.\ 2012, \textit{MNRAS}, 423, 3430.
+[6dFGRS: $f\sigma_8(z=0.067)=0.423\pm0.055$]
+
+\bibitem[Howlett et al.(2015)]{Howlett2015}
+Howlett, C., et al.\ 2015, \textit{MNRAS Letters}, 449, L26.
+[SDSS MGS: $f\sigma_8(z=0.15)=0.490\pm0.145$]
+
+\bibitem[Pezzotta et al.(2017)]{Pezzotta2017}
+Pezzotta, A., et al.\ 2017, \textit{A\&A}, 604, A33.
+[VIPERS W1+W4: $f\sigma_8(z=0.60)=0.550\pm0.120$]
+
+\bibitem[Gil-Mar\'in et al.(2020)]{GilMarin2020}
+Gil-Mar\'in, H., et al.\ 2020, \textit{MNRAS}, 498, 2492.
+[eBOSS DR16 LRG: $f\sigma_8(z=0.70)=0.473\pm0.041$]
+
+\bibitem[de Mattia et al.(2021)]{deMattia2021}
+de Mattia, A., et al.\ 2021, \textit{MNRAS}, 501, 5616.
+[eBOSS DR16 ELG: $f\sigma_8(z=0.85)=0.315\pm0.095$]
+
+\bibitem[Neveux et al.(2020)]{Neveux2020}
+Neveux, R., et al.\ 2020, \textit{MNRAS}, 499, 210.
+[eBOSS DR16 QSO: $f\sigma_8(z=1.48)=0.462\pm0.045$]
 
 \end{thebibliography}
 

@@ -30,7 +30,7 @@ past curvature via a retarded Green's function (curvature memory). The theory is
 derived from a single covariant action; all field equations follow by standard
 variation without additional postulates.
 
-We subject RIFT to ten independent precision cosmological tests. Key results:
+We subject RIFT to twelve independent precision cosmological tests. Key results:
 (i) BAO full-covariance refit (BOSS+eBOSS+Ly-alpha): chi2/dof=1.22,
     Delta_chi2(RIFT-LCDM)=0;
 (ii) CMB TT via full CLASS Boltzmann solver: RMS deviation=2.93% (l=2-1500),
@@ -42,7 +42,11 @@ We subject RIFT to ten independent precision cosmological tests. Key results:
 (vi) DESI Year 1 BAO refit: chi2/dof=1.36, Delta_chi2=0;
 (vii) CMB polarization EE/TE via CLASS: RMS < 0.2% (EE), < 0.5% (TE);
 (viii) RSD/f*sigma8 growth rate (9 surveys, z=0.07-1.48): chi2/dof=0.86,
-    Delta_chi2=-0.14.
+    Delta_chi2=-0.14;
+(ix) official Planck 2018 plikHM TTTEEE likelihood (clipy): LCDM pipeline
+    validated at Delta(-2lnL)=0; RIFT at joint best-fit Delta(-2lnL)=+7.0
+    (parameter offset, G_eff/G=1-42 ppm negligible);
+(x) joint plikHM+BAO re-optimisation: Delta(-2lnL)=-0.013 approx 0 (fully resolved).
 RIFT is statistically indistinguishable from LCDM at current precision.
 The coupling Lambda0 < 0.095 (95% CL). Falsifiable predictions are given
 for DESI Y5, Euclid, and CMB-S4.
@@ -53,7 +57,7 @@ for DESI Y5, Euclid, and CMB-S4.
 
 **Comments field:**
 ```
-25 pages, 7 figures. Simulation code and data: https://github.com/cisomorph/rift-cosmology
+28 pages, 7 figures. Simulation code and data: https://github.com/cisomorph/rift-cosmology
 ```
 
 **License:** Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
@@ -99,7 +103,7 @@ past curvature. The complete Lagrangian is derived from first principles with
 no postulates beyond the modified Einstein-Hilbert action; all field equations
 follow by standard variation. The theory recovers GR exactly in the Psi -> 0 limit.
 
-**Observational programme.** The paper presents ten independent numerical tests
+**Observational programme.** The paper presents twelve independent numerical tests
 against precision cosmological data, implemented as fully reproducible Python
 simulations (code released at https://github.com/cisomorph/rift-cosmology):
 
@@ -114,6 +118,9 @@ simulations (code released at https://github.com/cisomorph/rift-cosmology):
 8. DESI Year 1 BAO refit: chi2/dof = 1.36, Delta_chi2 = 0.
 9. CMB polarization EE/TE via CLASS: RMS < 0.2% (EE), < 0.5% (TE).
 10. RSD/f*sigma8 growth rate (6dFGRS, BOSS, eBOSS, 9 data points): chi2/dof = 0.86.
+11. Official Planck 2018 plikHM TTTEEE likelihood (clipy): LCDM pipeline validated;
+    RIFT at joint best-fit Delta(-2lnL) = +7.0 (parameter offset, G_eff/G = 1-42 ppm).
+12. Joint plikHM+BAO re-optimisation: Delta(-2lnL) = -0.013 approx 0 (fully resolved).
 
 In all tests, RIFT at the joint best-fit is statistically indistinguishable from
 LCDM. The coupling parameter Lambda0 is bounded to Lambda0 < 0.095 (95% CL) and
@@ -144,5 +151,5 @@ https://github.com/cisomorph/rift-cosmology
 
 Once you have the arXiv ID, run:
 ```bash
-gh repo edit cisomorph/rift-cosmology --description "RIFT paper (arXiv:2604.XXXXX) — curvature memory modified gravity. 15 cosmological simulations, all PASS."
+gh repo edit cisomorph/rift-cosmology --description "RIFT paper (arXiv:2604.XXXXX) — curvature memory modified gravity. 17 cosmological simulations (SIM82–SIM98), all PASS."
 ```

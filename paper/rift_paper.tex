@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to eleven independent precision cosmological tests (Sims~87--97).
+We subject RIFT to twelve independent precision cosmological tests (Sims~87--98).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -94,10 +94,11 @@ The key results are:
 (viii)~RSD/$f\sigma_8$ growth rate (9 surveys, $z=0.07$--$1.48$):
     $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2=-0.14\approx0$;
 (ix)~official Planck~2018 plikHM TTTEEE likelihood (Sim~97, via \texttt{clipy}):
-    $\Delta(-2\ln\mathcal{L})=+7.0$ at joint best-fit, driven entirely by the
-    parameter offset between the SIM90 joint fit and the Planck CMB optimum
-    ($G_\mathrm{eff}/G=1-42\,\mathrm{ppm}$ is negligible; RIFT at the Planck
-    parameter point gives $\Delta\approx 0$).
+    $\Delta(-2\ln\mathcal{L})=+7.0$ at the Sim~90 parameter point
+    ($G_\mathrm{eff}/G=1-42\,\mathrm{ppm}$ is negligible; driven by parameter offset);
+(x)~joint plikHM + BAO re-optimisation (Sim~98): $\Delta(-2\ln\mathcal{L})=-0.013\approx 0$
+    at the CMB-optimised best-fit ($H_0=67.30$, $\Omega_m=0.317$, $\Lambda_0=0.005$,
+    $G_\mathrm{eff}/G=1-24\,\mathrm{ppm}$); the Sim~97 tension is fully resolved.
 In all tests, RIFT at the joint best-fit is statistically indistinguishable from
 $\Lambda$CDM at current precision. The recursive field coupling $\Lambda_0$ is
 constrained to $\Lambda_0 < 0.095$ (95\% CL) by the Bayesian analysis and is
@@ -707,11 +708,16 @@ $\Delta\chi^2$ RSD (RIFT vs LCDM) & $-0.14$ & baseline & 96 & Pass \\
 $-2\ln\mathcal{L}$ plikHM TTTEEE (RIFT joint) & $2359.1$ & $2352.1$ & 97 & See note$^d$ \\
 $\Delta(-2\ln\mathcal{L})$ plikHM (joint vs LCDM) & $+7.0$ & baseline & 97 & See note$^d$ \\
 $\Delta(-2\ln\mathcal{L})$ plikHM (BAO-only vs LCDM) & $+945.7$ & baseline & 97 & BAO-only tension \\
+\midrule
+$\Delta(-2\ln\mathcal{L})$ plikHM (RIFT vs LCDM) at real optimum & $\mathbf{-0.013}$ & baseline & 98 & \textbf{Pass} \\
+RIFT CMB+BAO best-fit $H_0$ [km/s/Mpc] & $67.30$ & $67.30$ & 98 & Consistent \\
+RIFT CMB+BAO best-fit $\Omega_m$ & $0.3168$ & $0.3169$ & 98 & Consistent \\
+RIFT CMB+BAO best-fit $\Lambda_0$ & $0.00506$ & $0$ & 98 & $G_\mathrm{eff}=1-24\,\mathrm{ppm}$ \\
 \bottomrule
 \multicolumn{5}{l}{\footnotesize $^a$ Sim~89 tension ($30.1\sigma$) arises from the BAO-only H$_0$--$r_d$ degeneracy; resolved by Sim~90 joint fit.} \\
 \multicolumn{5}{l}{\footnotesize $^b$ Linear $\sigma_8$ at SIM90 joint best-fit $(H_0,\Omega_m)$; HALOFIT non-linear boost $\approx 1.37\times$ at $z=0$.} \\
 \multicolumn{5}{l}{\footnotesize $^c$ Approx.\ Gaussian pol.\ likelihood. LCDM baseline $\chi^2>0$ due to $(H_0,\Omega_m)$ offset between joint best-fit and Planck reference.} \\
-\multicolumn{5}{l}{\footnotesize $^d$ $\Delta(-2\ln\mathcal{L})=+7.0$ driven by parameter offset, not $G_\mathrm{eff}$ (42\,ppm). RIFT at Planck CMB optimum gives $\Delta\approx 0$.}
+\multicolumn{5}{l}{\footnotesize $^d$ $\Delta(-2\ln\mathcal{L})=+7.0$ driven by parameter offset, not $G_\mathrm{eff}$ (42\,ppm). Resolved by Sim~98: $\Delta=-0.013$ at real optimum.}
 \end{tabular}
 \end{table}
 
@@ -1076,16 +1082,77 @@ by only 42\,ppm.
 
 In frequentist terms, $\Delta(-2\ln\mathcal{L})=+7.0$ with one effective degree
 of freedom ($\Lambda_0$ being the extra parameter) corresponds to $\approx 2.6\sigma$
-tension---a marginal result.  This tension would be resolved by re-optimising the
-RIFT joint parameter fit using the full plikHM likelihood rather than the approximate
-Gaussian prior used in Sim~90; such a re-optimisation is deferred to future work.
+tension---a marginal result.  This tension is resolved by Sim~98 below, which
+re-optimises the RIFT parameter fit using the real plikHM likelihood.
 
 \paragraph{Conclusion.}
 The RIFT \emph{theory} is fully consistent with the real Planck~2018 plikHM TTTEEE
 likelihood: the $G_\mathrm{eff}$ correction at the joint best-fit coupling is
 42\,ppm and invisible to the CMB.  The marginal $\Delta(-2\ln\mathcal{L})=+7.0$
-is a parameter-optimisation artefact, not a failure of the modified gravity equations,
-and would vanish in a joint CMB+BAO fit using the full official likelihood.
+is a parameter-optimisation artefact that vanishes in Sim~98.
+
+% ============================================================
+\subsection{Joint plikHM + BAO Parameter Re-fit (Sim~98)}
+\label{sec:obs_sim98}
+
+\paragraph{Motivation.}  Sim~97 revealed a $\Delta(-2\ln\mathcal{L})=+7.0$ excess
+at the Sim~90 joint best-fit parameters.  The cause was identified as the
+$(H_0,\Omega_m)$ offset between Sim~90 (optimised against an approximate Gaussian
+CMB prior) and the true Planck CMB optimum.  Sim~98 resolves this by re-running
+the joint CMB+BAO optimisation using the real plikHM TTTEEE likelihood.
+
+\paragraph{Method.}  We minimise
+\begin{equation}
+  \chi^2_\mathrm{total}(H_0, \Omega_m [, \Lambda_0])
+  = -2\ln\mathcal{L}_\mathrm{plikHM} + (-2\ln\mathcal{L}_\mathrm{lowl\,TT})
+    + (-2\ln\mathcal{L}_\mathrm{lowl\,EE}) + \chi^2_\mathrm{BAO}
+\end{equation}
+over $(H_0, \Omega_m)$ for $\Lambda$CDM and $(H_0, \Omega_m, \Lambda_0)$ for RIFT,
+using Nelder-Mead optimisation (max 80 CLASS evaluations each).
+BAO data: BOSS DR12 + eBOSS DR16 + Ly$\alpha$ with full $12\times12$ covariance
+(same as Sim~87). The sound horizon $r_d$ is computed analytically from $(H_0, \Omega_m,
+\Omega_b)$ via numerical integration of $c_s(a)/[a^2 H(a)]$ to the baryon drag epoch
+(Eisenstein \& Hu~1998 approximation for $z_\mathrm{drag}$).
+
+\paragraph{Results.}
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Model & $H_0$ & $\Omega_m$ & $\Lambda_0$ & $r_d$ & plikHM $-2\ln\mathcal{L}$ & $G_\mathrm{eff}/G$ \\
+\midrule
+$\Lambda$CDM & 67.30 & 0.3169 & $0$ & 150.6 & 2347.46 & 1 \\
+RIFT & 67.30 & 0.3168 & $0.00506$ & 150.6 & 2347.45 & $1-24\,\mathrm{ppm}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{equation}
+\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}(\mathrm{RIFT}-\Lambda\mathrm{CDM})
+= -0.013 \approx 0 \quad\text{(\textbf{PASS})}
+\end{equation}
+
+The RIFT and $\Lambda$CDM best-fits are essentially identical: $\Delta H_0 = +0.002$,
+$\Delta\Omega_m = -0.0001$, $\Delta\Lambda_0 = 0.005$ (with $G_\mathrm{eff}$
+deviation 24\,ppm).  The $\chi^2_\mathrm{total}$ difference is $+0.004$.
+
+\paragraph{Progression of CMB+BAO tests.}
+\begin{center}
+\begin{tabular}{lcll}
+\toprule
+Simulation & $\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}$ & Parameter point & Notes \\
+\midrule
+Sim~89 (approx Gaussian) & $+907$ & BAO-only best-fit & Parameter tension \\
+Sim~90 (approx Gaussian) & $\approx 0$ & Joint approx best-fit & Resolved by joint fit \\
+Sim~97 (real plikHM) & $+7.0$ & Sim~90 approx params & Residual offset \\
+Sim~98 (real plikHM) & $\mathbf{-0.013}$ & Real plikHM best-fit & \textbf{Fully resolved} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Conclusion.}  When RIFT parameters are optimised against the real
+Planck~2018 plikHM TTTEEE likelihood, $\Delta(-2\ln\mathcal{L}) = -0.013 \approx 0$.
+The Sim~97 tension of $+7.0$ is completely resolved.  RIFT is fully consistent
+with the official Planck~2018 CMB likelihood at the optimised parameter point,
+with $G_\mathrm{eff}/G = 1 - 24\,\mathrm{ppm}$.
 
 % ============================================================
 \section{Recursive Graviton Emission}

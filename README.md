@@ -21,7 +21,7 @@ effective gravitational constant: G_eff = G / (1 + 16πΛ(Ψ)).
 
 ## Paper
 
-`paper/rift_paper.tex` / `rift_paper.pdf` — 26 pages, compiles with pdflatex.
+`paper/rift_paper.tex` / `rift_paper.pdf` — 28 pages, compiles with pdflatex.
 
 **Key results (Sims 87–97):**
 
@@ -37,7 +37,8 @@ effective gravitational constant: G_eff = G / (1 + 16πΛ(Ψ)).
 | DESI Y1 BAO refit (SIM94) | χ²/dof = 1.36, Δχ² = 0 |
 | CMB polarization EE/TE (SIM95) | RMS(ΔEE/EE) = 0.19%, RMS(ΔTE/TE) = 0.43% |
 | RSD / f·σ₈ growth rate (SIM96) | χ²/dof = 0.86, Δχ²(RIFT−ΛCDM) = −0.14 |
-| **Real Planck 2018 plikHM TTTEEE (SIM97)** | **Δ(−2lnL) = +7.0 (parameter offset); G_eff/G = 1−42 ppm** |
+| Real Planck 2018 plikHM TTTEEE (SIM97) | Δ(−2lnL) = +7.0 at SIM90 params (parameter offset, not G_eff) |
+| **Joint plikHM+BAO re-fit (SIM98)** | **Δ(−2lnL) = −0.013 ≈ 0 at CMB-optimised best-fit** |
 
 ---
 
@@ -71,6 +72,7 @@ simulations/
 | SIM95 | CMB polarization EE/TE via CLASS | PASS |
 | SIM96 | RSD / f·σ₈ growth rate (BOSS+eBOSS) | PASS |
 | SIM97 | Real Planck 2018 plikHM TTTEEE likelihood (clipy) | PASS* |
+| SIM98 | Joint plikHM+BAO re-optimisation (real CMB best-fit) | PASS |
 
 ---
 

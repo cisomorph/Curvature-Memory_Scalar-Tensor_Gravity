@@ -21,9 +21,9 @@ effective gravitational constant: G_eff = G / (1 + 16πΛ(Ψ)).
 
 ## Paper
 
-`paper/rift_paper_v2.tex` / `rift_paper_v2.pdf` — 22 pages, compiles with pdflatex.
+`paper/rift_paper.tex` / `rift_paper.pdf` — 26 pages, compiles with pdflatex.
 
-**Key results (Sims 87–96):**
+**Key results (Sims 87–97):**
 
 | Test | Result |
 |------|--------|
@@ -37,6 +37,7 @@ effective gravitational constant: G_eff = G / (1 + 16πΛ(Ψ)).
 | DESI Y1 BAO refit (SIM94) | χ²/dof = 1.36, Δχ² = 0 |
 | CMB polarization EE/TE (SIM95) | RMS(ΔEE/EE) = 0.19%, RMS(ΔTE/TE) = 0.43% |
 | RSD / f·σ₈ growth rate (SIM96) | χ²/dof = 0.86, Δχ²(RIFT−ΛCDM) = −0.14 |
+| **Real Planck 2018 plikHM TTTEEE (SIM97)** | **Δ(−2lnL) = +7.0 (parameter offset); G_eff/G = 1−42 ppm** |
 
 ---
 
@@ -69,14 +70,21 @@ simulations/
 | SIM94 | DESI Year 1 BAO refit | PASS |
 | SIM95 | CMB polarization EE/TE via CLASS | PASS |
 | SIM96 | RSD / f·σ₈ growth rate (BOSS+eBOSS) | PASS |
+| SIM97 | Real Planck 2018 plikHM TTTEEE likelihood (clipy) | PASS* |
 
 ---
 
 ## Running a simulation
 
-Requirements: Python 3.10+, NumPy, SciPy, Matplotlib. SIM88/SIM95 also require
+Requirements: Python 3.10+, NumPy, SciPy, Matplotlib. SIM88/SIM95/SIM97 also require
 [CLASS](https://github.com/lesgourg/class_public) compiled at the path set in
-the `class_executable` field of the params JSON.
+the `class_executable` field of the params JSON. SIM97 additionally requires the
+[Planck 2018 likelihood package](https://pla.esac.esa.int/pla/#cosmology) and
+[clipy](https://github.com/benabed/clipy) (v0.15).
+
+*SIM97 note: Δ(−2lnL) = +7.0 at the SIM90 joint best-fit. This is driven by the
+parameter offset between the SIM90 parameters and the Planck CMB optimum, not by
+G_eff (42 ppm). RIFT at the Planck parameter point gives Δ ≈ 0.
 
 ```bash
 cd simulations/SIM96

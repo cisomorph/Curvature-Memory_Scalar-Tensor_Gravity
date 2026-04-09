@@ -100,8 +100,7 @@ python Published_Scripts/simulation_runner_rift.py
 
 ## License
 
-Simulation code: MIT License  
-Paper text, figures, data: CC BY 4.0
+CC BY-NC 4.0 — Attribution-NonCommercial. Free to share and adapt with credit; commercial use prohibited.
 
 Author: cisomorph  
 Date: 2026-04-09

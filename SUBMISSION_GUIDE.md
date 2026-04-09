@@ -56,7 +56,7 @@ for DESI Y5, Euclid, and CMB-S4.
 25 pages, 7 figures. Simulation code and data: https://github.com/cisomorph/rift-cosmology
 ```
 
-**License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
+**License:** Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 
 ---
 

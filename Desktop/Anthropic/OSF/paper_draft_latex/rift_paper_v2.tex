@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to fifteen independent tests (Sims~87--102).
+We subject RIFT to sixteen independent tests (Sims~87--103).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -105,13 +105,25 @@ The key results are:
 (xii)~galaxy rotation curves, time-domain PDE (Sim~100): galactic curvature coupling
     $2\Lambda_0|R_\mathrm{gal}|\approx5\times10^{-9}\,\mathrm{kpc}^{-2}$ is
     $5\times10^7$ times weaker than $m_0^2$; curvature condensation at galactic
-    densities is ruled out; $\lambda<0$ self-coupling causes tachyonic blow-up.
+    densities is ruled out; $\lambda<0$ self-coupling causes tachyonic blow-up;
+(xiii)~BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d|<21\,\mathrm{ppm}$
+    across all allowed $\Lambda_0$; RIFT and $\Lambda$CDM are degenerate in $r_d$;
+(xiv)~one-loop UV structure (Sim~102): quartic UV divergence confirmed; memory damping
+    regulates to $\Sigma(0)=\Lambda_0^2 k_m^4/(64\pi^2)$; naturalness requires
+    $\tau_m>0.11\,\mathrm{Mpc}$; UV finiteness holds at one loop in the
+    non-minimal coupling sector;
+(xv)~Vainshtein screening (Sim~103): all scanned $(\alpha_V,M_V,\beta)$
+    combinations fail to source an isothermal dark matter halo for NGC~3198;
+    field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$
+    below the nonlinear threshold; energy density deficit is $2.7\times10^6\times$;
+    all kinetic modifications of the locked action are exhausted.
 In all cosmological tests (Sims~87--98), RIFT at the joint best-fit is statistically
 indistinguishable from $\Lambda$CDM at current precision. The recursive field
 coupling $\Lambda_0$ is constrained to $\Lambda_0 < 0.095$ (95\% CL) and is
 cosmologically inert at current observational precision. Galactic-scale predictions
-await derivation of a screening or stabilization mechanism. Falsifiable predictions
-are given for future surveys (DESI~Y5, Euclid, CMB-S4).
+require new physics beyond the locked action: a first-principles coupling between
+$\Psi$ and baryonic matter. Falsifiable predictions are given for future surveys
+(DESI~Y5, Euclid, CMB-S4).
 \end{abstract}
 
 \tableofcontents
@@ -1621,6 +1633,117 @@ This confirms the UV-finiteness conjecture of Section~\ref{sec:quantization}
 \end{enumerate}
 
 % ============================================================
+\section{Vainshtein Screening and the Dark Matter Problem (Sim~103)}
+\label{sec:sim103}
+
+\paragraph{Motivation.}
+Sims~99 and 100 definitively closed the simplest routes for RIFT to replace dark
+matter in galaxies: neither the Yukawa profile (Sim~99) nor the time-domain
+condensation via $2\Lambda_0|R_{\rm gal}|$ (Sim~100) produces the $\rho\propto r^{-2}$
+isothermal halo required for flat rotation curves.  The remaining candidate
+mechanisms from the systematic survey are (a)~a non-minimal kinetic term of the
+Vainshtein type and (b)~a direct matter coupling $\beta\Psi\rho_b$.
+Sim~103 tests both for NGC~3198 ($v_{\rm flat} = 150\,\mathrm{km\,s^{-1}}$,
+$M_{\rm disk} = 3\times 10^{10}\,M_\odot$, $R_d = 2.72\,\mathrm{kpc}$).
+
+\paragraph{Setup: Poisson-limit perturbation.}
+Because the RIFT Compton wavelength $1/m_0 = 10{,}000\,\mathrm{kpc}$ greatly exceeds
+galactic scales ($\lesssim 40\,\mathrm{kpc}$), the cosmological background
+$\Psi_0$ is nearly uniform within the galaxy.  We solve for the perturbation
+$\delta\Psi(r)$ driven by the stellar disk via the Poisson-limit field equation
+($m_0 r \ll 1$, so the mass term is negligible):
+\begin{equation}
+\nabla^2\delta\Psi \approx -2\Lambda_0\,\delta R \approx
+  -16\pi G\Lambda_0\,\rho_{\rm stars}(r)\,.
+\end{equation}
+Under the quasi-static spherical approximation the gradient becomes
+\begin{equation}
+\frac{d\delta\Psi}{dr} = \frac{2G\Lambda_0^{\rm eff}\,M_{\rm enc}(r)}{r^2}\,,
+\label{eq:dPsi_poisson}
+\end{equation}
+where $\Lambda_0^{\rm eff} = \Lambda_0 + \beta$ absorbs both the curvature channel
+and any direct matter coupling $\beta$.
+
+The Vainshtein modification augments the stress-energy density of the scalar field via
+the non-linear kinetic term $(\alpha_V/4M_V^2)(\partial\Psi)^4$:
+\begin{equation}
+\rho_\Psi(r) = \frac{c^2}{8\pi G}
+  \cdot\tfrac{1}{2}\!\left(\frac{d\delta\Psi}{dr}\right)^{\!2}
+  \left[1 + \frac{\alpha_V}{M_V^2}\!\left(\frac{d\delta\Psi}{dr}\right)^{\!2}\right].
+\label{eq:rho_Vainshtein}
+\end{equation}
+The second factor is the Vainshtein ratio $\mathcal{V} = \alpha_V(\delta\Psi')^2/M_V^2$;
+the nonlinear regime requires $\mathcal{V} \gg 1$.
+
+\paragraph{Results: field gradient and Vainshtein ratio.}
+Using $\Lambda_0 = 0.003$ (locked action best-fit), the field gradient at
+$r = 10\,\mathrm{kpc}$ is
+\begin{equation}
+\left|\frac{d\delta\Psi}{dr}\right|_{10\,\mathrm{kpc}} = 6.1\times10^{-8}\,\mathrm{kpc}^{-1}.
+\end{equation}
+Table~\ref{tab:sim103_vainshtein} shows the Vainshtein ratio for the full
+$(\alpha_V, M_V)$ scan.
+
+\begin{table}[h]
+\begin{center}
+\caption{Vainshtein ratio $\mathcal{V}$ at $r=10\,\mathrm{kpc}$ for NGC~3198.
+All entries are far below unity; the nonlinear regime is never reached.}
+\label{tab:sim103_vainshtein}
+\begin{tabular}{ccc}
+\toprule
+$\alpha_V$ & $M_V\,[\mathrm{kpc}^{-1}]$ & $\mathcal{V} = \alpha_V(\delta\Psi')^2/M_V^2$ \\
+\midrule
+$1$    & $0.001$ & $3.7\times10^{-9}$ \\
+$10$   & $0.001$ & $3.7\times10^{-8}$ \\
+$100$  & $0.001$ & $3.7\times10^{-7}$ \\
+$1000$ & $0.001$ & $3.7\times10^{-6}$ \\
+$1000$ & $0.01$  & $3.7\times10^{-8}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Even at $\alpha_V = 1000$ and the smallest Vainshtein mass $M_V = 0.001\,\mathrm{kpc}^{-1}$,
+the ratio $\mathcal{V} = 3.7\times10^{-6}$: the scalar field is deep in the linear
+regime everywhere in the galaxy.  The Vainshtein mechanism provides no boost.
+
+\paragraph{Results: energy density deficit.}
+With $\rho_\Psi \propto (\delta\Psi')^2$ from eq.~\eqref{eq:rho_Vainshtein},
+the locked-action value gives
+\begin{equation}
+\rho_\Psi(10\,\mathrm{kpc}) = 1.6\times10^{-3}\,M_\odot\,\mathrm{kpc}^{-3},
+\end{equation}
+whereas the isothermal halo required for $v_{\rm flat} = 150\,\mathrm{km\,s^{-1}}$ demands
+\begin{equation}
+\rho_{\rm iso}(10\,\mathrm{kpc}) = \frac{v_{\rm flat}^2}{4\pi G r^2}
+  = 4.2\times10^{3}\,M_\odot\,\mathrm{kpc}^{-3}.
+\end{equation}
+The deficit is a factor of $2.7\times10^6$.
+
+\paragraph{Results: direct coupling.}
+A direct matter coupling $\beta$ in the field equation augments
+$\Lambda_0 \to \Lambda_0^{\rm eff} = \Lambda_0 + \beta$.  Closing the density
+deficit requires $\Lambda_0^{\rm eff} \approx 4.9$, or equivalently
+$\beta \approx 4.9 \approx 1{,}600 \times \Lambda_0$.  This coupling is not
+derivable from the locked action and would introduce a new free parameter
+constrained to be of order unity rather than $\lesssim 0.01$ as demanded by
+cosmological homogeneity.
+
+\paragraph{Conclusion for Paper~V.}
+The Vainshtein screening mechanism does not rescue the dark matter failure of
+Sims~99--100.  The root cause is that the galactic field gradient
+$|\delta\Psi'| \sim 10^{-8}\,\mathrm{kpc}^{-1}$ is set by the weak
+$\Lambda_0 R_{\rm gal}$ curvature channel and falls $10^{4}$--$10^{6}$ orders of
+magnitude below the Vainshtein threshold for any physically reasonable coupling.
+A direct matter coupling of order $\beta \sim 1{,}600\,\Lambda_0$ could supply the
+missing density but is not contained in the locked action and would violate
+cosmological constraints.  All kinetic modifications of the $\Lambda_0 R$ channel
+have now been exhausted.  The conclusion is unambiguous: \emph{RIFT at its
+cosmological best-fit cannot replace dark matter through any modification of the
+existing Lagrangian}.  A new coupling between $\Psi$ and baryonic matter,
+derivable from first principles, is the minimum new physics required.
+
+% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
@@ -1633,7 +1756,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
-  \item Galaxy rotation curve tests (Sims~99--100): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Attractive self-coupling ($\lambda<0$) causes tachyonic blow-up, not a stable halo condensate.  The static (SIM99) and time-domain (SIM100) solutions agree (adiabatic limit confirmed), ruling out history-dependence as a resolution.  Galactic predictions await derivation of a screening or higher-order stabilization mechanism.
+  \item Galaxy rotation curve tests (Sims~99--100, 103): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Vainshtein screening (Sim~103): the galactic field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$ below the nonlinear threshold for all scanned $(\alpha_V,M_V)$; energy density deficit is $2.7\times10^6\times$ the isothermal requirement.  All kinetic modifications of the locked action are exhausted; new physics (a first-principles coupling between $\Psi$ and baryonic matter) is required.
   \item UV regulation (Sim~102): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated. Naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$. UV finiteness holds at one loop in the non-minimal coupling sector; higher loops and vertex renormalization remain open.
   \item Predicts recursive graviton emission via curvature memory spikes.
   \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.

@@ -46,7 +46,7 @@ and Emergent Gravitation}
 \small Independent Researcher\\
 \small \texttt{C.Isomorph@gmail.com}}
 
-\date{July 2025 (v2, revised \today)}
+\date{\today}
 
 \maketitle
 
@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to ten independent precision cosmological tests (Sims~87--96).
+We subject RIFT to twelve independent precision cosmological tests (Sims~87--98).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -83,7 +83,7 @@ The key results are:
     coupling;
 (iii)~joint CMB+BAO parameter fit:
     $\Delta\chi^2=0$, best-fit $H_0=67.59$~km/s/Mpc, $\Omega_m=0.312$,
-    $\Lambda_0=0.008$;
+    $\Lambda_0\approx0.013$ (numerically unconstrained; $\chi^2$ flat across $[0,0.1]$);
 (iv)~non-linear structure growth: $|\Delta\sigma_8|<0.007\%$ at $\Lambda_0=0.003$,
     RIFT provides no relief for the Planck/KiDS $S_8$ tension;
 (v)~Bayesian model comparison: $\ln B = -0.71$ (Inconclusive; RIFT not excluded);
@@ -92,12 +92,18 @@ The key results are:
 (vii)~CMB polarization EE/TE via CLASS: RMS deviations $<0.2\%$ (EE) and
     $<0.5\%$ (TE) at joint best-fit;
 (viii)~RSD/$f\sigma_8$ growth rate (9 surveys, $z=0.07$--$1.48$):
-    $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2=-0.14\approx0$.
+    $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2=-0.14\approx0$;
+(ix)~official Planck~2018 plikHM TTTEEE likelihood (Sim~97, via \texttt{clipy}):
+    $\Delta(-2\ln\mathcal{L})=+7.0$ at the Sim~90 parameter point
+    ($G_\mathrm{eff}/G=1-42\,\mathrm{ppm}$ is negligible; driven by parameter offset);
+(x)~joint plikHM + BAO re-optimisation (Sim~98): $\Delta(-2\ln\mathcal{L})=-0.013\approx 0$
+    at the CMB-optimised best-fit ($H_0=67.30$, $\Omega_m=0.317$, $\Lambda_0=0.005$,
+    $G_\mathrm{eff}/G=1-24\,\mathrm{ppm}$); the Sim~97 tension is fully resolved.
 In all tests, RIFT at the joint best-fit is statistically indistinguishable from
-$\Lambda$CDM. The recursive field coupling $\Lambda_0$ is constrained to
-$\Lambda_0 < 0.095$ (95\% CL) by the Bayesian analysis and is cosmologically
-inert at current observational precision. Falsifiable predictions are given for
-future surveys (DESI~Y5, Euclid, CMB-S4).
+$\Lambda$CDM at current precision. The recursive field coupling $\Lambda_0$ is
+constrained to $\Lambda_0 < 0.095$ (95\% CL) by the Bayesian analysis and is
+cosmologically inert at current observational precision. Falsifiable predictions
+are given for future surveys (DESI~Y5, Euclid, CMB-S4).
 \end{abstract}
 
 \tableofcontents
@@ -138,14 +144,35 @@ peaks---in high-curvature or memory-rich regimes.
 
 This paper develops the full Lagrangian formalism, derives the Euler--Lagrange
 and gravitational field equations, quantizes the scalar and tensor components,
-and tests the cosmological predictions against precision data. We demonstrate:
+and tests the cosmological predictions against precision data.
+
+\noindent\textbf{Results established in this paper (Sims~82--98):}
 \begin{itemize}
-  \item Galactic rotation curves arising from recursive curvature---without dark matter;
-  \item Modified CMB power spectrum from the RIFT background cosmology, computed via the full CLASS Boltzmann solver (RMS $= 2.93\%$, Sim~88);
-  \item BAO fit with full covariance: $\chi^2/\mathrm{dof} = 1.22$ (Sim~87);
-  \item Joint CMB+BAO consistency: $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = 0$ (Sim~90);
-  \item Natural suppression of UV divergence via recursive damping in the propagator;
-  \item Recursive graviton emission thresholds tied to field gradient coherence.
+  \item Modified CMB power spectrum via full CLASS Boltzmann solver:
+        RMS$(\Delta C_\ell/C_\ell) = 2.93\%$ (Sim~88);
+  \item BAO fit with full $12\times12$ covariance:
+        $\chi^2/\mathrm{dof} = 1.22$ (Sim~87);
+  \item Joint CMB+BAO consistency: $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = 0$
+        (Sim~90); confirmed with real Planck~2018 plikHM TTTEEE likelihood:
+        $\Delta(-2\ln\mathcal{L}) = -0.013$ (Sim~98);
+  \item Non-linear structure growth: $|\Delta\sigma_8| < 0.007\%$ at
+        $\Lambda_0 = 0.003$ (Sim~92);
+  \item Bayesian model comparison: $\ln B = -0.71$ (Inconclusive; Sim~93).
+\end{itemize}
+
+\noindent\textbf{Predictions for future simulation (not yet demonstrated):}
+\begin{itemize}
+  \item Galaxy rotation curves without dark matter: RIFT predicts flat curves
+        from the radial gradient $\nabla_r\Psi$. Sim~99 tested this explicitly:
+        the locked action at $\Lambda_0 = 0.003$ does not replace dark matter via
+        $T^{\Psi}$ alone; the Yukawa profile is exponentially steeper than the
+        $1/r^2$ isothermal sphere needed for curve flattening
+        (Section~\ref{sec:sim99}). Galactic-scale predictions await derivation
+        of a screening or condensation mechanism from the locked action.
+  \item UV finiteness of the quantized theory: the recursive propagator is
+        conjectured to have improved UV behaviour, but a complete loop calculation
+        has not been performed (Section~\ref{sec:quantization}).
+  \item Recursive graviton emission thresholds (Section~\ref{sec:graviton}).
 \end{itemize}
 
 % ============================================================
@@ -174,8 +201,9 @@ emergent from recursion, not from mass-energy alone. The geometry of spacetime
 becomes a dynamic ledger of curvature history, modulated by recursive potentials
 and stabilized by attractor feedback. This is the mechanism by which observed
 gravitational phenomena---flat galaxy rotation curves, void lensing anomalies,
-and early-universe coherence---can arise without invoking invisible matter or
-finely tuned scalar inflation.
+and early-universe coherence---are predicted to arise without invoking invisible
+matter or finely tuned scalar inflation, though the galactic-scale predictions
+await dedicated simulation.
 
 RIFT is not a rejection of GR or QFT, but their recursive extension. It maintains
 covariance, admits canonical quantization, and yields Einstein's equations as a
@@ -420,9 +448,23 @@ where the polarization tensor $\mathcal{P}$ enforces spin-2 structure.
 
 Memory tensor commutators decay as
 $[\mathcal{M}_{\mu\nu}(x),\mathcal{M}_{\rho\sigma}(y)] \propto e^{-|t_x-t_y|/\tau_m}$,
-suppressing UV contributions. Vacuum fluctuations are damped at high frequency;
-loop diagrams converge; \emph{no renormalization is required}. This is one of the
-central structural advantages of RIFT over standard QFT on a fixed background.
+suppressing UV contributions. This commutator decay \emph{suggests} that vacuum
+fluctuations are damped at high frequency and loop diagrams may converge without
+explicit renormalization. However, no one-loop calculation has been performed to
+verify this; UV finiteness of the interacting theory beyond the free-field level
+remains a conjecture (noted in the abstract). This structural motivation
+distinguishes RIFT from standard QFT on a fixed background but does not
+yet constitute a proof.
+
+\paragraph{Note on nonlinear coupling.}
+The canonical quantization in Sections~\ref{sec:quantization} applies to the
+free scalar and tensor sectors. The nonlinear interaction $\Lambda(\Psi)\,R\,\Psi$
+introduces cubic and higher interaction vertices in the quantum theory.
+Loop corrections to the propagator and vertex functions arising from this
+Ricci-coupling have not been computed.  In particular, whether the interacting
+theory is UV-finite at loop level, and whether the memory-sector commutator
+decay extends to the interaction vertices, are open questions requiring
+dedicated perturbative calculation.
 
 % ============================================================
 \section{CMB Power Spectrum from Recursive Fields}
@@ -453,12 +495,23 @@ acoustic peak shift driven by the modified background cosmology
 \label{sec:bao_theory}
 
 In $\Lambda$CDM, BAO arise from sound waves in the early photon-baryon plasma.
-In RIFT, analogous large-scale structure emerges from \emph{recursive echo shells}:
-as $\Psi$ evolves, it emits ripple fronts when memory or curvature gradients reach
-critical levels. These waves stall at fixed radii due to recursive damping,
-form shell-like overdensities, and mimic BAO without requiring baryon pressure.
-Shell locations are set by $r_n = v_c \cdot \tau_n$ where $v_c$ is the recursive
-coherence velocity and $\tau_n$ is the time to recursive saturation.
+In RIFT, analogous large-scale structure is \emph{interpreted} as arising from
+\emph{recursive echo shells}: as $\Psi$ evolves, it emits ripple fronts when
+memory or curvature gradients reach critical levels. These waves stall at fixed
+radii due to recursive damping, form shell-like overdensities, and mimic BAO
+without requiring baryon pressure. Shell locations are set by
+$r_n = v_c \cdot \tau_n$ where $v_c$ is the recursive coherence velocity and
+$\tau_n$ is the time to recursive saturation.
+
+\emph{Important caveat:} this is a physical interpretation, not a
+first-principles derivation of the sound horizon.  The BAO scale
+$r_d \approx 147$~Mpc is a free parameter fitted to data in Sim~87;
+no RIFT-specific prediction of $r_d$ has been derived from the field equations.
+At $\Lambda_0 \ll 1$ the RIFT background is indistinguishable from the
+$\Lambda$CDM FLRW background, so both models share the same sound horizon
+by construction.  The echo-shell picture provides a qualitative description
+of \emph{why} a BAO-like feature might arise in RIFT, but it does not
+constitute a derivation of the shell spacing.
 
 Observationally, the BAO scale $r_d \approx 147$~Mpc is reproduced by the
 RIFT best-fit cosmology, tested against BOSS DR12, eBOSS DR16, and Ly-$\alpha$
@@ -490,7 +543,7 @@ inverted via Cholesky decomposition, and computed
 $\chi^2_{\mathrm{full}} = (\mathbf{d}-\mathbf{m})^\top C^{-1}(\mathbf{d}-\mathbf{m})$.
 The data vector comprises 12 measurements:
 DM/r$_d$ and DH/r$_d$ at $z = 0.38, 0.51, 0.70, 1.48, 2.33$, plus
-DV/r$_d$ at $z = 0.15$ (6dFGS+MGS) and $z = 0.85$ (eBOSS QSO).
+DV/r$_d$ at $z = 0.15$ (6dFGS+MGS) and $z = 0.85$ (eBOSS ELG).
 The RIFT background model integrates the full FLRW+scalar system
 (equations~\eqref{eq:flrw_scalar}--\eqref{eq:friedmann}) numerically via RK45.
 We optimised over $(H_0, \Omega_m, r_d, \Lambda_0)$ with Nelder-Mead
@@ -628,7 +681,12 @@ approximation from the Planck 2018 published parameter covariance
 $\chi^2_{\mathrm{CMB}} = (\mathbf{x}-\boldsymbol{\mu})^\top C_{\mathrm{Planck}}^{-1}(\mathbf{x}-\boldsymbol{\mu})$
 with $\boldsymbol{\mu} = (67.36, 0.3153)$,
 $\sigma_{H_0} = 0.54$, $\sigma_{\Omega_m} = 0.0073$, $\rho = -0.90$.
-The BAO chi-squared is the exact full-covariance result from Sim~87.
+The BAO chi-squared uses the same 12-point data vector and $12\times12$
+covariance matrix as Sim~87, evaluated with the flat Friedmann
+approximation for $H(z)$ including the first-order $G_\mathrm{eff}$
+correction at representative $\Psi_0 = 0.01$
+(identical method to Sim~91; the full ODE result agrees to $<16$\,ppm
+per Sim~88).
 LCDM: $\Lambda_0$ fixed to zero. RIFT: $\Lambda_0$ free.
 Nelder-Mead optimisation, 20 random restarts.
 
@@ -639,8 +697,9 @@ Nelder-Mead optimisation, 20 random restarts.
 Model & $H_0$ & $\Omega_m$ & $r_d$ & $\Lambda_0$ & $\chi^2_{\mathrm{CMB}}$ & $\chi^2_{\mathrm{BAO}}$ \\
 \midrule
 $\Lambda$CDM & 67.59 & 0.3118 & 147.56 & 0 & 0.23 & 11.02 \\
-RIFT & 67.59 & 0.3118 & 147.56 & 0.008 & 0.23 & 11.02 \\
+RIFT & 67.59 & 0.3118 & 147.57 & $\approx$0.013$^\dagger$ & 0.23 & 11.02 \\
 \bottomrule
+\multicolumn{7}{l}{\footnotesize $^\dagger$ Numerically unconstrained: $\Delta\chi^2<0.004$ across $\Lambda_0\in[0,0.1]$ (Sim~91). Value depends on optimiser init.} \\
 \end{tabular}
 \end{center}
 \begin{equation*}
@@ -651,15 +710,24 @@ is $\sim 10\times$ more constraining than BAO alone). Both RIFT and $\Lambda$CDM
 converge to the same optimal $(H_0, \Omega_m) \approx (67.6, 0.312)$. The coupling
 $\Lambda_0 = 0.003$ modifies $H(z)$ at the 16~ppm level (Sim~88), making RIFT
 and $\Lambda$CDM cosmologically indistinguishable at the CMB+BAO level.
-$\Delta\chi^2 = 0$ confirms \emph{RIFT is fully consistent with precision cosmological
-data}, and that the Sim~89 tension was an artefact of using the BAO-only
-(parameter-degenerate) best-fit as the CMB input.
+$\Delta\chi^2 \approx 0$ confirms that RIFT is consistent with precision cosmological
+data at current measurement precision, and that the Sim~89 tension was an artefact
+of using the BAO-only (parameter-degenerate) best-fit as the CMB input.
+It is important to interpret this result correctly: $\Delta\chi^2 \approx 0$ arises
+because at the joint best-fit coupling ($\Lambda_0 \lesssim 0.013$,
+$G_{\mathrm{eff}}/G = 1 - 16\,\mathrm{ppm}$) RIFT is observationally degenerate
+with $\Lambda$CDM---both models converge to the same parameters and the RIFT
+correction is below current measurement precision.  This should not be read as
+RIFT providing a physically distinct fit to CMB data; rather, the Sim~90 joint
+fit demonstrates that the theory is \emph{consistent} with the data, not that
+it is \emph{preferred} or that it explains a feature not accounted for by $\Lambda$CDM.
 
 \emph{Note on $\Lambda_0$ reporting.} Two $\Lambda_0$ values appear in the analysis:
 the BAO-only best-fit $\Lambda_0 = 0.003$ (Sim~87, four free parameters, physically
-motivated) and the joint-fit value $\Lambda_0 = 0.008$ (Sim~90, numerically
+motivated) and the joint-fit value $\Lambda_0 \approx 0.013$ (Sim~90, numerically
 unconstrained because the $\chi^2$ landscape is flat in $\Lambda_0$ at this precision,
-$\Delta\chi^2_{\Lambda_0} < 0.004$ across $[0, 0.1]$ from Sim~91). The fiducial
+$\Delta\chi^2_{\Lambda_0} < 0.004$ across $[0, 0.1]$ from Sim~91; the specific
+value depends on optimiser initialisation and carries no physical significance). The fiducial
 value quoted throughout is $\Lambda_0 = 0.003$; both are consistent with all current
 data.
 
@@ -669,7 +737,7 @@ tabulated in Appendix~\ref{app:params}.
 
 \begin{table}[ht]
 \centering
-\caption{Key observational results from RIFT simulations 85--94.}
+\caption{Key observational results from RIFT simulations 85--97.}
 \label{tab:results_summary}
 \begin{tabular}{lllll}
 \toprule
@@ -697,10 +765,21 @@ $\mathrm{RMS}(\Delta C_\ell^{EE}/C_\ell^{EE})$, joint & $0.19\%$ & $0\%$ & 95 & 
 $\mathrm{RMS}(\Delta C_\ell^{TE}/C_\ell^{TE})$, joint & $0.43\%$ & $0\%$ & 95 & Pass \\
 $\Delta\chi^2_\mathrm{EE}$ joint (RIFT vs LCDM) & $+31.5$ & $57.6$ & 95 & See note$^c$ \\
 $\Delta\chi^2_\mathrm{TE}$ joint (RIFT vs LCDM) & $+22.8$ & $37.2$ & 95 & See note$^c$ \\
+$f\sigma_8$ compilation $\chi^2/\mathrm{dof}$ & $7.73/9=0.86$ & $7.87/9$ & 96 & Pass \\
+$\Delta\chi^2$ RSD (RIFT vs LCDM) & $-0.14$ & baseline & 96 & Pass \\
+$-2\ln\mathcal{L}$ plikHM TTTEEE (RIFT joint) & $2359.1$ & $2352.1$ & 97 & See note$^d$ \\
+$\Delta(-2\ln\mathcal{L})$ plikHM (joint vs LCDM) & $+7.0$ & baseline & 97 & See note$^d$ \\
+$\Delta(-2\ln\mathcal{L})$ plikHM (BAO-only vs LCDM) & $+945.7$ & baseline & 97 & BAO-only tension \\
+\midrule
+$\Delta(-2\ln\mathcal{L})$ plikHM (RIFT vs LCDM) at real optimum & $\mathbf{-0.013}$ & baseline & 98 & \textbf{Pass} \\
+RIFT CMB+BAO best-fit $H_0$ [km/s/Mpc] & $67.30$ & $67.30$ & 98 & Consistent \\
+RIFT CMB+BAO best-fit $\Omega_m$ & $0.3168$ & $0.3169$ & 98 & Consistent \\
+RIFT CMB+BAO best-fit $\Lambda_0$ & $0.00506$ & $0$ & 98 & $G_\mathrm{eff}=1-24\,\mathrm{ppm}$ \\
 \bottomrule
 \multicolumn{5}{l}{\footnotesize $^a$ Sim~89 tension ($30.1\sigma$) arises from the BAO-only H$_0$--$r_d$ degeneracy; resolved by Sim~90 joint fit.} \\
 \multicolumn{5}{l}{\footnotesize $^b$ Linear $\sigma_8$ at SIM90 joint best-fit $(H_0,\Omega_m)$; HALOFIT non-linear boost $\approx 1.37\times$ at $z=0$.} \\
-\multicolumn{5}{l}{\footnotesize $^c$ Approx.\ Gaussian pol.\ likelihood. LCDM baseline $\chi^2>0$ due to $(H_0,\Omega_m)$ offset between joint best-fit and Planck reference.}
+\multicolumn{5}{l}{\footnotesize $^c$ Approx.\ Gaussian pol.\ likelihood. LCDM baseline $\chi^2>0$ due to $(H_0,\Omega_m)$ offset between joint best-fit and Planck reference.} \\
+\multicolumn{5}{l}{\footnotesize $^d$ $\Delta(-2\ln\mathcal{L})=+7.0$ driven by parameter offset, not $G_\mathrm{eff}$ (42\,ppm). Resolved by Sim~98: $\Delta=-0.013$ at real optimum.}
 \end{tabular}
 \end{table}
 
@@ -850,8 +929,8 @@ against the Planck 2018 published best-fit theory spectrum
 \paragraph{Results.}
 \begin{enumerate}
   \item \textbf{Growth factor:} $D_\mathrm{RIFT}(z=0)/D_{\Lambda\mathrm{CDM}}(z=0)=1.000000$
-        at both coupling values ($\Lambda_0=0.003$ and $0.008$). The $G_\mathrm{eff}$
-        correction ($16\,\mathrm{ppm}$) is negligible in all polarization spectra.
+        at both coupling values ($\Lambda_0=0.003$ and $0.013$). The $G_\mathrm{eff}$
+        correction ($\lesssim65\,\mathrm{ppm}$) is negligible in all polarization spectra.
 
   \item \textbf{Joint best-fit RMS deviations} (RIFT vs LCDM Planck, $\ell=2$--1996):
         $\mathrm{RMS}(\Delta C_\ell^{EE}/C_\ell^{EE}) = 0.19\%$;
@@ -943,7 +1022,7 @@ eBOSS QSO   & \citet{Neveux2020}    & 1.480 & 0.462 & 0.045 \\
 \end{table}
 
 \paragraph{Results.}  At the SIM90 joint best-fit ($H_0=67.59$, $\Omega_m=0.312$,
-$\Lambda_0=0.008$) RIFT yields $\chi^2/\mathrm{dof}=7.73/9=0.86$, compared to
+$\Lambda_0\approx0.013$) RIFT yields $\chi^2/\mathrm{dof}=7.73/9=0.86$, compared to
 $7.87/9=0.87$ for $\Lambda$CDM Planck 2018, giving
 \begin{equation}
   \Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM}) = -0.14 \approx 0.
@@ -953,9 +1032,9 @@ RIFT $f\sigma_8$ curve from the $\Lambda$CDM curve at the best-fit is $0.62\%$
 (across $z=0$--$2$), which is sub-percent and well below current RSD measurement
 precision.
 
-\paragraph{$G_\mathrm{eff}$ suppression.}  At $\Lambda_0=0.008$ the correction
-$16\pi\Lambda(\Psi)\sim 16\pi\times0.008\times(0.01)^2\lesssim10^{-5}$, so
-$G_\mathrm{eff}$ deviates from $G$ by $<10\,\mathrm{ppm}$.  The observed
+\paragraph{$G_\mathrm{eff}$ suppression.}  At $\Lambda_0\approx0.013$ the correction
+$16\pi\Lambda(\Psi)= 16\pi\times0.013\times(0.01)^2\approx6.5\times10^{-5}$, so
+$G_\mathrm{eff}$ deviates from $G$ by $\approx65\,\mathrm{ppm}$.  The observed
 $\sim\!0.6\%$ difference in $f\sigma_8$ between RIFT joint and $\Lambda$CDM arises
 entirely from the $(H_0,\Omega_m)$ parameter offset, not from the recursive field.
 
@@ -996,6 +1075,281 @@ $\Lambda_0\lesssim0.05$.
 \end{figure}
 
 % ============================================================
+\subsection{Definitive Planck 2018 plikHM TTTEEE Likelihood (Sim~97)}
+\label{sec:obs_plikHM}
+
+\paragraph{Motivation.} Simulations~89 and~95 compared RIFT Boltzmann spectra
+against the Planck published theory curve using an approximate Gaussian CMB
+likelihood.  Sim~97 replaces this with the \emph{official} Planck~2018 plikHM
+TTTEEE likelihood code, accessed via the \texttt{clipy}~v0.15 Python interface
+to the \texttt{clik} library \citep{Planck2020}.  This is the identical likelihood
+used in the Planck~2018 cosmological parameter analysis.
+
+\paragraph{Method.}  Three cosmologies are evaluated against the full official
+Planck~2018 likelihood:
+(A)~RIFT joint CMB+BAO best-fit (Sim~90: $H_0=67.59$, $\Omega_m=0.312$, $\Lambda_0=0.008$, original value at time of Sim~97 run);
+(B)~RIFT BAO-only best-fit (Sim~87: $H_0=68.14$, $\Omega_m=0.294$, $\Lambda_0=0.003$);
+(C)~$\Lambda$CDM Planck~2018 best-fit \citep{Planck2020}.
+
+For each cosmology, CLASS~v3 computes the lensed TT, EE, and TE spectra with the
+RIFT background (same pipeline as Sim~95).  The $C_\ell$ vectors are evaluated by:
+\begin{itemize}
+  \item \textbf{plikHM TTTEEE}: high-$\ell$ ($\ell=30$--2508) likelihood with 47
+        nuisance parameters (foreground amplitudes, calibration) fixed at Planck best-fit
+        values from the \texttt{clik} self-check vector;
+  \item \textbf{lowl TT (Commander)}: low-$\ell$ ($\ell=2$--29) TT;
+  \item \textbf{lowl EE (SimAll)}: low-$\ell$ ($\ell=2$--29) EE polarization.
+\end{itemize}
+
+\emph{Pipeline validation.}
+$\Lambda$CDM gives $-2\ln\mathcal{L}_\mathrm{plikHM}=2352.05$, compared to the
+\texttt{clik} self-check value $2\times 1172.47 = 2344.94$ (agreement to $<0.3\%$,
+attributable to our parameter values not being bit-for-bit identical to the
+self-check cosmology).
+
+\paragraph{Results.}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Cosmology & plikHM TTTEEE & lowl TT & lowl EE & Total $-2\ln\mathcal{L}$ \\
+\midrule
+RIFT joint (A)       & 2359.05 & 23.54 & 396.05 & 2778.63 \\
+RIFT BAO-only (B)    & 3297.80 & 24.26 & 395.93 & 3717.99 \\
+$\Lambda$CDM (C)     & 2352.05 & 23.42 & 396.14 & 2771.61 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{align}
+\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}
+  (\text{RIFT joint} - \Lambda\mathrm{CDM}) &= +7.0 \label{eq:sim97_joint}\\
+\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}
+  (\text{RIFT BAO-only} - \Lambda\mathrm{CDM}) &= +945.7 \label{eq:sim97_bao}
+\end{align}
+
+\paragraph{Interpretation.}  The BAO-only tension
+($\Delta(-2\ln\mathcal{L})=+946$, Eq.~\ref{eq:sim97_bao}) is fully consistent
+with the Sim~89 approximate result ($\Delta\chi^2=+907$), cross-validating both
+pipelines.
+
+The RIFT joint best-fit (A) shows a $\Delta(-2\ln\mathcal{L})=+7.0$ excess
+(Eq.~\ref{eq:sim97_joint}).  This arises from the $(H_0,\Omega_m)$ offset between
+the Sim~90 joint parameters (optimised against the approximate Gaussian CMB prior)
+and the true Planck CMB optimum.  At $\Lambda_0=0.008$, $G_\mathrm{eff}/G=1-42\,\mathrm{ppm}$
+contributes negligibly to any CMB observable; the $+7.0$ excess is entirely
+parameter-driven.  Specifically, RIFT evaluated at the Planck $\Lambda$CDM
+parameter point $(H_0=67.36,\,\Omega_m=0.3153,\,\Lambda_0=0.008)$ yields
+$\Delta(-2\ln\mathcal{L})\approx 0$, since $G_\mathrm{eff}$ deviates from $G$
+by only 42\,ppm.
+
+In frequentist terms, $\Delta(-2\ln\mathcal{L})=+7.0$ with one effective degree
+of freedom ($\Lambda_0$ being the extra parameter) corresponds to $\approx 2.6\sigma$
+tension---a marginal result.  This tension is resolved by Sim~98 below, which
+re-optimises the RIFT parameter fit using the real plikHM likelihood.
+
+\paragraph{Conclusion.}
+The RIFT \emph{theory} is fully consistent with the real Planck~2018 plikHM TTTEEE
+likelihood: the $G_\mathrm{eff}$ correction at the joint best-fit coupling is
+42\,ppm and invisible to the CMB.  The marginal $\Delta(-2\ln\mathcal{L})=+7.0$
+is a parameter-optimisation artefact that vanishes in Sim~98.
+
+% ============================================================
+\subsection{Joint plikHM + BAO Parameter Re-fit (Sim~98)}
+\label{sec:obs_sim98}
+
+\paragraph{Motivation.}  Sim~97 revealed a $\Delta(-2\ln\mathcal{L})=+7.0$ excess
+at the Sim~90 joint best-fit parameters.  The cause was identified as the
+$(H_0,\Omega_m)$ offset between Sim~90 (optimised against an approximate Gaussian
+CMB prior) and the true Planck CMB optimum.  Sim~98 resolves this by re-running
+the joint CMB+BAO optimisation using the real plikHM TTTEEE likelihood.
+
+\paragraph{Method.}  We minimise
+\begin{equation}
+  \chi^2_\mathrm{total}(H_0, \Omega_m [, \Lambda_0])
+  = -2\ln\mathcal{L}_\mathrm{plikHM} + (-2\ln\mathcal{L}_\mathrm{lowl\,TT})
+    + (-2\ln\mathcal{L}_\mathrm{lowl\,EE}) + \chi^2_\mathrm{BAO}
+\end{equation}
+over $(H_0, \Omega_m)$ for $\Lambda$CDM and $(H_0, \Omega_m, \Lambda_0)$ for RIFT,
+using Nelder-Mead optimisation (max 80 CLASS evaluations each).
+BAO data: BOSS DR12 + eBOSS DR16 + Ly$\alpha$ with full $12\times12$ covariance
+(same as Sim~87). The sound horizon $r_d$ is computed analytically from $(H_0, \Omega_m,
+\Omega_b)$ via numerical integration of $c_s(a)/[a^2 H(a)]$ to the baryon drag epoch
+(Eisenstein \& Hu~1998 approximation for $z_\mathrm{drag}$).
+
+\paragraph{Results.}
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+Model & $H_0$ & $\Omega_m$ & $\Lambda_0$ & $r_d$ & plikHM $-2\ln\mathcal{L}$ & $G_\mathrm{eff}/G$ \\
+\midrule
+$\Lambda$CDM & 67.30 & 0.3169 & $0$ & 150.6 & 2347.46 & 1 \\
+RIFT & 67.30 & 0.3168 & $0.00506$ & 150.6 & 2347.45 & $1-24\,\mathrm{ppm}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{equation}
+\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}(\mathrm{RIFT}-\Lambda\mathrm{CDM})
+= -0.013 \approx 0 \quad\text{(\textbf{PASS})}
+\end{equation}
+
+The RIFT and $\Lambda$CDM best-fits are essentially identical: $\Delta H_0 = +0.002$,
+$\Delta\Omega_m = -0.0001$, $\Delta\Lambda_0 = 0.005$ (with $G_\mathrm{eff}$
+deviation 24\,ppm).  The $\chi^2_\mathrm{total}$ difference is $+0.004$.
+
+\paragraph{Progression of CMB+BAO tests.}
+\begin{center}
+\begin{tabular}{lcll}
+\toprule
+Simulation & $\Delta(-2\ln\mathcal{L})_\mathrm{plikHM}$ & Parameter point & Notes \\
+\midrule
+Sim~89 (approx Gaussian) & $+907$ & BAO-only best-fit & Parameter tension \\
+Sim~90 (approx Gaussian) & $\approx 0$ & Joint approx best-fit & Resolved by joint fit \\
+Sim~97 (real plikHM) & $+7.0$ & Sim~90 approx params & Residual offset \\
+Sim~98 (real plikHM) & $\mathbf{-0.013}$ & Real plikHM best-fit & \textbf{Fully resolved} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Conclusion.}  When RIFT parameters are optimised against the real
+Planck~2018 plikHM TTTEEE likelihood, $\Delta(-2\ln\mathcal{L}) = -0.013 \approx 0$.
+The Sim~97 tension of $+7.0$ is completely resolved.  RIFT is fully consistent
+with the official Planck~2018 CMB likelihood at the optimised parameter point,
+with $G_\mathrm{eff}/G = 1 - 24\,\mathrm{ppm}$.
+
+% ============================================================
+\subsection{Galaxy Rotation Curves: Honest Test (Sim~99)}
+\label{sec:sim99}
+
+Sim~99 is the first quantitative test of the RIFT dark-matter prediction
+using the locked action.  Two well-observed flat-curve spirals are used:
+NGC~3198 ($v_{\rm flat} = 157$~km/s; de~Blok et al.\ 2008) and
+NGC~6503 ($v_{\rm flat} = 116$~km/s; Begeman 1987).
+
+\paragraph{Setup.}
+The static, spherically-symmetric field equation derived from the locked
+action (eq.~\ref{eq:action}) is
+\begin{equation}
+  \Psi'' + \frac{2}{r}\Psi' = m_0^2\Psi + \frac{\lambda_{\rm gal}}{1}\Psi^3
+    + 2\Lambda_0\Psi\,R(r),
+\label{eq:psi_galactic}
+\end{equation}
+where $R(r) \approx -8\pi(G/c^2)\rho_{\rm bar}(r)$ is the weak-field
+Ricci scalar sourced by the observed baryonic distribution, and
+$V(\Psi) = (\lambda_{\rm gal}/4)\Psi^4$ is the simplest nonlinear
+extension consistent with $V'(0) = 0$ (no constant background drive) and
+renormalizability.  The effective dark-matter density is
+$\rho_\Psi = (c^2/G)\bigl[\tfrac{1}{2}(\Psi')^2 + \tfrac{1}{2}m_0^2\Psi^2
++ (\lambda_{\rm gal}/4)\Psi^4\bigr]$.
+
+The physical boundary condition selects the \emph{decaying} Yukawa halo
+mode $\Psi \sim A\,e^{-m_0 r}/r$ by integrating inward from $r_{\rm max}$:
+\begin{equation}
+  \Psi(r_{\rm max}) = \Psi_{\rm bc}, \qquad
+  \Psi'(r_{\rm max}) = -\!\left(m_0 + \frac{1}{r_{\rm max}}\right)\Psi_{\rm bc}.
+\end{equation}
+This shooting method avoids the growing-mode contamination
+($\Psi \sim e^{+m_0 r}/r$) that produced unphysical velocities
+in preliminary runs.
+
+\paragraph{Scan.}
+Sim~99 scans 30 combinations of $(\Psi_{\rm bc}, \lambda_{\rm gal})$:
+$\Psi_{\rm bc} \in \{10^{-8},\,10^{-6},\,10^{-4},\,5\times10^{-4},\,10^{-3}\}$
+and $\lambda_{\rm gal} \in \{-10,\,-1,\,0,\,+1,\,+10,\,+100\}$, at the
+cosmological best-fit $\Lambda_0 = 0.003$.  A solution is accepted only if:
+(i)~the rotation curve satisfies $|v_c(r)-v_{\rm flat}|/v_{\rm flat} < 20\%$
+for $r > r_{\rm max}/2$; (ii)~the cosmological bound
+$\Lambda_0\Psi^2 < \Lambda_0^{\rm bound}/(16\pi)$ is satisfied everywhere;
+and~(iii)~$\rho_\Psi \geq 0$ everywhere.
+
+\paragraph{Result: FAIL.}
+No combination passes.  The physical reason is geometric: the decaying
+Yukawa profile at $m_0 = 0.1\,{\rm kpc}^{-1}$ gives
+$\rho_\Psi(r) \propto e^{2m_0(r_{\rm max}-r)}/r^2$, which rises
+$\sim 150$-fold from $r=30$~kpc to $r=5$~kpc---exponentially steeper
+than the $1/r^2$ isothermal profile required for a flat rotation curve.
+The quartic interaction $V = (\lambda_{\rm gal}/4)\Psi^4$ modifies the
+central amplitude but cannot alter this exponential radial dependence.
+At $\Lambda_0 = 0.003$ (cosmological best-fit), $G_{\rm eff}/G$ deviates
+from unity by $< 10\,{\rm ppm}$---the $G_{\rm eff}$ channel likewise
+provides zero flattening.
+
+\paragraph{Interpretation.}
+The locked RIFT action at cosmological parameters does not replace dark
+matter via $T^\Psi$ or $G_{\rm eff}$.  Galactic-scale predictions require
+either a screening mechanism that suppresses the Yukawa mass $m_0$ on
+galactic scales, or a condensation mechanism that produces a self-sustained
+$\rho \propto 1/r^2$ profile.  Neither is present in the current locked
+action.  Rotation curves therefore remain a falsifiable future prediction,
+not an achieved result.
+
+% ------------------------------------------------------------
+\subsection{Sim~100: Time-Domain Confirmation of the Static Limit}
+\label{sec:sim100}
+
+Sim~99 solved the \emph{static} Yukawa equation.  Sim~100 removes this
+restriction: it evolves the full 1+1D spherical wave equation
+\begin{equation}
+\frac{\partial^2\Psi}{\partial t^2}
+  = \frac{\partial^2\Psi}{\partial r^2}
+  + \frac{2}{r}\frac{\partial\Psi}{\partial r}
+  - m_0^2\Psi - \lambda\Psi^3
+  + 2\Lambda_0\Psi\, R(r,t)
+\label{eq:psi_timedomain}
+\end{equation}
+via method-of-lines with an implicit Radau solver ($N_r=120$, $\Delta
+r=0.25\,{\rm kpc}$).  Initial condition: the uniform cosmological
+background $\Psi(r,0)=\Psi_{\rm cosmo}=0.003$ at rest
+($\partial_t\Psi=0$). Boundary conditions: Neumann at $r_{\rm min}$
+(spherical symmetry), Dirichlet $\Psi(r_{\rm max})=\Psi_{\rm cosmo}$ at
+$r_{\rm max}=30\,{\rm kpc}$.  Integration runs to $t_{\rm end}=150\,{\rm
+kpc}/c \approx 489\,{\rm kyr} \approx 2.4$ Compton periods.
+
+\paragraph{Curvature coupling confirmed negligible.}
+The galactic Ricci scalar peaks at
+$|R_{\rm gal}| \approx 8.5\times10^{-7}\,{\rm kpc}^{-2}$ (at
+$r=0.5\,{\rm kpc}$), giving a coupling
+$2\Lambda_0|R_{\rm gal}| = 5.1\times10^{-9}\,{\rm kpc}^{-2}
+\ll m_0^2 = 0.01\,{\rm kpc}^{-2}$.
+Even with a proto-galactic overdensity $\delta=100$, this coupling is
+$5\times10^7$ times smaller than $m_0^2$.  Condensation driven by the
+$2\Lambda_0\Psi R$ term is impossible at galactic densities; neutron-star
+densities ($\rho\sim10^{15}\,M_\odot\,{\rm kpc}^{-3}$) would be required.
+
+\paragraph{Attractive self-coupling scan.}
+To test whether the quartic interaction can drive condensation, we scan
+$\lambda\in\{0,-100,-200,-400,-600,-800,-1000,-1500\}$ and
+$\delta_{\rm max}\in\{0,100\}$ (16 total runs).  The tachyonic instability
+threshold for the lowest spatial mode is
+\begin{equation}
+  \lambda_{\rm crit}^{\rm spatial}
+    = -\frac{(k_{\rm min}^2 + m_0^2)}{3\Psi_{\rm cosmo}^2}
+    \approx -778,
+  \qquad
+  k_{\rm min} = \frac{\pi}{r_{\rm max}},
+\end{equation}
+and the global blow-up threshold for the uniform mode (potential barrier)
+is $\lambda_{\rm blow} = -m_0^2/\Psi_{\rm cosmo}^2 \approx -1111$.
+
+Results: for $\lambda\in[0,-1000]$ the field remains stable (growth
+factor $\leq 1.21\times$), relaxing from the uniform IC toward the static
+Yukawa profile of Sim~99---confirming the adiabatic approximation
+(Compton time $33\,{\rm kyr} \ll t_{\rm form}\sim1\,{\rm Gyr}$).  For
+$\lambda=-1500$ (beyond the global blow-up threshold), the field grows
+without bound within $< 10\,{\rm kpc}/c$: the potential $V=(\lambda/4)\Psi^4$
+is unbounded below and has no stable condensate minimum.  In no run does
+$v_c(r)$ come within 20\% of $v_{\rm flat}$.
+
+\paragraph{Conclusion.}
+The time-domain simulation confirms Sim~99 with a direct structural
+argument: $V=(\lambda/4)\Psi^4$ with $\lambda<0$ is an inverted quartic
+with no lower bound.  It either leaves the field oscillating around
+$\Psi=0$ (sub-threshold, $|\lambda|<1111$, Yukawa profile unchanged) or
+causes runaway blow-up (super-threshold, $|\lambda|>1111$).  There is no
+window of $\lambda$ that produces a stable self-bound halo with a flat
+rotation curve.  A physically stable condensation channel would require a
+sextic or higher stabilizing term not present in the current locked action.
+
+% ============================================================
 \section{Recursive Graviton Emission}
 \label{sec:graviton}
 
@@ -1032,9 +1386,24 @@ well-defined thresholds for falsification.
 
 \subsection{Galaxy Rotation Curves}
 \emph{Prediction:} Flat curves arise from recursive curvature---not dark matter.
-\emph{Test:} Reconstruct $\Psi(r)$ from observed curves (e.g.\ Sofue 2016) and verify
-that field gradient sustains rotation.
-\emph{Falsification:} If flat curves require fine-tuned potentials or coupling, RIFT is falsified.
+\emph{Sim~99--100 status:} The locked action at $\Lambda_0=0.003$ \emph{does not}
+produce flat rotation curves via $T^\Psi$ or $G_{\rm eff}$ in either the static
+(Sim~99) or time-domain (Sim~100) treatment.  The decaying Yukawa profile
+($m_0 = 0.1\,{\rm kpc}^{-1}$) is exponentially steeper inward than the
+$1/r^2$ isothermal profile required for curve flattening
+(Section~\ref{sec:sim99}).  The galactic Ricci coupling
+$2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$
+times weaker than $m_0^2$: curvature-driven condensation is ruled out at
+galactic densities.  Attractive self-coupling ($\lambda<0$) either leaves
+the Yukawa profile unchanged (sub-threshold) or causes tachyonic blow-up
+(super-threshold), with no stable halo condensate in between
+(Section~\ref{sec:sim100}).  The DM-replacement prediction therefore
+requires derivation of a galactic-scale screening or higher-order stabilization
+mechanism not yet present in the locked action.
+\emph{Test:} Reconstruct $\Psi(r)$ from observed curves once such a mechanism
+is derived; verify that field gradient sustains rotation.
+\emph{Falsification:} If no such mechanism can be derived from the locked action,
+the DM-replacement prediction is falsified.
 
 \subsection{Void Lensing (DES, Euclid)}
 \emph{Prediction:} Weak lensing without mass near voids, via phase-delayed geodesics
@@ -1060,7 +1429,7 @@ mass displacement.
 \toprule
 Test Domain & RIFT Prediction & Falsification Condition \\
 \midrule
-Galaxy rotation & Flat curves via $\nabla_r\Psi$ & Fine-tuned potential required \\
+Galaxy rotation & Flat curves via $\nabla_r\Psi$ (screening mech.\ needed) & Sims~99--100: locked action \& time-domain both FAIL; curvature coupling $\sim10^{-9}$ kpc$^{-2}$ negligible; awaits screening derivation \\
 Void lensing & Lensing from $\mathcal{M}_{\mu\nu}$ & No phase shift in void directions \\
 Bullet Cluster & Offset from curvature memory & Cannot reproduce lensing peak \\
 CMB anomalies & Low-$\ell$ damping from recursion & Fails without artificial suppression \\
@@ -1081,10 +1450,25 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Unified Lagrangian (eq.~\eqref{eq:action}) couples mass, curvature, and entropy through a single field $\Psi$.
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
-  \item Observational consistency (Sims~87--96): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96).
-  \item UV-finite quantum field theory---recursive damping regularises the propagator without renormalization.
+  \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
+  \item Galaxy rotation curve tests (Sims~99--100): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Attractive self-coupling ($\lambda<0$) causes tachyonic blow-up, not a stable halo condensate.  The static (SIM99) and time-domain (SIM100) solutions agree (adiabatic limit confirmed), ruling out history-dependence as a resolution.  Galactic predictions await derivation of a screening or higher-order stabilization mechanism.
+  \item UV regulation conjecture---recursive memory damping \emph{suggests} improved UV behaviour, but no loop calculation has been performed and finiteness of the interacting theory remains unproven (Section~\ref{sec:quantization}).
   \item Predicts recursive graviton emission via curvature memory spikes.
 \end{itemize}
+
+\paragraph{Honest assessment.}
+At current observational precision, RIFT at its cosmological best-fit
+($\Lambda_0 \approx 0.003$--$0.013$) is \emph{observationally indistinguishable
+from $\Lambda$CDM} in every dataset tested: BAO (BOSS + DESI Y1), CMB TT/EE/TE,
+RSD $f\sigma_8$, and the official Planck plikHM likelihood.  The coupling
+$\Lambda_0$ is not detected---it is consistent with zero across the entire
+range $[0, 0.1]$ tested, with a 95\% upper limit $\Lambda_0 < 0.095$ that
+is prior-dominated (Sim~93).  RIFT is currently a \emph{consistent extension}
+of $\Lambda$CDM, not an empirically preferred alternative.  Its scientific
+value lies in its theoretical structure (a single derived Lagrangian, locked
+action, falsifiable predictions at $\Lambda_0 \gtrsim 0.05$) and in explicitly
+ruling out naive claims (rotation curves do not arise from the locked action;
+$\sigma_8$ tension is not alleviated), not in a superior fit to existing data.
 
 \paragraph{Coupling-strength constraints (Sim~91).}
 A dedicated sensitivity scan (Sim~91) mapped the observational signature of RIFT
@@ -1134,6 +1518,14 @@ disfavoured. RIFT is neither strongly preferred nor strongly excluded: it is
 \emph{cosmologically equivalent} to $\Lambda$CDM at the BAO best-fit coupling
 $\Lambda_0 = 0.003$, with a single additional parameter whose physical signature
 becomes accessible only at $\Lambda_0 \gtrsim 0.05$ in future structure-growth surveys.
+
+A proper Bayesian evidence integral (Sim~93) confirms this conclusion.  The
+Savage-Dickey density ratio gives $\ln B(\mathrm{RIFT}/\Lambda\mathrm{CDM}) = -0.713$
+under a uniform prior and $-0.673$ under a half-Gaussian prior
+($\sigma_{\Lambda_0} = 0.05$); both fall in the ``inconclusive'' range
+($|\ln B| < 1$) of the Jeffreys scale \citep{Jeffreys1961}.
+The 95\% upper limit $\Lambda_0 < 0.095$ is prior-dominated, confirming
+that current data carry negligible information about $\Lambda_0$.
 
 \paragraph{Limitations and future work.}
 The observational signature of RIFT is expected primarily at non-linear
@@ -1187,7 +1579,7 @@ Parameter & RIFT (BAO-only, Sim~87) & RIFT/LCDM (joint, Sim~90) \\
 $H_0$ [km/s/Mpc] & $68.14$ (H$_0$--$r_d$ degenerate) & $67.59$ \\
 $\Omega_m$ & $0.294$ & $0.312$ \\
 $r_d$ [Mpc] & $147.78$ & $147.56$ \\
-$\Lambda_0$ & $0.003$ & $0.008$ (RIFT) / 0 (LCDM) \\
+$\Lambda_0$ & $0.003$ & $0.013$ (RIFT, unconstrained) / 0 (LCDM) \\
 $\chi^2$/dof (BAO) & $1.22$ & see Sim~90 \\
 \bottomrule
 \end{tabular}
@@ -1205,17 +1597,25 @@ $\chi^2$/dof (BAO) & $1.22$ & see Sim~90 \\
 \section{Recursive Coupling to the Standard Model}
 \label{app:SM}
 
-RIFT explains particle identities as curvature eigenmodes of the recursive field $\Psi$:
+\emph{This appendix is entirely speculative.}  No Standard Model particle has
+been matched to a RIFT eigenmode; the formulas below are dimensional estimates,
+not derivations.  This material is included to identify a research direction,
+not to claim a result.
+
+RIFT \emph{hypothesizes} that particle identities may correspond to curvature
+eigenmodes of the recursive field $\Psi$:
 $\Psi(x) = \sum_n \chi_n(x)\cdot e_n$,
-where $e_n$ are stable curvature shells. Particle properties emerge as:
+where $e_n$ are stable curvature shells. Under this hypothesis, particle
+properties would emerge as:
 $m_n^2 \sim \int (\nabla\chi_n)^2 + V_{\mathrm{rec}}(\chi_n)$ (mass),
 $Q \sim \oint \nabla\arg(\chi_n)$ (charge),
 spin from parity of the curvature memory configuration.
 
 The effective Lagrangian coupling RIFT to Standard Model fermions is
 $\mathcal{L}_{\mathrm{RIFT+SM}} = \mathcal{L}_{\mathrm{RIFT}} + \sum_n[\bar\psi_n(i\gamma^\mu\nabla_\mu - m_n(\Psi))\psi_n + g(\Psi)\bar\psi_n\phi\psi_n]$.
-This is exploratory; the eigenmode-to-particle correspondence is a falsifiable
-prediction (see Section~\ref{sec:falsifiability}).
+The eigenmode-to-particle correspondence is a falsifiable prediction in principle
+(see Section~\ref{sec:falsifiability}), but no eigenmode spectrum has been
+computed and this should not be cited as a result of the present work.
 
 % ============================================================
 \bibliographystyle{plainnat}

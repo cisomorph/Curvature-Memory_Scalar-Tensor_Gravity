@@ -85,7 +85,7 @@ BAO_DATA = [
     (0.51,  "DM_over_rd",  13.36,                   0.21,                   "BOSS DR12"),
     (0.70,  "DH_over_rd",  19.33,                   0.53,                   "eBOSS DR16 LRG"),
     (0.70,  "DM_over_rd",  17.86,                   0.33,                   "eBOSS DR16 LRG"),
-    (0.85,  "DV_over_rd",  18.33,                   0.595,                  "eBOSS DR16 QSO"),
+    (0.85,  "DV_over_rd",  18.33,                   0.595,                  "eBOSS DR16 ELG"),
     (1.48,  "DH_over_rd",  13.26,                   0.55,                   "eBOSS DR16 QSO"),
     (1.48,  "DM_over_rd",  30.69,                   0.80,                   "eBOSS DR16 QSO"),
     (2.33,  "DH_over_rd",  8.990618556701030,        0.21614046597277392,   "Ly-alpha DR16"),

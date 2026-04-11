@@ -1,0 +1,29 @@
+{
+  "description": "Sim 85 — RIFT FLRW Friedmann Test: verify modified Friedmann equations reduce to GR in limits, and demonstrate memory feedback",
+  "G_Newton": 1.0,
+  "cosmology": {
+    "a_ini": 1e-6,
+    "a_fin": 1.0,
+    "N_steps": 50000,
+    "omega_m": 0.3,
+    "omega_r": 9.0e-5
+  },
+  "scalar_field": {
+    "Psi_ini": 0.0,
+    "dPsi_dt_ini": 0.0,
+    "m0": 1.0,
+    "alpha": 0.1,
+    "beta": 0.05
+  },
+  "coupling_models": [
+    {"name": "GR_limit",  "Lambda0": 0.0,    "form": "Lambda0 * Psi^2"},
+    {"name": "weak_RIFT", "Lambda0": 0.001,  "form": "Lambda0 * Psi^2"},
+    {"name": "mid_RIFT",  "Lambda0": 0.005,  "form": "Lambda0 * Psi^2"}
+  ],
+  "acceptance": {
+    "radiation_era_a_max": 5e-5,
+    "GR_scaling_power_rtol": 0.10,
+    "matter_era_a_min": 0.01,
+    "matter_era_a_max": 0.1
+  }
+}

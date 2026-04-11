@@ -1,0 +1,20 @@
+{
+  "description": "Sim 82 — RIFT Retarded Kernel: numerical computation of G_R(t,r) in 1+1D flat spacetime",
+  "m_eff": 1.0,
+  "grid": {
+    "Nr": 400,
+    "r_max": 20.0,
+    "Nt": 800,
+    "t_max": 20.0
+  },
+  "source": {
+    "t0": 2.0,
+    "r0": 0.0,
+    "width": 0.15
+  },
+  "acceptance": {
+    "causality_violation_tol": 1e-10,
+    "yukawa_fit_r_min": 1.0,
+    "yukawa_fit_r_max": 8.0
+  }
+}

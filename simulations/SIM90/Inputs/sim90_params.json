@@ -1,0 +1,58 @@
+{
+  "description": "Sim 90 — RIFT joint CMB+BAO parameter fit. Finds (H0, Omega_m, Lambda0) minimising chi2_CMB + chi2_BAO simultaneously for RIFT (Lambda0 free) and LCDM (Lambda0=0). CMB likelihood: Gaussian approximation built from Planck 2018 TT+TE+EE+lowE published parameter covariance (Table 2 + correlation structure from Planck 2018 VI, arXiv:1807.06209). BAO likelihood: exact full-covariance chi2 reusing SIM87 data and covariance. This resolves the Phase 5b finding: the RIFT BAO-only best-fit (H0=68.14, Omega_m=0.294) was in 30.1-sigma CMB tension. The joint fit finds the CMB+BAO consistent RIFT cosmology.",
+
+  "planck_cmb_constraints": {
+    "H0_mean":       67.36,
+    "H0_sigma":      0.54,
+    "Omega_m_mean":  0.3153,
+    "Omega_m_sigma": 0.0073,
+    "rho_H0_Omm":    -0.90,
+    "note": "Planck 2018 TT+TE+EE+lowE best-fit and 1-sigma errors (Table 2, Aghanim+2020 arXiv:1807.06209). Correlation rho(H0, Omega_m) = -0.90 from the acoustic-scale degeneracy (D_A(z*) direction). This builds a 2x2 CMB parameter covariance matrix C_CMB. chi2_CMB = (x-mu)^T C_CMB^{-1} (x-mu) where x=(H0, Omega_m). This is the Gaussian approximation to the full Planck likelihood, valid near the best-fit."
+  },
+
+  "bao_data": {
+    "note": "BAO data and full covariance matrix from SIM87 (BOSS DR12 + eBOSS DR16 + Ly-alpha). 12 data points (DM/rd, DH/rd at 5 redshifts), full 12x12 covariance from published rho(DM,DH). See SIM87 for full provenance.",
+    "redshifts":    [0.38, 0.38, 0.51, 0.51, 0.70, 0.70, 1.48, 1.48, 2.33, 2.33],
+    "observables":  ["DM/rd", "DH/rd", "DM/rd", "DH/rd", "DM/rd", "DH/rd", "DM/rd", "DH/rd", "DM/rd", "DH/rd"],
+    "data_values":  [10.274, 25.00,  13.377, 22.33,  17.646, 19.77,  30.21, 13.23,  37.6, 8.93],
+    "data_errors":  [0.15,   0.76,   0.20,   0.58,   0.30,   0.52,   0.79,  0.35,   1.9,  0.28],
+    "rho_DM_DH":    [-0.52,          -0.47,          -0.48,          -0.46,          -0.43],
+    "sources": ["BOSS DR12 Alam+2017 Table 4", "BOSS DR12 Alam+2017 Table 4", "eBOSS DR16 LRG Alam+2021 Table 3", "eBOSS DR16 QSO Alam+2021 Table 3", "Ly-alpha DR16 Bourboux+2020 Table 3"]
+  },
+
+  "sound_horizon": {
+    "rd_fiducial":  147.78,
+    "note": "Planck 2018 sound horizon at drag epoch (Mpc). Used as fiducial for BAO rescaling. rd enters BAO chi2 as a free parameter (fit jointly with H0, Omega_m)."
+  },
+
+  "optimization": {
+    "method": "Nelder-Mead",
+    "n_restarts": 20,
+    "bounds": {
+      "H0":      [64.0, 72.0],
+      "Omega_m": [0.26, 0.42],
+      "rd":      [143.0, 153.0],
+      "Lambda0": [0.0,   0.03]
+    },
+    "note": "Optimize chi2_total = chi2_CMB(H0, Omega_m) + chi2_BAO(H0, Omega_m, rd, Lambda0). For LCDM: Lambda0 fixed to 0. For RIFT: Lambda0 is free. rd is free in both (BAO alone cannot constrain H0 and rd separately). Note: CMB provides an independent H0 constraint through D_A(z*), partially breaking the H0-rd BAO degeneracy in the joint fit."
+  },
+
+  "grid_scan": {
+    "H0_grid":      [65.0, 66.0, 67.0, 67.36, 68.0, 68.14, 69.0, 70.0],
+    "Omega_m_grid": [0.28, 0.29, 0.294, 0.30, 0.3153, 0.32, 0.34],
+    "Lambda0_grid": [0.0, 0.001, 0.003, 0.005, 0.010, 0.020],
+    "note": "Coarse grid scan to visualise chi2_CMB+BAO landscape before Nelder-Mead refinement."
+  },
+
+  "acceptance": {
+    "Delta_chi2_RIFT_minus_LCDM_max": 9.0,
+    "note": "RIFT acceptable if chi2_RIFT_joint - chi2_LCDM_joint < 9 (3-sigma, 2 extra dof). Δchi2 < 4 would imply 2-sigma, acceptable for publication."
+  },
+
+  "context": {
+    "sim87_bao_only_best_fit": {"H0": 68.14, "Omega_m": 0.294, "Lambda0": 0.003, "chi2": 9.78},
+    "sim89_cmb_tension":       {"delta_chi2": 906.85, "sigma": 30.1, "note": "BAO-only params in 30-sigma CMB tension"},
+    "planck_lcdm":             {"H0": 67.36, "Omega_m": 0.3153, "Lambda0": 0.0},
+    "question": "Can RIFT find a (H0, Omega_m, Lambda0) that fits both CMB and BAO simultaneously, with Δchi2(RIFT-LCDM) < 9?"
+  }
+}

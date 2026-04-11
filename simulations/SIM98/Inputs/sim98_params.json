@@ -1,0 +1,56 @@
+{
+  "description": "SIM98 — RIFT Joint plikHM CMB + BAO Parameter Fit. Replaces SIM90's approximate Gaussian CMB prior with the official Planck 2018 plikHM TTTEEE likelihood. Minimises chi2_total = -2lnL(plikHM) + chi2_BAO over (H0, Omega_m) for LCDM and (H0, Omega_m, Lambda0) for RIFT. Expected result: Δ(-2lnL) ~ 0 at the CMB-optimised RIFT parameter point.",
+
+  "class_executable": "/home/aion/Desktop/RIFT_GitHub/CLASS/class",
+  "planck_packages_path": "/home/aion/Desktop/planck_packages",
+
+  "clik_files": {
+    "plikHM_TTTEEE":  "data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik",
+    "lowl_TT":        "data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik",
+    "lowl_EE":        "data/planck_2018/baseline/plc_3.0/low_l/simall/simall_100x143_offlike5_EE_Aplanck_B.clik"
+  },
+
+  "T_CMB_K": 2.7255,
+
+  "fixed": {
+    "Omega_b":   0.04934,
+    "n_s":       0.9649,
+    "A_s":       2.101e-9,
+    "tau_reio":  0.0544,
+    "Omega_r":   9.2e-5,
+    "Psi_ini":   0.01,
+    "m0":        1.0,
+    "alpha":     0.1,
+    "beta":      0.05
+  },
+
+  "optimizer": {
+    "method":        "Nelder-Mead",
+    "maxiter":       80,
+    "xatol":         0.005,
+    "fatol":         0.1,
+    "note": "Max 80 CLASS calls per model. Start from SIM97 joint best-fit and Planck LCDM."
+  },
+
+  "start_points": {
+    "sim97_joint":  {"H0": 67.59, "Omega_m": 0.312,   "Lambda0": 0.008},
+    "planck_lcdm":  {"H0": 67.36, "Omega_m": 0.3153,  "Lambda0": 0.0}
+  },
+
+  "class": {
+    "l_max_scalars": 2600,
+    "k_per_decade_for_pk": 20,
+    "output": "tCl,pCl,lCl",
+    "lensing": "yes",
+    "note": "k_per_decade=20 (reduced from 50) for optimization speed. Final evaluation uses 50."
+  },
+
+  "bao_data": {
+    "note": "BOSS DR12 + eBOSS DR16 + Lyα — same as SIM87. 12 data points, full 12x12 covariance."
+  },
+
+  "acceptance": {
+    "delta_lnL_max": 5.0,
+    "note": "PASS if |Delta(-2lnL)(RIFT_joint - LCDM)| < 5 at the SIM98 best-fit parameters."
+  }
+}

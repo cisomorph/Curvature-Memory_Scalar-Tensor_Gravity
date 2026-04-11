@@ -1,0 +1,101 @@
+{
+  "params": {
+    "description": "Sim 83 \u2014 RIFT Memory Cutoff: characterise memory length L_mem = 1/m_eff as a function of field amplitude",
+    "m0": 1.0,
+    "Psi_values": [
+      0.1,
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "coupling": {
+      "alpha": 0.1,
+      "beta": 0.05,
+      "comment": "m(Psi)^2 = m0^2 * (1 + alpha*Psi^2*exp(-beta*Psi^2))"
+    },
+    "time_grid": {
+      "t_max": 30.0,
+      "Nt": 3000
+    },
+    "source": {
+      "t_on": 1.0,
+      "t_off": 3.0,
+      "amplitude": 1.0
+    },
+    "acceptance": {
+      "decay_rate_rtol": 0.2
+    }
+  },
+  "results": [
+    {
+      "Psi0": 0.1,
+      "Psi_peak": 1.5067871850838488,
+      "m_eff_peak": 1.0966659064179705,
+      "L_mem": 0.9118547354738971,
+      "measured_osc_period": 5.8500000000000005,
+      "expected_osc_period": 5.729352276211718,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    },
+    {
+      "Psi0": 0.5,
+      "Psi_peak": 1.2068841275613051,
+      "m_eff_peak": 1.0655637151814865,
+      "L_mem": 0.9384703943580514,
+      "measured_osc_period": 5.980000000000002,
+      "expected_osc_period": 5.8965833930535405,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    },
+    {
+      "Psi0": 1.0,
+      "Psi_peak": 1.0,
+      "m_eff_peak": 1.046481219348953,
+      "L_mem": 0.9555833220037429,
+      "measured_osc_period": 6.100000000000001,
+      "expected_osc_period": 6.004107088599777,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    },
+    {
+      "Psi0": 2.0,
+      "Psi_peak": 2.0,
+      "m_eff_peak": 1.1521685211943575,
+      "L_mem": 0.8679285899630229,
+      "measured_osc_period": 5.98,
+      "expected_osc_period": 5.453356164136761,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    },
+    {
+      "Psi0": 5.0,
+      "Psi_peak": 5.0,
+      "m_eff_peak": 1.3100618276060392,
+      "L_mem": 0.7633227523523564,
+      "measured_osc_period": 4.869999999999999,
+      "expected_osc_period": 4.796098302216207,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    },
+    {
+      "Psi0": 10.0,
+      "Psi_peak": 10.0,
+      "m_eff_peak": 1.0331405857824263,
+      "L_mem": 0.9679224819559983,
+      "measured_osc_period": 5.459999999999999,
+      "expected_osc_period": 6.081636317114727,
+      "note": "Decay requires Hubble friction; tested in Sim 85. Here we verify oscillation frequency.",
+      "passed": true
+    }
+  ],
+  "acceptance": {
+    "n_failed": 0,
+    "rtol": 0.2
+  },
+  "artifacts": {
+    "psi_evolution": "Outputs/sim83_psi_evolution.png",
+    "memory_length": "Outputs/sim83_memory_length.png"
+  }
+}

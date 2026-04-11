@@ -1,0 +1,46 @@
+{
+  "sim": "SIM97",
+  "title": "RIFT Full Planck 2018 plikHM TTTEEE Likelihood",
+  "date": "2026-04-09",
+  "likelihood_files": {
+    "plikHM_TTTEEE": "/home/aion/Desktop/planck_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik",
+    "plikHM_TT": "/home/aion/Desktop/planck_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik",
+    "plik_lite_TTTEEE": "/home/aion/Desktop/planck_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik",
+    "lowl_TT": "/home/aion/Desktop/planck_packages/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik",
+    "lowl_EE": "/home/aion/Desktop/planck_packages/data/planck_2018/baseline/plc_3.0/low_l/simall/simall_100x143_offlike5_EE_Aplanck_B.clik"
+  },
+  "results": {
+    "rift_joint": {
+      "m2lnL_plikHM_TTTEEE": 2359.045004180133,
+      "m2lnL_plik_lite": 596.5653777756968,
+      "m2lnL_lowl_TT": 23.537462980703765,
+      "m2lnL_lowl_EE": 396.0500219589887,
+      "m2lnL_total": 2778.6324891198256,
+      "Geff_z0": 0.9999579984629621
+    },
+    "rift_bao_only": {
+      "m2lnL_plikHM_TTTEEE": 3297.802075743778,
+      "m2lnL_plik_lite": 1361.3421948393413,
+      "m2lnL_lowl_TT": 24.262536791872435,
+      "m2lnL_lowl_EE": 395.9312102329867,
+      "m2lnL_total": 3717.9958227686375,
+      "Geff_z0": 0.9999868041642853
+    },
+    "lcdm_planck": {
+      "m2lnL_plikHM_TTTEEE": 2352.052546401328,
+      "m2lnL_plik_lite": 590.7567395852637,
+      "m2lnL_lowl_TT": 23.416916412773503,
+      "m2lnL_lowl_EE": 396.142879607629,
+      "m2lnL_total": 2771.6123424217303,
+      "Geff_z0": 1.0
+    }
+  },
+  "delta_m2lnL_plikHM_joint_minus_lcdm": 6.9924577788051465,
+  "delta_m2lnL_plikHM_bao_minus_lcdm": 945.7495293424499,
+  "delta_m2lnL_total_joint_minus_lcdm": 7.020146698095232,
+  "verdict": {
+    "pass": false,
+    "overall": "FAIL",
+    "summary": "RIFT at SIM90 joint best-fit: \u0394(-2lnL)(plikHM TTTEEE) = +6.9925 vs \u039bCDM Planck best-fit. G_eff(z=0) = 0.99995800 (42.0 ppm). RIFT BAO-only \u0394(-2lnL) = +945.7 (consistent with SIM89 result). Verdict: FAIL."
+  }
+}

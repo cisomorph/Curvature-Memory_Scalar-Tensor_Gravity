@@ -1,0 +1,208 @@
+{
+  "description": "RIFT Lambda0 sensitivity scan. Maps G_eff/G, growth factor ratio, sigma_8 ratio, H(z) deviation, and BAO chi2 as Lambda0 varies from 0 to 0.1. Identifies observational detectability thresholds.",
+  "base_cosmology": {
+    "H0": 67.59,
+    "Omega_m": 0.3118
+  },
+  "detection_thresholds": {
+    "G_eff_deviation_>0.1pct": "Lambda0 >= >0.1 (beyond scan)",
+    "growth_factor_>0.1pct": "Lambda0 >= 0.05",
+    "sigma8_>0.2pct": "Lambda0 >= 0.1",
+    "H_dev_>0.1pct": "Lambda0 >= >0.1 (beyond scan)"
+  },
+  "key_values": {
+    "Lambda0_BAO_best_fit": {
+      "Lambda0": 0.003,
+      "Geff_deviation_ppm": 15.079417344909807,
+      "D_deviation_pct": 0.006686714522352588
+    },
+    "Lambda0_joint_best_fit": {
+      "Lambda0": 0.008,
+      "Geff_deviation_ppm": 40.210768994963786,
+      "D_deviation_pct": 0.01782989315333161
+    }
+  },
+  "paper_statement": "At the BAO best-fit coupling Lambda0=0.003 and joint best-fit Lambda0=0.008, RIFT deviates from LCDM at the ppm level in all observables probed by current surveys (CMB, BAO, WL). RIFT becomes distinguishable when Lambda0 exceeds the thresholds listed above. Future experiments (DESI, Euclid, CMB-S4) probing sub-0.1% precision in H(z) and sigma_8 would constrain Lambda0 to Lambda0 < >0.1 (beyond scan) at the H(z) level.",
+  "scan_results": [
+    {
+      "Lambda0": 0.0,
+      "Geff_over_G": 1.0,
+      "Geff_deviation": 0.0,
+      "D_ratio": 1.0,
+      "D_deviation": 0.0,
+      "sigma8_ratio": 1.0,
+      "H_dev_rms_pct": 0.0,
+      "chi2_BAO": 11.01522964534887,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.001,
+      "Geff_over_G": 0.9999949734770204,
+      "Geff_deviation": 5.026522979623138e-06,
+      "D_ratio": 0.9999777102787474,
+      "D_deviation": 2.2289721252621852e-05,
+      "sigma8_ratio": 0.9999777102787474,
+      "H_dev_rms_pct": 0.0002513264648047504,
+      "chi2_BAO": 11.015241805896972,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.003,
+      "Geff_over_G": 0.9999849205826551,
+      "Geff_deviation": 1.5079417344909807e-05,
+      "D_ratio": 0.9999331328547765,
+      "D_deviation": 6.686714522352588e-05,
+      "sigma8_ratio": 0.9999331328547765,
+      "H_dev_rms_pct": 0.0007539737096275357,
+      "chi2_BAO": 11.015267533907275,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.005,
+      "Geff_over_G": 0.9999748678904102,
+      "Geff_deviation": 2.5132109589764973e-05,
+      "D_ratio": 0.9998885581220184,
+      "D_deviation": 0.00011144187798162175,
+      "sigma8_ratio": 0.9998885581220184,
+      "H_dev_rms_pct": 0.0012566133748748891,
+      "chi2_BAO": 11.01529513777959,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.008,
+      "Geff_over_G": 0.999959789231005,
+      "Geff_deviation": 4.0210768994963786e-05,
+      "D_ratio": 0.9998217010684667,
+      "D_deviation": 0.0001782989315333161,
+      "sigma8_ratio": 0.9998217010684667,
+      "H_dev_rms_pct": 0.002010558661476722,
+      "chi2_BAO": 11.015340060767516,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.01,
+      "Geff_over_G": 0.9999497370440342,
+      "Geff_deviation": 5.0262955965774125e-05,
+      "D_ratio": 0.9997771330628631,
+      "D_deviation": 0.00022286693713691186,
+      "sigma8_ratio": 0.9997771330628631,
+      "H_dev_rms_pct": 0.002513179378642204,
+      "chi2_BAO": 11.015372354171044,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.015,
+      "Geff_over_G": 0.9999246074607775,
+      "Geff_deviation": 7.539253922250744e-05,
+      "D_ratio": 0.9996657248193962,
+      "D_deviation": 0.0003342751806038047,
+      "sigma8_ratio": 0.9996657248193962,
+      "H_dev_rms_pct": 0.003769698014239984,
+      "chi2_BAO": 11.015461294081188,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.02,
+      "Geff_over_G": 0.9998994791405441,
+      "Geff_deviation": 0.00010052085945588818,
+      "D_ratio": 0.9995543333884823,
+      "D_deviation": 0.00044566661151768105,
+      "sigma8_ratio": 0.9995543333884823,
+      "H_dev_rms_pct": 0.005026169284682861,
+      "chi2_BAO": 11.015561957068064,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.025,
+      "Geff_over_G": 0.9998743520832394,
+      "Geff_deviation": 0.00012564791676061837,
+      "D_ratio": 0.9994429587669901,
+      "D_deviation": 0.000557041233009925,
+      "sigma8_ratio": 0.9994429587669901,
+      "H_dev_rms_pct": 0.006282593192915051,
+      "chi2_BAO": 11.01567434268966,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.03,
+      "Geff_over_G": 0.9998492262887676,
+      "Geff_deviation": 0.00015077371123239924,
+      "D_ratio": 0.9993316009517816,
+      "D_deviation": 0.0006683990482183599,
+      "sigma8_ratio": 0.9993316009517816,
+      "H_dev_rms_pct": 0.0075389697419445826,
+      "chi2_BAO": 11.015798450504288,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.04,
+      "Geff_over_G": 0.9997989784879433,
+      "Geff_deviation": 0.00020102151205669827,
+      "D_ratio": 0.9991089357276902,
+      "D_deviation": 0.0008910642723097828,
+      "sigma8_ratio": 0.9991089357276902,
+      "H_dev_rms_pct": 0.01005158077421373,
+      "chi2_BAO": 11.01608183094508,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.05,
+      "Geff_over_G": 0.9997487357373097,
+      "Geff_deviation": 0.00025126426269028723,
+      "D_ratio": 0.9988863376911499,
+      "D_deviation": 0.0011136623088501274,
+      "sigma8_ratio": 0.9988863376911499,
+      "H_dev_rms_pct": 0.012564002405296185,
+      "chi2_BAO": 11.016412094855898,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.06,
+      "Geff_over_G": 0.9996984980361056,
+      "Geff_deviation": 0.00030150196389444606,
+      "D_ratio": 0.998663806817116,
+      "D_deviation": 0.0013361931828840268,
+      "sigma8_ratio": 0.998663806817116,
+      "H_dev_rms_pct": 0.015076234658979002,
+      "chi2_BAO": 11.01678923870271,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.075,
+      "Geff_over_G": 0.999623150950314,
+      "Geff_deviation": 0.0003768490496860455,
+      "D_ratio": 0.9983301363809987,
+      "D_deviation": 0.0016698636190013438,
+      "sigma8_ratio": 0.9983301363809987,
+      "H_dev_rms_pct": 0.01884422800894836,
+      "chi2_BAO": 11.017442846623464,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.08,
+      "Geff_over_G": 0.9995980377789403,
+      "Geff_deviation": 0.00040196222105970403,
+      "D_ratio": 0.9982189464564292,
+      "D_deviation": 0.001781053543570832,
+      "sigma8_ratio": 0.9982189464564292,
+      "H_dev_rms_pct": 0.020100131129342873,
+      "chi2_BAO": 11.017684152070728,
+      "chi2_CMB_approx": 0.23003820287761148
+    },
+    {
+      "Lambda0": 0.1,
+      "Geff_over_G": 0.9994975977103604,
+      "Geff_deviation": 0.000502402289639603,
+      "D_ratio": 0.9977743544454841,
+      "D_deviation": 0.002225645554515876,
+      "sigma8_ratio": 0.9977743544454841,
+      "H_dev_rms_pct": 0.02512327037555032,
+      "chi2_BAO": 11.018766542785967,
+      "chi2_CMB_approx": 0.23003820287761148
+    }
+  ],
+  "artifacts": {
+    "lambda0_scan": "Outputs/sim91_lambda0_scan.png",
+    "observability_map": "Outputs/sim91_observability_map.png"
+  }
+}

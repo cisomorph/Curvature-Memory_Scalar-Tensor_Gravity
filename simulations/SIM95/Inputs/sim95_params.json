@@ -1,0 +1,73 @@
+{
+  "description": "SIM95 — RIFT CMB Polarization EE/TE (CLASS full Boltzmann). Extends SIM88 (TT) to E-mode polarization. Runs CLASS with output=tCl,pCl,lCl for three cosmologies: RIFT BAO-only best-fit (SIM87), RIFT/LCDM joint best-fit (SIM90), and LCDM Planck best-fit. Compares against Planck 2018 best-fit theory spectrum. Tests: (1) RMS(DC_l/C_l) for EE and TE, (2) Approximate Planck polarization likelihood, (3) Consistency check: joint best-fit should match Planck EE/TE at same level as TT.",
+
+  "class_executable": "/home/aion/Desktop/RIFT_GitHub/CLASS/class",
+
+  "planck_theory_file": "/home/aion/Desktop/Anthropic/Ordered_Simulations/simulation_36_rift_plot_CMB_vs_Planck/inputs/COM_PowerSpect_CMB-base-plikHM-TTTEEE-lowl-lowE-lensing-minimum-theory_R3.01.txt",
+
+  "T_CMB_K": 2.7255,
+
+  "cosmologies": {
+    "rift_bao_only": {
+      "H0": 68.14, "Omega_m": 0.294, "Omega_b": 0.0487,
+      "Lambda0": 0.003, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "RIFT BAO-only best-fit (SIM87). Shows BAO-CMB tension in polarization."
+    },
+    "rift_joint": {
+      "H0": 67.59, "Omega_m": 0.312, "Omega_b": 0.0492,
+      "Lambda0": 0.008, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "RIFT joint CMB+BAO best-fit (SIM90). Should match Planck EE/TE."
+    },
+    "lcdm_planck": {
+      "H0": 67.36, "Omega_m": 0.3153, "Omega_b": 0.04934,
+      "Omega_r": 9.2e-5,
+      "note": "LCDM Planck 2018 best-fit (Aghanim+2020). Baseline."
+    }
+  },
+
+  "primordial": {
+    "A_s": 2.101e-9,
+    "n_s": 0.9649,
+    "k_pivot": 0.05,
+    "tau_reio": 0.0544
+  },
+
+  "external_pk": {
+    "k_min_inv_Mpc": 1e-4,
+    "k_max_inv_Mpc": 50.0,
+    "N_k": 500
+  },
+
+  "class": {
+    "l_max_scalars": 2500,
+    "k_per_decade_for_pk": 50,
+    "output": "tCl,pCl,lCl",
+    "lensing": "yes"
+  },
+
+  "likelihood": {
+    "l_min": 2,
+    "l_max_TT": 2508,
+    "l_max_EE": 1996,
+    "l_max_TE": 1996,
+    "f_sky_TT": 0.778,
+    "f_sky_EE": 0.778,
+    "f_sky_TE": 0.778,
+    "note": "Approximate Gaussian likelihood. EE and TE using same f_sky as TT (Planck plikHM)."
+  },
+
+  "noise": {
+    "Delta_T_muK_arcmin": 33.0,
+    "Delta_P_muK_arcmin": 53.0,
+    "theta_FWHM_arcmin": 7.27,
+    "note": "Planck 143 GHz. T noise from SIM89. P noise = sqrt(2) * Delta_T (polarization noise is sqrt(2) larger for Stokes Q/U)."
+  },
+
+  "acceptance": {
+    "RMS_EE_max_pct": 15.0,
+    "RMS_TE_max_pct": 15.0,
+    "note": "Joint best-fit should satisfy RMS < 15% for EE and TE (same threshold as TT in SIM88: 2.93% << 10%). BAO-only best-fit tension is expected to be large, analogous to SIM89."
+  }
+}

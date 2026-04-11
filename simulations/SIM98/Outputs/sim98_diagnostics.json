@@ -1,0 +1,44 @@
+{
+  "sim": "SIM98",
+  "title": "RIFT Joint plikHM CMB + BAO Parameter Fit",
+  "date": "2026-04-09",
+  "optimizer": "Nelder-Mead",
+  "lcdm": {
+    "H0": 67.29924090047552,
+    "Omega_m": 0.31690683661090796,
+    "Lambda0": 0.0,
+    "rd": 150.55096538891232,
+    "m2lnL_plikHM": 2347.459924457181,
+    "m2lnL_lowl_TT": 23.36272897333498,
+    "m2lnL_lowl_EE": 396.15841517068674,
+    "m2lnL_cmb_total": 2766.9810686012024,
+    "chi2_bao": 24.71106963409495,
+    "chi2_total": 2791.6921382352975,
+    "Geff_z0": 1.0,
+    "optimizer_success": true,
+    "nfev": 47
+  },
+  "rift": {
+    "H0": 67.30133478889846,
+    "Omega_m": 0.3168432910016957,
+    "Lambda0": 0.005055979068454121,
+    "rd": 150.55285798150686,
+    "m2lnL_plikHM": 2347.4468943534275,
+    "m2lnL_lowl_TT": 23.36479465184749,
+    "m2lnL_lowl_EE": 396.1678233546667,
+    "m2lnL_cmb_total": 2766.979512359942,
+    "chi2_bao": 24.71710931939916,
+    "chi2_total": 2791.696621679341,
+    "Geff_z0": 0.9999759238937725,
+    "optimizer_success": true,
+    "nfev": 57
+  },
+  "delta_m2lnL_plikHM_rift_minus_lcdm": -0.013030103753408184,
+  "delta_m2lnL_total_rift_minus_lcdm": 0.004483444043671625,
+  "sim97_reference_delta_plikHM": 7.0,
+  "verdict": {
+    "pass": true,
+    "overall": "PASS",
+    "summary": "RIFT at SIM98 joint best-fit: \u0394(-2lnL)(plikHM) = -0.0130 vs \u039bCDM. G_eff(z=0) = 0.99997592 (24.1 ppm). Compare SIM97 result at SIM90 params: \u0394 = +7.0. Verdict: PASS."
+  }
+}

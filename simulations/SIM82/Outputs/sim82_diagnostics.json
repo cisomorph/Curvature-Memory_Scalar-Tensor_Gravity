@@ -1,0 +1,35 @@
+{
+  "params": {
+    "m_eff": 1.0,
+    "Nr": 400,
+    "r_max": 20.0,
+    "Nt": 800,
+    "t_max": 20.0,
+    "t0": 2.0,
+    "width": 0.15,
+    "dt_dr_ratio": 0.5
+  },
+  "acceptance_checks": {
+    "causality": {
+      "max_pre_source_amplitude": 1.81864730250246e-14,
+      "tolerance": 1e-10,
+      "passed": true
+    },
+    "yukawa": {
+      "fitted_slope": 0.11148663401541051,
+      "expected_slope": -1.0,
+      "tolerance": 0.3,
+      "passed": false
+    },
+    "memory_accumulation": {
+      "monotone_during_source": true,
+      "passed": true
+    }
+  },
+  "artifacts": {
+    "spacetime_heatmap": "Outputs/sim82_kernel_spacetime.png",
+    "causality_check": "Outputs/sim82_causality_check.png",
+    "yukawa_profile": "Outputs/sim82_yukawa_profile.png",
+    "memory_integral": "Outputs/sim82_memory_integral.png"
+  }
+}

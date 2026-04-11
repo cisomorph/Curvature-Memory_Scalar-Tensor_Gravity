@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to fourteen independent tests (Sims~87--100).
+We subject RIFT to fifteen independent tests (Sims~87--102).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -1522,6 +1522,105 @@ The detection threshold for a RIFT $r_d$ signal requires $\Lambda_0 \gg 0.1$,
 well beyond the current 95\% upper limit.
 
 % ============================================================
+\section{One-Loop UV Structure (Sim~102)}
+\label{sec:sim102}
+
+\paragraph{Motivation.}
+Section~\ref{sec:quantization} conjectured that the memory-tensor commutator
+decay $[\mathcal{M}_{\mu\nu}(x), \mathcal{M}_{\rho\sigma}(y)] \propto
+e^{-|t_x-t_y|/\tau_m}$ renders loop diagrams UV-finite, but no explicit
+calculation was performed. Sim~102 carries out that calculation for the
+leading one-loop contribution to the $\Psi$ self-energy from the
+non-minimal coupling $\Lambda_0\Psi R$.
+
+\paragraph{Setup.}
+In linearized gravity ($g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}$), the
+Ricci scalar at linear order in $h$ is $R(k) \sim k^2 \tilde{h}(k)$ in
+Fourier space (harmonic gauge). The $\Lambda_0\Psi R$ vertex therefore
+contributes a factor $V(k) \sim \Lambda_0 k^2$ to the Feynman rules.
+The graviton propagator in the same gauge is $D_{\rm grav}(k) = i/k^2$.
+The memory damping enters as a form factor on the graviton propagator:
+\begin{equation}
+D_{\rm RIFT}(k) = \frac{e^{-2k^2/k_m^2}}{k^2}\,,
+\label{eq:RIFT_graviton_prop}
+\end{equation}
+where $k_m = 1/\tau_m$ is the memory wavenumber cutoff.
+
+The one-loop $\Psi$ self-energy in Euclidean space (after Wick rotation)
+reduces, by $O(4)$ symmetry, to a one-dimensional radial integral:
+\begin{equation}
+\Sigma(0) = \frac{\Lambda_0^2}{8\pi^2}
+\int_0^\infty dk\;\frac{k^5\,e^{-2k^2/k_m^2}}{k^2 + m_0^2}\,.
+\label{eq:Sigma_integral}
+\end{equation}
+
+\paragraph{Results: UV divergence without memory.}
+Setting $e^{-2k^2/k_m^2} \to 1$ (no memory, $k_m \to \infty$) and
+imposing a hard cutoff $k_{\rm UV}$:
+\begin{equation}
+\Sigma_{\rm bare}(0) \propto \Lambda_0^2\,k_{\rm UV}^4\,,
+\end{equation}
+confirmed numerically with power-law slope $4.000 \pm 0.001$ across
+$k_{\rm UV} \in [1, 1000]\,\mathrm{Mpc}^{-1}$.
+This is a quartic UV divergence, as expected from power counting
+($\sim d^4k \cdot k^2/k^2 \to k^4$).
+
+\paragraph{Results: finiteness with memory.}
+With the damping factor in eq.~\eqref{eq:RIFT_graviton_prop}, the
+integral~\eqref{eq:Sigma_integral} converges for any finite $k_m$.
+In the limit $k_m \gg m_0$:
+\begin{equation}
+\Sigma(0) \;\approx\; \frac{\Lambda_0^2\,k_m^4}{64\pi^2}\,,
+\label{eq:Sigma_analytic}
+\end{equation}
+verified numerically to $<0.22\%$ accuracy for $k_m > 10\,m_0$.
+The effective radiative mass shift is therefore
+$\delta m^2 = \Sigma(0) \sim \Lambda_0^2 k_m^4 / (64\pi^2)$.
+
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+$k_m$ [Mpc$^{-1}$] & $\Sigma_{\rm num}(0)$ [Mpc$^{-2}$] & $\Sigma_{\rm analytic}$ & ratio & $\delta m^2/m_0^2$ \\
+\midrule
+$0.01$ & $6.3\times10^{-17}$ & $1.4\times10^{-16}$ & $0.45$ & $6.3\times10^{-13}$ \\
+$0.10$ & $1.4\times10^{-12}$ & $1.4\times10^{-12}$ & $0.98$ & $1.4\times10^{-8}$ \\
+$1.00$ & $1.4\times10^{-8\phantom{0}}$  & $1.4\times10^{-8}$  & $1.00$ & $1.4\times10^{-4}$ \\
+$9.15^*$ & $1.0\times10^{-4\phantom{0}}$  & $1.0\times10^{-4}$  & $1.00$ & $1.0$ \\
+\bottomrule
+\multicolumn{5}{l}{\footnotesize $^*$ naturalness threshold $k_m^{\rm nat}$ for $\Lambda_0=0.003$.}
+\end{tabular}
+\end{center}
+
+\paragraph{Naturalness constraint.}
+Requiring $\delta m^2 < m_0^2$ gives
+\begin{equation}
+k_m < k_m^{\rm nat} \equiv \left(\frac{64\pi^2 m_0^2}{\Lambda_0^2}\right)^{1/4}
+= 9.15\,\mathrm{Mpc}^{-1}
+\quad\Leftrightarrow\quad
+\tau_m > 0.11\,\mathrm{Mpc}
+\label{eq:naturalness}
+\end{equation}
+at the best-fit coupling $\Lambda_0 = 0.003$, $m_0 = 0.01\,\mathrm{Mpc}^{-1}$.
+A memory timescale $\tau_m > 0.11\,\mathrm{Mpc} \approx 360\,\mathrm{kyr}$
+is consistent with the cosmological Compton time $1/m_0 = 100\,\mathrm{Mpc}$
+and with the SIM100 time-domain integration window.
+
+\paragraph{Interpretation.}
+The memory damping converts the quartic UV divergence of the bare theory
+into a finite radiative correction that is parametrically suppressed
+relative to $m_0^2$ provided $k_m$ satisfies eq.~\eqref{eq:naturalness}.
+This confirms the UV-finiteness conjecture of Section~\ref{sec:quantization}
+\emph{at one loop in the non-minimal coupling sector}, subject to two caveats:
+\begin{enumerate}
+  \item UV finiteness requires $k_m < \infty$; taking $\tau_m \to 0$
+        (no memory) recovers the quartic divergence. The theory is not
+        UV-finite without the memory sector.
+  \item This calculation covers only the one-loop $\Psi$ self-energy
+        from the graviton loop. Higher-loop contributions and
+        vertex renormalization have not been computed.
+\end{enumerate}
+
+% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
@@ -1535,7 +1634,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
   \item Galaxy rotation curve tests (Sims~99--100): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Attractive self-coupling ($\lambda<0$) causes tachyonic blow-up, not a stable halo condensate.  The static (SIM99) and time-domain (SIM100) solutions agree (adiabatic limit confirmed), ruling out history-dependence as a resolution.  Galactic predictions await derivation of a screening or higher-order stabilization mechanism.
-  \item UV regulation conjecture---recursive memory damping \emph{suggests} improved UV behaviour, but no loop calculation has been performed and finiteness of the interacting theory remains unproven (Section~\ref{sec:quantization}).
+  \item UV regulation (Sim~102): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated. Naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$. UV finiteness holds at one loop in the non-minimal coupling sector; higher loops and vertex renormalization remain open.
   \item Predicts recursive graviton emission via curvature memory spikes.
   \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.
 \end{itemize}

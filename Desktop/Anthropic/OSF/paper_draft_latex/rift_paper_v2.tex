@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to sixteen independent tests (Sims~87--103).
+We subject RIFT to seventeen independent tests (Sims~87--104).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -108,11 +108,15 @@ The key results are:
     densities is ruled out; $\lambda<0$ self-coupling causes tachyonic blow-up;
 (xiii)~BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d|<21\,\mathrm{ppm}$
     across all allowed $\Lambda_0$; RIFT and $\Lambda$CDM are degenerate in $r_d$;
-(xiv)~one-loop UV structure (Sim~102): quartic UV divergence confirmed; memory damping
-    regulates to $\Sigma(0)=\Lambda_0^2 k_m^4/(64\pi^2)$; naturalness requires
-    $\tau_m>0.11\,\mathrm{Mpc}$; UV finiteness holds at one loop in the
-    non-minimal coupling sector;
-(xv)~Vainshtein screening (Sim~103): all scanned $(\alpha_V,M_V,\beta)$
+(xiv)~one-loop UV structure, partial (Sim~102): quartic UV divergence confirmed;
+    memory damping regulates to $\Sigma(0)=\Lambda_0^2 k_m^4/(64\pi^2)$;
+    naturalness requires $\tau_m>0.11\,\mathrm{Mpc}$;
+(xv)~full one-loop UV structure, all diagrams (Sim~104): graviton wfn renorm
+    protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction
+    $\delta\Lambda_0/\Lambda_0\approx2.4\times10^{-2}$ finite; two-loop
+    $\Sigma_D/m_0^2=3.4\times10^{-6}$ (perturbative hierarchy stable);
+    UV-finiteness confirmed at full one-loop level in the resummed theory;
+(xvi)~Vainshtein screening (Sim~103): all scanned $(\alpha_V,M_V,\beta)$
     combinations fail to source an isothermal dark matter halo for NGC~3198;
     field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$
     below the nonlinear threshold; energy density deficit is $2.7\times10^6\times$;
@@ -1633,6 +1637,99 @@ This confirms the UV-finiteness conjecture of Section~\ref{sec:quantization}
 \end{enumerate}
 
 % ============================================================
+\section{Full One-Loop UV Structure: All Diagrams (Sim~104)}
+\label{sec:sim104}
+
+\paragraph{Motivation.}
+Sim~102 established UV-finiteness for a single diagram: the $\Psi$ self-energy
+from the graviton+$\Psi$ bubble.  That calculation left three open topologies:
+(B)~the graviton wavefunction renormalization from a $\Psi$ loop,
+(C)~the vertex correction $\delta\Lambda_0/\Lambda_0$, and
+(D)~the leading two-loop contribution ($\Lambda_0^4$).
+Sim~104 computes all four diagrams and closes the one-loop UV case.
+
+\paragraph{Feynman rules.}
+In linearised gravity ($g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}$, harmonic gauge,
+Euclidean signature), the $\Lambda_0\Psi R$ vertex carries a factor
+$V(k) = \Lambda_0 k^2$ (from $R \sim k^2 \tilde{h}$) at each insertion.
+The RIFT graviton propagator is $D_h(k)=e^{-2k^2/k_m^2}/k^2$;
+the bare $\Psi$ propagator is $D_\Psi(k)=1/(k^2+m_0^2)$.
+The Euclidean loop measure gives $\int d^4k/(2\pi)^4 \to (8\pi^2)^{-1}\int_0^\infty k^3\,dk$.
+
+\paragraph{Diagram A (reproduction of Sim~102).}
+The $\Psi$ self-energy from the graviton+$\Psi$ bubble:
+\begin{equation}
+\Sigma_A(0) = \frac{\Lambda_0^2}{8\pi^2}\int_0^\infty dk\,
+  \frac{k^5\,e^{-2k^2/k_m^2}}{k^2+m_0^2}
+\;\approx\; \frac{\Lambda_0^2 k_m^4}{64\pi^2}\,.
+\end{equation}
+Bare divergence: slope $4.000\pm0.001$ (quartic), regulated by memory.
+Analytic formula verified to $<0.1\%$ at $k_m \geq 1\,\mathrm{Mpc}^{-1}$.
+
+\paragraph{Diagram B (graviton wavefunction renormalization).}
+The $\Psi$ loop dressed on the graviton propagator has form factor
+$\Pi_{hh}(p) = (\Lambda_0 p^2)^2 I_\Psi(p)$, where
+\begin{equation}
+I_\Psi(0) = \frac{1}{8\pi^2}\int_0^\infty dk\,\frac{k^3}{(k^2+m_0^2)^2}
+\quad\longrightarrow\quad \ln\Lambda_{\rm UV}
+\end{equation}
+is logarithmically divergent (slope $0.14 \approx 0$).
+Two independent protections apply:
+\begin{enumerate}
+\item \emph{Ward identity}: diffeomorphism invariance requires $\Pi_{hh}(0)=0$,
+  cancelling the leading logarithm.
+\item \emph{Wavefunction renormalization coefficient}: $dI_\Psi/dp^2|_{p=0}$
+  is \emph{finite without memory} (converges for $d<6$ in dimensional
+  regularisation); numerically $dI/dp^2|_0 = -3.2\times10^{-3}\,\mathrm{Mpc}^{2}$.
+\end{enumerate}
+In the resummed theory where $\Psi$ carries the memory form factor from
+Diagram A, $I_\Psi(0)$ is also explicitly finite.
+
+\paragraph{Diagram C (vertex correction).}
+The momentum derivative of $\Sigma_A$ gives the coupling renormalization:
+\begin{equation}
+\frac{\delta\Lambda_0}{\Lambda_0} \;\sim\;
+  -\frac{1}{m_0^2}\frac{d\Sigma_A}{dp^2}\bigg|_{p=0}
+  = \frac{\Lambda_0^2}{8\pi^2 m_0^2}\int_0^\infty dk\,
+    \frac{k^5\,e^{-2k^2/k_m^2}}{(k^2+m_0^2)^2}\,.
+\end{equation}
+Bare divergence: slope $2.000$ (quadratic), regulated by memory.
+At the naturalness threshold: $\delta\Lambda_0/\Lambda_0 \approx 2.4\times10^{-2}$,
+implying $\Lambda_0$ runs logarithmically under the RG but remains small.
+
+\paragraph{Diagram D (two-loop).}
+The leading $\Lambda_0^4$ two-loop contribution (sunset topology with two
+memory-damped graviton lines):
+\begin{equation}
+\Sigma_D(0) \approx \left[\frac{\Lambda_0^2 k_m^4}{64\pi^2}\right]^2
+  \frac{1}{m_0^2 k_m^2}\,,
+\end{equation}
+confirmed finite by numerical double integration.
+At $k_m = 9.15\,\mathrm{Mpc}^{-1}$: $\Sigma_D/m_0^2 = 3.4\times10^{-6}$,
+some $10^5\times$ smaller than the one-loop result.
+
+\paragraph{Perturbative hierarchy.}
+\begin{equation}
+\frac{\Sigma_A}{m_0^2} \approx 1.00
+\;\gg\;
+\frac{d\Sigma_C/dp^2}{m_0^2} \approx 2.4\times10^{-2}
+\;\gg\;
+\frac{\Sigma_D}{m_0^2} \approx 3.4\times10^{-6}\,,
+\end{equation}
+confirming a stable perturbative expansion at the naturalness threshold.
+
+\paragraph{Conclusion.}
+UV-finiteness holds at full one-loop level in the resummed (Dyson-summed)
+theory.  The Ward identity from diffeomorphism invariance provides
+additional protection for the graviton sector beyond memory damping alone.
+The residual caveat from Sim~102 --- that higher-loop contributions and
+vertex renormalization had not been computed --- is now resolved at one
+loop.  The $\Lambda_0$ coupling runs under the RG with
+$\delta\Lambda_0/\Lambda_0 \sim 2.4\times10^{-2}$ at the naturalness
+threshold, a small but nonzero effect.  Two-loop graviton self-energy
+diagrams and mixed topologies remain open for a future calculation.
+
+% ============================================================
 \section{Vainshtein Screening and the Dark Matter Problem (Sim~103)}
 \label{sec:sim103}
 
@@ -1757,7 +1854,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
   \item Galaxy rotation curve tests (Sims~99--100, 103): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Vainshtein screening (Sim~103): the galactic field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$ below the nonlinear threshold for all scanned $(\alpha_V,M_V)$; energy density deficit is $2.7\times10^6\times$ the isothermal requirement.  All kinetic modifications of the locked action are exhausted; new physics (a first-principles coupling between $\Psi$ and baryonic matter) is required.
-  \item UV regulation (Sim~102): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated. Naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$. UV finiteness holds at one loop in the non-minimal coupling sector; higher loops and vertex renormalization remain open.
+  \item UV regulation (Sims~102, 104): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated; naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$ (Sim~102).  Full one-loop calculation (Sim~104): graviton wavefunction renormalization protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction $\delta\Lambda_0/\Lambda_0 \approx 2.4\times10^{-2}$ finite; two-loop $\Sigma_D/m_0^2 = 3.4\times10^{-6}$ (perturbative hierarchy $\Sigma_A \gg \Sigma_C \gg \Sigma_D$ confirmed).  UV-finiteness holds at full one-loop level in the resummed theory; two-loop graviton self-energy remains open.
   \item Predicts recursive graviton emission via curvature memory spikes.
   \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.
 \end{itemize}

@@ -1,0 +1,142 @@
+{
+  "sim_id": "SIM104",
+  "parameters": {
+    "Lambda0": 0.003,
+    "m0": 0.01
+  },
+  "diagram_A": {
+    "description": "Psi self-energy, graviton+Psi bubble",
+    "bare_slope": 4.0000137033802305,
+    "analytic_formula": "Lambda0^2 * k_m^4 / (64*pi^2)",
+    "results": {
+      "0.01": {
+        "num": 8.920616834979465e-17,
+        "analytic": 1.4248291449703751e-16,
+        "ratio": 0.6260832652440543,
+        "dm2_over_m02": 8.920616834979465e-13
+      },
+      "0.1": {
+        "num": 1.3982831189295575e-12,
+        "analytic": 1.4248291449703754e-12,
+        "ratio": 0.9813689759684346,
+        "dm2_over_m02": 1.3982831189295574e-08
+      },
+      "1.0": {
+        "num": 1.4245446318490007e-08,
+        "analytic": 1.4248291449703751e-08,
+        "ratio": 0.9998003177276527,
+        "dm2_over_m02": 0.00014245446318490008
+      },
+      "9.15": {
+        "num": 9.987254775574748e-05,
+        "analytic": 9.987278632921795e-05,
+        "ratio": 0.9999976112264488,
+        "dm2_over_m02": 0.9987254775574748
+      },
+      "100.0": {
+        "num": 1.424829116473802,
+        "analytic": 1.424829144970375,
+        "ratio": 0.999999980000007,
+        "dm2_over_m02": 14248.29116473802
+      }
+    }
+  },
+  "diagram_B": {
+    "description": "Graviton wfn renorm, Psi loop",
+    "bare_slope_I_Psi0": 0.1390618048390153,
+    "ward_identity": "Pi_hh(0)=0 protected by diffeomorphism invariance",
+    "dI_dp2_at_0": -0.0031662869888230546,
+    "dI_dp2_finite_without_memory": true,
+    "graviton_only_memory_insufficient": true,
+    "results": {
+      "0.01": {
+        "I_bare_at_kUV_km": 0.0012231188094696246,
+        "I_Psi_mem": 0.0005318466124095472
+      },
+      "0.1": {
+        "I_bare_at_kUV_km": 0.02295571686325744,
+        "I_Psi_mem": 0.01577397901565356
+      },
+      "1.0": {
+        "I_bare_at_kUV_km": 0.05199385420700903,
+        "I_Psi_mem": 0.043969303263109924
+      },
+      "9.15": {
+        "I_bare_at_kUV_km": 0.08003012333249417,
+        "I_Psi_mem": 0.071985830814957
+      },
+      "100.0": {
+        "I_bare_at_kUV_km": 0.11031774967868496,
+        "I_Psi_mem": 0.10227308732557346
+      }
+    }
+  },
+  "diagram_C": {
+    "description": "Vertex correction delta_Lambda0/Lambda0",
+    "bare_slope": 2.000126733220431,
+    "results": {
+      "0.01": {
+        "dSigma_dp2": 3.1167016175955826e-13,
+        "delta_Lambda0_over_Lambda0": 3.1167016175955824e-09
+      },
+      "0.1": {
+        "dSigma_dp2": 2.5126346582707623e-10,
+        "delta_Lambda0_over_Lambda0": 2.512634658270762e-06
+      },
+      "1.0": {
+        "dSigma_dp2": 2.841174788948158e-08,
+        "delta_Lambda0_over_Lambda0": 0.00028411747889481575
+      },
+      "9.15": {
+        "dSigma_dp2": 2.3856698881519894e-06,
+        "delta_Lambda0_over_Lambda0": 0.023856698881519894
+      },
+      "100.0": {
+        "dSigma_dp2": 0.0002849656392032066,
+        "delta_Lambda0_over_Lambda0": 2.849656392032066
+      }
+    }
+  },
+  "diagram_D": {
+    "description": "Two-loop Psi self-energy, Lambda0^4",
+    "results": {
+      "0.01": {
+        "Sigma_D": 3.0656870748410674e-29,
+        "Sigma_D_err": 6.935716118612927e-27,
+        "Sigma_A": 8.920616834979465e-17,
+        "ratio": 0.38524592323185897
+      },
+      "0.1": {
+        "Sigma_D": 4.7446960133950245e-22,
+        "Sigma_D_err": 5.334859125034449e-25,
+        "Sigma_A": 1.3982831189295575e-12,
+        "ratio": 0.02426711587116784
+      },
+      "1.0": {
+        "Sigma_D": 5.662308545751119e-16,
+        "Sigma_D_err": 4.8887585166406994e-20,
+        "Sigma_A": 1.4245446318490007e-08,
+        "ratio": 0.0002790239033419162
+      },
+      "9.15": {
+        "Sigma_D": 3.3684676082899676e-10,
+        "Sigma_D_err": 2.759735166794941e-15,
+        "Sigma_A": 9.987254775574748e-05,
+        "ratio": 3.3770704266490906e-06
+      },
+      "100.0": {
+        "Sigma_D": 0.000574833313923588,
+        "Sigma_D_err": 4.841828994390975e-08,
+        "Sigma_A": 1.424829116473802,
+        "ratio": 2.8314986999210792e-08
+      }
+    }
+  },
+  "naturalness_k_m": 9.15,
+  "at_naturalness": {
+    "Sigma_A_over_m02": 0.9987254775574748,
+    "dSigma_C_over_m02": 0.023856698881519894,
+    "Sigma_D_over_m02": 3.3684676082899676e-06
+  },
+  "conclusion": "UV-finiteness holds at full one-loop level. Diagram A (Psi self-energy): FINITE, slope 4.0, SIM102 reproduced. Diagram B (graviton wfn renorm): Ward identity Pi(0)=0 protects leading divergence; wfn renorm dI/dp^2 is finite even without memory; resummed Psi propagator makes I(0) finite explicitly. Diagram C (vertex correction): FINITE with memory, bare slope 2.0. Diagram D (two-loop): FINITE, Lambda0^4 suppressed. Perturbative hierarchy confirmed: Sigma_A >> Sigma_C >> Sigma_D at k_m=9.15. Residual caveats: two-loop graviton self-energy and mixed diagrams uncomputed."
+}

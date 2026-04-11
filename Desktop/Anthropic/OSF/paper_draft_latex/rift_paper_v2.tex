@@ -1441,10 +1441,85 @@ Galaxy rotation & Flat curves via $\nabla_r\Psi$ (screening mech.\ needed) & Sim
 Void lensing & Lensing from $\mathcal{M}_{\mu\nu}$ & No phase shift in void directions \\
 Bullet Cluster & Offset from curvature memory & Cannot reproduce lensing peak \\
 CMB anomalies & Low-$\ell$ damping from recursion & Fails without artificial suppression \\
-BAO scale & $r_d \approx 147$~Mpc from echo shells & Failure to reproduce shell spacing \\
+BAO scale & $r_d$ from echo shells; Sim~101: RIFT and LCDM degenerate ($|\Delta r_d/r_d|<21$~ppm) & $\Lambda_0>0.1$ needed for detectable shift \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+% ============================================================
+\section{BAO Sound Horizon from First Principles (Sim~101)}
+\label{sec:sim101}
+
+\paragraph{Motivation.}
+Section~\ref{sec:bao_theory} described BAO in RIFT via recursive echo shells but
+noted that the sound horizon $r_d$ was a free parameter fitted to data, not
+derived from the field equations. Sim~101 closes this gap by integrating the
+full RIFT scalar-field system through recombination and computing $r_d$
+from first principles.
+
+\paragraph{Method.}
+The comoving sound horizon is
+\begin{equation}
+r_d = \int_{z_{\rm drag}}^{\infty} \frac{c_s(z)\,c}{H(z)}\,dz\,,
+\label{eq:rd_integral}
+\end{equation}
+where $c_s^2 = c^2/3\,(1+R_b)^{-1}$, $R_b = 3\rho_b/(4\rho_\gamma)$, and
+$z_{\rm drag} = 1059$ (CLASS-calibrated for the SIM90 cosmology).
+RIFT modifies $H(z)$ through the scalar stress-energy:
+\begin{equation}
+H_{\rm RIFT}^2(z) = H_{\Lambda{\rm CDM}}^2(z)\left(1 + \frac{\rho_\Psi}{\rho_{\rm crit}}\right)\,,
+\quad
+\rho_\Psi = \tfrac{1}{2}\dot\Psi^2 + \tfrac{1}{2}m_0^2\Psi^2\,,
+\end{equation}
+and $c_s$ via $G_{\rm eff} = G/(1+16\pi G\Lambda_0\Psi^2)$.
+The scalar $\Psi(z)$ is obtained by integrating the Klein-Gordon equation
+in the $z$-variable from $z_{\max}=10^6$ to $z=0$:
+\begin{equation}
+\frac{du}{dz} = \left[\frac{2}{1+z} - \frac{H'(z)}{H(z)}\right]u
+               - \frac{m_0^2\,\Psi}{(1+z)^2 H^2(z)}\,,
+\quad u \equiv \frac{d\Psi}{dz}\,,
+\label{eq:KG_z}
+\end{equation}
+with initial conditions $\Psi(z_{\max}) = \Psi_0 = 0.003$,
+$u(z_{\max}) = 0$ (field frozen at early times when $m_0 \ll H(z_{\max})$).
+The ODE is integrated with the Radau solver at $\mathrm{rtol}=10^{-9}$.
+
+\paragraph{Results.}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+$\Lambda_0$ & $r_d^{\rm RIFT}$ [Mpc] & $\Delta r_d$ [Mpc] & $\Delta r_d/r_d$ & $\rho_\Psi/\rho_{\rm tot}$ at $z_{\rm drag}$ \\
+\midrule
+$0$ (LCDM)  & $153.05$ & $0$ & $0$ & --- \\
+$0.003$     & $153.05$ & $-0.000104$ & $-0.68\,\mathrm{ppm}$ & $1.5\times10^{-10}$ \\
+$0.008$     & $153.05$ & $-0.000277$ & $-1.8\,\mathrm{ppm}$  & $1.5\times10^{-10}$ \\
+$0.050$     & $153.05$ & $-0.001731$ & $-11\,\mathrm{ppm}$   & $1.5\times10^{-10}$ \\
+$0.095$     & $153.05$ & $-0.003289$ & $-21\,\mathrm{ppm}$   & $1.5\times10^{-10}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The LCDM baseline $r_d = 153$~Mpc differs from the Planck value of 147~Mpc
+because our simplified Friedmann equation omits neutrino free-streaming
+($\Delta N_{\rm eff}$); both RIFT and LCDM share this approximation,
+so the fractional shift is unaffected.
+
+The maximum shift across the entire allowed range $\Lambda_0 \in [0, 0.095]$
+is $|\Delta r_d / r_d| = 21$~ppm, compared to current BAO measurement
+precision of $\sim 3000$~ppm (0.3\%). RIFT and LCDM are degenerate in
+$r_d$ at all observationally allowed couplings.
+
+\paragraph{Interpretation.}
+The negligible $\rho_\Psi/\rho_{\rm tot} \sim 10^{-10}$ at the drag epoch
+confirms that the scalar field carries essentially no energy density during
+recombination: the RIFT background is indistinguishable from the FLRW
+background at $\Lambda_0 \ll 1$. The echo-shell picture of
+Section~\ref{sec:bao_theory} is therefore a \emph{physical interpretation}
+of standard photon-baryon acoustic physics, not a first-principles derivation
+of a distinct $r_d$. This closes the gap identified by reviewer P2.7:
+the RIFT BAO mechanism does not predict a different sound horizon from
+$\Lambda$CDM, and $r_d$ remains a free parameter constrained by data.
+The detection threshold for a RIFT $r_d$ signal requires $\Lambda_0 \gg 0.1$,
+well beyond the current 95\% upper limit.
 
 % ============================================================
 \section{Conclusion}
@@ -1462,6 +1537,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Galaxy rotation curve tests (Sims~99--100): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Attractive self-coupling ($\lambda<0$) causes tachyonic blow-up, not a stable halo condensate.  The static (SIM99) and time-domain (SIM100) solutions agree (adiabatic limit confirmed), ruling out history-dependence as a resolution.  Galactic predictions await derivation of a screening or higher-order stabilization mechanism.
   \item UV regulation conjecture---recursive memory damping \emph{suggests} improved UV behaviour, but no loop calculation has been performed and finiteness of the interacting theory remains unproven (Section~\ref{sec:quantization}).
   \item Predicts recursive graviton emission via curvature memory spikes.
+  \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.
 \end{itemize}
 
 \paragraph{Honest assessment.}

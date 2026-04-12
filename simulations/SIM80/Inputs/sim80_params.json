@@ -1,0 +1,25 @@
+{
+  "m": 1.0,
+  "g": 1.0,
+  "Lambda_mem": 1000.0,
+  "gamma": 0.3,
+  "p_grid": {
+    "p_min": 10.0,
+    "p_max": 10000.0,
+    "Np": 400
+  },
+  "bubble": {
+    "p_ext": 1.0,
+    "Lambda_min": 100.0,
+    "Lambda_max": 100000.0,
+    "N_L": 25,
+    "Ntheta": 96,
+    "Nx_log": 1200,
+    "q_min": 1e-06
+  },
+  "model": "resummed_damping",
+  "propagators": [
+    "G0(p) = 1/(p^2 + m^2)",
+    "G_resum(p) = 1/(p^2+m^2) * (1 + p^2/Lambda_mem^2)^(-gamma)"
+  ]
+}

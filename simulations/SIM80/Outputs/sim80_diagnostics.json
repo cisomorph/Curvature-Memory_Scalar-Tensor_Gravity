@@ -1,0 +1,26 @@
+{
+  "uv_tail_slopes": {
+    "baseline": -1.9999996851821809,
+    "rift": -2.5267572536259304
+  },
+  "bubble_slope_logLambda": {
+    "baseline": 0.019894367871385467,
+    "rift": 0.00016891649212190743
+  },
+  "params": {
+    "m": 1.0,
+    "g": 1.0,
+    "Lambda_mem": 1000.0,
+    "gamma": 0.3,
+    "p_ext": 1.0,
+    "Lambda_min": 100.0,
+    "Lambda_max": 100000.0,
+    "Ntheta": 96,
+    "Nx_log": 1200,
+    "q_min": 1e-06
+  },
+  "artifacts": {
+    "uv_plot": "Outputs/sim80_uv_falloff.png",
+    "bubble_plot": "Outputs/sim80_bubble_cutoff.png"
+  }
+}

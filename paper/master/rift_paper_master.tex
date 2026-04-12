@@ -139,13 +139,18 @@ The key results are:
     offset $0.60\%$ ($<10\%$ bound);
 (xxi)~dark energy equation of state (Sim~109): CPL fit $w_0=-0.992$, $w_a=-0.082$;
     $1.3\sigma$ from Planck~2018, $3.6\sigma$ tension with DESI Y1 $w_0$--$w_a$
-    hint; dynamical $\Psi$ ($m_0\gtrsim H_0$) needed to resolve DESI tension,
-    testable by DESI~Y5/Euclid;
-(xxii)~inflationary viability (Sim~110): locked action fails slow-roll inflation ---
+    hint; dynamical $\Psi$ ($m_0\gtrsim H_0$) needed to resolve DESI tension;
+(xxii)~$m_0$ scan (Sim~111): full scan $m_0\in[0.001,10]\,H_0$ confirms locked
+    action cannot resolve DESI tension; minimum achievable tension (Planck-consistent)
+    $= 3.44\sigma$ at $m_0=0.31\,H_0$; structural obstruction --- $\rho_\Lambda$
+    dominates DE at all Planck-consistent $m_0$, giving $w\approx-1$ universally;
+    resolution requires unlocking the action (new $\Psi$--DE coupling or removal
+    of bare $\Lambda$), testable by DESI~Y5/Euclid;
+(xxiii)~inflationary viability (Sim~110): locked action fails slow-roll inflation ---
     $n_s\approx0.932$ ($>5\sigma$ below Planck $0.9649\pm0.0044$); Starobinsky
     attractor ($n_s=0.967$, $r=0.003$) accessible with UV non-minimal coupling
     $\xi\sim10^4$, testable by CMB-S4/LiteBIRD.
-In all cosmological tests (Sims~87--98 and 107--109), RIFT at the joint best-fit is
+In all cosmological tests (Sims~87--98 and 107--111), RIFT at the joint best-fit is
 statistically indistinguishable from $\Lambda$CDM at current precision. The recursive
 field coupling $\Lambda_0$ is constrained to $\Lambda_0 < 0.095$ (95\% CL) and is
 cosmologically inert at current observational precision. Galactic-scale predictions
@@ -2228,6 +2233,72 @@ prediction: future DESI Y5 and Euclid data will either confirm the
 RIFT-LCDM prediction or force a mass-scale extension.
 
 % ============================================================
+\section{Dynamical $\Psi$: $m_0$ Scan for DESI Tension Resolution (Sim~111)}
+\label{sec:sim111}
+
+\subsection{Motivation}
+
+Sim~109 found that the locked RIFT action with $m_0=0.001\,H_0$ predicts
+$w_0=-0.992$, $w_a=-0.082$, in 3.6$\sigma$ tension with the DESI Y1
+$w_0$--$w_a$ hint ($w_0=-0.827\pm0.060$, $w_a=-0.75\pm0.29$).
+The natural question is whether increasing $m_0$ toward or above $H_0$
+(making $\Psi$ dynamical) can reduce this tension while remaining Planck-consistent.
+
+\subsection{Setup}
+
+We scan $m_0\in\{0.001,0.003,0.01,0.03,0.1,0.2,0.3,0.5,0.7,1,1.5,2,3,5,10\}\,H_0$
+using the same background solver as Sim~109 (DOP853, $\mathrm{rtol}=10^{-9}$),
+with initial condition $\Psi(z=0)=1.0\,M_\mathrm{Pl}$ and the generalised
+slow-roll velocity $y_0 = (2\Lambda_0\cdot12 - m_0^2)\,\Psi_0/3$, capped at $|y_0|\leq5$
+for large $m_0$.  A fine scan of 30 points is then run around the coarse-grid minimum.
+DESI tension is quantified as $\sigma_\mathrm{DESI}=\sqrt{\Delta w_0^2/\sigma_{w_0}^2+\Delta w_a^2/\sigma_{w_a}^2}$.
+
+\subsection{Results}
+
+\begin{table}[h]
+\centering
+\caption{$m_0$ scan: CPL parameters and tension (representative Planck-consistent values).}
+\begin{tabular}{rcccc}
+\hline
+$m_0/H_0$ & $w_0$ & $w_a$ & $\sigma_\mathrm{DESI}$ & Planck \\
+\hline
+$0.001$ & $-0.992$ & $-0.082$ & $3.6$ & PASS \\
+$0.10$  & $-0.991$ & $-0.088$ & $3.6$ & PASS \\
+$0.20$  & $-0.988$ & $-0.103$ & $3.5$ & PASS \\
+$0.30$  & $-0.986$ & $-0.114$ & $3.4$ & PASS \\
+$0.50$  & $-1.002$ & $-0.015$ & $3.9$ & PASS \\
+$0.70$  & $-1.066$ & $+0.401$ & $5.6$ & PASS \\
+$1.00$  & $-1.204$ & $+1.544$ & $10.1$ & FAIL \\
+$2.00$  & $+0.14$  & $-0.51$  & $16.1$ & FAIL \\
+\hline
+\end{tabular}
+\label{tab:sim111}
+\end{table}
+
+The minimum achievable DESI tension among all Planck-consistent results
+is $\mathbf{3.44\sigma}$ at $m_0\approx0.31\,H_0$ (fine scan).  This is
+a negligible improvement over Sim~109's 3.6$\sigma$.
+Above $m_0\approx0.5\,H_0$, the $\Psi$ field evolves dramatically
+($\Delta\Psi/\Psi_0>20\%$--$3700\%$) and violates Planck.
+
+\paragraph{Structural obstruction.}
+For all Planck-consistent $m_0$, $w_0$ remains in $[-1.002,-0.986]$
+and $w_a$ in $[-0.114, -0.015]$, far from the DESI target
+$(w_0=-0.827, w_a=-0.75)$.  The reason is architectural: in the locked
+action, the cosmological constant $\rho_\Lambda$ dominates the dark-energy
+budget at all $m_0$ where $\Psi$ remains subdominant.
+Consequently $w\approx-1$ is essentially forced, independent of $m_0$.
+
+\paragraph{Conclusion.}
+Varying $m_0$ alone cannot resolve the DESI $w_0$--$w_a$ tension within
+the locked RIFT action.  Resolution requires either removing the bare
+cosmological constant or introducing a new Ψ--DE coupling at the action
+level --- both constitute Phase~2 (unlocking the action).
+This is a clean falsifiable prediction: if DESI Y5 or Euclid confirm
+$w_0\neq-1$ at $>3\sigma$, the locked action is conclusively ruled out
+and a specific extension is required.
+
+% ============================================================
 \section{Inflationary Viability (Sim~110)}
 \label{sec:sim110}
 
@@ -2296,7 +2367,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Inflationary viability (Sim~110): the locked action ($\Lambda_0=0.003$) does not support viable inflation.  Hilltop rolling gives $N_\mathrm{max}\approx488$ (sufficient) and $r\approx0.014$ (PASS) but $n_s\approx0.932$ ($>5\sigma$ below Planck).  A quartic extension with the same $\Lambda_0$ gives $n_s\approx0.931$ (CMB window still in transition zone, not plateau).  The Starobinsky attractor requires an independent UV-scale coupling $\xi\sim10^4$, predicting $n_s=0.967$, $r=0.003$ (testable by CMB-S4/LiteBIRD).
   \item Gravitational wave constraints (Sim~108): $c_T=c$ exactly ($G_5=0$ Horndeski; independent of $\Lambda_0$); $m_g=0$ (Ward identity); GW170817 $|d_L^\mathrm{GW}/d_L^\mathrm{EM}-1|=8\times10^{-6}\ll0.06$; BBN $G_\mathrm{eff}$ deviation $<0.6\%\ll10\%$.  All GW tests PASS.
-  \item Dark energy equation of state (Sim~109): CPL fit $w_0=-0.992$, $w_a=-0.082$; $1.3\sigma$ from Planck, $3.6\sigma$ from DESI Y1.  RIFT with $m_0\ll H_0$ predicts $w\approx-1$; matching the DESI hint requires $m_0\gtrsim H_0$.
+  \item Dark energy equation of state (Sims~109, 111): CPL fit $w_0=-0.992$, $w_a=-0.082$ ($m_0=0.001\,H_0$); $1.3\sigma$ from Planck, $3.6\sigma$ from DESI Y1.  Full $m_0$ scan (Sim~111, 15 values $0.001$--$10\,H_0$) finds minimum achievable DESI tension $3.44\sigma$ at $m_0=0.31\,H_0$ (Planck-consistent); structural obstruction: $\rho_\Lambda$ dominates DE at all Planck-consistent $m_0$, forcing $w\approx-1$ universally.  Resolving the DESI hint requires unlocking the action.
   \item Solar System viability (Sim~107): chameleon screening gives $m_\mathrm{eff}^\odot\approx4\times10^{-4}$~Mpc$^{-1}$; $|\gamma-1|=1.78\times10^{-5}<2.3\times10^{-5}$ (Cassini); critical $\Psi_0<1.14\,M_\mathrm{Pl}$ for thin-shell suppression.  Solar System PASS.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).

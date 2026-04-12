@@ -1474,8 +1474,30 @@ DESI Y1 2024  & $-0.827\pm0.060$ & $-0.75\pm0.29$ & $3.6\sigma$ \\
 The $\Psi$ field varies by only 11\% over $z\in[0,5]$ (slow roll, $m_0=0.001\,H_0$);
 DE is cosmological-constant-dominated and $w\approx-1$.  RIFT passes Planck
 at 1.3$\sigma$ but is in 3.6$\sigma$ tension with the DESI Y1 $w_0$-$w_a$ hint.
-Resolving the DESI tension within RIFT requires $m_0\gtrsim H_0$ (dynamical $\Psi$),
-a testable prediction for DESI Y5 / Euclid.
+
+% ============================================================
+\section{$m_0$ Scan: DESI Tension is Structural (Sim~111)}
+\label{sec:sim111}
+
+To test whether a larger $m_0$ can resolve the DESI tension, we scan
+$m_0\in[0.001,10]\,H_0$ using the Sim~109 background solver.  The full
+results are given in Section~\ref{sec:sim109} of the master paper; the
+key finding is:
+\begin{itemize}
+  \item The minimum achievable DESI tension (Planck-consistent) is
+    $\mathbf{3.44\sigma}$ at $m_0\approx0.31\,H_0$.
+  \item For all Planck-consistent $m_0$, the CPL parameters satisfy
+    $w_0\in[-1.002,-0.986]$ and $w_a\in[-0.114,-0.015]$, far from the DESI
+    target ($w_0=-0.827$, $w_a=-0.75$).
+  \item Above $m_0\approx 0.5\,H_0$, $\Psi$ evolves dramatically and
+    violates Planck; above $m_0\gtrsim 1\,H_0$ the field is
+    oscillation-dominated ($w\to 0$).
+\end{itemize}
+The obstruction is structural: $\rho_\Lambda$ dominates the DE budget
+at all $m_0$ where $\Psi$ remains subdominant.  The locked RIFT action
+\emph{cannot} produce the DESI $w_0$--$w_a$ hint; resolution requires
+unlocking the action (removing the bare $\Lambda$ or adding a
+$\Psi$--DE coupling).
 
 % ============================================================
 \section{Conclusion}
@@ -1496,6 +1518,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item UV regulation (Sims~102, 104): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated; naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$ (Sim~102).  Full one-loop calculation (Sim~104): graviton wavefunction renormalization protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction $\delta\Lambda_0/\Lambda_0 \approx 2.4\times10^{-2}$ finite; two-loop $\Sigma_D/m_0^2 = 3.4\times10^{-6}$ (perturbative hierarchy $\Sigma_A \gg \Sigma_C \gg \Sigma_D$ confirmed).  UV-finiteness holds at full one-loop level in the resummed theory; two-loop graviton self-energy remains open.
   \item Predicts recursive graviton emission via curvature memory spikes.
   \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.
+  \item Extended tests (Sims~107--111): Solar System ($|\gamma-1|=1.78\times10^{-5}$, PASS), GW speed ($c_T=c$ exactly, 6/6 PASS), dark energy equation of state ($w_0=-0.992$, 3.6$\sigma$ DESI tension), $m_0$ scan (minimum achievable DESI tension $3.44\sigma$; locked action structurally cannot resolve DESI hint; unlocking required).
 \end{itemize}
 
 \paragraph{Honest assessment.}

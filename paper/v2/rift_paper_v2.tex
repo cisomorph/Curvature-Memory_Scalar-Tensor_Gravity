@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to nineteen independent tests (Sims~87--106).
+We subject RIFT to twenty independent tests (Sims~87--107).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -129,7 +129,7 @@ The key results are:
     field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$
     below the nonlinear threshold; energy density deficit is $2.7\times10^6\times$;
     all kinetic modifications of the locked action are exhausted.
-In all cosmological tests (Sims~87--98), RIFT at the joint best-fit is statistically
+In all cosmological tests (Sims~87--98, 107), RIFT at the joint best-fit is statistically
 indistinguishable from $\Lambda$CDM at current precision. The recursive field
 coupling $\Lambda_0$ is constrained to $\Lambda_0 < 0.095$ (95\% CL) and is
 cosmologically inert at current observational precision. Galactic-scale predictions
@@ -1987,6 +1987,90 @@ have now been exhausted.  The conclusion is unambiguous: \emph{RIFT at its
 cosmological best-fit cannot replace dark matter through any modification of the
 existing Lagrangian}.  A new coupling between $\Psi$ and baryonic matter,
 derivable from first principles, is the minimum new physics required.
+
+% ============================================================
+\section{Effective Matter-$\Psi$ Coupling and Solar System Viability (Sim~107)}
+\label{sec:sim107}
+
+\subsection{Setup}
+
+Having established UV completeness (Sims~102--106) we now derive the
+effective coupling between $\Psi$ and ordinary matter from first principles.
+In RIFT all matter--scalar interactions are mediated by curvature.  Varying
+the action with respect to $\Psi$ around a background $\Psi_0$ in the
+presence of a matter source $\delta\rho$:
+\begin{equation}
+  \Box\,\delta\Psi - m_{\rm eff}^2(\rho)\,\delta\Psi
+  = 16\pi G_N \Lambda_0 \Psi_0\,\delta\rho ,
+  \label{eq:dPsi}
+\end{equation}
+where the effective mass acquires a density-dependent (chameleon) piece
+\begin{equation}
+  m_{\rm eff}^2(\rho) = m_0^2 + 2\Lambda_0\,|R| \approx m_0^2 + 2\Lambda_0\,\rho
+  \quad (8\pi G=1)
+\end{equation}
+and the right-hand side is the gravitationally-induced scalar charge density.
+In Brans--Dicke language the dimensionless scalar coupling is
+\begin{equation}
+  \alpha(\Psi_0) = \frac{\Lambda_0\Psi_0}{1 + 2\Lambda_0\Psi_0^2} ,
+\end{equation}
+giving the post-Newtonian parameter $\gamma-1 = -2\alpha^2/(1+\alpha^2)$.
+
+\subsection{Results}
+
+\textbf{Chameleon mass scan.}
+Table~\ref{tab:sim107_env} shows $m_{\rm eff}$ across eight environments.
+Inside the Solar interior the Compton wavelength falls to
+$\lambda_\Psi \approx 8\times10^{-11}$\,Mpc (sub-femtometre), providing
+complete screening.  In interplanetary space $\lambda_\Psi \sim 4\times10^6$\,Mpc,
+so the fifth force is long-range there, but negligible if $\alpha^2$ is small.
+
+\begin{table}[h]
+\centering
+\caption{Effective $\Psi$ mass and Compton wavelength across environments.
+\textit{Chameleon active} when $2\Lambda_0\rho > m_0^2$.}
+\label{tab:sim107_env}
+\begin{tabular}{lccc}
+\hline
+Environment & $m_{\rm eff}/H_0$ & $\lambda_\Psi$ [Mpc] & Active \\
+\hline
+Deep void              & $1.70\times10^{-3}$ & $2.5\times10^{6}$ & yes \\
+Cosmic mean            & $7.5\times10^{-2}$  & $5.7\times10^{4}$ & yes \\
+Interstellar (SS)      & $13.8$              & $310$             & yes \\
+Solar corona           & $1.4\times10^{6}$   & $3\times10^{-3}$  & yes \\
+Solar interior         & $5.2\times10^{13}$  & $8\times10^{-11}$ & yes \\
+Earth surface          & $1.0\times10^{14}$  & $4\times10^{-11}$ & yes \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Fifth-force coupling.}
+For $\Psi_0 = 1\,M_{\rm Pl}$ (natural value):
+$\alpha^2 = 8.9\times10^{-6}$,
+$|\gamma-1| = 1.78\times10^{-5}$.
+The Cassini bound ($|\gamma-1|<2.3\times10^{-5}$) is \emph{satisfied}.
+The critical constraint is $|\Psi_0| < 1.14\,M_{\rm Pl}$; for larger backgrounds
+the Cassini bound would be violated.
+
+The Yukawa suppression at 1\,AU is negligible:
+$m_{\rm eff}\cdot r_{\rm AU} = 1.1\times10^{-15}$, confirming the fifth force is
+purely long-range in the Solar System.  The thin-shell fraction for the Sun
+$\chi_\odot = 1$ (no compression at Solar System densities), so no
+additional screening is active at the measurement location.
+
+\subsection{Conclusion}
+
+\begin{itemize}
+  \item The locked RIFT action passes Solar System fifth-force constraints
+        for all cosmologically natural values $\Psi_0 \lesssim 1\,M_{\rm Pl}$.
+  \item No additional screening mechanism is required beyond the natural
+        smallness of $\alpha^2 = O(\Lambda_0^2\Psi_0^2)$.
+  \item The chameleon mechanism is active but only relevant inside planetary
+        and stellar bodies (irrelevant for the Cassini measurement).
+  \item The critical bound $|\Psi_0| < 1.14\,M_{\rm Pl}$ translates to a
+        constraint on cosmological initial conditions, consistent with slow-roll
+        evolution of a light scalar ($m_0 \ll H_0$).
+\end{itemize}
 
 % ============================================================
 \section{Conclusion}

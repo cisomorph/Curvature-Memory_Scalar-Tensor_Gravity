@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to twenty-one independent tests (Sims~87--108).
+We subject RIFT to twenty-two independent tests (Sims~87--109).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -2121,6 +2121,60 @@ at $z=1$, below current LIGO measurement precision ($\sim5\%$): \textbf{PASS}.
 
 All six GW tests pass.  The key structural reason is the absence of the $G_5$
 Horndeski term in the locked RIFT action.
+
+% ============================================================
+\section{Dark Energy Equation of State $w(z)$ (Sim~109)}
+\label{sec:sim109}
+
+\subsection{Setup}
+
+We solve the full RIFT background (modified Friedmann + Klein-Gordon)
+numerically in the variable $x=\ln a$, with the field velocity
+$y=d\Psi/dx$.  The modified Friedmann constraint is
+\begin{equation}
+  H^2\bigl[3(1+2\Lambda_0\Psi^2) + 6\Lambda_0\Psi y - \tfrac{1}{2}y^2\bigr]
+  = \rho_m a^{-3} + \rho_r a^{-4} + \rho_\Lambda + \tfrac{1}{2}m_0^2\Psi^2 .
+\end{equation}
+The effective dark-energy density is $\rho_{\rm DE}(z) = 3H^2(z) - \rho_m(z) - \rho_r(z)$,
+and the equation of state is extracted via
+$w_{\rm eff} = -1 - \frac{1}{3}\frac{d\ln\rho_{\rm DE}}{d\ln a}$.
+
+\subsection{Results}
+
+The background Hubble rate at $z=0$ is $H_{\rm RIFT}/H_{\rm LCDM}=0.9970$
+($-0.30\%$), reflecting the 0.6\% reduction in $G_{\rm eff}$.
+The field $\Psi(z)$ varies by only 11\% over $z=0$--$5$; for
+$m_0=0.001\,H_0\ll H_0$ it is in slow roll throughout.
+
+The CPL fit over $z\in[0,2]$ gives
+\begin{equation}
+  w_0 = -0.992,\quad w_a = -0.082 .
+\end{equation}
+
+\begin{table}[h]
+\centering
+\caption{RIFT dark energy equation of state vs observations.}
+\begin{tabular}{lccc}
+\hline
+Dataset & $w_0$ & $w_a$ & Tension \\
+\hline
+RIFT (locked action) & $-0.992$ & $-0.082$ & --- \\
+Planck 2018 wCDM     & $-1.03\pm0.03$ & $0$ (fixed) & $1.3\sigma$ \\
+DESI Y1 (2024)       & $-0.827\pm0.060$ & $-0.75\pm0.29$ & $3.6\sigma$ \\
+\hline
+\end{tabular}
+\label{tab:wde}
+\end{table}
+
+\paragraph{Interpretation.}
+RIFT predicts $w\approx-1$ for the locked action with $m_0\ll H_0$:
+the $\Psi$ field is nearly frozen and dark energy is dominated by the
+cosmological constant $\rho_\Lambda$.  This is \emph{consistent with
+Planck} (1.3$\sigma$) but in 3.6$\sigma$ tension with the DESI Y1
+$w_0$-$w_a$ hint.  Resolving the DESI tension within RIFT would require
+a dynamical $\Psi$ with $m_0\gtrsim H_0$, which is a testable
+prediction: future DESI Y5 and Euclid data will either confirm the
+RIFT-LCDM prediction or force a mass-scale extension.
 
 % ============================================================
 \section{Conclusion}

@@ -1447,6 +1447,37 @@ the slow-roll approximation gives $\Psi_0(z)\approx\Psi_0(0)$ for
 $m_0=0.001\,H_0$ throughout the observable universe.
 
 % ============================================================
+\section{Dark Energy Equation of State (Sim~109)}
+\label{sec:sim109}
+
+The full RIFT background (modified Friedmann + Klein-Gordon) is integrated
+numerically from $z=0$ to $z=5$.  The effective equation of state extracted
+from $\rho_{\rm DE}(z)=3H^2-\rho_m-\rho_r$ and fitted to CPL gives:
+\[
+  w_0 = -0.992,\quad w_a = -0.082 .
+\]
+
+\begin{table}[h]
+\centering
+\caption{RIFT dark energy equation of state vs observations (Sim~109).}
+\begin{tabular}{lccc}
+\hline
+Dataset & $w_0$ & $w_a$ & Tension \\
+\hline
+RIFT (locked) & $-0.992$ & $-0.082$ & --- \\
+Planck 2018   & $-1.03\pm0.03$ & $0$ (fixed) & $1.3\sigma$ \\
+DESI Y1 2024  & $-0.827\pm0.060$ & $-0.75\pm0.29$ & $3.6\sigma$ \\
+\hline
+\end{tabular}
+\end{table}
+
+The $\Psi$ field varies by only 11\% over $z\in[0,5]$ (slow roll, $m_0=0.001\,H_0$);
+DE is cosmological-constant-dominated and $w\approx-1$.  RIFT passes Planck
+at 1.3$\sigma$ but is in 3.6$\sigma$ tension with the DESI Y1 $w_0$-$w_a$ hint.
+Resolving the DESI tension within RIFT requires $m_0\gtrsim H_0$ (dynamical $\Psi$),
+a testable prediction for DESI Y5 / Euclid.
+
+% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 

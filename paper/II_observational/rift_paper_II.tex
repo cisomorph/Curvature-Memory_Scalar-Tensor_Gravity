@@ -1338,6 +1338,73 @@ BAO scale & $r_d$ from echo shells; Sim~101: RIFT and LCDM degenerate ($|\Delta 
 \end{table}
 
 % ============================================================
+\section{Solar System Viability: Effective Matter Coupling (Sim~107)}
+\label{sec:sim107}
+
+\subsection{Motivation}
+
+Passing CMB and BAO tests is necessary but not sufficient for a modified-gravity
+theory.  The $\Psi$ field mediates a long-range scalar force that must not
+violate Solar System constraints.  We derive the $\Psi$--matter coupling from
+the linearised RIFT field equation and test against the Cassini bound
+($|\gamma-1|<2.3\times10^{-5}$, Bertotti et al.\ 2003).
+
+\subsection{Effective Coupling}
+
+Linearising around background $\Psi_0$ in the presence of matter perturbation
+$\delta\rho$:
+\[
+  \Box\,\delta\Psi - m_{\rm eff}^2(\rho)\,\delta\Psi
+  = 16\pi G_N \Lambda_0\Psi_0\,\delta\rho ,
+  \qquad
+  m_{\rm eff}^2(\rho) = m_0^2 + 2\Lambda_0\rho .
+\]
+In scalar-tensor language the dimensionless coupling is
+\[
+  \alpha(\Psi_0) = \frac{\Lambda_0\Psi_0}{1+2\Lambda_0\Psi_0^2},
+  \qquad
+  \gamma - 1 = \frac{-2\alpha^2}{1+\alpha^2}.
+\]
+
+The effective mass is \emph{chameleon-like}: $m_{\rm eff}$ increases with
+density, screening the field inside compact bodies.  At Solar interior density
+($\rho_\odot\approx1400\,\mathrm{kg\,m^{-3}}$) the Compton wavelength drops to
+$\lambda_\Psi\approx8\times10^{-11}$\,Mpc (sub-femtometre), providing complete
+screening.  In interplanetary space $\lambda_\Psi\sim4\times10^6$\,Mpc, so
+the force is unscreened but couples only as $\alpha^2\sim\Lambda_0^2\Psi_0^2$.
+
+\subsection{Results}
+
+At the natural background value $\Psi_0 = 1\,M_{\rm Pl}$:
+\begin{align*}
+  \alpha^2 &= 8.9\times10^{-6}, \\
+  |\gamma-1| &= 1.78\times10^{-5} \quad < \quad 2.3\times10^{-5}\ \text{(Cassini)}.
+\end{align*}
+The critical constraint is $|\Psi_0|<1.14\,M_{\rm Pl}$; the locked action
+\emph{requires no additional screening mechanism}.
+Table~\ref{tab:sim107} summarises the environmental chameleon scan.
+
+\begin{table}[h]
+\centering
+\caption{Effective $\Psi$ mass and fifth-force Compton wavelength (Sim~107).}
+\label{tab:sim107}
+\begin{tabular}{lccc}
+\hline
+Environment & $m_{\rm eff}/H_0$ & $\lambda_\Psi$ [Mpc] & Chameleon \\
+\hline
+Cosmic mean   & $7.5\times10^{-2}$  & $5.7\times10^{4}$ & yes \\
+Interstellar  & $13.8$              & $310$             & yes \\
+Solar interior& $5.2\times10^{13}$  & $8\times10^{-11}$ & yes \\
+Earth surface & $1.0\times10^{14}$  & $4\times10^{-11}$ & yes \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Verdict.}  RIFT passes Solar System viability for all
+$|\Psi_0|\lesssim 1\,M_{\rm Pl}$.  The coupling is naturally suppressed by
+$\alpha^2=O(\Lambda_0^2)\sim10^{-5}$; no fine-tuning is required.
+
+% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 

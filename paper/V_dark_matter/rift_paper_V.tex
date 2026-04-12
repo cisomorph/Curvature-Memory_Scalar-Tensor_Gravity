@@ -1,0 +1,180 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{natbib}
+\geometry{margin=2.5cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\begin{document}
+
+\title{RIFT Cannot Replace Dark Matter:\\
+Exhaustive Test of Kinetic Modifications to the Locked Action}
+
+\author{Christopher Robert Barrick Wilson\\
+\small Independent Researcher\\
+\small \texttt{C.Isomorph@gmail.com}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+A recurring question for any modified-gravity theory is whether the
+scalar degree of freedom can source galactic dark matter halos and
+reproduce flat rotation curves without invoking collisionless dark matter
+particles.  We subject the locked RIFT action
+($\Lambda_0=0.003$, $m_0=0.01$~Mpc$^{-1}$) to three independent tests
+against the NGC~3198 rotation curve ($v_{\rm flat}=150$~km/s):
+(i)~static Yukawa profile (Sim~99): the $\Psi$ halo falls exponentially
+    steeper than the $\rho\propto r^{-2}$ isothermal required for flat
+    curves, with a density deficit of $2.7\times10^6\times$;
+(ii)~time-domain PDE condensation (Sim~100): the galactic curvature
+    coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}$~kpc$^{-2}$
+    is $5\times10^7\times$ weaker than $m_0^2$; curvature condensation at
+    galactic densities is impossible; attractive self-coupling
+    ($\lambda<0$) produces tachyonic blow-up, not a stable halo;
+(iii)~Vainshtein screening (Sim~103): the nonlinear kinetic term
+    $(\alpha_V/4M_V^2)(\partial\Psi)^4$ remains deep in the linear
+    regime for all scanned $(\alpha_V, M_V)$; the Vainshtein ratio
+    $\mathcal{V}=\alpha_V(\delta\Psi')^2/M_V^2\leq3.7\times10^{-6}$.
+All three mechanisms fail for the same root reason: the galactic field
+gradient $|\delta\Psi'|\sim6\times10^{-8}$~kpc$^{-1}$, set by the weak
+$\Lambda_0 R_{\rm gal}$ source, is six orders of magnitude below any
+nonlinear threshold.  A direct matter coupling $\beta\sim1600\,\Lambda_0$
+would close the density gap but is not contained in the locked action and
+would violate cosmological homogeneity constraints.  The conclusion is
+definitive: RIFT at its cosmological best-fit cannot replace dark matter
+through any modification of the existing Lagrangian.  New first-principles
+physics coupling $\Psi$ to baryonic matter is the minimum requirement.
+\end{abstract}
+
+\section{Introduction}
+
+Flat rotation curves of spiral galaxies --- the canonical evidence for
+dark matter --- require a halo density $\rho\propto r^{-2}$ (isothermal)
+within the optical disk.  For NGC~3198, with $v_{\rm flat}=150$~km/s
+and $R_d=2.72$~kpc, the required halo density at $r=10$~kpc is
+\begin{equation}
+\rho_{\rm iso}(10~{\rm kpc}) = \frac{v_{\rm flat}^2}{4\pi G r^2}
+  = 4.2\times10^3\,M_\odot\,{\rm kpc}^{-3}\,.
+\label{eq:iso}
+\end{equation}
+
+The RIFT scalar field $\Psi$ couples to spacetime curvature through the
+non-minimal term $\Lambda_0\Psi R$ in the action.  Could this coupling
+produce a self-gravitating $\Psi$ condensate that mimics a dark matter halo?
+We test this exhaustively.
+
+\section{Test I: Static Yukawa Profile (Sim~99)}
+
+The static field equation for $\Psi$ in spherical symmetry (with the
+FLRW background subtracted) gives a Yukawa profile:
+\begin{equation}
+\delta\Psi(r) = A\,\frac{e^{-m_0 r}}{r}
+  + B\,\frac{e^{+m_0 r}}{r}\,.
+\end{equation}
+The physical (decaying) solution with $m_0^{-1}=10{,}000$~kpc gives an
+effective energy density
+$\rho_\Psi \propto (\nabla\delta\Psi)^2 \propto e^{-2m_0 r}/r^4$.
+This falls exponentially steeply --- orders of magnitude faster than
+$r^{-2}$ --- and cannot reproduce flat rotation curves for any value of
+the amplitude $A$.
+
+\paragraph{G$_{\rm eff}$ scan.} A scan over $G_{\rm eff}/G\in[1, 10^4]$
+confirms: boosting $\Lambda_0$ changes the amplitude but not the profile
+shape, which remains Yukawa.  No static solution produces
+$\rho\propto r^{-2}$.
+
+\section{Test II: Time-Domain Condensation (Sim~100)}
+
+We integrate the $\Psi$ Klein--Gordon PDE on a fixed galactic background
+over $10^4$~Mpc/$c$ ($\sim 10^{10}$~yr), testing whether:
+(a) the galactic curvature source $2\Lambda_0|R_{\rm gal}|$ drives a
+    condensate, or
+(b) an attractive self-coupling $\lambda\Psi^3/3!$ stabilises a halo.
+
+\paragraph{Curvature coupling.}
+The galactic Ricci scalar $|R_{\rm gal}|\approx 8\pi G\rho_{\rm disk}
+\approx 10^{-9}$~kpc$^{-2}$.  The coupling strength
+$2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}$~kpc$^{-2}$ compared
+to $m_0^2=10^{-4}$~kpc$^{-2}$: the source is $5\times10^7\times$
+weaker than the restoring force.  No condensate forms.
+
+\paragraph{Attractive self-coupling.}
+A scan over $\lambda<0$ shows the field diverges tachyonically before
+forming a stable halo at any galactic density.  The static (Sim~99) and
+time-domain (Sim~100) limits agree, confirming adiabaticity and ruling out
+history-dependence as a resolution.
+
+\section{Test III: Vainshtein Screening (Sim~103)}
+
+The Vainshtein mechanism introduces the nonlinear kinetic term
+$(\alpha_V/4M_V^2)(\partial\Psi)^4$, enhancing the effective energy
+density:
+\begin{equation}
+\rho_\Psi(r) = \frac{c^2}{8\pi G}\cdot\tfrac{1}{2}
+  \bigl(\delta\Psi'\bigr)^2
+  \left[1 + \underbrace{\frac{\alpha_V}{M_V^2}(\delta\Psi')^2}_{\mathcal{V}}\right].
+\end{equation}
+In the Poisson-limit ($m_0 r\ll 1$) the field gradient is:
+\begin{equation}
+\frac{d\delta\Psi}{dr} = \frac{2G\Lambda_0 M_{\rm enc}(r)}{r^2}
+  \approx 6.1\times10^{-8}\,{\rm kpc}^{-1}\quad(r=10~{\rm kpc})\,.
+\end{equation}
+
+\begin{table}[h]
+\centering
+\caption{Vainshtein ratio at $r=10$~kpc for NGC~3198.}
+\begin{tabular}{ccc}
+\toprule
+$\alpha_V$ & $M_V$ [kpc$^{-1}$] & $\mathcal{V}=\alpha_V(\delta\Psi')^2/M_V^2$ \\
+\midrule
+$1$    & $0.001$ & $3.7\times10^{-9}$ \\
+$100$  & $0.001$ & $3.7\times10^{-7}$ \\
+$1000$ & $0.001$ & $3.7\times10^{-6}$ \\
+$1000$ & $0.01$  & $3.7\times10^{-8}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every combination is deep in the linear regime ($\mathcal{V}\ll1$).
+The scalar energy density is
+$\rho_\Psi(10~{\rm kpc}) = 1.6\times10^{-3}\,M_\odot\,{\rm kpc}^{-3}$,
+a factor of $2.7\times10^6$ below the isothermal requirement
+(eq.~\ref{eq:iso}).
+
+\section{Root Cause and Required New Physics}
+
+All three tests fail for the same reason.
+The field gradient $|\delta\Psi'|\sim6\times10^{-8}$~kpc$^{-1}$ is
+determined by the coupling strength $\Lambda_0 R_{\rm gal}$, which
+is fixed by the cosmological best-fit value $\Lambda_0=0.003$ and the
+galactic curvature $R_{\rm gal}\sim10^{-9}$~kpc$^{-2}$.
+This is an unavoidable consequence of the locked action: the same
+$\Lambda_0$ that ensures cosmological consistency makes the galactic
+source negligible.
+
+To close the $2.7\times10^6\times$ density gap, a direct matter coupling
+$\beta\Psi\rho_b$ with $\beta\approx4.9\approx1600\,\Lambda_0$ would be
+needed.  Such a coupling:
+\begin{enumerate}
+\item Is not derivable from the locked action;
+\item Introduces a large new free parameter;
+\item Would drive $\mathcal{O}(1)$ perturbations in the cosmological
+      background, violating CMB homogeneity.
+\end{enumerate}
+
+\section{Conclusion}
+
+RIFT at its cosmological best-fit cannot replace dark matter through any
+modification of the existing Lagrangian.
+The scalar field couples too weakly to galactic curvature to source
+the required $\rho\propto r^{-2}$ halo, and no kinetic enhancement
+(Yukawa profile, temporal condensation, Vainshtein nonlinearity) changes
+this conclusion.
+A first-principles coupling between $\Psi$ and baryonic matter ---
+derivable from a symmetry principle rather than added by hand --- is
+the minimum new physics required for RIFT to address the dark matter problem.
+
+\end{document}

@@ -1,0 +1,149 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{natbib}
+\geometry{margin=2.5cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\rd}{r_{\mathrm{d}}}
+
+\begin{document}
+
+\title{The BAO Sound Horizon in RIFT:\\
+First-Principles Derivation and Degeneracy with $\Lambda$CDM}
+
+\author{Christopher Robert Barrick Wilson\\
+\small Independent Researcher\\
+\small \texttt{C.Isomorph@gmail.com}}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+The Recursive Intelligence-Field Theory (RIFT) introduces a non-minimal
+curvature coupling $\Lambda_0\Psi R$ to the scalar--tensor action.  A
+longstanding open question is whether this coupling shifts the BAO comoving
+sound horizon $\rd$ --- a shift that would constitute the first genuinely
+distinct prediction over $\Lambda$CDM.  We derive $\rd$ directly from the
+RIFT perturbation equations: the Klein--Gordon equation for $\Psi$ on the
+FLRW background is integrated alongside the standard photon--baryon plasma,
+and $\rd = \int_{z_{\rm drag}}^\infty c_s(z)\,c/H(z)\,dz$ is evaluated
+numerically (Sim~101).  Across the full observationally allowed coupling
+range $\Lambda_0\in[0,0.095]$ the maximum fractional shift is
+$|\Delta\rd/\rd| = 21$~ppm, four orders of magnitude below current BAO
+measurement precision ($\sim 3000$~ppm).  The scalar energy density at the
+drag epoch is $\rho_\Psi/\rho_{\rm tot}\sim10^{-10}$, confirming that the
+RIFT background is indistinguishable from FLRW at $\Lambda_0\ll 1$.
+The echo-shell mechanism proposed in the parent RIFT paper is therefore
+a physical reinterpretation of standard acoustic physics, not a derivation
+of a distinct $\rd$.  The detection threshold for a RIFT sound-horizon
+signal requires $\Lambda_0\gg 0.1$, well beyond the current 95\% upper limit.
+\end{abstract}
+
+\section{Introduction}
+
+Baryon Acoustic Oscillations fix a standard ruler at the comoving sound
+horizon
+\begin{equation}
+\rd = \int_{z_{\rm drag}}^{\infty} \frac{c_s(z)\,c}{H(z)}\,dz\,,
+\label{eq:rd}
+\end{equation}
+where $c_s = c/\sqrt{3(1+R_b)}$ is the photon--baryon sound speed,
+$R_b = 3\rho_b/(4\rho_\gamma)$, and the drag redshift $z_{\rm drag}\approx1059$
+marks the decoupling of baryons from radiation.  In $\Lambda$CDM the
+integral is dominated by the radiation era and yields
+$\rd\approx 147$~Mpc (Planck~2018).
+
+RIFT extends the Einstein--Hilbert action with a non-minimal coupling
+$\Lambda_0\Psi R$, where $\Psi$ satisfies the Klein--Gordon equation
+\begin{equation}
+\ddot\Psi + 3H\dot\Psi + m_0^2\Psi = -2\Lambda_0 R\,.
+\label{eq:KG}
+\end{equation}
+If $\Psi$ carries non-negligible energy density during recombination,
+or if the RIFT modification of $H(z)$ is significant, $\rd$ would shift.
+This paper quantifies that shift from first principles.
+
+\section{Method: RIFT Perturbation Equations at Recombination}
+
+We integrate the background FLRW system numerically from $z=10^6$ to $z=0$:
+\begin{align}
+H^2(z) &= H_0^2\bigl[\Omega_m(1+z)^3 + \Omega_r(1+z)^4
+  + \Omega_\Lambda + \Omega_\Psi(z)\bigr]\,,\\
+\frac{du}{dz} &= u\!\left(\frac{2}{1+z} - \frac{H'}{H}\right)
+  - \frac{m_0^2\Psi}{(1+z)^2 H^2}\,,\quad u \equiv \frac{d\Psi}{dz}\,,
+\end{align}
+where $\Omega_\Psi(z) = (\dot\Psi^2/2 + m_0^2\Psi^2/2)/(3H_0^2M_{\rm Pl}^2)$.
+The sound horizon is computed via eq.~\eqref{eq:rd} with CLASS-calibrated
+$z_{\rm drag}=1059$.
+
+Best-fit parameters from the joint CMB+BAO fit (Sim~90):
+$H_0=67.59$~km/s/Mpc, $\Omega_m=0.312$, $\Omega_r=9.24\times10^{-5}$,
+$m_0=0.01$~Mpc$^{-1}$, $\Psi_0(z=0)=0.003$.
+
+\section{Results}
+
+\begin{table}[h]
+\centering
+\caption{BAO sound horizon versus RIFT coupling.}
+\label{tab:rd}
+\begin{tabular}{cccc}
+\toprule
+$\Lambda_0$ & $\rd^{\rm RIFT}$ [Mpc] & $\Delta\rd$ [Mpc] & $\Delta\rd/\rd$ \\
+\midrule
+$0$ ($\Lambda$CDM) & $153.05$ & $0$ & $0$ \\
+$0.003$ & $153.05$ & $-1.0\times10^{-4}$ & $-0.68$~ppm \\
+$0.008$ & $153.05$ & $-2.8\times10^{-4}$ & $-1.8$~ppm \\
+$0.050$ & $153.05$ & $-1.7\times10^{-3}$ & $-11$~ppm \\
+$0.095$ & $153.05$ & $-3.3\times10^{-3}$ & $-21$~ppm \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The scalar energy density at the drag epoch is
+$\rho_\Psi/\rho_{\rm tot}\approx 1.5\times10^{-10}$ for all scanned
+$\Lambda_0$, confirming the RIFT background is indistinguishable from
+FLRW at recombination.
+
+The $\Lambda$CDM baseline $\rd = 153$~Mpc differs from the Planck value
+of 147~Mpc because the simplified Friedmann equation omits neutrino
+free-streaming ($\Delta N_{\rm eff}$); both RIFT and $\Lambda$CDM share
+this approximation, so the fractional shifts are unaffected.
+
+\section{Discussion}
+
+The maximum shift $|\Delta\rd/\rd| = 21$~ppm is four orders of magnitude
+below the $\sim 3000$~ppm (0.3\%) measurement precision of current BAO
+surveys.  RIFT and $\Lambda$CDM are degenerate in $\rd$ at all
+observationally allowed couplings.
+
+The echo-shell picture advanced in the parent RIFT paper --- that the
+$\Lambda_0\Psi R$ coupling reinforces acoustic oscillations and shifts
+the BAO peak --- is confirmed as a physical interpretation of standard
+photon--baryon acoustics rather than a first-principles derivation
+of a distinct scale.  The sound horizon $\rd$ remains a free parameter
+fitted to data; RIFT does not predict a different value from $\Lambda$CDM
+within the locked action.
+
+The detection threshold for a RIFT $\rd$ signal requires
+$\Lambda_0\gg 0.1$, well beyond the current 95\% upper limit
+$\Lambda_0<0.095$ from joint CMB+BAO fitting (Sim~90, 93).
+Next-generation surveys (DESI~Y5, Euclid) will constrain $\rd$ to
+$\sim 0.1\%$, probing $\Lambda_0\gtrsim 0.1$ --- just at the edge of
+the current bound.
+
+\section{Conclusion}
+
+A direct first-principles derivation of the BAO sound horizon in RIFT
+yields $|\Delta\rd/\rd|<21$~ppm across all allowed couplings.
+The locked action at $\Lambda_0\approx 0.003$ does not predict a
+measurably different $\rd$ from $\Lambda$CDM.
+This closes the P2.7 referee concern raised for the parent paper:
+RIFT is consistent with all BAO data not because it predicts the
+same ruler, but because it \emph{is} the same ruler at current couplings.
+A detectable $\rd$ shift is a falsifiable prediction for
+$\Lambda_0\gtrsim 0.1$.
+
+\end{document}

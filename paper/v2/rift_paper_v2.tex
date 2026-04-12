@@ -2177,6 +2177,62 @@ prediction: future DESI Y5 and Euclid data will either confirm the
 RIFT-LCDM prediction or force a mass-scale extension.
 
 % ============================================================
+\section{Inflationary Viability (Sim~110)}
+\label{sec:sim110}
+
+The Einstein-frame potential for the locked RIFT action is
+\begin{equation}
+V_E(\Psi) = \frac{m_0^2\,\Psi^2}{2\bigl(1+2\Lambda_0\Psi^2\bigr)^2},
+\end{equation}
+which has a maximum at $\Psi_\mathrm{max}=1/\sqrt{2\Lambda_0}\approx12.9\,M_\mathrm{Pl}$
+(for $\Lambda_0=0.003$). Slow-roll inflation starting near the hilltop was evaluated
+numerically.
+
+\paragraph{Regime A — quadratic, $\Lambda_0=0.003$.}
+The field rolls from $\Psi\lesssim\Psi_\mathrm{max}$ toward the origin.
+The total available e-fold count $N_\mathrm{max}\approx488$ is
+\emph{sufficient}, and the tensor-to-scalar ratio $r\approx0.014$ at $N_e=60$
+satisfies the Planck bound $r<0.036$.  However, the hilltop curvature
+$\eta\approx-0.031$ drives the spectral index to $n_s\approx0.932$,
+more than $5\sigma$ below the Planck value $n_s=0.9649\pm0.0044$.
+Regime A \textbf{fails} on the spectral index.
+
+\paragraph{Regime B — quartic extension, $\Lambda_0=0.003$.}
+Adding $V_J=\lambda\Psi^4$ shifts the CMB window to $\Psi_{60}\approx18.6\,M_\mathrm{Pl}$
+(ratio $1.44\,\Psi_\mathrm{max}$), still in the transition zone between the
+small-field and plateau regimes.  The resulting $n_s\approx0.931$, $r\approx0.12$
+also \textbf{fails}.
+
+\paragraph{Starobinsky/Higgs attractor.}
+The plateau in $V_E$ is not reached until $\Psi\gg\Psi_\mathrm{max}$, which
+requires the non-minimal coupling $\xi\gg1/(2\Psi_\mathrm{CMB}^2)\sim10^{-3}$,
+i.e.\ $\xi\sim10^3$--$10^5$ as in standard Higgs inflation.  With such a
+UV-scale coupling the quartic potential gives the Starobinsky attractor:
+$n_s=1-2/N\approx0.967$, $r=12/N^2\approx0.003$ (PASS).  This UV coupling
+is independent of the DE coupling $\Lambda_0=0.003$; RIFT does not require
+the same scalar to drive both inflation and dark energy.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccl}
+\hline
+Model & $n_s$ & $r$ & Status \\
+\hline
+RIFT quadratic, $\Lambda_0=0.003$ & $0.932$ & $0.014$ & FAIL ($n_s$) \\
+RIFT quartic, $\Lambda_0=0.003$ & $0.931$ & $0.120$ & FAIL (transition zone) \\
+Quartic $+$ large $\xi$ (Starobinsky) & $0.967$ & $0.003$ & PASS (UV sector) \\
+Starobinsky $R^2$ / Higgs inflation & $0.967$ & $0.003$ & PASS \\
+\hline
+\multicolumn{4}{l}{Planck 2018: $n_s=0.9649\pm0.0044$, $r<0.036$ (95\% CL)} \\
+\hline
+\end{tabular}
+\caption{Inflationary predictions. The RIFT locked action ($\Lambda_0=0.003$)
+does not support viable inflation; a UV-scale non-minimal coupling $\xi\sim10^4$
+gives Starobinsky predictions testable by CMB-S4 and LiteBIRD.}
+\label{tab:inflation}
+\end{table}
+
+% ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
@@ -2187,6 +2243,10 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
 \begin{itemize}
   \item Unified Lagrangian (eq.~\eqref{eq:action}) couples mass, curvature, and entropy through a single field $\Psi$.
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
+  \item Inflationary viability (Sim~110): the locked action ($\Lambda_0=0.003$) does not support viable inflation.  Hilltop rolling gives $N_\mathrm{max}\approx488$ (sufficient) and $r\approx0.014$ (PASS) but $n_s\approx0.932$ ($>5\sigma$ below Planck).  A quartic extension with the same $\Lambda_0$ gives $n_s\approx0.931$ (CMB window still in transition zone, not plateau).  The Starobinsky attractor requires an independent UV-scale coupling $\xi\sim10^4$, predicting $n_s=0.967$, $r=0.003$ (testable by CMB-S4/LiteBIRD).
+  \item Gravitational wave constraints (Sim~108): $c_T=c$ exactly ($G_5=0$ Horndeski; independent of $\Lambda_0$); $m_g=0$ (Ward identity); GW170817 $|d_L^\mathrm{GW}/d_L^\mathrm{EM}-1|=8\times10^{-6}\ll0.06$; BBN $G_\mathrm{eff}$ deviation $<0.6\%\ll10\%$.  All GW tests PASS.
+  \item Dark energy equation of state (Sim~109): CPL fit $w_0=-0.992$, $w_a=-0.082$; $1.3\sigma$ from Planck, $3.6\sigma$ from DESI Y1.  RIFT with $m_0\ll H_0$ predicts $w\approx-1$; matching the DESI hint requires $m_0\gtrsim H_0$.
+  \item Solar System viability (Sim~107): chameleon screening gives $m_\mathrm{eff}^\odot\approx4\times10^{-4}$~Mpc$^{-1}$; $|\gamma-1|=1.78\times10^{-5}<2.3\times10^{-5}$ (Cassini); critical $\Psi_0<1.14\,M_\mathrm{Pl}$ for thin-shell suppression.  Solar System PASS.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
   \item Galaxy rotation curve tests (Sims~99--100, 103): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Vainshtein screening (Sim~103): the galactic field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$ below the nonlinear threshold for all scanned $(\alpha_V,M_V)$; energy density deficit is $2.7\times10^6\times$ the isothermal requirement.  All kinetic modifications of the locked action are exhausted; new physics (a first-principles coupling between $\Psi$ and baryonic matter) is required.

@@ -10,3 +10,4 @@ __pycache__/
 *.fls
 *.fdb_latexmk
 texput.log
+Desktop/

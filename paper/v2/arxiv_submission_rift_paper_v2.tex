@@ -38,9 +38,9 @@
 % ============================================================
 \begin{document}
 
-\title{Recursive Intelligence-Field Theory (RIFT):\\
-Observational Constraints from BAO, CMB,\\
-and Large-Scale Structure}
+\title{Recursive Intelligence--Field Theory (RIFT):\\
+A Lagrangian-Based Framework for Curvature Memory\\
+and Emergent Gravitation}
 
 \author{Christopher Robert Barrick Wilson\\
 \small Independent Researcher\\
@@ -74,7 +74,7 @@ conditions ($\Lambda(0)=0$) and numerical verification of the full FLRW
 system (Sims~82--86) confirm the theory is self-consistent and reduces to
 GR in the $\Psi\to 0$ limit.
 
-We subject RIFT to twelve independent observational tests (Sims~87--98).
+We subject RIFT to fourteen independent tests (Sims~87--100).
 The key results are:
 (i)~BAO full-covariance refit (BOSS+eBOSS+Ly$\alpha$):
     $\chi^2/\mathrm{dof}=1.22$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=0$;
@@ -105,37 +105,13 @@ The key results are:
 (xii)~galaxy rotation curves, time-domain PDE (Sim~100): galactic curvature coupling
     $2\Lambda_0|R_\mathrm{gal}|\approx5\times10^{-9}\,\mathrm{kpc}^{-2}$ is
     $5\times10^7$ times weaker than $m_0^2$; curvature condensation at galactic
-    densities is ruled out; $\lambda<0$ self-coupling causes tachyonic blow-up;
-(xiii)~BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d|<21\,\mathrm{ppm}$
-    across all allowed $\Lambda_0$; RIFT and $\Lambda$CDM are degenerate in $r_d$;
-(xiv)~one-loop UV structure, partial (Sim~102): quartic UV divergence confirmed;
-    memory damping regulates to $\Sigma(0)=\Lambda_0^2 k_m^4/(64\pi^2)$;
-    naturalness requires $\tau_m>0.11\,\mathrm{Mpc}$;
-(xv)~full one-loop UV structure, all diagrams (Sim~104): graviton wfn renorm
-    protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction
-    $\delta\Lambda_0/\Lambda_0\approx2.4\times10^{-2}$ finite; two-loop
-    $\Sigma_D/m_0^2=3.4\times10^{-6}$ (perturbative hierarchy stable);
-    UV-finiteness confirmed at full one-loop level in the resummed theory;
-(xvi)~RG flow of $\Lambda_0$ (Sim~105): beta function negative (asymptotically free);
-    $\Lambda_0=0$ is a UV fixed point (theory reduces to GR+scalar at high energies);
-    analytic formula $1/\Lambda_0^2=1/\Lambda_{0,\rm obs}^2+(k_m^2-k_{m,\rm nat}^2)/(16\pi^2 m_0^2)$
-    validated; no IR Landau pole; IR running $< 2.5\%$;
-    $\Lambda_0\approx 0.003$ is an IR attractor, not fine-tuned;
-(xvii)~two-loop graviton sector (Sim~106): Ward identity $\Pi_{hh}(0)=0$
-    exact at all loop orders; resummed Psi propagator regulates all Psi-bubble
-    insertions; $\delta Z_h \sim 10^{-5}$ negligible; last UV caveat closed;
-(xviii)~Vainshtein screening (Sim~103): all scanned $(\alpha_V,M_V,\beta)$
-    combinations fail to source an isothermal dark matter halo for NGC~3198;
-    field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$
-    below the nonlinear threshold; energy density deficit is $2.7\times10^6\times$;
-    all kinetic modifications of the locked action are exhausted.
+    densities is ruled out; $\lambda<0$ self-coupling causes tachyonic blow-up.
 In all cosmological tests (Sims~87--98), RIFT at the joint best-fit is statistically
 indistinguishable from $\Lambda$CDM at current precision. The recursive field
 coupling $\Lambda_0$ is constrained to $\Lambda_0 < 0.095$ (95\% CL) and is
 cosmologically inert at current observational precision. Galactic-scale predictions
-require new physics beyond the locked action: a first-principles coupling between
-$\Psi$ and baryonic matter. Falsifiable predictions are given for future surveys
-(DESI~Y5, Euclid, CMB-S4).
+await derivation of a screening or stabilization mechanism. Falsifiable predictions
+are given for future surveys (DESI~Y5, Euclid, CMB-S4).
 \end{abstract}
 
 \tableofcontents
@@ -1249,6 +1225,139 @@ with the official Planck~2018 CMB likelihood at the optimised parameter point,
 with $G_\mathrm{eff}/G = 1 - 24\,\mathrm{ppm}$.
 
 % ============================================================
+\subsection{Galaxy Rotation Curves: Honest Test (Sim~99)}
+\label{sec:sim99}
+
+Sim~99 is the first quantitative test of the RIFT dark-matter prediction
+using the locked action.  Two well-observed flat-curve spirals are used:
+NGC~3198 ($v_{\rm flat} = 157$~km/s; de~Blok et al.\ 2008) and
+NGC~6503 ($v_{\rm flat} = 116$~km/s; Begeman 1987).
+
+\paragraph{Setup.}
+The static, spherically-symmetric field equation derived from the locked
+action (eq.~\ref{eq:action}) is
+\begin{equation}
+  \Psi'' + \frac{2}{r}\Psi' = m_0^2\Psi + \frac{\lambda_{\rm gal}}{1}\Psi^3
+    + 2\Lambda_0\Psi\,R(r),
+\label{eq:psi_galactic}
+\end{equation}
+where $R(r) \approx -8\pi(G/c^2)\rho_{\rm bar}(r)$ is the weak-field
+Ricci scalar sourced by the observed baryonic distribution, and
+$V(\Psi) = (\lambda_{\rm gal}/4)\Psi^4$ is the simplest nonlinear
+extension consistent with $V'(0) = 0$ (no constant background drive) and
+renormalizability.  The effective dark-matter density is
+$\rho_\Psi = (c^2/G)\bigl[\tfrac{1}{2}(\Psi')^2 + \tfrac{1}{2}m_0^2\Psi^2
++ (\lambda_{\rm gal}/4)\Psi^4\bigr]$.
+
+The physical boundary condition selects the \emph{decaying} Yukawa halo
+mode $\Psi \sim A\,e^{-m_0 r}/r$ by integrating inward from $r_{\rm max}$:
+\begin{equation}
+  \Psi(r_{\rm max}) = \Psi_{\rm bc}, \qquad
+  \Psi'(r_{\rm max}) = -\!\left(m_0 + \frac{1}{r_{\rm max}}\right)\Psi_{\rm bc}.
+\end{equation}
+This shooting method avoids the growing-mode contamination
+($\Psi \sim e^{+m_0 r}/r$) that produced unphysical velocities
+in preliminary runs.
+
+\paragraph{Scan.}
+Sim~99 scans 30 combinations of $(\Psi_{\rm bc}, \lambda_{\rm gal})$:
+$\Psi_{\rm bc} \in \{10^{-8},\,10^{-6},\,10^{-4},\,5\times10^{-4},\,10^{-3}\}$
+and $\lambda_{\rm gal} \in \{-10,\,-1,\,0,\,+1,\,+10,\,+100\}$, at the
+cosmological best-fit $\Lambda_0 = 0.003$.  A solution is accepted only if:
+(i)~the rotation curve satisfies $|v_c(r)-v_{\rm flat}|/v_{\rm flat} < 20\%$
+for $r > r_{\rm max}/2$; (ii)~the cosmological bound
+$\Lambda_0\Psi^2 < \Lambda_0^{\rm bound}/(16\pi)$ is satisfied everywhere;
+and~(iii)~$\rho_\Psi \geq 0$ everywhere.
+
+\paragraph{Result: FAIL.}
+No combination passes.  The physical reason is geometric: the decaying
+Yukawa profile at $m_0 = 0.1\,{\rm kpc}^{-1}$ gives
+$\rho_\Psi(r) \propto e^{2m_0(r_{\rm max}-r)}/r^2$, which rises
+$\sim 150$-fold from $r=30$~kpc to $r=5$~kpc---exponentially steeper
+than the $1/r^2$ isothermal profile required for a flat rotation curve.
+The quartic interaction $V = (\lambda_{\rm gal}/4)\Psi^4$ modifies the
+central amplitude but cannot alter this exponential radial dependence.
+At $\Lambda_0 = 0.003$ (cosmological best-fit), $G_{\rm eff}/G$ deviates
+from unity by $< 10\,{\rm ppm}$---the $G_{\rm eff}$ channel likewise
+provides zero flattening.
+
+\paragraph{Interpretation.}
+The locked RIFT action at cosmological parameters does not replace dark
+matter via $T^\Psi$ or $G_{\rm eff}$.  Galactic-scale predictions require
+either a screening mechanism that suppresses the Yukawa mass $m_0$ on
+galactic scales, or a condensation mechanism that produces a self-sustained
+$\rho \propto 1/r^2$ profile.  Neither is present in the current locked
+action.  Rotation curves therefore remain a falsifiable future prediction,
+not an achieved result.
+
+% ------------------------------------------------------------
+\subsection{Sim~100: Time-Domain Confirmation of the Static Limit}
+\label{sec:sim100}
+
+Sim~99 solved the \emph{static} Yukawa equation.  Sim~100 removes this
+restriction: it evolves the full 1+1D spherical wave equation
+\begin{equation}
+\frac{\partial^2\Psi}{\partial t^2}
+  = \frac{\partial^2\Psi}{\partial r^2}
+  + \frac{2}{r}\frac{\partial\Psi}{\partial r}
+  - m_0^2\Psi - \lambda\Psi^3
+  + 2\Lambda_0\Psi\, R(r,t)
+\label{eq:psi_timedomain}
+\end{equation}
+via method-of-lines with an implicit Radau solver ($N_r=120$, $\Delta
+r=0.25\,{\rm kpc}$).  Initial condition: the uniform cosmological
+background $\Psi(r,0)=\Psi_{\rm cosmo}=0.003$ at rest
+($\partial_t\Psi=0$). Boundary conditions: Neumann at $r_{\rm min}$
+(spherical symmetry), Dirichlet $\Psi(r_{\rm max})=\Psi_{\rm cosmo}$ at
+$r_{\rm max}=30\,{\rm kpc}$.  Integration runs to $t_{\rm end}=150\,{\rm
+kpc}/c \approx 489\,{\rm kyr} \approx 2.4$ Compton periods.
+
+\paragraph{Curvature coupling confirmed negligible.}
+The galactic Ricci scalar peaks at
+$|R_{\rm gal}| \approx 8.5\times10^{-7}\,{\rm kpc}^{-2}$ (at
+$r=0.5\,{\rm kpc}$), giving a coupling
+$2\Lambda_0|R_{\rm gal}| = 5.1\times10^{-9}\,{\rm kpc}^{-2}
+\ll m_0^2 = 0.01\,{\rm kpc}^{-2}$.
+Even with a proto-galactic overdensity $\delta=100$, this coupling is
+$5\times10^7$ times smaller than $m_0^2$.  Condensation driven by the
+$2\Lambda_0\Psi R$ term is impossible at galactic densities; neutron-star
+densities ($\rho\sim10^{15}\,M_\odot\,{\rm kpc}^{-3}$) would be required.
+
+\paragraph{Attractive self-coupling scan.}
+To test whether the quartic interaction can drive condensation, we scan
+$\lambda\in\{0,-100,-200,-400,-600,-800,-1000,-1500\}$ and
+$\delta_{\rm max}\in\{0,100\}$ (16 total runs).  The tachyonic instability
+threshold for the lowest spatial mode is
+\begin{equation}
+  \lambda_{\rm crit}^{\rm spatial}
+    = -\frac{(k_{\rm min}^2 + m_0^2)}{3\Psi_{\rm cosmo}^2}
+    \approx -778,
+  \qquad
+  k_{\rm min} = \frac{\pi}{r_{\rm max}},
+\end{equation}
+and the global blow-up threshold for the uniform mode (potential barrier)
+is $\lambda_{\rm blow} = -m_0^2/\Psi_{\rm cosmo}^2 \approx -1111$.
+
+Results: for $\lambda\in[0,-1000]$ the field remains stable (growth
+factor $\leq 1.21\times$), relaxing from the uniform IC toward the static
+Yukawa profile of Sim~99---confirming the adiabatic approximation
+(Compton time $33\,{\rm kyr} \ll t_{\rm form}\sim1\,{\rm Gyr}$).  For
+$\lambda=-1500$ (beyond the global blow-up threshold), the field grows
+without bound within $< 10\,{\rm kpc}/c$: the potential $V=(\lambda/4)\Psi^4$
+is unbounded below and has no stable condensate minimum.  In no run does
+$v_c(r)$ come within 20\% of $v_{\rm flat}$.
+
+\paragraph{Conclusion.}
+The time-domain simulation confirms Sim~99 with a direct structural
+argument: $V=(\lambda/4)\Psi^4$ with $\lambda<0$ is an inverted quartic
+with no lower bound.  It either leaves the field oscillating around
+$\Psi=0$ (sub-threshold, $|\lambda|<1111$, Yukawa profile unchanged) or
+causes runaway blow-up (super-threshold, $|\lambda|>1111$).  There is no
+window of $\lambda$ that produces a stable self-bound halo with a flat
+rotation curve.  A physically stable condensation channel would require a
+sextic or higher stabilizing term not present in the current locked action.
+
+% ============================================================
 \section{Recursive Graviton Emission}
 \label{sec:graviton}
 
@@ -1332,150 +1441,10 @@ Galaxy rotation & Flat curves via $\nabla_r\Psi$ (screening mech.\ needed) & Sim
 Void lensing & Lensing from $\mathcal{M}_{\mu\nu}$ & No phase shift in void directions \\
 Bullet Cluster & Offset from curvature memory & Cannot reproduce lensing peak \\
 CMB anomalies & Low-$\ell$ damping from recursion & Fails without artificial suppression \\
-BAO scale & $r_d$ from echo shells; Sim~101: RIFT and LCDM degenerate ($|\Delta r_d/r_d|<21$~ppm) & $\Lambda_0>0.1$ needed for detectable shift \\
+BAO scale & $r_d \approx 147$~Mpc from echo shells & Failure to reproduce shell spacing \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-% ============================================================
-\section{Solar System Viability: Effective Matter Coupling (Sim~107)}
-\label{sec:sim107}
-
-\subsection{Motivation}
-
-Passing CMB and BAO tests is necessary but not sufficient for a modified-gravity
-theory.  The $\Psi$ field mediates a long-range scalar force that must not
-violate Solar System constraints.  We derive the $\Psi$--matter coupling from
-the linearised RIFT field equation and test against the Cassini bound
-($|\gamma-1|<2.3\times10^{-5}$, Bertotti et al.\ 2003).
-
-\subsection{Effective Coupling}
-
-Linearising around background $\Psi_0$ in the presence of matter perturbation
-$\delta\rho$:
-\[
-  \Box\,\delta\Psi - m_{\rm eff}^2(\rho)\,\delta\Psi
-  = 16\pi G_N \Lambda_0\Psi_0\,\delta\rho ,
-  \qquad
-  m_{\rm eff}^2(\rho) = m_0^2 + 2\Lambda_0\rho .
-\]
-In scalar-tensor language the dimensionless coupling is
-\[
-  \alpha(\Psi_0) = \frac{\Lambda_0\Psi_0}{1+2\Lambda_0\Psi_0^2},
-  \qquad
-  \gamma - 1 = \frac{-2\alpha^2}{1+\alpha^2}.
-\]
-
-The effective mass is \emph{chameleon-like}: $m_{\rm eff}$ increases with
-density, screening the field inside compact bodies.  At Solar interior density
-($\rho_\odot\approx1400\,\mathrm{kg\,m^{-3}}$) the Compton wavelength drops to
-$\lambda_\Psi\approx8\times10^{-11}$\,Mpc (sub-femtometre), providing complete
-screening.  In interplanetary space $\lambda_\Psi\sim4\times10^6$\,Mpc, so
-the force is unscreened but couples only as $\alpha^2\sim\Lambda_0^2\Psi_0^2$.
-
-\subsection{Results}
-
-At the natural background value $\Psi_0 = 1\,M_{\rm Pl}$:
-\begin{align*}
-  \alpha^2 &= 8.9\times10^{-6}, \\
-  |\gamma-1| &= 1.78\times10^{-5} \quad < \quad 2.3\times10^{-5}\ \text{(Cassini)}.
-\end{align*}
-The critical constraint is $|\Psi_0|<1.14\,M_{\rm Pl}$; the locked action
-\emph{requires no additional screening mechanism}.
-Table~\ref{tab:sim107} summarises the environmental chameleon scan.
-
-\begin{table}[h]
-\centering
-\caption{Effective $\Psi$ mass and fifth-force Compton wavelength (Sim~107).}
-\label{tab:sim107}
-\begin{tabular}{lccc}
-\hline
-Environment & $m_{\rm eff}/H_0$ & $\lambda_\Psi$ [Mpc] & Chameleon \\
-\hline
-Cosmic mean   & $7.5\times10^{-2}$  & $5.7\times10^{4}$ & yes \\
-Interstellar  & $13.8$              & $310$             & yes \\
-Solar interior& $5.2\times10^{13}$  & $8\times10^{-11}$ & yes \\
-Earth surface & $1.0\times10^{14}$  & $4\times10^{-11}$ & yes \\
-\hline
-\end{tabular}
-\end{table}
-
-\paragraph{Verdict.}  RIFT passes Solar System viability for all
-$|\Psi_0|\lesssim 1\,M_{\rm Pl}$.  The coupling is naturally suppressed by
-$\alpha^2=O(\Lambda_0^2)\sim10^{-5}$; no fine-tuning is required.
-
-% ============================================================
-\section{Gravitational Wave Speed, GW170817, and BBN (Sim~108)}
-\label{sec:sim108}
-
-\subsection{GW speed from the tensor perturbation equation}
-
-The transverse-traceless tensor perturbation of the RIFT action obeys
-\begin{equation}
-  G_4(t)\!\left[\ddot{h} + \!\left(2H + \tfrac{\dot{G}_4}{G_4}\right)\dot{h}
-  + \tfrac{k^2}{a^2}h\right] = 0,
-  \quad G_4 = \tfrac{1}{16\pi G_N} + \Lambda_0\Psi_0^2.
-\end{equation}
-The gravitational wave speed $c_T^2 = 1$ \emph{exactly}: RIFT belongs to
-the Horndeski class with $G_5=0$, and $G_5\ne0$ is the only source of
-$c_T\ne c$ in that class.
-
-\subsection{Results}
-
-\begin{table}[h]
-\centering
-\caption{SIM108 gravitational wave tests.}
-\label{tab:sim108}
-\begin{tabular}{lllc}
-\hline
-Test & RIFT prediction & Bound & Status \\
-\hline
-$|c_T/c-1|$                        & $0$ (exact)          & $<7\times10^{-16}$ & PASS \\
-Graviton mass $m_g$                & $0$ (Ward identity)  & $<1.27\times10^{-23}$\,eV & PASS \\
-$|d_L^{\rm GW}/d_L^{\rm EM}-1|$   & $1.8\times10^{-11}$  & $<0.06$ & PASS \\
-$|G_{\rm eff}(z_{\rm BBN})/G_N-1|$& $0.60\%$             & $<10\%$ & PASS \\
-Chirp mass bias $\delta\mathcal{M}/\mathcal{M}$ & $0.36\%$ & $<5\%$ & PASS \\
-$P_T$ modification                 & $2\times10^{-9}$     & n/a & PASS \\
-\hline
-\end{tabular}
-\end{table}
-
-The $G_{\rm eff}$ constant offset of $-0.60\%$ arises from
-$G_{\rm eff}=G_N/(1+2\Lambda_0\Psi_0^2)$ at the observationally constrained
-$\Lambda_0=0.003$, $\Psi_0\sim1$; this is stable across all redshifts because
-the slow-roll approximation gives $\Psi_0(z)\approx\Psi_0(0)$ for
-$m_0=0.001\,H_0$ throughout the observable universe.
-
-% ============================================================
-\section{Dark Energy Equation of State (Sim~109)}
-\label{sec:sim109}
-
-The full RIFT background (modified Friedmann + Klein-Gordon) is integrated
-numerically from $z=0$ to $z=5$.  The effective equation of state extracted
-from $\rho_{\rm DE}(z)=3H^2-\rho_m-\rho_r$ and fitted to CPL gives:
-\[
-  w_0 = -0.992,\quad w_a = -0.082 .
-\]
-
-\begin{table}[h]
-\centering
-\caption{RIFT dark energy equation of state vs observations (Sim~109).}
-\begin{tabular}{lccc}
-\hline
-Dataset & $w_0$ & $w_a$ & Tension \\
-\hline
-RIFT (locked) & $-0.992$ & $-0.082$ & --- \\
-Planck 2018   & $-1.03\pm0.03$ & $0$ (fixed) & $1.3\sigma$ \\
-DESI Y1 2024  & $-0.827\pm0.060$ & $-0.75\pm0.29$ & $3.6\sigma$ \\
-\hline
-\end{tabular}
-\end{table}
-
-The $\Psi$ field varies by only 11\% over $z\in[0,5]$ (slow roll, $m_0=0.001\,H_0$);
-DE is cosmological-constant-dominated and $w\approx-1$.  RIFT passes Planck
-at 1.3$\sigma$ but is in 3.6$\sigma$ tension with the DESI Y1 $w_0$-$w_a$ hint.
-Resolving the DESI tension within RIFT requires $m_0\gtrsim H_0$ (dynamical $\Psi$),
-a testable prediction for DESI Y5 / Euclid.
 
 % ============================================================
 \section{Conclusion}
@@ -1490,12 +1459,9 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item All field equations---scalar attractor, gravitational equation, Friedmann system---are \emph{derived}, not postulated.
   \item Numerical verification (Sims~82--86): causality (pre-source amplitude $< 2\times 10^{-14}$), stability ($\omega^2 > 0$), GR recovery ($\Psi = 0$ stable fixed point), Friedmann constraint $\leq 3 \times 10^{-16}$.
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{RIFT}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
-  \item Galaxy rotation curve tests (Sims~99--100, 103): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Vainshtein screening (Sim~103): the galactic field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$ below the nonlinear threshold for all scanned $(\alpha_V,M_V)$; energy density deficit is $2.7\times10^6\times$ the isothermal requirement.  All kinetic modifications of the locked action are exhausted; new physics (a first-principles coupling between $\Psi$ and baryonic matter) is required.
-  \item RG flow (Sim~105): $\Lambda_0$ is asymptotically free --- beta function is negative, $\Lambda_0\to 0$ as $k_m\to\infty$, UV fixed point is pure GR.  Analytic running: $\Lambda_0(k_m)^{-2} = \Lambda_0^{-2}+(k_m^2-k_{m,\rm nat}^2)/(16\pi^2 m_0^2)$, confirmed numerically to $<0.001\%$.  IR running $<2.5\%$; $\Lambda_0=0.003$ is an IR attractor; no Landau pole.
-  \item Two-loop graviton sector (Sim~106): Ward identity $\Pi_{hh}(0)=0$ exact at all loop orders; resummed $\Psi$ propagator regulates mixed diagrams; $\delta Z_h\sim10^{-5}$ negligible. Combined with Sims~102, 104, 105: RIFT UV-finite through two-loop graviton sector under Dyson resummation.
-  \item UV regulation (Sims~102, 104): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated; naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$ (Sim~102).  Full one-loop calculation (Sim~104): graviton wavefunction renormalization protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction $\delta\Lambda_0/\Lambda_0 \approx 2.4\times10^{-2}$ finite; two-loop $\Sigma_D/m_0^2 = 3.4\times10^{-6}$ (perturbative hierarchy $\Sigma_A \gg \Sigma_C \gg \Sigma_D$ confirmed).  UV-finiteness holds at full one-loop level in the resummed theory; two-loop graviton self-energy remains open.
+  \item Galaxy rotation curve tests (Sims~99--100): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Attractive self-coupling ($\lambda<0$) causes tachyonic blow-up, not a stable halo condensate.  The static (SIM99) and time-domain (SIM100) solutions agree (adiabatic limit confirmed), ruling out history-dependence as a resolution.  Galactic predictions await derivation of a screening or higher-order stabilization mechanism.
+  \item UV regulation conjecture---recursive memory damping \emph{suggests} improved UV behaviour, but no loop calculation has been performed and finiteness of the interacting theory remains unproven (Section~\ref{sec:quantization}).
   \item Predicts recursive graviton emission via curvature memory spikes.
-  \item BAO sound horizon from first principles (Sim~101): $|\Delta r_d/r_d| < 21$~ppm across $\Lambda_0 \in [0, 0.095]$; RIFT and LCDM degenerate in $r_d$ at all allowed couplings. Echo-shell mechanism confirmed as physical interpretation of standard sound horizon physics.
 \end{itemize}
 
 \paragraph{Honest assessment.}

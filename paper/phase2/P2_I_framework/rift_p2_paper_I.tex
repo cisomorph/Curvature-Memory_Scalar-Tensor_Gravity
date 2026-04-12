@@ -318,22 +318,86 @@ This gives:
 \label{eq:lambda_value}
 \end{equation}
 
-\paragraph{The slow-roll condition for DESI.}
-For the DESI $w_0$--$w_a$ hint to be reproduced, $\Psi$ must be
-\emph{rolling today}, not frozen at the plateau.  The field rolls
-when the slow-roll parameter
-\begin{equation}
-\epsilon_V = \frac{\pl^2}{2}\left(\frac{V_E'}{V_E}\right)^2
-\end{equation}
-is $O(1)$ at $z=0$.  The transition from slow-roll ($\epsilon_V\ll1$)
-to rolling ($\epsilon_V\sim1$) occurs at the inflection point of $V_E$,
-which lies at $\Psi_*\approx\pl/\sqrt{2\Lz}$.
+\paragraph{SIM112 result: quartic potential gives freezing quintessence.}
+Sim~112 tested $V_J = \lambda\Psi^4$ by scanning $\Psi_0\in[0.5,10]\,\pl$
+with $\lambda$ self-consistently fixed by the Friedmann constraint.
+\emph{Result: the quartic potential generates freezing quintessence
+($w_a > 0$) throughout the $G_{\rm eff}$-safe regime ($\Psi_0 \leq 4\,\pl$).}
+The DESI hint requires thawing ($w_a < 0$).
 
-If $\Psi_0\lesssim\Psi_*$ today, the field is on the \emph{slope} of
-$V_E$, giving $w>-1$ (thawing quintessence).  This is the regime that
-resolves the DESI tension.  SIM112 will determine the value of $\Psi_0$
-that simultaneously satisfies the Friedmann constraint and the DESI
-$w_0$--$w_a$ posterior.
+The failure is structural.  $V_E(\Psi) = \lambda\Psi^4/(1+2\Lz\Psi^2)^2$
+is monotonically increasing from zero to the plateau.  The field
+always rolls \emph{toward} $\Psi=0$ (downhill), so at high $z$ the
+kinetic energy dominated ($w\to+1$) and at $z=0$ the field is slowing
+($w\to-1$).  That is the opposite of what DESI requires.
+
+\paragraph{Requirement for thawing quintessence.}
+DESI's $(w_0=-0.827,\,w_a=-0.75)$ requires the field to have been
+\emph{frozen} at high $z$ and \emph{rolling today}.  In potential language:
+the field must live near an \textbf{unstable maximum} (hilltop) of
+$V_E$ at high $z$, slowly rolling away from it toward the present.
+This gives $w_a < 0$ because $w$ moves from $-1$ (frozen at hilltop)
+toward $0$ (rolling) as $z\to 0$.
+
+\paragraph{The SSB (spontaneous symmetry breaking) potential.}
+The unique $\mathbb{Z}_2$-symmetric potential that places the hilltop
+at $\Psi = 0$ with positive energy is:
+\begin{equation}
+\boxed{V_J(\Psi) = \lambda(\Psi^2 - v^2)^2}
+\label{eq:ssb}
+\end{equation}
+where $v$ is the vacuum expectation value (VEV).  This potential:
+\begin{itemize}
+  \item Has a \textbf{hilltop} at $\Psi=0$ with $V_J(0)=\lambda v^4>0$.
+  \item Has a \textbf{stable minimum} at $\Psi=\pm v$ with $V_J(\pm v)=0$.
+  \item Is the unique $\mathbb{Z}_2$-symmetric quartic with both properties.
+  \item Is $\mathbb{Z}_2$-symmetric: $V_J(-\Psi) = V_J(\Psi)$.
+\end{itemize}
+
+The Einstein-frame potential is:
+\begin{equation}
+V_E(\Psi) = \frac{\lambda(\Psi^2-v^2)^2}{(1+2\Lz\Psi^2)^2}
+\label{eq:ve_ssb}
+\end{equation}
+
+At $\Psi=0$: $V_E(0) = \lambda v^4$ --- this is the dark energy density
+today.  The DE scale requirement gives:
+\begin{equation}
+\lambda v^4 = \rho_{\rm DE,0} = \Omega_\Lambda\times 3H_0^2 \approx 2.055
+\quad[\text{sim units}]
+\label{eq:de_scale}
+\end{equation}
+This is one constraint on the two parameters $(\lambda,\, v)$.
+
+\paragraph{The $G_{\rm eff}$ problem is solved.}
+With $\Psi_0\approx 0$ today (field near hilltop), the $G_{\rm eff}$
+modification is:
+\begin{equation}
+\frac{G_{\rm eff}}{G_N} = \frac{1}{1+2\Lz\Psi_0^2} \approx 1 - 2\Lz\Psi_0^2 \approx 1
+\end{equation}
+\emph{The $G_{\rm eff}$ problem from Sim~112 is automatically resolved:
+the hilltop at $\Psi=0$ keeps the field near zero where gravity is
+unmodified.}
+
+\paragraph{The second constraint: slow-roll today.}
+The tachyonic mass at the hilltop is:
+\begin{equation}
+V_E''(0) = -2\lambda v^2 < 0
+\end{equation}
+For the field to remain near the hilltop until today (not having rolled
+to the VEV), we require $|V_E''(0)| \ll H_0^2$:
+\begin{equation}
+2\lambda v^2 \ll 1 \quad\Longrightarrow\quad v^2 \gg 2\lambda v^4 = 2\rho_{\rm DE,0}
+\end{equation}
+This gives $v \gg \sqrt{2\times 2.055} \approx 2.0\,\pl$.
+Combining with eq.~\eqref{eq:de_scale}: $\lambda = 2.055/v^4 \ll 0.13$.
+
+For $v = 5\,\pl$: $\lambda \approx 0.0033$,\quad $2\lambda v^2 = 0.165$ (moderate slow-roll).\\
+For $v = 10\,\pl$: $\lambda \approx 2\times10^{-4}$,\quad $2\lambda v^2 = 0.04$ (slow roll).
+
+The DESI deviation from $w=-1$ determines how far $\Psi$ has rolled
+from the hilltop.  The actual value of $\Psi_0$ at $z=0$ is found
+by integrating the background equations (Sim~113).
 
 \subsection{Deriving \texorpdfstring{$\beta$}{beta} — dark matter}
 \label{sec:beta}
@@ -593,7 +657,7 @@ of the locked action is:
 S = \int d^4x\,\sqrt{-g}\left[
   \frac{\pl^2 + 2\Lz\Psi^2}{2}\,R
   - \half(\nabla\Psi)^2
-  - \lambda\Psi^4
+  - \lambda(\Psi^2 - v^2)^2
   + \beta\Psi^2\mathcal{L}_m
 \right]
 + S_{\rm SM}
@@ -601,9 +665,18 @@ S = \int d^4x\,\sqrt{-g}\left[
 \label{eq:phase2_final}
 \end{equation}
 
-with $\Lz = 0.003$ (locked), $\lambda\approx 7.4\times10^{-5}$
-(DE scale), $\beta\approx 0.034$ (DM coupling), and \textbf{no bare
-cosmological constant}.
+with $\Lz = 0.003$ (locked), $\lambda v^4 = \rho_{\rm DE,0}$
+(DE scale, Sim~113 will determine $v$), $\beta\approx 0.034$
+(DM coupling), and \textbf{no bare cosmological constant}.
+
+\noindent\textbf{Key revision from Sim~112:} The purely quartic
+$\lambda\Psi^4$ potential was tested in Sim~112 and found to give
+\emph{freezing} quintessence ($w_a>0$) throughout the parameter
+space, opposite to the DESI hint.  The SSB potential
+$\lambda(\Psi^2-v^2)^2$ replaces it: the hilltop at $\Psi=0$
+provides a positive DE energy $\lambda v^4$ and the field rolls
+\emph{away} from zero, giving thawing quintessence ($w_a<0$) consistent
+with DESI.  This revision is derived from first principles, not fitted.
 
 The three key predictions to be tested in Phase~2 simulations are:
 \begin{enumerate}

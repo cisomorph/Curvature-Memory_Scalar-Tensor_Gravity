@@ -1,0 +1,55 @@
+{
+  "Lambda0": 0.003,
+  "m0": 0.001,
+  "Psi0_critical_Cassini": 1.1391967488087065,
+  "alpha2_at_Psi0_1": 8.892964281903015e-06,
+  "gamma_minus_1_Psi0_1": 1.778577039546203e-05,
+  "cassini_bound": 2.3e-05,
+  "status_naive": "PASS",
+  "chi_sun": 1.0,
+  "status_thin_shell": "PASS",
+  "overall_verdict": "PASS",
+  "m_eff_environments": {
+    "Deep void": {
+      "rho_sim": 0.00031678986272439284,
+      "m_eff": 0.0017031556524130017,
+      "lambda_Mpc": 2514156.5857080272
+    },
+    "Cosmic mean (z=0)": {
+      "rho_sim": 0.9450000000000001,
+      "m_eff": 0.0753060422542574,
+      "lambda_Mpc": 56861.30716500267
+    },
+    "Galaxy cluster": {
+      "rho_sim": 316.7898627243928,
+      "m_eff": 1.378673339245507,
+      "lambda_Mpc": 3105.884387626853
+    },
+    "Milky Way disk": {
+      "rho_sim": 316789.8627243928,
+      "m_eff": 43.5974675565721,
+      "lambda_Mpc": 98.21671395118706
+    },
+    "Interstellar (SS)": {
+      "rho_sim": 31678.986272439288,
+      "m_eff": 13.78672980204645,
+      "lambda_Mpc": 310.5885196476685
+    },
+    "Solar corona": {
+      "rho_sim": 316789862724392.8,
+      "m_eff": 1378672.976577969,
+      "lambda_Mpc": 0.0031058852046468885
+    },
+    "Solar interior": {
+      "rho_sim": 4.435058078141499e+29,
+      "m_eff": 51585219267585.74,
+      "lambda_Mpc": 8.300827370313518e-11
+    },
+    "Earth surface": {
+      "rho_sim": 1.7423442449841605e+30,
+      "m_eff": 102245124430972.08,
+      "lambda_Mpc": 4.187974755599102e-11
+    }
+  },
+  "fifth_force_range_Mpc": 4282000.0
+}

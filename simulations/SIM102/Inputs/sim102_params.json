@@ -1,0 +1,30 @@
+{
+  "sim_id": "SIM102",
+  "title": "RIFT One-Loop Scalar Self-Energy: UV Structure and Memory Regulation",
+  "description": "Compute the one-loop Psi self-energy from the Lambda0*Psi*R interaction vertex. Show (1) quartic UV divergence without memory damping; (2) finiteness with memory damping D_mem(k)=exp(-k^2/k_m^2); (3) analytic result Sigma(0) ~ Lambda0^2 * k_m^4 / (64*pi^2); (4) naturalness constraint on k_m.",
+
+  "theory": {
+    "vertex": "V(k) = Lambda0 * k^2  (from Lambda0*Psi*R in linearized gravity)",
+    "graviton_propagator": "D(k) = 1/k^2  (harmonic gauge, massless)",
+    "memory_damping": "D_mem(k) = exp(-k^2/k_m^2)  (from memory tensor commutator decay)",
+    "self_energy": "Sigma(p^2) = Lambda0^2 * Int d^4k/(2pi)^4 * k^2 * D_mem(k)^2 / ((p-k)^2 + m0^2)",
+    "analytic_limit": "Sigma(0) -> Lambda0^2 * k_m^4 / (64*pi^2)  for k_m >> m0"
+  },
+
+  "parameters": {
+    "Lambda0": 0.003,
+    "m0_Mpc_inv": 0.01,
+    "k_m_scan_Mpc_inv": [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0, 10.0],
+    "p_external_scan": [0.0, 0.005, 0.01, 0.05],
+    "UV_cutoff_no_memory": [1.0, 10.0, 100.0, 1000.0],
+    "Lambda0_scan": [0.001, 0.003, 0.008, 0.013, 0.05, 0.095]
+  },
+
+  "outputs": [
+    "Sigma_vs_k_m (numerical vs analytic)",
+    "Sigma_no_memory_vs_cutoff (shows divergence)",
+    "naturalness_constraint_k_m_max",
+    "Sigma_vs_p_external",
+    "diagnostics_json"
+  ]
+}

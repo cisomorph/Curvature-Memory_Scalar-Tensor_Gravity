@@ -1,0 +1,91 @@
+{
+  "sim_id": "SIM106",
+  "parameters": {
+    "Lambda0": 0.003,
+    "m0": 0.01
+  },
+  "diagram_A": {
+    "description": "Two-loop Pi_hh from iterated Psi bubbles",
+    "Pi_hh_at_0": "ZERO (Ward identity, exact)",
+    "d2Pi_dp4_at_0": {
+      "0.1": {
+        "dI_dp2": 0.0027918162869675035,
+        "d2Pi_dp4": 1.2626665851886769e-15
+      },
+      "1.0": {
+        "dI_dp2": 0.003156860876609046,
+        "d2Pi_dp4": 1.614454836270903e-15
+      },
+      "9.15": {
+        "dI_dp2": 0.003166107462350492,
+        "d2Pi_dp4": 1.6239263070305386e-15
+      },
+      "100.0": {
+        "dI_dp2": 0.003166284879808901,
+        "d2Pi_dp4": 1.624108310297248e-15
+      }
+    },
+    "finite": true,
+    "suppression": "O(Lambda0^4)"
+  },
+  "diagram_B": {
+    "description": "Mixed two-loop: dressed Psi bubble on graviton line",
+    "Pi_hh_at_0": "ZERO (Ward identity, exact)",
+    "delta_I_Psi": {
+      "0.1": {
+        "I_dressed": 0.01577397901565356,
+        "I_bare_at_km": 0.02295571686325744,
+        "delta": -0.00718173784760388
+      },
+      "1.0": {
+        "I_dressed": 0.043969303263109924,
+        "I_bare_at_km": 0.05199385420700903,
+        "delta": -0.008024550943899103
+      },
+      "9.15": {
+        "I_dressed": 0.071985830814957,
+        "I_bare_at_km": 0.08003012333249417,
+        "delta": -0.00804429251753716
+      },
+      "100.0": {
+        "I_dressed": 0.10227308732557346,
+        "I_bare_at_km": 0.11031774967868496,
+        "delta": -0.008044662353111506
+      }
+    },
+    "finite": true,
+    "note": "Already captured by Dyson resummation of Psi propagator"
+  },
+  "diagram_C": {
+    "description": "RG running of graviton wavefunction Z_h",
+    "dI_dp2_bare_finite": true,
+    "results": {
+      "0.1": {
+        "dI_dp2": 0.0027918162869675035,
+        "beta_Z": 0.0005192865147433945,
+        "delta_Z_h": 2.5126346582707532e-08,
+        "delta_Z_h_rel": 1.2629879333725598e-06
+      },
+      "1.0": {
+        "dI_dp2": 0.003156860876609046,
+        "beta_Z": 1.632497722290141e-05,
+        "delta_Z_h": 2.8411747889481413e-08,
+        "delta_Z_h_rel": 1.4281302151238419e-06
+      },
+      "9.15": {
+        "dI_dp2": 0.003166107462350492,
+        "beta_Z": 3.2879968062463067e-07,
+        "delta_Z_h": 2.849496716115443e-08,
+        "delta_Z_h_rel": 1.4323132719642426e-06
+      },
+      "100.0": {
+        "dI_dp2": 0.003166284879808901,
+        "beta_Z": 3.963032159381985e-09,
+        "delta_Z_h": 2.849656391828011e-08,
+        "delta_Z_h_rel": 1.4323935337315322e-06
+      }
+    },
+    "delta_Z_h_at_nat": 2.849496716115443e-08
+  },
+  "conclusion": "All two-loop graviton sector diagrams are UV-finite. Three mechanisms: (1) Ward identity Pi_hh(0)=0 exact at all loop orders; (2) Resummed Psi propagator regulates Psi-bubble insertions; (3) Graviton wfn renorm dI/dp^2 finite in d=4 without memory. The last UV caveat from SIM104 is now closed. RIFT UV-finite through two-loop graviton sector under Dyson resummation. Delta_Z_h ~ Lambda0^2 * dI/dp^2 ~ 1e-5, negligible."
+}

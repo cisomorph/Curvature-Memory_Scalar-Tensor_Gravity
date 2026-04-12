@@ -1,0 +1,74 @@
+{
+  "rd_LCDM_Mpc": 153.0536065646079,
+  "rd_LCDM_err_Mpc": 3.7490292292244494e-07,
+  "z_drag_EH": 1059.0,
+  "rd_Planck_reference": 147.09,
+  "LCDM_baseline_PASS": false,
+  "max_frac_shift": 2.1487812777495168e-05,
+  "max_shift_ppm": 21.48781277749517,
+  "results_by_Lambda0": {
+    "0.0": {
+      "rd_Mpc": 153.05360656252594,
+      "delta_rd_Mpc": -2.0819470591959544e-09,
+      "frac_shift": -1.3602731134056032e-11,
+      "frac_ppm": -1.3602731134056033e-05,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.001": {
+      "rd_Mpc": 153.05357194263064,
+      "delta_rd_Mpc": -3.46219772495715e-05,
+      "frac_shift": -2.262081765120423e-07,
+      "frac_ppm": -0.2262081765120423,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.003": {
+      "rd_Mpc": 153.0535027029106,
+      "delta_rd_Mpc": -0.0001038616972834916,
+      "frac_shift": -6.785968629863608e-07,
+      "frac_ppm": -0.6785968629863608,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.008": {
+      "rd_Mpc": 153.05332960402154,
+      "delta_rd_Mpc": -0.0002769605863477409,
+      "frac_shift": -1.809565893704234e-06,
+      "frac_ppm": -1.809565893704234,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.013": {
+      "rd_Mpc": 153.05315650571978,
+      "delta_rd_Mpc": -0.00045005888810578654,
+      "frac_shift": -2.940531087163928e-06,
+      "frac_ppm": -2.9405310871639276,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.05": {
+      "rd_Mpc": 153.05187559654,
+      "delta_rd_Mpc": -0.0017309680679034045,
+      "frac_shift": -1.1309554258512152e-05,
+      "frac_ppm": -11.309554258512152,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    },
+    "0.095": {
+      "rd_Mpc": 153.0503177773651,
+      "delta_rd_Mpc": -0.0032887872427806997,
+      "frac_shift": -2.1487812777495168e-05,
+      "frac_ppm": -21.48781277749517,
+      "rho_Psi_frac_at_zdrag": 1.5191029473339622e-10,
+      "Psi_at_zdrag": 0.002999999216374871
+    }
+  },
+  "verdict": {
+    "LCDM_baseline": "FAIL (got 153.05 vs 147.09 Mpc)",
+    "rd_at_Lambda0_0p003": "-0.000104 Mpc (-0.679 ppm)",
+    "rd_at_Lambda0_0p095": "-0.003289 Mpc (-21.488 ppm)",
+    "max_shift_ppm": "21.488 ppm across all Lambda0 tested",
+    "interpretation": "If |Delta r_d / r_d| < ~1000 ppm across the full Lambda0 scan, RIFT and LCDM are degenerate in r_d. The echo-shell narrative is confirmed as a physical interpretation of standard BAO physics, not a distinct prediction. If shift > current BAO precision (~0.3%), RIFT makes a testable r_d prediction."
+  }
+}

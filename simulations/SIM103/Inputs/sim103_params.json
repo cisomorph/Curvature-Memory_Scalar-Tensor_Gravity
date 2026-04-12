@@ -1,0 +1,34 @@
+{
+  "sim_id": "SIM103",
+  "title": "RIFT Vainshtein Screening and Dark Matter Mechanism",
+  "description": "Test whether a nonlinear kinetic term (Vainshtein mechanism) allows the RIFT scalar to source galactic dark matter halos. Scan Vainshtein coupling alpha_V and mass scale M_V. Also scan a direct matter coupling beta as comparison. Compare rotation curves to NGC 3198.",
+
+  "galaxy": "NGC 3198",
+  "stellar_disk": {
+    "M_disk_Msun": 3.0e10,
+    "R_d_kpc": 2.72,
+    "Sigma0_Msun_pc2": 500.0,
+    "v_flat_kms": 150.0,
+    "r_min_kpc": 0.5,
+    "r_max_kpc": 40.0
+  },
+
+  "rift_params": {
+    "Lambda0": 0.003,
+    "m0_kpc_inv": 1e-4,
+    "Psi0_cosmo": 0.003
+  },
+
+  "vainshtein_scan": {
+    "alpha_V": [0.0, 1.0, 10.0, 100.0, 1000.0],
+    "M_V_kpc_inv": [0.001, 0.01, 0.1],
+    "comment": "Nonlinear kinetic term: (alpha_V/4*M_V^2)*(dPsi/dr)^4"
+  },
+
+  "direct_coupling_scan": {
+    "beta": [0.0, 1e-4, 1e-3, 1e-2, 0.1],
+    "comment": "Direct matter coupling: beta*Psi*rho_b added to field equation source"
+  },
+
+  "notes": "SIM99/100 showed Lambda0*R_gal ~ 5e-9 kpc^-2 << m0^2 ~ 1e-8 kpc^-2. The source through the curvature channel is marginal. This sim tests whether Vainshtein nonlinearity and/or direct coupling can overcome this."
+}

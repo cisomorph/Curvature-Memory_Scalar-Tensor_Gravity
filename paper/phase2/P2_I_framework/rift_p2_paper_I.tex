@@ -1,0 +1,625 @@
+%% ============================================================
+%% RIFT Phase 2 — Paper I: Unlocking the Action
+%% Theoretical Framework for Dark Energy and Dark Matter
+%% from First Principles
+%% ============================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+\newcommand{\Psi}{\Psi}
+\newcommand{\pl}{M_{\mathrm{Pl}}}
+\newcommand{\Lz}{\Lambda_0}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\rift}{\textsc{rift}}
+\newcommand{\lcdm}{$\Lambda$CDM}
+
+\title{\textbf{RIFT Phase 2 — Paper I}\\[6pt]
+       Unlocking the Action:\\
+       Dark Energy and Dark Matter from\\
+       First Principles in Recursive\\
+       Intelligence-Field Theory}
+
+\author{C.~R.~B.~Wilson}
+
+\date{April 2026}
+
+% ============================================================
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Recursive Intelligence-Field Theory (RIFT) Phase~1 established a
+\emph{locked action} --- a single-parameter scalar--tensor gravity with
+coupling $\Lambda({\Psi}) = \Lz\Psi^2$ and source $R$ --- that passes
+all 23 cosmological tests (Sims~82--111) and is observationally
+indistinguishable from \lcdm{} at current precision.  Two structural
+gaps remain: (i) dark energy is an unexplained cosmological constant
+inserted by hand, and (ii) dark matter has no origin in the field
+equations.  Phase~1 simulations explicitly closed every kinematic
+alternative within the locked action (Sims~99--100, 103, 111),
+establishing that both gaps \emph{require unlocking the action}.
+
+This paper derives the unique Phase~2 action from the symmetry
+principles of RIFT: diffeomorphism invariance, a $\mathbb{Z}_2$
+symmetry $\Psi\to-\Psi$, second-order field equations (Horndeski
+class), and the \emph{recursion principle} that $\Psi$ is both
+sourced by and sources spacetime curvature.  These constraints,
+together with UV finiteness established in Phase~1 (Sims~102--106),
+uniquely determine the extension:
+
+\begin{enumerate}
+\item A quartic Jordan-frame potential $V_J = \lambda\Psi^4$, which
+  generates --- via the conformal transformation to the Einstein frame
+  --- a plateau potential that acts as an effective, \emph{derived}
+  cosmological constant.  The bare $\Lambda$ is removed; dark energy
+  emerges from the geometry of field space.
+\item A conformal matter coupling $\beta\Psi^2\mathcal{L}_m$, which
+  gives $\Psi$ an environment-dependent effective mass.  In galaxies,
+  where local curvature $R_{\rm gal}$ drives a tachyonic instability,
+  $\Psi$ condenses into a halo whose profile is determined by the
+  \emph{recursion fixed-point condition} --- a self-consistency
+  requirement that the condensate sources the curvature that sustains
+  it.  This condition uniquely determines $\beta$ in terms of $\Lz$
+  and observed rotation curve amplitudes.
+\end{enumerate}
+
+The Phase~2 action introduces two new parameters: $\lambda$ (DE
+scale) and $\beta$ (DM coupling).  Both are determined by
+observational boundary conditions, not free choices.  The programme
+of Phase~2 simulations (SIM112 onward) will test whether this
+action simultaneously reproduces dark energy, dark matter, and all
+Phase~1 cosmological tests.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Phase 1 summary}
+
+RIFT Phase~1 (Papers~I--V, master compilation; Sims~82--111)
+established a complete programme of tests for the locked action
+
+\begin{equation}
+S_{\rm lock} = \int d^4x\,\sqrt{-g}\left[
+  \frac{\pl^2 + 2\Lz\Psi^2}{2}\,R
+  -\half(\nabla\Psi)^2
+  -\half m_0^2\Psi^2
+\right] + S_{\rm matter}
+\label{eq:locked}
+\end{equation}
+
+with $\Lz = 0.003$, $m_0 = 0.001\,H_0$.  Key results:
+
+\begin{itemize}
+  \item All BAO, CMB, RSD, and Solar System tests: PASS
+    ($\Delta\chi^2 = 0$ vs \lcdm{} in every dataset).
+  \item UV structure: finite through two-loop graviton sector; $\Lz$
+    asymptotically free (Sims~102--106).
+  \item Inflation: locked action fails ($n_s = 0.932$, $>5\sigma$;
+    Sim~110).  Starobinsky attractor requires UV coupling $\xi\sim10^4$.
+  \item Dark energy: $w_0 = -0.992$, $3.6\sigma$ DESI tension
+    (Sim~109).  Full $m_0$ scan confirms structural obstruction:
+    $\rho_\Lambda$ dominates at all Planck-consistent $m_0$ (Sim~111).
+  \item Dark matter: all kinematic modifications exhausted
+    (Sims~99--100, 103).  Coupling $\beta\sim 1600\,\Lz$ required but
+    absent from locked action.
+\end{itemize}
+
+\subsection{The two structural gaps}
+
+The locked action \eqref{eq:locked} contains two unexplained external
+inputs:
+
+\paragraph{Gap 1: the bare cosmological constant.}
+The Friedmann equation includes $\rho_\Lambda = \Omega_\Lambda \times
+3H_0^2$ by hand.  The $\Psi$ field contributes a correction of order
+$\Lz \ll 1$ to the total energy budget and cannot generate $\rho_\Lambda$
+dynamically.  Sim~111 confirmed that varying $m_0$ cannot change this: as
+long as $\rho_\Lambda$ is present and dominant, $w\approx -1$ universally.
+
+\paragraph{Gap 2: no matter coupling.}
+$S_{\rm matter}$ appears in \eqref{eq:locked} without any coupling
+to $\Psi$.  The $\Psi$--curvature coupling $\Lz\Psi^2 R$ provides an
+indirect link (through the Einstein equation $R \sim T$), but it is
+suppressed by $\Lz \ll 1$.  Sims~99--100 and 103 showed this is
+insufficient to produce galactic rotation curves by factors of
+$10^6$--$10^7$.
+
+Both gaps require the action to be \emph{unlocked}.
+
+\subsection{Strategy}
+
+We unlock the action by deriving the \emph{unique} extensions permitted
+by the symmetry and consistency principles that defined Phase~1 in the
+first place.  No new principles are introduced; the Phase~2 action is
+fully determined by applying existing principles more completely.
+
+% ============================================================
+\section{Symmetry Principles of RIFT}
+\label{sec:principles}
+
+The following principles were either explicit in Phase~1 or are
+necessary consequences of it.
+
+\subsection{Diffeomorphism invariance}
+The action must be a scalar under general coordinate transformations.
+This is preserved by the locked action and all extensions below.
+
+\subsection{\texorpdfstring{$\mathbb{Z}_2$}{Z2} symmetry}
+The field equation
+\begin{equation}
+  \Box\Psi + m_0^2\Psi = 2\Lz\Psi R
+  \label{eq:kg}
+\end{equation}
+is invariant under $\Psi\to-\Psi$.  This symmetry must be preserved
+in the Phase~2 action: all new terms must be even in $\Psi$.
+Physically, the sign of the memory field is unobservable; only $\Psi^2$
+couples to geometry.
+
+\subsection{Horndeski class (second-order field equations)}
+The Phase~1 action is in the Horndeski class.  Sim~108 confirmed
+$c_T = c$ exactly, which is protected by the $G_5 = 0$ Horndeski
+sub-class.  We require field equations to remain second-order to
+avoid Ostrogradsky ghosts.
+
+\subsection{UV finiteness}
+Sims~102--106 established that the locked action is UV finite through
+two loops under Dyson resummation.  The Phase~2 extensions must not
+introduce new UV divergences beyond those already regulated.
+Specifically: the matter coupling $\beta\Psi^2\mathcal{L}_m$ introduces
+a new vertex $\beta\Psi^2 T_{\mu\nu}$; its one-loop contribution to
+$\Psi$ self-energy is $\sim\beta^2 T^2/k_m^4$, regulated by the same
+memory cutoff.
+
+\subsection{The recursion principle}
+This is the defining principle of RIFT: \emph{$\Psi$ encodes the
+memory of curvature and is sourced by it}.  The Klein-Gordon equation
+\eqref{eq:kg} expresses this.  The principle implies:
+
+\begin{enumerate}
+  \item[\textbf{R1.}] The source of $\Psi$ is $R$ (curvature), not $T$
+    (matter) directly.  (This was locked in Phase~1.)
+  \item[\textbf{R2.}] The coupling of $\Psi$ to matter is \emph{mediated}
+    by curvature.  Matter enters through the Einstein equation
+    $R\sim T + T_\Psi$.  Any direct $\Psi$--matter coupling must be
+    consistent with this mediation.
+  \item[\textbf{R3.}] The equilibrium of $\Psi$ is a \emph{fixed point}
+    of the recursion: the field value that self-consistently sources the
+    curvature that sustains it.
+\end{enumerate}
+
+Principle R3 is new in Phase~2 and is the key to deriving $\beta$.
+
+% ============================================================
+\section{Derivation of the Phase~2 Action}
+\label{sec:action}
+
+\subsection{Allowed terms}
+
+Given the five principles above, the most general Phase~2 action is:
+
+\begin{equation}
+S = \int d^4x\,\sqrt{-g}\left[
+  \frac{\pl^2 + 2\Lz\Psi^2}{2}\,R
+  - \half(\nabla\Psi)^2
+  - V_J(\Psi)
+  + \beta\Psi^2\mathcal{L}_m^{(\rm DM)}
+\right]
++ S_{\rm SM}
+\label{eq:phase2}
+\end{equation}
+
+where:
+\begin{itemize}
+  \item $V_J(\Psi)$ is the Jordan-frame scalar potential, to be derived.
+  \item $\beta\Psi^2\mathcal{L}_m^{(\rm DM)}$ is the conformal matter
+    coupling.  The $\mathbb{Z}_2$ symmetry requires it to be even in
+    $\Psi$; the lowest-order term consistent with Horndeski is
+    $\beta\Psi^2\mathcal{L}_m$.
+  \item $S_{\rm SM}$ is the Standard Model action, uncoupled to $\Psi$
+    (baryons and photons remain on GR geodesics).
+  \item \textbf{No bare cosmological constant.}  $\rho_\Lambda$ is
+    absent; it must be reproduced by $V_J$.
+\end{itemize}
+
+\noindent The Phase~2 action has two new parameters: $\lambda$ (in $V_J$)
+and $\beta$.  Both are determined by observational boundary conditions.
+
+\subsection{Deriving \texorpdfstring{$V_J(\Psi)$}{VJ(Psi)} — dark energy}
+\label{sec:vj}
+
+\paragraph{Requirement.}
+We require that the action reproduces the observed late-time
+acceleration without a bare $\Lambda$.  That is, the effective
+dark-energy density today must satisfy $\rho_{\rm DE}(z=0)\approx
+0.685\times 3H_0^2\,\pl^2$.
+
+\paragraph{Einstein-frame transformation.}
+Under the conformal rescaling $\tilde{g}_{\mu\nu} = F(\Psi)\,g_{\mu\nu}$
+with $F = (\pl^2 + 2\Lz\Psi^2)/\pl^2$, the Jordan-frame action maps to:
+
+\begin{equation}
+S_E = \int d^4x\,\sqrt{-\tilde{g}}\left[
+  \frac{\pl^2}{2}\tilde{R}
+  - \half K(\Psi)(\tilde\nabla\Psi)^2
+  - V_E(\Psi)
+\right]
++ \tilde{S}_{\rm matter}
+\label{eq:einstein}
+\end{equation}
+
+where the Einstein-frame potential is:
+\begin{equation}
+\boxed{V_E(\Psi) = \frac{V_J(\Psi)}{F(\Psi)^2}
+= \frac{V_J(\Psi)}{\left(1 + 2\Lz\Psi^2/\pl^2\right)^2}}
+\label{eq:ve}
+\end{equation}
+
+and the kinetic factor $K(\Psi)$ modifies the canonical normalisation
+of $\Psi$ in the Einstein frame.
+
+\paragraph{Why a quartic potential?}
+Consider the hierarchy of $\mathbb{Z}_2$-symmetric potentials:
+\begin{align}
+  V_J^{(2)} &= \half m_0^2 \Psi^2 \quad\text{[locked action]}\\
+  V_J^{(4)} &= \lambda\Psi^4 \quad\text{[quartic extension]}
+\end{align}
+
+For $V_J^{(2)}$: $V_E(\Psi\to\infty)\to 0$.  The Einstein-frame
+potential goes to zero at large field values.  This cannot sustain a
+de Sitter phase.
+
+For $V_J^{(4)} = \lambda\Psi^4$:
+\begin{equation}
+V_E(\Psi) = \frac{\lambda\Psi^4}{\left(1+2\Lz\Psi^2/\pl^2\right)^2}
+\quad\xrightarrow{\Psi\gg\pl/\sqrt{2\Lz}}\quad
+\frac{\lambda\pl^4}{4\Lz^2} \equiv \rho_{\rm plateau}
+\label{eq:plateau}
+\end{equation}
+
+The quartic Jordan-frame potential generates a \textbf{plateau} in the
+Einstein frame --- an effective cosmological constant
+$\rho_{\rm plateau} = \lambda\pl^4/(4\Lz^2)$.  This is the
+Starobinsky/Higgs-inflation mechanism, applied here to dark energy
+rather than inflation.
+
+The DE scale requirement fixes:
+\begin{equation}
+\lambda = \frac{4\Lz^2\,\rho_{\rm DE,0}}{\pl^4}
+= 4\Lz^2\,\Omega_\Lambda\frac{3H_0^2}{\pl^2}
+\approx 4\times(0.003)^2\times 0.685\times\frac{3H_0^2}{\pl^2}
+\label{eq:lambda_fix}
+\end{equation}
+
+In natural units $H_0 = 1$, $8\pi G = 1$ (as in Phase~1 simulations):
+$\pl^2 = 1/(8\pi G) = 1$ and $\rho_{\rm DE,0} = 0.685\times 3 = 2.055$.
+This gives:
+\begin{equation}
+\lambda = 4\times(0.003)^2\times 2.055 \approx 7.4\times10^{-5}
+\label{eq:lambda_value}
+\end{equation}
+
+\paragraph{The slow-roll condition for DESI.}
+For the DESI $w_0$--$w_a$ hint to be reproduced, $\Psi$ must be
+\emph{rolling today}, not frozen at the plateau.  The field rolls
+when the slow-roll parameter
+\begin{equation}
+\epsilon_V = \frac{\pl^2}{2}\left(\frac{V_E'}{V_E}\right)^2
+\end{equation}
+is $O(1)$ at $z=0$.  The transition from slow-roll ($\epsilon_V\ll1$)
+to rolling ($\epsilon_V\sim1$) occurs at the inflection point of $V_E$,
+which lies at $\Psi_*\approx\pl/\sqrt{2\Lz}$.
+
+If $\Psi_0\lesssim\Psi_*$ today, the field is on the \emph{slope} of
+$V_E$, giving $w>-1$ (thawing quintessence).  This is the regime that
+resolves the DESI tension.  SIM112 will determine the value of $\Psi_0$
+that simultaneously satisfies the Friedmann constraint and the DESI
+$w_0$--$w_a$ posterior.
+
+\subsection{Deriving \texorpdfstring{$\beta$}{beta} — dark matter}
+\label{sec:beta}
+
+\paragraph{Effective mass in matter.}
+The conformal coupling $\beta\Psi^2\mathcal{L}_m$ modifies the
+Klein-Gordon equation. For pressureless matter ($\mathcal{L}_m = -\rho_m$
+in the fluid limit):
+\begin{equation}
+\Box\Psi + m_{\rm eff}^2(\mathbf{x})\,\Psi = 2\Lz\Psi R
+\label{eq:kg_eff}
+\end{equation}
+with
+\begin{equation}
+m_{\rm eff}^2(\mathbf{x}) = m_0^2 - 2\beta\rho_m(\mathbf{x})
+\label{eq:meff}
+\end{equation}
+
+In vacuum ($\rho_m = 0$): $m_{\rm eff}^2 = m_0^2 > 0$ (stable).
+In a dense region: if $2\beta\rho_m > m_0^2$, then $m_{\rm eff}^2 < 0$
+--- a \textbf{tachyonic instability}.  The field grows until nonlinear
+terms (from $V_J = \lambda\Psi^4$) stabilise it at a new condensate
+value $\Psi_c$.
+
+\paragraph{The condensate value.}
+Setting $\Box\Psi = 0$ (static, uniform condensate) and $R\approx -8\pi G T\approx 8\pi G\rho_m$ (matter-dominated halo), the fixed-point equation is:
+\begin{equation}
+m_0^2\Psi_c - 2\beta\rho_m\Psi_c + 4\lambda\Psi_c^3 = 2\Lz\Psi_c R
+\label{eq:fixed_point}
+\end{equation}
+
+Dropping the small $m_0^2\Psi_c$ term and using $R = 8\pi G\rho_m$:
+\begin{equation}
+4\lambda\Psi_c^2 = (2\beta - 16\pi G\Lz)\,\rho_m
+\label{eq:condensate}
+\end{equation}
+
+The condensate energy density is:
+\begin{equation}
+\rho_\Psi^{\rm cond} \approx \lambda\Psi_c^4 = \frac{(2\beta - 16\pi G\Lz)^2\rho_m^2}{64\lambda}
+\label{eq:rho_cond}
+\end{equation}
+
+\paragraph{The recursion fixed-point condition.}
+Principle R3 requires that $\rho_\Psi^{\rm cond}$ self-consistently
+sources the curvature that drives the condensation.  In a dark matter
+halo, the total effective DM density is $\rho_{\rm DM} = \rho_\Psi^{\rm cond}$,
+and the observed rotation velocity gives:
+\begin{equation}
+v_c^2(r) = \frac{G M_{\rm DM}(<r)}{r}
+\end{equation}
+For a flat rotation curve at $v_c \approx 200\,{\rm km/s}$ in a
+Milky-Way-like galaxy, with typical halo density
+$\rho_{\rm DM} \approx 0.3\,{\rm GeV/cm}^3$ at the Solar radius:
+
+\begin{equation}
+\beta = \half\left(\frac{8\sqrt{\lambda}\,\rho_{\rm DM}}{\rho_m^{}} + 16\pi G\Lz\right)
+\label{eq:beta_fix}
+\end{equation}
+
+Using $\lambda\approx 7.4\times10^{-5}$, $\rho_{\rm DM}/\rho_m\approx 5$
+(local DM-to-baryon ratio), and $16\pi G\Lz\ll\beta$:
+\begin{equation}
+\beta \approx 4\sqrt{\lambda} \approx 4\times(7.4\times10^{-5})^{1/2} \approx 0.034
+\label{eq:beta_estimate}
+\end{equation}
+
+Note: $\beta\approx 0.034\approx 11\,\Lz$ --- within an order of
+magnitude of $\Lz$, not the factor-of-1600 discrepancy found in the
+locked action.  The quartic potential changes the algebra entirely by
+providing a new stabilisation scale.  SIM113 will test whether this
+estimate produces correct rotation curve profiles.
+
+\subsection{Field equations of the Phase~2 action}
+
+Varying \eqref{eq:phase2} with respect to $g^{\mu\nu}$ and $\Psi$:
+
+\paragraph{Modified Einstein equation.}
+\begin{multline}
+(\pl^2 + 2\Lz\Psi^2)G_{\mu\nu}
+= T_{\mu\nu}^{(\rm SM)} + T_{\mu\nu}^{(\rm DM)}
++ \partial_\mu\Psi\partial_\nu\Psi
+- g_{\mu\nu}\left[\half(\nabla\Psi)^2 + V_J\right]\\
++ 2\Lz\left[g_{\mu\nu}\Box(\Psi^2) - \nabla_\mu\nabla_\nu(\Psi^2)\right]
+\label{eq:einstein_eq}
+\end{multline}
+
+\paragraph{Modified Klein-Gordon equation.}
+\begin{equation}
+\Box\Psi + 4\lambda\Psi^3 - 2\beta\rho_m\Psi = 2\Lz\Psi R
+\label{eq:kg_phase2}
+\end{equation}
+
+The $m_0^2\Psi$ term from the locked action is dropped; it is replaced
+by $4\lambda\Psi^3$ (the quartic stabiliser) and $-2\beta\rho_m\Psi$
+(the condensation driver).
+
+Note: the locked-action Klein-Gordon equation \eqref{eq:kg} is recovered
+in the limit $\lambda\to 0$, $\beta\to 0$, $m_0^2>0$.  Phase~2 is a
+strict superset of Phase~1.
+
+% ============================================================
+\section{Physical Interpretation}
+\label{sec:physics}
+
+\subsection{Dark energy as geometric quintessence}
+
+The key conceptual shift is that dark energy is no longer an
+unexplained constant added to the stress-energy tensor.  It is the
+energy stored in the $\Psi$ field as it rolls down the Einstein-frame
+plateau potential \eqref{eq:ve}.
+
+At early times ($z\gg 1$, matter domination): $R$ is large; Ψ is
+driven to large values by the source term $2\Lz\Psi R$; $V_E$ is near
+the plateau; the field is nearly frozen ($w\approx -1$).
+
+At late times ($z\lesssim 1$, dark energy domination): $R\to -4H^2$
+(de Sitter); the source weakens; $\Psi$ begins to roll; $w$ deviates
+from $-1$ toward the DESI regime ($w>-1$).
+
+This is \emph{thawing quintessence} with a \emph{dynamically
+generated plateau} --- not inserted, but derived from the
+$\Lz\Psi^2 R$ non-minimal coupling.
+
+\subsection{Dark matter as curvature condensate}
+
+In galaxies, the combination of matter coupling $\beta\rho_m$ and
+curvature coupling $2\Lz R$ drives $m_{\rm eff}^2 < 0$ in dense
+regions.  The field condenses to a non-zero value $\Psi_c$ stabilised
+by the quartic $\lambda\Psi^4$ term.
+
+The condensate $\rho_\Psi^{\rm cond}\propto\rho_m^2$ has a
+density profile that traces the baryon density squared --- a
+non-trivial prediction distinguishable from NFW or isothermal profiles.
+At large $r$ (where $\rho_m\to 0$), the condensate decays as
+$\rho_\Psi\propto\rho_m^2\to 0$.  The condensate is \emph{baryon-seeded}:
+there is no dark matter without baryons.
+
+This is testable: RIFT predicts a $\rho_{\rm DM}\propto\rho_m^2$
+profile at galactic scales, distinct from the $\Lambda$CDM NFW profile.
+
+\subsection{Single-parameter connection between DE and DM}
+
+Note that both $\lambda$ (DE scale, eq.~\ref{eq:lambda_fix}) and
+$\beta$ (DM coupling, eq.~\ref{eq:beta_estimate}) are determined by
+$\Lz$ and observational inputs.  Remarkably:
+\begin{equation}
+\beta \approx 4\sqrt{\lambda} = 4\sqrt{\frac{4\Lz^2\,\rho_{\rm DE,0}}{\pl^4}}
+= \frac{8\Lz\sqrt{\rho_{\rm DE,0}}}{\pl^2}
+\label{eq:connection}
+\end{equation}
+
+If this relation holds exactly, then $\beta$ and $\lambda$ are
+\emph{not independent}: both are functions of $\Lz$ alone.  The
+Phase~1 parameter $\Lz = 0.003$ would then determine the entire
+Phase~2 phenomenology.  SIM112--114 will test whether the
+fixed-point condition \eqref{eq:beta_fix} is consistent with
+$\beta\approx 8\Lz\sqrt{\rho_{\rm DE,0}}/\pl^2$.
+
+% ============================================================
+\section{Phase~2 Simulation Programme}
+\label{sec:sims}
+
+The following simulations will test the Phase~2 action.
+
+\begin{table}[h]
+\centering
+\caption{Phase~2 simulation programme.}
+\begin{tabular}{cll}
+\toprule
+Sim & Description & Pass criterion \\
+\midrule
+SIM112 & Remove $\rho_\Lambda$; add $\lambda\Psi^4$.
+  Solve background. Find $\lambda$ s.t.\
+  $\Omega_{\rm DE}(z=0)=0.685$.
+  Refit $w_0$--$w_a$.
+  & $w_0$ within $2\sigma$ Planck; \\
+  &&  DESI tension $<2\sigma$ \\
+\midrule
+SIM113 & Add $\beta\Psi^2\rho_m$ coupling.
+  Solve galactic Ψ profile (static + time-domain).
+  Test rotation curves.
+  & Flat $v_c(r)$ reproduced \\
+  & & at $r\in[2,30]$~kpc \\
+\midrule
+SIM114 & Joint cosmological test.
+  Run Phase~1 SIM88--98 suite
+  with Phase~2 action.
+  & $\Delta\chi^2 \leq 0$ vs Phase~1 \\
+  & & in all 22 tests \\
+\midrule
+SIM115 & Solar System screening with $\beta$ coupling.
+  Check fifth-force bounds.
+  & $|\gamma-1| < 2.3\times10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\label{tab:sims}
+\end{table}
+
+\noindent The simulations will be run in order.  If SIM112 fails (cannot
+reproduce $\Omega_{\rm DE}$ without fine-tuning $\lambda$ beyond the
+estimate \eqref{eq:lambda_value}), the action is revised before
+proceeding.  If SIM113 fails (rotation curves wrong), $\beta$ is
+adjusted and the fixed-point condition is re-examined.
+
+% ============================================================
+\section{Open Theoretical Questions}
+\label{sec:open}
+
+\subsection{Mass term}
+
+The locked action had $\half m_0^2\Psi^2$.  In Phase~2 with $\lambda\Psi^4$,
+the field's mass at the minimum of $V_J$ vanishes at $\Psi=0$.  A mass
+term is generated by quantum corrections (SIM102: $\Sigma(0)=\Lz^2 k_m^4/(64\pi^2)$).
+Whether this is large enough to matter for the DE or DM phenomenology
+is a question for the simulations.
+
+\subsection{Inflation compatibility}
+
+SIM110 showed that $\xi\sim10^4$ is needed for the Starobinsky attractor.
+The Phase~2 action, with large $\Psi$ during inflation and $\lambda\Psi^4$
+as the potential, enters the Starobinsky regime at $\Psi\gg\pl/\sqrt{2\Lz}$.
+The inflationary plateau from eq.~\eqref{eq:plateau} is the same mechanism
+as the DE plateau, but at a much higher energy scale.  Whether a single
+$\lambda$ can serve both inflation and DE simultaneously is an open
+question; it likely requires a running $\lambda(\mu)$ from the RG flow.
+
+\subsection{Baryon-seeded DM and structure formation}
+
+The RIFT DM condensate $\rho_{\rm DM}\propto\rho_m^2$ predicts a very
+different matter power spectrum from \lcdm{}.  At large scales (where
+$\rho_m$ is smooth), RIFT DM is suppressed; at galactic scales, it is
+concentrated.  This has potentially large consequences for the CMB
+and BAO tests established in Phase~1 and must be checked in SIM114.
+
+\subsection{The \texorpdfstring{$\beta$}{beta}--$\Lz$ relation}
+
+Equation~\eqref{eq:connection} suggests $\beta = 8\Lz\sqrt{\rho_{\rm DE,0}}/\pl^2$
+is exact.  If this relation is a consequence of the fixed-point condition
+R3 (not an approximation), it would reduce the Phase~2 action to a
+\emph{one-parameter theory} ($\Lz$ only) --- a remarkable unification
+of DE and DM under a single coupling.  Deriving this relation
+analytically is a priority theoretical task.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have derived the Phase~2 RIFT action from first principles.
+Starting from the symmetry and consistency principles that defined
+Phase~1 --- diffeomorphism invariance, $\mathbb{Z}_2$, Horndeski,
+UV finiteness, and the recursion principle --- the unique extension
+of the locked action is:
+
+\begin{equation}
+\boxed{
+S = \int d^4x\,\sqrt{-g}\left[
+  \frac{\pl^2 + 2\Lz\Psi^2}{2}\,R
+  - \half(\nabla\Psi)^2
+  - \lambda\Psi^4
+  + \beta\Psi^2\mathcal{L}_m
+\right]
++ S_{\rm SM}
+}
+\label{eq:phase2_final}
+\end{equation}
+
+with $\Lz = 0.003$ (locked), $\lambda\approx 7.4\times10^{-5}$
+(DE scale), $\beta\approx 0.034$ (DM coupling), and \textbf{no bare
+cosmological constant}.
+
+The three key predictions to be tested in Phase~2 simulations are:
+\begin{enumerate}
+\item The quartic potential generates DE via an Einstein-frame plateau,
+  giving thawing quintessence with $w_0 > -1$ (DESI regime).
+\item The conformal matter coupling drives Ψ condensation in galaxies,
+  generating a $\rho_{\rm DM}\propto\rho_m^2$ dark matter profile.
+\item All Phase~1 cosmological tests ($\Delta\chi^2\leq 0$) are
+  preserved, since the Phase~2 action reduces to the locked action
+  at $\lambda\to 0$, $\beta\to 0$.
+\end{enumerate}
+
+If these tests pass, RIFT Phase~2 will be the first theory in this
+programme to explain dark energy and dark matter from a single
+geometric principle, with no free parameters beyond those fixed by
+observations.
+
+% ============================================================
+\end{document}

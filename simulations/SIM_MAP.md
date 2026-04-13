@@ -102,6 +102,7 @@ Papers: `paper/phase2/`
 | SIM112 | λΨ⁴ Quintessence — no bare Λ, DE from plateau | FAIL | Always freezing quintessence (wₐ > 0); wrong sign for DESI |
 | SIM113 | SSB Hilltop V_J = λ(Ψ²−v²)² — no bare Λ | PARTIAL | Thawing confirmed (wₐ < 0); DESI tension 3.6σ → 2.7σ; gap persists |
 | SIM114 | βΨ²ρ_m condensate: galactic Ψ profile and rotation curves | FAIL | Trilemma: condensate needs β > 8πΛ₀=0.075 but then G_eff→0; β_needed(~10⁻⁴) << threshold; v=13.16 >> Ψ_max=1.29 (10×) structural |
+| SIM115 | Gradient soliton: Ψ dips below Ψ_cosmo in dense regions (most-RIFT approach) | FAIL | G_eff safe (Ψ varies only 4×10⁻⁷!); ρ_DM ~10⁻⁵–10⁻¹⁴ × needed; H₀² suppression of λ_kpc structural — not tunable |
 
 ---
 
@@ -115,8 +116,8 @@ Papers: `paper/phase2/`
 | Phase 1 (P-IV)   | 4  | 4 | 0 | 0 |
 | Phase 1 (P-V)    | 3  | 1 | 2 | 0 |
 | Phase 1 extension| 1  | 0 | 1 | 0 |
-| Phase 2          | 3  | 0 | 2 | 1 |
-| **Total**        | **34** | **25** | **7** | **2** |
+| Phase 2          | 4  | 0 | 3 | 1 |
+| **Total**        | **35** | **25** | **8** | **2** |
 
 ---
 

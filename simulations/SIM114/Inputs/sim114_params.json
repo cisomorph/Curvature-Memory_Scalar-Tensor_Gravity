@@ -1,0 +1,44 @@
+{
+  "description": "SIM114 — RIFT Phase 2 DM: beta*Psi^2*rho_m condensate, galactic rotation curves",
+  "phase2_params": {
+    "Lambda0": 0.003,
+    "lambda_ssb": 6.855927167999998e-05,
+    "v_ssb": 13.157894736842106,
+    "beta_fiducial": 0.034,
+    "beta_scan": [1e-8, 3e-8, 1e-7, 3e-7, 1e-6, 3e-6, 1e-5, 3e-5, 1e-4, 3e-4, 1e-3, 3e-3, 0.01, 0.034, 0.1]
+  },
+  "galaxies": {
+    "NGC3198": {
+      "M_disk_Msun": 1.9e10,
+      "r_d_kpc": 4.0,
+      "M_gas_Msun": 9.0e9,
+      "r_gas_kpc": 7.0,
+      "v_flat_kms": 150.0,
+      "r_min_kpc": 0.5,
+      "r_max_kpc": 30.0,
+      "Nr": 300
+    },
+    "NGC6503": {
+      "M_disk_Msun": 3.0e9,
+      "r_d_kpc": 2.3,
+      "M_gas_Msun": 2.0e9,
+      "r_gas_kpc": 4.5,
+      "v_flat_kms": 116.0,
+      "r_min_kpc": 0.3,
+      "r_max_kpc": 22.0,
+      "Nr": 220
+    }
+  },
+  "cosmological_constraint": {
+    "Geff_max_deviation_pct": 1.0,
+    "description": "16*pi*Lambda0*Psi^2 < 0.01 everywhere (G_eff/G within 1%)"
+  },
+  "verdict": {
+    "flatness_tolerance": 0.20,
+    "flatness_fraction": 0.50
+  },
+  "numerics": {
+    "rtol": 1e-8,
+    "atol": 1e-10
+  }
+}

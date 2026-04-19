@@ -1,0 +1,194 @@
+{
+  "sim": "SIM114",
+  "description": "Phase 2 RIFT DM: beta*Psi^2*rho_m condensate galactic rotation curves",
+  "Lambda0": 0.003,
+  "lambda_cosmo": 6.855927167999998e-05,
+  "lambda_kpc": 3.6385712859570103e-19,
+  "v_ssb": 13.157894736842106,
+  "beta_fiducial": 0.034,
+  "Psi_max_cosmo": 1.2909944487358056,
+  "galaxies": {
+    "NGC3198": {
+      "beta": 0.034,
+      "psi_c_min": 0.0,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_min": 36.92676526876162,
+      "vc_max": 87.17612236645847,
+      "v_flat": 150.0,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855
+    },
+    "NGC6503": {
+      "beta": 0.034,
+      "psi_c_min": 0.0,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_min": 19.91243857643633,
+      "vc_max": 46.649384972175994,
+      "v_flat": 116.0,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.7329386863852739
+    }
+  },
+  "beta_scan_results": [
+    {
+      "beta": 1e-08,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 3e-08,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 1e-07,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 3e-07,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 1e-06,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 3e-06,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 1e-05,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 3e-05,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.0001,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.0003,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.001,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.003,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.01,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.034,
+      "psi_c_max": 0.0,
+      "Geff_coup_max": 0.0,
+      "Geff_ok": true,
+      "vc_outer_mean": 70.6718735584672,
+      "flatness_ok": false,
+      "flatness_max_dev": 0.5832667431119855,
+      "both_ok": false
+    },
+    {
+      "beta": 0.1,
+      "psi_c_max": 17715.715831457666,
+      "Geff_coup_max": 1883079.5245257586,
+      "Geff_ok": false,
+      "vc_outer_mean": 1672.061237240785,
+      "flatness_ok": false,
+      "flatness_max_dev": 18.636976691905158,
+      "both_ok": false
+    }
+  ],
+  "overall_result": "FAIL",
+  "condensate_threshold_beta": 0.07539822368615504,
+  "failure_mode": "TRILEMMA: (1) condensate requires beta > 8pi*Lambda0 = 0.075; (2) at beta > 0.075, Psi_c >> Psi_max=1.29 \u2192 G_eff catastrophically violated; (3) beta_needed for DM density (~1e-4) << threshold (0.075) so condensate never forms at needed beta. VEV v=13.16 >> Psi_max=1.29 is the structural root: DE hilltop scale and G_eff/G~1 incompatible by 10x. Requires screening mechanism or reformulated small-Psi DE vacuum (SIM115).",
+  "viable_beta_values": [],
+  "v_to_psimax_ratio": 10.19206143738794,
+  "Geff_at_vev": 0.4904891304347826
+}

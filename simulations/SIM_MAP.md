@@ -103,23 +103,27 @@ Papers: `paper/phase2/`
 | SIM113 | SSB Hilltop V_J = λ(Ψ²−v²)² — no bare Λ | PARTIAL | Thawing confirmed (wₐ < 0); DESI tension 3.6σ → 2.7σ; gap persists |
 | SIM114 | βΨ²ρ_m condensate: galactic Ψ profile and rotation curves | FAIL | Trilemma: condensate needs β > 8πΛ₀=0.075 but then G_eff→0; β_needed(~10⁻⁴) << threshold; v=13.16 >> Ψ_max=1.29 (10×) structural |
 | SIM115 | Gradient soliton: Ψ dips below Ψ_cosmo in dense regions (most-RIFT approach) | FAIL | G_eff safe (Ψ varies only 4×10⁻⁷!); ρ_DM ~10⁻⁵–10⁻¹⁴ × needed; H₀² suppression of λ_kpc structural — not tunable |
-| SIM116 | Ψ-switch ξ condensate: separate ξ field with V(ξ,Ψ) = λ_ξ(ξ²−Ψ²/λ_ξ)²; ξ condenses in halo (Ψ≈Ψ_cosmo), absent in disk (Ψ≈0) | PLANNED | Energy scale set by λ_ξ independently of H₀²; tests Ψ→0 switching as halo geometry mechanism |
-| SIM117 | Memory-of-memory ξ: □ξ + m_ξ²ξ = g∫G_R(x−x')Ψ²(x')d⁴x'; ξ sourced by time-integrated Ψ² history | PLANNED | Most RIFT philosophically; ρ_DM ∝ integrated baryon history → naturally traces galaxy age/mass; RIFT recursion at level 2 |
+| SIM116 | Ψ-switch ξ condensate: V(ξ,Ψ) = λ_ξ(ξ²−Ψ²/λ_ξ)² | FAIL | H₀² suppression²: δξ∝δΨ/m_ξ²; ρ_DM∝(δξ)²~10⁻¹⁵×needed; non-perturbative switch impossible at physical baryon densities |
+| SIM117 | Level-2 recursion: F=M_Pl²/2+Λ₀Ψ²+Λ₁Ψ²ξ, □ξ−m_ξ²ξ=−Λ₁Ψ²R | FAIL | 3 structural modes: r_ξ~Gpc scale tension; DM∝baryons (falling curves); Ψ̄ instability |
+| SIM118 | RIFT-seeded fuzzy χ DM: U(χ,Ψ)=½(m₀²−κΨ²)χ²+(λ_χ/4)χ⁴; separate χ field | PARTIAL | 18 PASS models (χ²/dof=0.34); best m₂₂=0.082 (below [0.1,10] FDM window); RIFT link m_χ=√(2κ)Ψ̄ verified |
+| SIM119 | SPARC-wide fuzzy χ DM: full 161-galaxy SPARC sample | PASS | 65/161 PASS; median m₂₂=0.28±0.58 dex; 79% constrained fits in window; m_χ universal prediction confirmed |
+| SIM120 | Joint DE+DM background consistency: χ DM + SIM113 quintessence | PASS | Background decoupling exact (χ dust for a>10⁻⁸); w₀,wₐ shift=0; κ=3.84×10⁻¹⁰³ from RIFT link |
+| SIM120-alt | Universal m₂₂ constrained SPARC fit: single m₂₂ + soliton virial | PARTIAL | m₂₂_universal=0.060 (outside FDM window); median χ²/dof=0.544 (good fit); scatter σ=0.58 dex is intrinsic |
 
 ---
 
 ## Summary Statistics
 
-| Phase | Sims | PASS | FAIL | PARTIAL | PLANNED |
-|-------|------|------|------|---------|---------|
-| Phase 1 (P-I)    | 6  | 5 | 0 | 1 | — |
-| Phase 1 (P-II)   | 16 | 14 | 2 | 0 | — |
-| Phase 1 (P-III)  | 1  | 1 | 0 | 0 | — |
-| Phase 1 (P-IV)   | 4  | 4 | 0 | 0 | — |
-| Phase 1 (P-V)    | 3  | 1 | 2 | 0 | — |
-| Phase 1 extension| 1  | 0 | 1 | 0 | — |
-| Phase 2          | 6  | 0 | 3 | 1 | 2 |
-| **Total**        | **37** | **25** | **8** | **2** | **2** |
+| Phase | Sims | PASS | FAIL | PARTIAL |
+|-------|------|------|------|---------|
+| Phase 1 (P-I)    | 6  | 5 | 0 | 1 |
+| Phase 1 (P-II)   | 16 | 14 | 2 | 0 |
+| Phase 1 (P-III)  | 1  | 1 | 0 | 0 |
+| Phase 1 (P-IV)   | 4  | 4 | 0 | 0 |
+| Phase 1 (P-V)    | 3  | 1 | 2 | 0 |
+| Phase 1 extension| 1  | 0 | 1 | 0 |
+| Phase 2          | 10 | 2 | 5 | 3 |
+| **Total**        | **41** | **27** | **10** | **4** |
 
 ---
 

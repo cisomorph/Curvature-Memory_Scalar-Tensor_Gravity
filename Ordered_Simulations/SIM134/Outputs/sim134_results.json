@@ -1,0 +1,68 @@
+{
+  "sim": "SIM134",
+  "phase": "Phase 3",
+  "verdict": "FAIL",
+  "description": "Exponential coupling: F_eff=\u00bdexp(-2\u039b\u2080\u03a8\u00b2)+\u03be\u03a8, dilaton-type, no gravity flip",
+  "action": "S=\u222bd\u2074x\u221ag[F_eff(\u03a8)R - \u00bd(\u2202\u03a8)\u00b2]+S_SM, F_eff=\u00bdexp(-2\u039b\u2080\u03a8\u00b2)+\u03be\u03a8",
+  "xi": 0.16666666666666666,
+  "scan": [
+    {
+      "L0": 0.2,
+      "Psi_attractor": NaN,
+      "Fatt_theory": NaN,
+      "tension": 3.8438287339329187,
+      "chi2_DESI": 88.65011601485006,
+      "theta_100": 0.9311678191248142,
+      "psi0": 0.45262043529787616,
+      "Feff0": 0.5360975459560148,
+      "Feff_CMB": 0.5310194860539124
+    },
+    {
+      "L0": 0.33,
+      "Psi_attractor": NaN,
+      "Fatt_theory": NaN,
+      "tension": 3.7201421230957488,
+      "chi2_DESI": 83.03674449618808,
+      "theta_100": 0.9290122688467467,
+      "psi0": 0.26454290842541006,
+      "Feff0": 0.5215213435602503,
+      "Feff_CMB": 0.5211265898520667
+    },
+    {
+      "L0": 0.5,
+      "Psi_attractor": NaN,
+      "Fatt_theory": NaN,
+      "tension": 3.65496228591084,
+      "chi2_DESI": 80.15249586858357,
+      "theta_100": 0.9255688596037529,
+      "psi0": 0.17159051464031486,
+      "Feff0": 0.5140913823092009,
+      "Feff_CMB": 0.5140770068417124
+    },
+    {
+      "L0": 1.0,
+      "Psi_attractor": NaN,
+      "Fatt_theory": NaN,
+      "tension": 3.591292430639353,
+      "chi2_DESI": 77.38428793420509,
+      "theta_100": 0.9223585751327439,
+      "psi0": 0.08453843924740331,
+      "Feff0": 0.5069938256825848,
+      "Feff_CMB": 0.5069638607189569
+    }
+  ],
+  "best": {
+    "L0": 0.2,
+    "tension": 3.8438287339329187,
+    "chi2_DESI": 88.65011601485006,
+    "delta_chi2": 70.39011601485005,
+    "theta_100": 0.9311678191248142
+  },
+  "baseline": {
+    "tension": 2.77,
+    "chi2": 18.26
+  },
+  "pass_desi": false,
+  "pass_theta": false,
+  "beats_ref": false
+}

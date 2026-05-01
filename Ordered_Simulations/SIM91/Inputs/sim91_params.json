@@ -1,0 +1,48 @@
+{
+  "description": "Sim 91 — CMSTG Lambda0 sensitivity scan. Maps how key observables (G_eff/G, growth factor ratio D_CMSTG/D_LCDM, sigma_8 ratio, H(z) deviation, BAO chi2, approximate CMB chi2) vary as Lambda0 is increased from 0 to 0.1. Identifies the Lambda0 threshold at which CMSTG becomes observationally distinguishable from LCDM. Provides the 'CMSTG signature map' for the paper's discussion section.",
+
+  "lambda0_scan": {
+    "values": [0.0, 0.001, 0.003, 0.005, 0.010, 0.020, 0.030, 0.050, 0.075, 0.100],
+    "note": "Log-spaced scan plus key values: 0.003 (BAO best-fit), 0.008 (joint best-fit)"
+  },
+
+  "base_cosmology": {
+    "H0":     67.59,
+    "Omega_m": 0.3118,
+    "Omega_b": 0.049,
+    "Omega_r": 9.2e-5,
+    "note": "Joint CMB+BAO best-fit from SIM90. Used as the common background for all Lambda0 values so that only Lambda0 varies."
+  },
+
+  "cmstg_field": {
+    "m0":      1.0,
+    "alpha":   0.1,
+    "beta":    0.05,
+    "Psi_ini": 0.01,
+    "Pi_ini":  0.0,
+    "note": "Field parameters held fixed. Lambda form: Lambda0 * Psi^2 (SIM84-verified). G_eff = 1/(1+16pi*Lambda0*Psi^2)."
+  },
+
+  "integration": {
+    "a_ini": 1e-5,
+    "a_fin": 1.0,
+    "N_bg":  5000,
+    "note": "RK45 integration of CMSTG FLRW+scalar system (equations from SIM87/section3_lagrangian.tex)"
+  },
+
+  "sigma8": {
+    "k_min":    0.001,
+    "k_max":    10.0,
+    "N_k":      200,
+    "R_filter": 8.0,
+    "note": "sigma_8 = sqrt(integral Pk * W^2(kR) k^2 dk / 2pi^2) with R=8 Mpc/h, top-hat W(x)=3(sin x - x cos x)/x^3. Uses CMSTG P(k) = LCDM P(k) * (D_CMSTG/D_LCDM)^2. LCDM P(k) from BBKS transfer function with Planck amplitude A_s=2.101e-9, n_s=0.9649."
+  },
+
+  "observability_thresholds": {
+    "G_eff_over_G_detectable":     0.001,
+    "D_ratio_detectable":          0.001,
+    "sigma8_ratio_detectable":     0.002,
+    "H_deviation_pct_detectable":  0.1,
+    "note": "Observable deviation thresholds: G_eff/G > 0.1% (strong lensing), D_ratio > 0.1% (structure growth surveys), sigma_8 ratio > 0.2% (cluster counts/WL), H(z) > 0.1% (future BAO, e.g. DESI)"
+  }
+}

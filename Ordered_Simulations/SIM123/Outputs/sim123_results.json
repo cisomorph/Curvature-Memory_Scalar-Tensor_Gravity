@@ -1,0 +1,34 @@
+{
+  "verdict": "FAIL",
+  "map": {
+    "L0": 0.001,
+    "psi_ini": 0.001,
+    "psi0": 0.0011016031701675919,
+    "F0": 0.5000000012135295,
+    "F_CMB": 0.5000000010749696,
+    "H0": 56.58661980303504,
+    "theta_star": 0.8886474476548225
+  },
+  "fit_quality": {
+    "chi2_DESI": 131.88260656233854,
+    "chi2_DESI_per_N": 21.980434427056423,
+    "chi2_theta": 276032.6677424131,
+    "DESI_tension_sigma": 4.688329598807706,
+    "delta_chi2_vs_SIM121C": 90.39060656233855
+  },
+  "reference_SIM113": {
+    "L0": 0.003,
+    "psi0": 2.62,
+    "F0": 0.5205932,
+    "v": 13.16
+  },
+  "reference_SIM121C": {
+    "chi2_DESI": 41.492,
+    "tension": 2.63,
+    "F0_frozen": 0.56
+  },
+  "pass_desi": false,
+  "pass_theta": false,
+  "better_than_SIM121C": false,
+  "frozen_psi_approx_valid": true
+}

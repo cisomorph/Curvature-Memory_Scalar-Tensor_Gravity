@@ -1,0 +1,18 @@
+{
+  "verdict": "FAIL",
+  "m_xi_nat": 7.410479066835018,
+  "r_xi_kpc": 604279.4210216337,
+  "lam_xi_cosmo_bound": 56.03591836734695,
+  "xi_eq_at_bound": 0.35,
+  "delta_Psi_frac_max": 5.473883554340813e-06,
+  "rho_DM_max_Msun_kpc3": 1.064528734174774e-07,
+  "rho_DM_required": 15000000.0,
+  "suppression_factor": 7.096858227831827e-15,
+  "chi2_dof": 392.527396965309,
+  "pass_rho": false,
+  "pass_switch": false,
+  "pass_chi2": false,
+  "all_pass": false,
+  "failure_mode": "H0sq_suppression_squared",
+  "note": "\u03a8-switch \u03be condensate: structural failure. \u03b4\u03a8/\u03a8\u0304 ~ 1e-7 (H\u2080\u00b2 frozen DE field). \u03c1_DM \u221d (\u03b4\u03a8)\u00b2 \u2192 doubly suppressed. All \u03a8-sector DM mechanisms exhausted."
+}

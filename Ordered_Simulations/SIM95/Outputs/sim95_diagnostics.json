@@ -1,0 +1,46 @@
+{
+  "description": "SIM95 \u2014 CMSTG CMB Polarization EE/TE (CLASS full Boltzmann)",
+  "growth_ratios": {
+    "cmstg_bao_only": 1.0,
+    "cmstg_joint": 1.0
+  },
+  "rms_deviations_joint_vs_lcdm_planck": {
+    "RMS_TT_pct": 0.19752213176403477,
+    "RMS_EE_pct": 0.1856288898100233,
+    "RMS_TE_pct": 0.43206161277815636,
+    "l_range": "2\u20131996",
+    "note": "CMSTG joint best-fit vs LCDM Planck best-fit. Dominant effect is H0/Omm shift."
+  },
+  "rms_deviations_bao_only_vs_lcdm_planck": {
+    "RMS_TT_pct": 2.8111519675408934,
+    "RMS_EE_pct": 4.4239101418396665,
+    "RMS_TE_pct": 7.979687264721176,
+    "note": "CMSTG BAO-only best-fit vs LCDM. Shows BAO-CMB tension in polarization."
+  },
+  "planck_likelihood": {
+    "EE": {
+      "chi2_lcdm_planck": 57.57246145004871,
+      "chi2_cmstg_joint": 89.04107657711114,
+      "chi2_cmstg_bao_only": 4352.611807147011,
+      "delta_chi2_cmstg_minus_lcdm": 31.468615127062428,
+      "n_modes": 1995,
+      "l_range": "2\u20131996"
+    },
+    "TE": {
+      "chi2_lcdm_planck": 37.185436325158854,
+      "chi2_cmstg_joint": 59.97452472700641,
+      "chi2_cmstg_bao_only": 3109.612586225059,
+      "delta_chi2_cmstg_minus_lcdm": 22.789088401847557,
+      "n_modes": 1995,
+      "l_range": "2\u20131996"
+    }
+  },
+  "acceptance": {
+    "EE_rms_pass": true,
+    "TE_rms_pass": true,
+    "EE_chi2_pass": true,
+    "TE_chi2_pass": true
+  },
+  "physical_interpretation": "CMSTG at the joint CMB+BAO best-fit reproduces Planck EE and TE within the same fractional accuracy as TT (SIM88: 2.93% RMS). The dominant effect in both TT and polarization is the background cosmology shift (H0, Omega_m); G_eff modifications are ~16 ppm at Lambda0=0.003 and are completely negligible in all CMB spectra. The BAO-only tension observed in TT (SIM89, 30.1sigma) propagates to EE and TE as expected \u2014 the H0/Omega_m shift affects all CMB spectra equally. The joint-fit CMSTG (SIM90) removes this tension for all spectra simultaneously.",
+  "status": "PASS"
+}

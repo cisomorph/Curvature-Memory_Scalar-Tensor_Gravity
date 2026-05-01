@@ -1,0 +1,23 @@
+{
+  "Lambda0": 0.003,
+  "Psi_max": 12.909944487358056,
+  "N_max_hilltop": 487.5703515504361,
+  "analytic_N_sub_Planck": 41.666666666666664,
+  "Psi_end_inflation": 1.389655517988255,
+  "Psi_N60_quadratic": 10.832282496474898,
+  "ns_quadratic_N60": 0.9323218084112241,
+  "r_quadratic_N60": 0.013915863262983164,
+  "eta_quadratic_N60": -0.031229871432578608,
+  "verdict_quadratic": "FAIL (n_s=0.932, >5sigma from Planck; hilltop eta)",
+  "ns_quartic_Lambda003": 0.9312,
+  "r_quartic_Lambda003": 0.11972,
+  "Psi_N60_quartic": 18.56,
+  "verdict_quartic_CMSTG": "FAIL (n_s=0.931, transition zone; Lambda0=0.003 too small)",
+  "ns_quartic_large_xi": 0.9666666666666667,
+  "r_quartic_large_xi": 0.0033333333333333335,
+  "verdict_quartic_UV": "PASS (Starobinsky class, n_s=0.967, r=0.003; requires xi~10^4)",
+  "planck_ns": 0.9649,
+  "planck_ns_err": 0.0044,
+  "planck_r_limit": 0.036,
+  "conclusion": "CMSTG DE coupling Lambda0=0.003 insufficient for inflation; UV sector needed"
+}

@@ -1,0 +1,94 @@
+{
+  "description": "Self-consistent back-reaction test. Psi sources R through G_eff and T^Psi, which feeds back into the scalar equation via Lambda'(Psi)*R. Tests attractor stability of the closed CMSTG loop.",
+  "params": {
+    "description": "Sim 86 \u2014 CMSTG Observer Field: self-consistent back-reaction test. The field Psi sources R through G_eff and T^Psi, which in turn sources Psi via the retarded kernel. Tests whether the closed CMSTG loop has stable fixed points or runaways.",
+    "G_Newton": 1.0,
+    "field": {
+      "m0": 1.0,
+      "alpha": 0.1,
+      "beta": 0.05,
+      "Lambda0": 0.003,
+      "Lambda_form": "Lambda0 * Psi^2"
+    },
+    "grid": {
+      "a_ini": 1e-06,
+      "a_fin": 1.0,
+      "N_steps": 80000
+    },
+    "initial_conditions": [
+      {
+        "name": "zero",
+        "Psi_ini": 0.0,
+        "dPsi_ini": 0.0
+      },
+      {
+        "name": "small",
+        "Psi_ini": 0.01,
+        "dPsi_ini": 0.0
+      },
+      {
+        "name": "moderate",
+        "Psi_ini": 0.1,
+        "dPsi_ini": 0.0
+      },
+      {
+        "name": "large",
+        "Psi_ini": 0.5,
+        "dPsi_ini": 0.0
+      }
+    ],
+    "acceptance": {
+      "GR_limit_max_Psi": 1e-08,
+      "stability_max_Psi": 10.0,
+      "constraint_tol": 0.01
+    }
+  },
+  "results": [
+    {
+      "IC": "zero",
+      "Psi0": 0.0,
+      "final_Psi": 0.0,
+      "max_constraint_violation": 2.9568775964287994e-16,
+      "runaway": false,
+      "passed": true,
+      "note": "GR vacuum stability"
+    },
+    {
+      "IC": "small",
+      "Psi0": 0.01,
+      "final_Psi": 0.008678604209763845,
+      "max_constraint_violation": 6.416356896211844e-16,
+      "runaway": false,
+      "passed": true,
+      "note": "bounded evolution"
+    },
+    {
+      "IC": "moderate",
+      "Psi0": 0.1,
+      "final_Psi": 0.0874837567561752,
+      "max_constraint_violation": 5.772948740422051e-16,
+      "runaway": false,
+      "passed": true,
+      "note": "bounded evolution"
+    },
+    {
+      "IC": "large",
+      "Psi0": 0.5,
+      "final_Psi": 0.4749427930137736,
+      "max_constraint_violation": 6.290066918912929e-16,
+      "runaway": false,
+      "passed": true,
+      "note": "bounded evolution"
+    }
+  ],
+  "interpretation": {
+    "zero_IC": "GR recovery: Psi=0 is a fixed point",
+    "nonzero_IC": "Non-zero Psi evolves self-consistently; attractor behaviour indicates memory stability",
+    "phase_portrait": "Trajectories converging to Psi=0 confirm GR attractor; nonzero attractors would indicate persistent memory"
+  },
+  "artifacts": {
+    "Psi_vs_a": "Outputs/sim86_Psi_vs_a.png",
+    "Geff_vs_a": "Outputs/sim86_Geff_vs_a.png",
+    "phase_portrait": "Outputs/sim86_phase_portrait.png"
+  }
+}

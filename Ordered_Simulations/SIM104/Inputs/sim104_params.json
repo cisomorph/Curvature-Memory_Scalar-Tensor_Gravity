@@ -1,0 +1,22 @@
+{
+  "sim_id": "SIM104",
+  "title": "Full One-Loop UV Structure: All Diagrams",
+  "description": "Complete one-loop UV analysis for the Lambda0*Psi*R theory. SIM102 computed only the Psi self-energy from the graviton loop. SIM104 computes: (A) reproduction of SIM102 Psi self-energy, (B) graviton wavefunction renormalization from Psi loop, (C) vertex correction delta_Lambda0, (D) two-loop Psi self-energy. For each diagram: bare divergence power-law slope, regulated value with memory on graviton lines only, regulated value with memory on all lines. Determines whether UV-finiteness holds beyond the SIM102 one-loop partial result.",
+
+  "cmstg_params": {
+    "Lambda0": 0.003,
+    "m0_Mpc_inv": 0.01,
+    "k_m_values_Mpc_inv": [0.01, 0.1, 1.0, 9.15, 100.0],
+    "k_UV_range": [1.0, 1000.0],
+    "n_UV_points": 20
+  },
+
+  "diagrams": {
+    "A": "Psi self-energy from graviton loop — graviton internal, memory on graviton line",
+    "B": "Graviton wavefunction renormalization from Psi loop — Psi internal, test both damping schemes",
+    "C": "Vertex correction delta_Lambda0/Lambda0 — via derivative of Sigma_A",
+    "D": "Two-loop Psi self-energy — leading Lambda0^4 contribution with two damped graviton loops"
+  },
+
+  "notes": "SIM102 established Sigma(0) = Lambda0^2*k_m^4/(64pi^2) for diagram A only. The UV-finiteness conjecture requires all diagrams to be regulated. Key open question: does memory damping on graviton lines alone regulate the graviton self-energy (diagram B), or does Psi also need memory damping? Ward identity from diff invariance should enforce Pi_hh(0)=0; test numerically."
+}

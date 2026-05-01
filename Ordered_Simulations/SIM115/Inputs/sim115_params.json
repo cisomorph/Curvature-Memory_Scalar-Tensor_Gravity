@@ -1,0 +1,35 @@
+{
+  "description": "SIM115 — CMSTG Phase 2 DM: gradient soliton (Psi dips below cosmological background in dense regions)",
+  "phase2_params": {
+    "Lambda0": 0.003,
+    "lambda_cosmo": 6.855927167999998e-05,
+    "v_ssb": 13.157894736842106,
+    "Psi_cosmo": 2.618308529945553,
+    "beta_threshold": 0.07539822368615503,
+    "beta_scan": [0.0, 0.01, 0.03, 0.05, 0.07, 0.074, 0.0753]
+  },
+  "galaxies": {
+    "NGC3198": {
+      "M_disk_Msun": 1.9e10,
+      "r_d_kpc": 4.0,
+      "M_gas_Msun": 9.0e9,
+      "r_gas_kpc": 7.0,
+      "v_flat_kms": 150.0,
+      "r_min_kpc": 0.2,
+      "r_max_kpc": 40.0,
+      "Nr": 400
+    }
+  },
+  "cosmological_constraint": {
+    "Geff_max_deviation_pct": 5.0,
+    "comment": "5% consistent with SIM113: Psi0=2.62 gives 3.95% deviation (PASS)"
+  },
+  "verdict": {
+    "flatness_tolerance": 0.20,
+    "flatness_fraction": 0.50
+  },
+  "numerics": {
+    "rtol": 1e-10,
+    "atol": 1e-12
+  }
+}

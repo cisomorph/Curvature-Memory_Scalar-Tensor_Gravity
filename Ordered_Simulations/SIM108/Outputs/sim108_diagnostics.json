@@ -1,0 +1,25 @@
+{
+  "Lambda0": 0.003,
+  "m0": 0.001,
+  "Psi0_today": 1.0,
+  "c_T_sq": 1.0,
+  "c_T_deviation": 0.0,
+  "graviton_mass": 0.0,
+  "dL_ratio_GW170817": 0.9999999999822632,
+  "dL_deviation_GW170817": 1.7736812019109038e-11,
+  "G_eff_BBN_ratio": 0.9940357852882704,
+  "G_eff_BBN_deviation_pct": 0.596421471172961,
+  "Psi0_z_BBN": 1.0,
+  "chirp_mass_bias_pct": 0.35785298826299355,
+  "P_T_modification": 0.9999999977648797,
+  "Horndeski_class": "G5=0 => c_T=c exact",
+  "overall_verdict": "PASS",
+  "tests": {
+    "GW speed c_T = c": true,
+    "Graviton mass m_g = 0": true,
+    "GW170817 dL_GW/dL_EM": true,
+    "BBN G_eff/G_N within 10%": true,
+    "Chirp mass bias z<1": true,
+    "CMB tensor-to-scalar r": true
+  }
+}

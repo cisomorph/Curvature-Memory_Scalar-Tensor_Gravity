@@ -1,0 +1,27 @@
+{
+  "verdict": "FAIL",
+  "map": {
+    "L0": 0.009996,
+    "F0": 0.56862,
+    "w0": -0.6001,
+    "wa": 0.4765,
+    "H0": 76.143
+  },
+  "posterior_50pct": {"L0": 0.00969, "w0": -0.6343, "wa": 0.5198, "H0": 77.802, "F0": 0.5665},
+  "posterior_16pct": {"L0": 0.00920, "w0": -0.6797, "wa": 0.4818, "H0": 76.577, "F0": 0.5632},
+  "posterior_84pct": {"L0": 0.00992, "w0": -0.6089, "wa": 0.5712, "H0": 79.954, "F0": 0.5681},
+  "chi2_DESI_map": 36.371,
+  "chi2_theta_map": 0.0,
+  "DESI_tension_sigma": 2.462,
+  "SIM121C_chi2": 41.492,
+  "SIM121C_tension": 2.630,
+  "delta_chi2_vs_SIM121C": -5.121,
+  "L0_optimal_profile": 0.010,
+  "L0_locked": 0.003,
+  "n_valid_samples": 4854,
+  "acceptance_fraction": 0.524,
+  "pass_desi": false,
+  "pass_thawing": false,
+  "pass_F0": false,
+  "structural_finding": "Posterior runs to Λ₀ upper boundary (0.010). CMB θ_* forces F₀→0.569, H₀→76, systematically overshooting DESI H(z) ~10%. w₀/wₐ identical to SIM121C (freezing). Unlocking Λ₀ does not resolve F₀ normalisation problem — the tension is deeper than the Λ₀ lock."
+}

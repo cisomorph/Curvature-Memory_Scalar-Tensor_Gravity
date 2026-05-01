@@ -1,0 +1,45 @@
+{
+  "description": "SIM100 v1 — CMSTG 1+1D time-domain galactic field evolution. First time-dependent CMSTG simulation at galactic scales. Tests: (a) does the field relax from uniform IC to the static Yukawa profile (SIM99)? (b) does attractive self-coupling (lambda<0) cause tachyonic condensation, and does the condensate give flat rotation curves? Spatial instability threshold: lambda_spatial_crit = -(k_min^2 + m0^2)/(3*psi_cosmo^2) ~ -778 (k_min = pi/r_max).",
+
+  "cmstg": {
+    "m0_kpc_inv": 0.1,
+    "Lambda0": 0.003,
+    "psi_cosmo": 0.003,
+    "lambda_spatial_crit_estimate": -778,
+    "lambda_crit_uniform_note": "Uniform-mode threshold = -m0^2/(3*psi_cosmo^2) = -370. Spatial BC shifts it to ~-778."
+  },
+
+  "galaxy": {
+    "note": "NGC 3198 — same as SIM99 for direct comparison. Same R(r) used.",
+    "M_disk_Msun": 3.5e10,
+    "r_d_kpc": 2.73,
+    "M_gas_Msun": 1.5e10,
+    "r_gas_kpc": 5.0,
+    "v_flat_kms": 157.0
+  },
+
+  "numerics": {
+    "r_min_kpc": 0.5,
+    "r_max_kpc": 30.0,
+    "n_r": 120,
+    "n_snapshots": 60,
+    "radau_rtol": 1e-6,
+    "radau_atol": 1e-9,
+    "max_step_compton_fraction": 0.5,
+    "blow_up_threshold_factor": 20.0
+  },
+
+  "scan": {
+    "lambda_values": [0, -100, -200, -400, -600, -800, -1000, -1500],
+    "delta_max_values": [0, 100],
+    "t_end_kpc_per_c": 150.0,
+    "t_form_kpc_per_c": 5.0,
+    "note": "t_end=150 kpc/c ~ 489 kyr ~ 2.4 Compton periods. Sufficient to see condensation growth (gamma ~ 0.13 kpc^-1 for lambda=-1000 => e-fold time 7.7 kpc/c = 25 kyr). delta_max=100 included to check R-coupling contribution (expected negligible: 2*L0*|R_gal| ~ 1e-10 << m0^2=0.01)."
+  },
+
+  "verdict_criteria": {
+    "condensation_growth_factor": 2.0,
+    "flatness_tolerance": 0.20,
+    "flatness_outer_fraction": 0.50
+  }
+}

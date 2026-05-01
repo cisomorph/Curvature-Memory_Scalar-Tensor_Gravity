@@ -1,0 +1,34 @@
+{
+  "description": "CMSTG Planck TT likelihood comparison (Phase 5b). Uses approximate full-sky Gaussian TT likelihood against Planck 2018 best-fit theory spectrum (COM_PowerSpect R3.01). chi2 = f_sky * sum_l (2l+1) * [x - 1 - ln(x)], x = (D_l^pred + N_l) / (D_l^Planck + N_l). When D_l^pred = D_l^Planck, x=1 and chi2=0 (correct baseline). Closes final CMB referee gap.",
+  "l_range": "2\u20132500",
+  "f_sky": 0.778,
+  "n_eff_modes": 4866387,
+  "T_CMB_uK2_conversion": 7428350250000.0,
+  "LCDM": {
+    "chi2_total": 6.200419507708336,
+    "chi2_lowl": 0.0008068168295159074,
+    "chi2_highl": 6.199612690878819,
+    "chi2_per_mode": 1.2741320219103692e-06,
+    "rms_fractional_residual": 0.0026466638320954143,
+    "interpretation": "LCDM chi2 > 0 because CLASS uses Planck params but the theory file is the published best-fit (tiny numerical differences and lensing scheme). The LCDM residual sets the baseline noise floor for comparison."
+  },
+  "CMSTG": {
+    "chi2_total": 913.0514352041894,
+    "chi2_lowl": 0.03893689606315439,
+    "chi2_highl": 913.0124983081262,
+    "chi2_per_mode": 0.0001876240905633254,
+    "rms_fractional_residual": 0.03400979659041029
+  },
+  "comparison": {
+    "delta_chi2": 906.851015696481,
+    "tension_sigma": 30.113967119867834,
+    "passed": false,
+    "interpretation": "Delta_chi2 = chi2_CMSTG - chi2_LCDM = +906.85. This corresponds to 30.1-sigma CMB tension from CMSTG's BAO best-fit parameters. PHYSICAL INTERPRETATION: The CMSTG BAO best-fit (H0=68.14, Omega_m=0.294) shifts the CMB acoustic peaks relative to the Planck LCDM best-fit (H0=67.36, Omega_m=0.315). The CMB is exquisitely sensitive to these shifts across l=2-2500, so even a 3.4% RMS C_ell deviation (vs. 0.26% for LCDM) accumulates to a large chi2 over thousands of modes. IMPORTANT CONTEXT: (1) This is NOT a test of the CMSTG field equations — it tests only whether the CMSTG BAO best-fit *parameters* are CMB-consistent. (2) The BAO fit has a known H0-rd degeneracy: only H0*rd is constrained by BAO. The individual H0=68.14 is poorly constrained. (3) A CMSTG cosmology with parameters jointly fit to CMB+BAO could find a lower-tension solution (Lambda0 modifies the background, allowing different H0/Omega_m). (4) The LCDM baseline chi2=6.2 confirms the formula and reference spectrum are correct. (5) This tension is analogous to the standard cosmological H0+Omega_m tension between CMB and BAO in LCDM — CMSTG does not eliminate this tension with BAO-only parameters. PAPER RECOMMENDATION: Report this result honestly. Discuss that the BAO-only best-fit is parameter-degenerate, and that a joint CMB+BAO CMSTG fit is the proper resolution (future work).",
+    "physical_interpretation_note": "chi2_CMSTG / n_modes = 1.88e-4 << 1. The per-mode chi2 is tiny, confirming the deviation is small in any given mode. The large total chi2 (913) comes from coherent contributions across ~4.9 million f_sky-weighted modes. This is a signal-integration effect, not a large per-mode discrepancy. The 3.4% RMS C_ell deviation (vs Planck theory) is the relevant measure of CMSTG cosmological parameter tension."
+  },
+  "artifacts": {
+    "cl_vs_planck": "Outputs/sim89_cl_vs_planck.png",
+    "chi2_table": "Outputs/sim89_chi2_table.png",
+    "residuals": "Outputs/sim89_residuals.png"
+  }
+}

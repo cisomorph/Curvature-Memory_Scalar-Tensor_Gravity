@@ -1,0 +1,53 @@
+{
+  "description": "CMSTG CMB full CLASS external_Pk injection. Fixes referee vulnerability 3: prior C_ell used first-order modulation approximation. Now derives P(k) from CMSTG growth factor D_CMSTG(z)/D_LCDM(z) via G_eff(Psi) and modified H(z), injects as CLASS external_Pk, runs full Boltzmann transfer function.",
+  "cmstg_params": {
+    "H0": 68.14,
+    "Omega_m": 0.2937,
+    "Omega_b": 0.049,
+    "Omega_r": 9.2e-05,
+    "Lambda0": 0.003,
+    "m0": 1.0,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "Psi_ini": 0.01,
+    "note": "Best-fit from SIM87 full-cov BAO refit (2026-04-07)"
+  },
+  "lcdm_reference": {
+    "H0": 67.36,
+    "Omega_m": 0.3153,
+    "Omega_b": 0.0493,
+    "Omega_r": 9.2e-05,
+    "note": "Planck 2018 TT+TE+EE+lowE best-fit (Aghanim+2020, Table 2)"
+  },
+  "growth": {
+    "R_growth": 1.0,
+    "R_growth_sq": 1.0,
+    "mean_Geff_over_G": 0.9999842228900042,
+    "interpretation": "R < 1 means CMSTG suppresses structure growth relative to LCDM (G_eff < G in Psi-populated regions). This reduces sigma_8 and suppresses ISW."
+  },
+  "external_Pk": {
+    "LCDM_pk_file": "Outputs/lcdm_external_pk.dat",
+    "CMSTG_pk_file": "Outputs/cmstg_external_pk.dat",
+    "Pk_ratio_at_all_k": 1.0,
+    "note": "CMSTG P(k) = LCDM P(k) * R_growth^2 (scale-independent growth correction)"
+  },
+  "class_results": {
+    "class_ran": true,
+    "rms_dCl_over_Cl": 0.02930749315830744,
+    "chi2_CMSTG_vs_LCDM_fullsky_Gaussian": 423.00499910287954,
+    "chi2_per_l_mode": 0.338,
+    "l_range": "2-1500",
+    "chi2_interpretation": "Full-sky noise-free Gaussian chi2 = sum_l (2l+1)/2 * [x-1-ln(x)] where x = C_l^CMSTG/C_l^LCDM. This is NOT chi2 vs Planck data. The large value (423) is expected for a 3% RMS deviation summed over 1500 modes without noise (per-mode contribution = 0.34). The actual Planck likelihood comparison requires the Planck likelihood code and is beyond the scope of this simulation. The quantity reported here measures the theoretical signal-to-noise of the CMSTG vs LCDM difference, not observational distinguishability.",
+    "dominant_effect": "The 2.93% RMS deviation is driven by the shifted BAO best-fit cosmological parameters (H0=68.14 vs 67.36, Omega_m=0.294 vs 0.315), not G_eff (D_CMSTG/D_LCDM=1.000000 to 6 d.p.). The effect enters through: (1) different angular diameter distance to last scattering -> peak positions shift, (2) different expansion history -> ISW, (3) different Omega_m -> early ISW and lensing."
+  },
+  "verdict": {
+    "passed": true,
+    "note": "CMSTG CMB is a 2.93% RMS perturbation on LCDM across l=2-1500. Full CLASS Boltzmann treatment is now used — the first-order approximation is superseded. G_eff growth effect is negligible (R=1.000000); the dominant CMSTG CMB signal is from the shifted H0/Omega_m background (BAO best-fit). A proper Planck likelihood comparison is Phase 5b (beyond this simulation)."
+  },
+  "artifacts": {
+    "growth_ratio": "Outputs/sim88_growth_ratio.png",
+    "Pk_comparison": "Outputs/sim88_Pk_comparison.png",
+    "Cl_comparison": "Outputs/sim88_Cl_comparison.png",
+    "dCl_over_Cl": "Outputs/sim88_dCl_over_Cl.png"
+  }
+}

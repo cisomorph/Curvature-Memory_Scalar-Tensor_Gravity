@@ -1,0 +1,133 @@
+{
+  "sim_id": "SIM137",
+  "timestamp": "2026-04-24T23:00:47.901358Z",
+  "action_spec": "Phase 1 canonical \u2014 diagnostic reanalysis of SIM119",
+  "parameters": {
+    "n_galaxies_total": 161,
+    "n_pass": 65,
+    "n_nonpass": 96,
+    "n_rotmod_loaded": 161,
+    "classification": "PASS vs MARGINAL+FAIL"
+  },
+  "observational_targets": {
+    "dataset": "SPARC (Lelli et al. 2016, 161 galaxies)",
+    "chi2": null,
+    "dof": null,
+    "note": "Diagnostic sim; no new chi2 target"
+  },
+  "theoretical_checks": {
+    "gr_recovery": true,
+    "c_T_eq_c": true,
+    "no_tachyon": true,
+    "ward_identity": true,
+    "uv_finite": true,
+    "note": "Inherited from Phase 1 canonical; no new Lagrangian terms"
+  },
+  "feature_statistics": {
+    "v_flat": {
+      "ks_p": 0.0001121980492227805,
+      "mwu_p": 3.399592556114471e-05,
+      "spearman_r": 0.48634558226134195,
+      "spearman_p": 6.125913313471725e-11,
+      "mean_pass": 103.18846153846154,
+      "mean_nonpass": 157.07864583333333
+    },
+    "N_pts": {
+      "ks_p": 0.4416281593578898,
+      "mwu_p": 0.15631449269694123,
+      "spearman_r": 0.4626286141771972,
+      "spearman_p": 6.470049744861932e-10,
+      "mean_pass": 18.03076923076923,
+      "mean_nonpass": 22.302083333333332
+    },
+    "R_max": {
+      "ks_p": 0.0008595991056035784,
+      "mwu_p": 0.0016375662343482544,
+      "spearman_r": 0.4981049986238825,
+      "spearman_p": 1.7772312897958804e-11,
+      "mean_pass": 13.689692307692308,
+      "mean_nonpass": 23.9175
+    },
+    "distance": {
+      "ks_p": 0.01188218829884553,
+      "mwu_p": 0.0031583987129818244,
+      "spearman_r": 0.20921711379795674,
+      "spearman_p": 0.00773264044112487,
+      "mean_pass": 17.555384615384614,
+      "mean_nonpass": 30.499479166666664
+    },
+    "gas_frac": {
+      "ks_p": 0.0001121980492227805,
+      "mwu_p": 0.0013301288088638189,
+      "spearman_r": -0.3486254888428802,
+      "spearman_p": 5.839926771474032e-06,
+      "mean_pass": 0.35017374809357854,
+      "mean_nonpass": 0.24257848173902688
+    },
+    "log_SBdisk": {
+      "ks_p": 0.00019502513213955343,
+      "mwu_p": 0.0002762287895976558,
+      "spearman_r": 0.4087042788129745,
+      "spearman_p": 7.349383124306721e-08,
+      "mean_pass": 1.4045255005784396,
+      "mean_nonpass": 1.7934013551258303
+    },
+    "at_bound": {
+      "ks_p": 3.394444099468213e-07,
+      "mwu_p": 5.009879287027659e-08,
+      "spearman_r": 0.059671210394789155,
+      "spearman_p": 0.4521030268394889,
+      "mean_pass": 0.2923076923076923,
+      "mean_nonpass": 0.7291666666666666
+    }
+  },
+  "logistic_regression": {
+    "intercept": {
+      "beta": -0.4742085383138374,
+      "se": 0.19116108582504415,
+      "z": -2.480675061373973
+    },
+    "v_flat": {
+      "beta": -0.5257988893509872,
+      "se": 0.5058876638340862,
+      "z": -1.0393589860740147
+    },
+    "N_pts": {
+      "beta": 0.19417142795711942,
+      "se": 0.24729324291756144,
+      "z": 0.7851869532119158
+    },
+    "R_max": {
+      "beta": -0.24307684317703732,
+      "se": 0.4034572705668437,
+      "z": -0.6024847261642359
+    },
+    "gas_frac": {
+      "beta": -0.16846118283057376,
+      "se": 0.33722410044093176,
+      "z": -0.4995526197854946
+    },
+    "log_SBdisk": {
+      "beta": -0.3825347300163469,
+      "se": 0.40612815713218436,
+      "z": -0.9419064482419024
+    }
+  },
+  "at_bound_frac_pass": 0.2923076923076923,
+  "at_bound_frac_nonpass": 0.7291666666666666,
+  "sig_features_ks001": [
+    "v_flat",
+    "R_max",
+    "gas_frac",
+    "log_SBdisk",
+    "at_bound"
+  ],
+  "sig_logreg_terms": [],
+  "verdict": "STRUCTURAL_PATTERN",
+  "failure_mode": "PASS/NON-PASS separation driven by: v_flat, R_max, gas_frac, log_SBdisk, at_bound",
+  "derived_vs_phenom": {
+    "chi2": "derived (from SIM119 CMSTG-\u03c7 fit)",
+    "v_flat": "derived (max Vobs from SPARC rotmod)",
+    "gas_frac": "derived (outer Vgas\u00b2/Vbar\u00b2 from SPARC rotmod)"
+  }
+}

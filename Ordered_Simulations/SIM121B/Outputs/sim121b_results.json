@@ -1,0 +1,20 @@
+{
+  "verdict": "FAIL",
+  "Geff_today": 0.9544084023638896,
+  "Geff_rec": 0.9614614402223071,
+  "rs_CMSTG_Mpc": 184.61165481025046,
+  "DA_CMSTG_Mpc": 15.314606238609318,
+  "theta_star_CMSTG": 12.054613219165248,
+  "theta_star_LCDM": 11.630313828848506,
+  "theta_ratio": 1.0364821961436919,
+  "H0_Planck": 67.4,
+  "H0_SH0ES": 73.0,
+  "H0_inferred": 55.0,
+  "H0_shift": -12.400000000000006,
+  "tension_LCDM": 5.008792269599524,
+  "tension_CMSTG": 16.099689437998485,
+  "tension_reduction_sigma": -11.09089716839896,
+  "pass_Geff_5pct": true,
+  "pass_moves_toward_SH0ES": false,
+  "pass_05sigma_reduction": false
+}

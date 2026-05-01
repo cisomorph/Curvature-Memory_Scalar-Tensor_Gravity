@@ -1,0 +1,21 @@
+{
+  "sim_id": "SIM105",
+  "title": "RG Flow of Lambda0 — Beta Function and Running Coupling",
+  "description": "SIM104 showed the vertex correction delta_Lambda0/Lambda0 ~ 2.4e-2 at the naturalness threshold. SIM105 computes the full one-loop beta function beta(Lambda0, k_m) = k_m * d(Lambda0)/d(k_m), integrates the RG flow from UV to IR, determines whether Lambda0 has a UV fixed point or Landau pole, and identifies the UV boundary condition that flows to the observed Lambda0 ~ 0.003 at cosmological scales.",
+
+  "cmstg_params": {
+    "Lambda0_obs": 0.003,
+    "m0_Mpc_inv": 0.01,
+    "k_m_IR": 0.001,
+    "k_m_UV": 10000.0,
+    "n_rg_steps": 500
+  },
+
+  "rg_scan": {
+    "k_m_range": [0.001, 10000.0],
+    "Lambda0_initial_values": [0.001, 0.003, 0.01, 0.05, 0.1],
+    "note": "Integrate dLambda0/d(ln k_m) = beta(Lambda0, k_m) forward (IR->UV) and backward (UV->IR)"
+  },
+
+  "notes": "From SIM104 vertex correction: delta_Lambda0 ~ -Lambda0^3 * k_m^2 / (16pi^2 * m0^2). Analytic prediction: Lambda0(k_m)^-2 = Lambda0(k_m0)^-2 + (k_m^2 - k_m0^2)/(16pi^2 m0^2). This predicts asymptotic freedom: Lambda0 -> 0 as k_m -> infinity. Verify numerically and compute the UV boundary condition."
+}

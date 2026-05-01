@@ -1,0 +1,60 @@
+{
+  "description": "SIM94 — CMSTG DESI Y1 BAO Refit. Replaces BOSS+eBOSS (SIM87) with DESI Year 1 BAO data (arXiv:2404.03002, Adame et al. 2024). 13 data points across 7 redshift bins (BGS, LRG x2, LRG+ELG, ELG, QSO, Lya). Full block-diagonal covariance with DM-DH off-diagonal correlations from Table 1 of DESI Y1. Tests: (1) BAO-only CMSTG fit, (2) joint DESI+CMB fit, (3) Lambda0 sensitivity scan.",
+
+  "data": {
+    "survey": "DESI Year 1",
+    "reference": "Adame et al. 2024, arXiv:2404.03002",
+    "n_points": 13,
+    "bins": [
+      {"z_eff": 0.295, "tracer": "BGS",         "type": "DV", "note": "Single DV/rd measurement"},
+      {"z_eff": 0.510, "tracer": "LRG1",        "type": "DM+DH", "rho_DM_DH": -0.445},
+      {"z_eff": 0.706, "tracer": "LRG2",        "type": "DM+DH", "rho_DM_DH": -0.421},
+      {"z_eff": 0.930, "tracer": "LRG3+ELG1",  "type": "DM+DH", "rho_DM_DH": -0.389},
+      {"z_eff": 1.317, "tracer": "ELG2",        "type": "DM+DH", "rho_DM_DH": -0.435},
+      {"z_eff": 1.491, "tracer": "QSO",         "type": "DM+DH", "rho_DM_DH": -0.490},
+      {"z_eff": 2.330, "tracer": "Lya QSO",     "type": "DM+DH", "rho_DM_DH": -0.477}
+    ],
+    "covariance": "Block-diagonal: within-bin DM-DH off-diagonal from published rho; between-bin blocks set to zero (independent survey footprints / sub-volumes).",
+    "note_vs_sim87": "SIM87 used 12 BOSS+eBOSS+Lyalpha points. SIM94 uses 13 DESI Y1 points. Overlap at z~0.51, z~1.49 (QSO), z~2.33 (Lya). DESI errors are ~2-5x smaller than BOSS at matched redshifts."
+  },
+
+  "parameters": {
+    "H0":      {"min": 60.0,  "max": 75.0,  "init": 67.59, "latex": "H_0"},
+    "Omega_m": {"min": 0.25,  "max": 0.40,  "init": 0.3118, "latex": "\\Omega_m"},
+    "rd":      {"min": 140.0, "max": 160.0, "init": 147.56, "latex": "r_d"},
+    "Lambda0": {"min": 0.0,   "max": 0.10,  "init": 0.003,  "latex": "\\Lambda_0"}
+  },
+
+  "cmb_prior": {
+    "type": "gaussian",
+    "mu_H0": 67.36,
+    "mu_Omm": 0.3153,
+    "sigma_H0": 0.54,
+    "sigma_Omm": 0.0073,
+    "rho": -0.90,
+    "source": "Planck 2018 Table 2 (Aghanim+2020)"
+  },
+
+  "lambda0_scan": {
+    "n_points": 20,
+    "lo": 0.0,
+    "hi": 0.1,
+    "note": "Scan chi2(Lambda0) at DESI+CMB joint best-fit (H0, Omega_m, rd). Compare sensitivity to SIM91 (BOSS+eBOSS scan)."
+  },
+
+  "optimizer": {
+    "method": "Nelder-Mead",
+    "n_restarts": 20,
+    "note": "Same as SIM90"
+  },
+
+  "outputs": {
+    "diagnostics":        "sim94_diagnostics.json",
+    "figure_bao_fit":     "sim94_bao_fit.png",
+    "figure_lambda0_scan":"sim94_lambda0_scan.png"
+  },
+
+  "expected_outcomes": {
+    "note": "DESI Y1 has ~3-5x smaller errors than BOSS at matched redshifts. Expect: (1) CMSTG fits DESI with chi2/dof~1 (like SIM87). (2) Lambda0 still unconstrained — G_eff deviation is ~16 ppm at Lambda0=0.003, far below DESI sensitivity. (3) Best-fit (H0, Omega_m) near SIM90 joint fit. (4) Lambda0 sensitivity scan flat (Dchi2 << 1 across 0-0.1) as in SIM91."
+  }
+}

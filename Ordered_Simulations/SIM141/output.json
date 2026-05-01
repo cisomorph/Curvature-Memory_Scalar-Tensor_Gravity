@@ -1,0 +1,633 @@
+{
+  "sim_id": "SIM141",
+  "timestamp": "2026-04-26T03:17:12.206226Z",
+  "action_spec": "PHENOMENOLOGICAL: L = (\u00bd+\u039b\u2080(a)\u03a8\u00b2)R + \u00bd(\u2202\u03a8)\u00b2 \u2212 \u00bdm\u2080\u00b2\u03a8\u00b2, \u039b\u2080(a) decreasing after CMB",
+  "phenomenological_flag": true,
+  "parameters": {
+    "Lambda0_CMB": 0.003,
+    "Psi_ini": 2.62,
+    "F_eff_ref": 0.5205932,
+    "H0_target": 67.58999999999999,
+    "forms_scanned": [
+      "linear",
+      "exponential",
+      "tanh"
+    ],
+    "n_cases": 14
+  },
+  "phase1_reference": {
+    "desi_chi2": 13.628657993084508,
+    "desi_tension": 1.5071307172396886,
+    "theta_star_100": 1.0409582689730772,
+    "sigma8": 0.7937302890099656,
+    "S8": 0.8107708070092807,
+    "rsd_chi2N": 1.0531973954413216,
+    "Psi0": 2.882012866187933,
+    "F_eff_today": 0.5249179944826183
+  },
+  "scan_results": [
+    {
+      "form": "linear",
+      "params": {
+        "beta": 0.1
+      },
+      "label": "linear \u03b2=0.10",
+      "H0": 67.58997384234948,
+      "Psi0": 2.8793556748904,
+      "y0": 0.04951625323479975,
+      "F_eff_today": 0.5223871407443336,
+      "L0_today": 0.0027002750275027503,
+      "dH_pct": 0.09882935253774117,
+      "desi_chi2": 13.322446168339267,
+      "desi_tension": 1.4901032496854745,
+      "desi_pulls": [
+        -0.6106314825006254,
+        -1.8667996516289034,
+        -1.5555920768475362,
+        -2.2188684757265573,
+        -1.3920806840326283,
+        -0.4283710641673663
+      ],
+      "theta_star_100": 1.0417415080990347,
+      "sigma8": 0.7910910110469835,
+      "S8": 0.8080747988293483,
+      "rsd_chi2N": 1.0952166155949672,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.0027002750275027503,
+        "L0_early_z1e4": 0.0030002450275027504,
+        "change_frac": 0.0999083241657499,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.4872759360459826,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "linear",
+      "params": {
+        "beta": 0.3
+      },
+      "label": "linear \u03b2=0.30",
+      "H0": 67.58997125673683,
+      "Psi0": 2.8740570492395467,
+      "y0": 0.04164536695009173,
+      "F_eff_today": 0.5173532435865663,
+      "L0_today": 0.002100825082508251,
+      "dH_pct": 0.3023389083192725,
+      "desi_chi2": 12.706882145378216,
+      "desi_tension": 1.4552710025615054,
+      "desi_pulls": [
+        -0.6020078069337589,
+        -1.8407791239905498,
+        -1.524323302844784,
+        -2.1679399453912676,
+        -1.341995711285018,
+        -0.3626614604882935
+      ],
+      "theta_star_100": 1.043333125915182,
+      "sigma8": 0.7857926682796517,
+      "S8": 0.8026627376185469,
+      "rsd_chi2N": 1.1863769984489856,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.002100825082508251,
+        "L0_early_z1e4": 0.003000735082508251,
+        "change_frac": 0.2997249724972497,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.4662487569158921,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "linear",
+      "params": {
+        "beta": 0.6
+      },
+      "label": "linear \u03b2=0.60",
+      "H0": 67.59003626334211,
+      "Psi0": 2.8661473445042382,
+      "y0": 0.02992871227792941,
+      "F_eff_today": 0.5098713164970587,
+      "L0_today": 0.0012016501650165016,
+      "dH_pct": 0.6227814450643837,
+      "desi_chi2": 11.777811605956439,
+      "desi_tension": 1.401059813495748,
+      "desi_pulls": [
+        -0.5869385137221899,
+        -1.7982687756222338,
+        -1.4743850449350782,
+        -2.087761256450157,
+        -1.2642233684643542,
+        -0.26215481619499054
+      ],
+      "theta_star_100": 1.0457854362145607,
+      "sigma8": 0.7777956873146811,
+      "S8": 0.7944933064970167,
+      "rsd_chi2N": 1.3415173593252625,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.0012016501650165016,
+        "L0_early_z1e4": 0.0030014701650165013,
+        "change_frac": 0.5994499449944994,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.4352206492052309,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "linear",
+      "params": {
+        "beta": 1.0
+      },
+      "label": "linear \u03b2=1.00",
+      "H0": 67.59016440043133,
+      "Psi0": 2.8556687974029495,
+      "y0": 0.014474859274677069,
+      "F_eff_today": 0.5000224280645778,
+      "L0_today": 2.750275027502802e-06,
+      "dH_pct": 1.0797809336128015,
+      "desi_chi2": 10.535851986797171,
+      "desi_tension": 1.3251321938330765,
+      "desi_pulls": [
+        -0.5625437537367917,
+        -1.7346789391391741,
+        -1.4018368358262412,
+        -1.9734831861705768,
+        -1.1554286474294355,
+        -0.12444971015621965
+      ],
+      "theta_star_100": 1.0491811714891144,
+      "sigma8": 0.767040593654581,
+      "S8": 0.7835058384808925,
+      "rsd_chi2N": 1.5844044294684754,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 2.750275027502802e-06,
+        "L0_early_z1e4": 0.0030024502750275028,
+        "change_frac": 0.9990832416574991,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.3947895774641908,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "exponential",
+      "params": {
+        "beta": 0.1
+      },
+      "label": "exp \u03b2=0.10",
+      "H0": 67.58997339176295,
+      "Psi0": 2.879414996405989,
+      "y0": 0.04966560008485906,
+      "F_eff_today": 0.5225081678532556,
+      "L0_today": 0.002714761120690708,
+      "dH_pct": 0.10337387849721769,
+      "desi_chi2": 13.307239948557726,
+      "desi_tension": 1.4892526060946212,
+      "desi_pulls": [
+        -0.6092418466812243,
+        -1.8652681862031366,
+        -1.5546079541023905,
+        -2.2179881884053465,
+        -1.3917547534990447,
+        -0.428462513643144
+      ],
+      "theta_star_100": 1.0417569915657723,
+      "sigma8": 0.7910683543519581,
+      "S8": 0.808051661108746,
+      "rsd_chi2N": 1.0962270244610297,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.002714761120690708,
+        "L0_early_z1e4": 0.003000245037509436,
+        "change_frac": 0.09507962643643074,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.4881041343945106,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "exponential",
+      "params": {
+        "beta": 0.5
+      },
+      "label": "exp \u03b2=0.50",
+      "H0": 67.58995584904494,
+      "Psi0": 2.8701253413175722,
+      "y0": 0.0371789698904866,
+      "F_eff_today": 0.5149959785927363,
+      "L0_today": 0.0018204262333890904,
+      "dH_pct": 0.5783857130532004,
+      "desi_chi2": 11.878667651712325,
+      "desi_tension": 1.4070458208431076,
+      "desi_pulls": [
+        -0.5686172177254699,
+        -1.7883022323309365,
+        -1.4768093575478594,
+        -2.1036472869428913,
+        -1.2884723412293901,
+        -0.30142739879182623
+      ],
+      "theta_star_100": 1.0451410370422047,
+      "sigma8": 0.7803220901603327,
+      "S8": 0.7970748941472536,
+      "rsd_chi2N": 1.3029851005414304,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.0018204262333890904,
+        "L0_early_z1e4": 0.0030012253877081297,
+        "change_frac": 0.3931912555369699,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.46260973470664135,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "exponential",
+      "params": {
+        "beta": 1.0
+      },
+      "label": "exp \u03b2=1.00",
+      "H0": 67.5900376343554,
+      "Psi0": 2.8604989692608362,
+      "y0": 0.02627018465608216,
+      "F_eff_today": 0.5090387527594017,
+      "L0_today": 0.0011046505570703972,
+      "dH_pct": 1.1633856205539228,
+      "desi_chi2": 10.25272538151714,
+      "desi_tension": 1.3072060142097688,
+      "desi_pulls": [
+        -0.5076283376881968,
+        -1.6849420631265906,
+        -1.378692957389071,
+        -1.9657563743279611,
+        -1.168818099428452,
+        -0.15773697310076915
+      ],
+      "theta_star_100": 1.049184004020003,
+      "sigma8": 0.7678761986651963,
+      "S8": 0.7843608516129309,
+      "rsd_chi2N": 1.598695437122047,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 0.0011046505570703972,
+        "L0_early_z1e4": 0.003002451275941271,
+        "change_frac": 0.631783147643201,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.44977181564383434,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "exponential",
+      "params": {
+        "beta": 5.0
+      },
+      "label": "exp \u03b2=5.00",
+      "H0": 67.59005062713713,
+      "Psi0": 2.820196024110613,
+      "y0": 0.003179336710913046,
+      "F_eff_today": 0.5001615095297437,
+      "L0_today": 2.0306709716924832e-05,
+      "dH_pct": 2.1479047561706444,
+      "desi_chi2": 8.298297354382136,
+      "desi_tension": 1.1760312746962511,
+      "desi_pulls": [
+        -0.4563862195879993,
+        -1.5750805765246572,
+        -1.2540509723832505,
+        -1.757533186721815,
+        -0.939124720433119,
+        0.25614091066162553
+      ],
+      "theta_star_100": 1.0611417828253944,
+      "sigma8": 0.7224696692078455,
+      "S8": 0.7379793996188198,
+      "rsd_chi2N": 2.825718184822341,
+      "rg_consistency": {
+        "uv_consistent": false,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.003,
+        "L0_today": 2.0306709716924832e-05,
+        "L0_early_z1e4": 0.003012276425257857,
+        "change_frac": 0.9932310967610251,
+        "perturbative": true,
+        "rg_verdict": "INCONSISTENT"
+      },
+      "Lambda_bare": 0.45986899074275495,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.33,
+        "sigma": 0.2,
+        "gamma": 0.5
+      },
+      "label": "tanh a_tr=0.33 \u03b3=0.50",
+      "H0": 67.5899495128787,
+      "Psi0": 2.861729044439015,
+      "y0": 0.02902204008786515,
+      "F_eff_today": 0.5122993419130117,
+      "L0_today": 0.0015018440979319163,
+      "dH_pct": 1.6586773289858348,
+      "desi_chi2": 9.059604412498686,
+      "desi_tension": 1.2287937454063562,
+      "desi_pulls": [
+        -0.525039258898987,
+        -1.6738316182479966,
+        -1.323045449555263,
+        -1.814760905442715,
+        -0.9687161876745628,
+        0.002906044027742961
+      ],
+      "theta_star_100": 1.0508616527974564,
+      "sigma8": 0.7662728258889187,
+      "S8": 0.7827240783541325,
+      "rsd_chi2N": 1.6674215670148285,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.002946169449234736,
+        "L0_today": 0.0015018440979319163,
+        "L0_early_z1e4": 0.0029465917333656257,
+        "change_frac": 0.4902383845158606,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.4787948785722036,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.33,
+        "sigma": 0.2,
+        "gamma": 1.0
+      },
+      "label": "tanh a_tr=0.33 \u03b3=1.00",
+      "H0": 67.59002243602143,
+      "Psi0": 2.84178019094457,
+      "y0": 0.005479747204269127,
+      "F_eff_today": 0.500029784817383,
+      "L0_today": 3.6881958638323996e-06,
+      "dH_pct": 3.429429819062358,
+      "desi_chi2": 5.759290330196191,
+      "desi_tension": 0.9797355366114701,
+      "desi_pulls": [
+        -0.4322374901070576,
+        -1.4592790618346154,
+        -1.0613945172985928,
+        -1.3553787484132584,
+        -0.48193198234151313,
+        0.49708891903542124
+      ],
+      "theta_star_100": 1.0611677410030198,
+      "sigma8": 0.7393564249194093,
+      "S8": 0.7552289893931241,
+      "rsd_chi2N": 2.530306589704196,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.002892338898469472,
+        "L0_today": 3.6881958638323996e-06,
+        "L0_early_z1e4": 0.002893183466731251,
+        "change_frac": 0.9987248396563126,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.46108076941561266,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.5,
+        "sigma": 0.2,
+        "gamma": 0.5
+      },
+      "label": "tanh a_tr=0.50 \u03b3=0.50",
+      "H0": 67.58995084938209,
+      "Psi0": 2.872171357714496,
+      "y0": 0.03193937202121977,
+      "F_eff_today": 0.5124568701505715,
+      "L0_today": 0.0015100392763864275,
+      "dH_pct": 2.2521741733199754,
+      "desi_chi2": 6.641599528304274,
+      "desi_tension": 1.052108955725299,
+      "desi_pulls": [
+        -0.3995130455822991,
+        -1.373288625490193,
+        -1.038114167339518,
+        -1.551514544341805,
+        -1.0112693512519566,
+        -0.2975283167974991
+      ],
+      "theta_star_100": 1.0498799610607297,
+      "sigma8": 0.7741403674331874,
+      "S8": 0.7907605139609474,
+      "rsd_chi2N": 1.6974864105866132,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.002989868889019609,
+        "L0_today": 0.0015100392763864275,
+        "L0_early_z1e4": 0.0029899507466076697,
+        "change_frac": 0.4949479952341402,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.4772043579379312,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.5,
+        "sigma": 0.2,
+        "gamma": 1.0
+      },
+      "label": "tanh a_tr=0.50 \u03b3=1.00",
+      "H0": 67.59004431214228,
+      "Psi0": 2.8625766715624112,
+      "y0": 0.011593470701507461,
+      "F_eff_today": 0.5001645305925487,
+      "L0_today": 2.007855277285453e-05,
+      "dH_pct": 4.7612315608388,
+      "desi_chi2": 1.7957494924536022,
+      "desi_tension": 0.5470754811500881,
+      "desi_pulls": [
+        -0.16657774798313577,
+        -0.8086520934865051,
+        -0.4326875168717466,
+        -0.7668668236368223,
+        -0.5676609325218458,
+        -0.12861178510277682
+      ],
+      "theta_star_100": 1.059394211045178,
+      "sigma8": 0.7542601505868043,
+      "S8": 0.7704524201037166,
+      "rsd_chi2N": 2.6414539804239325,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.002979737778039218,
+        "L0_today": 2.007855277285453e-05,
+        "L0_early_z1e4": 0.0029799014932153393,
+        "change_frac": 0.9932616376780419,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.4575811133741811,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.67,
+        "sigma": 0.2,
+        "gamma": 0.5
+      },
+      "label": "tanh a_tr=0.67 \u03b3=0.50",
+      "H0": 67.5899710751495,
+      "Psi0": 2.8774997256474815,
+      "y0": 0.03672426312499136,
+      "F_eff_today": 0.512861801426653,
+      "L0_today": 0.0015533567839089543,
+      "dH_pct": 1.8339447562234608,
+      "desi_chi2": 8.588951238946429,
+      "desi_tension": 1.196449695205669,
+      "desi_pulls": [
+        -0.05532972765294946,
+        -1.1544323332855133,
+        -1.1692143840313665,
+        -1.9675356633702483,
+        -1.3443278460458694,
+        -0.45574074640662265
+      ],
+      "theta_star_100": 1.0473493081423892,
+      "sigma8": 0.7823529798021451,
+      "S8": 0.7991492051127506,
+      "rsd_chi2N": 1.6015638365601474,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.00299813893948761,
+        "L0_today": 0.0015533567839089543,
+        "L0_early_z1e4": 0.0029981540593183274,
+        "change_frac": 0.48189299586815443,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.46840103947130907,
+      "verdict": "FAIL_CMB"
+    },
+    {
+      "form": "tanh",
+      "params": {
+        "a_trans": 0.67,
+        "sigma": 0.2,
+        "gamma": 1.0
+      },
+      "label": "tanh a_tr=0.67 \u03b3=1.00",
+      "H0": 67.59003170802455,
+      "Psi0": 2.8731008143607473,
+      "y0": 0.021608568213542366,
+      "F_eff_today": 0.5008808893728666,
+      "L0_today": 0.00010671356781790875,
+      "dH_pct": 3.948111613981526,
+      "desi_chi2": 5.558579038895248,
+      "desi_tension": 0.9625122543717949,
+      "desi_pulls": [
+        0.6050196981957059,
+        -0.2995983758526063,
+        -0.7155887060401397,
+        -1.6677587379720293,
+        -1.267722820644227,
+        -0.44962591406689706
+      ],
+      "theta_star_100": 1.054391086239384,
+      "sigma8": 0.7702246213441059,
+      "S8": 0.7867597588669657,
+      "rsd_chi2N": 2.4668043420994707,
+      "rg_consistency": {
+        "uv_consistent": true,
+        "always_positive": true,
+        "monotone": true,
+        "L0_CMB": 0.0029962778789752193,
+        "L0_today": 0.00010671356781790875,
+        "L0_early_z1e4": 0.0029963081186366552,
+        "change_frac": 0.9643846224788715,
+        "perturbative": true,
+        "rg_verdict": "CONSISTENT"
+      },
+      "Lambda_bare": 0.4397123278261322,
+      "verdict": "FAIL_CMB"
+    }
+  ],
+  "theoretical_checks": {
+    "gr_recovery": true,
+    "c_T_eq_c": true,
+    "c_T_analytic_proof": "G\u2083=G\u2085=0, F_X=0 \u2192 tensor speed unchanged; \u03b1_T=0",
+    "no_tachyon": true,
+    "no_ghost": true,
+    "ward_identity": "OPEN \u2014 running \u039b\u2080 modifies \u03a0_hh(0) at 1-loop; SIM145 required if PASS",
+    "uv_finite": "OPEN \u2014 \u039b\u2080(a) coupling breaks time-translation invariance; SIM145 required",
+    "sim105_consistency": "6/14 cases consistent; tanh form only"
+  },
+  "structural_diagnosis": {
+    "mechanism": "Decreasing \u039b\u2080(a) reduces F_eff at late times \u2192 coef decreases \u2192 H\u00b2 = rhs/coef increases",
+    "max_dH_theoretical": "~4.7% for \u039b\u2080\u21920",
+    "max_dH_scanned": "4.76%",
+    "desi_requirement": "~5% H(z) boost across z=0.5-1.3 (SIM138)",
+    "desi_achievable": "YES \u2014 tanh a_tr=0.50 \u03b3=1.00 reaches tension 0.547\u03c3 (DESI criterion met)",
+    "cmb_anti_correlation": "STRUCTURAL: any late-time H(z) boost compresses DC_star \u2192 \u03b8* increases above Planck. DESI fix and CMB preservation are mutually exclusive with fixed r_s.",
+    "theta_shift_best": "\u03b8*=1.05939 vs Planck 1.04101 (+63\u03c3) at best DESI point",
+    "resolution_path": "Need simultaneous increase of r_s (sound horizon at z~1090) \u2014 requires pre-recombination physics, outside Phase 4 scope",
+    "uv_issue": "Linear/exponential forms: \u039b\u2080 diverges at a\u21920; inconsistent with SIM105 UV fixed point",
+    "tanh_advantage": "Tanh form: \u039b\u2080\u2192\u039b\u2080_CMB at high z, UV-consistent, but CMB constraint still violated",
+    "phase5_note": "Any PASS requires Phase 5 derivation from underlying scalar dynamics and CMB-epoch modification"
+  },
+  "verdict": "PARTIAL",
+  "failure_mode": "STRUCTURAL ANTI-CORRELATION: raising H(z) at z~0.5-1.3 (DESI requirement) necessarily reduces DC_star = \u222bc/H dz (0\u2192z*), increasing \u03b8* above Planck value. DESI and CMB acoustic scale are anti-correlated for any late-time H(z) boost with fixed sound horizon r_s=144.7 Mpc. Best DESI case (tanh a_tr=0.50 \u03b3=1.00): tension=0.547\u03c3 but \u03b8*=1.05939 (+63\u03c3 from Planck). Mechanism achieves \u0394H/H\u22484.8% (close to needed 5%) but CMB constraint rules it out. Resolution would require simultaneously increasing r_s (modifying CMB-epoch physics, z>1090).",
+  "derived_vs_phenom": {
+    "Lambda0_CMB": "derived (Phase 1 IR attractor, SIM105)",
+    "Lambda0_a_form": "phenomenological",
+    "beta_gamma_params": "phenomenological (scanned)",
+    "F0_rhs_factor": "derived (Phase 1 \u039bCDM-equivalence, SIM91)"
+  }
+}

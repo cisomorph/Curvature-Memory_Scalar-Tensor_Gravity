@@ -1,0 +1,22 @@
+{
+  "description": "Sim 83 — CMSTG Memory Cutoff: characterise memory length L_mem = 1/m_eff as a function of field amplitude",
+  "m0": 1.0,
+  "Psi_values": [0.1, 0.5, 1.0, 2.0, 5.0, 10.0],
+  "coupling": {
+    "alpha": 0.1,
+    "beta": 0.05,
+    "comment": "m(Psi)^2 = m0^2 * (1 + alpha*Psi^2*exp(-beta*Psi^2))"
+  },
+  "time_grid": {
+    "t_max": 30.0,
+    "Nt": 3000
+  },
+  "source": {
+    "t_on": 1.0,
+    "t_off": 3.0,
+    "amplitude": 1.0
+  },
+  "acceptance": {
+    "decay_rate_rtol": 0.2
+  }
+}

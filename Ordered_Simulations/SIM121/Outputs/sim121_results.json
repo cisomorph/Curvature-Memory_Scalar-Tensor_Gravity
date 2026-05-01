@@ -1,0 +1,66 @@
+{
+  "verdict": "FAIL (f_FDM=1) / CONDITIONAL (f_FDM<0.14)",
+  "primary_m22": 0.28,
+  "k_half_primary": 2.555671160258736,
+  "dP_k1_primary": 0.11138178491841333,
+  "dP_k05_primary": 0.01904190698808561,
+  "irsic_cold_bound": 2.0,
+  "irsic_fail_factor": 7.142857142857142,
+  "f_fdm_escape": 0.8978128701497249,
+  "cases": {
+    "SIM120-alt universal": {
+      "m22": 0.06,
+      "k_half": 1.2887498420286185,
+      "lambda_fs": 0.7813436649123625,
+      "dP_k1": 0.4602167279885414,
+      "dP_k05": 0.10911409544358064,
+      "lya_ok": "PARTIAL (inside window)",
+      "irsic_pass": 0.0
+    },
+    "SIM118 best-fit": {
+      "m22": 0.082,
+      "k_half": 1.480686493399527,
+      "lambda_fs": 0.6683605292778716,
+      "dP_k1": 0.3632507792853038,
+      "dP_k05": 0.07755762760544027,
+      "lya_ok": "PARTIAL (inside window)",
+      "irsic_pass": 0.0
+    },
+    "SIM119 median": {
+      "m22": 0.28,
+      "k_half": 2.555671160258736,
+      "lambda_fs": 0.3616918349029072,
+      "dP_k1": 0.11138178491841333,
+      "dP_k05": 0.01904190698808561,
+      "lya_ok": "PARTIAL (inside window)",
+      "irsic_pass": 0.0
+    },
+    "FDM window lower": {
+      "m22": 0.1,
+      "k_half": 1.6172161487120824,
+      "lambda_fs": 0.6052262003740496,
+      "dP_k1": 0.3074495498525669,
+      "dP_k05": 0.06215106165036122,
+      "lya_ok": "PARTIAL (inside window)",
+      "irsic_pass": 0.0
+    },
+    "FDM window upper": {
+      "m22": 10.0,
+      "k_half": 12.52151730993206,
+      "lambda_fs": 0.06052262003740497,
+      "dP_k1": 0.0017715945626353147,
+      "dP_k05": 0.00027935616902030613,
+      "lya_ok": "PASS (above window)",
+      "irsic_pass": 1.0
+    }
+  },
+  "lyman_bounds": {
+    "Hui+2017 (conservative)": 0.4,
+    "Irsic+2017 (cold IGM)": 2.0,
+    "Armengaud+2017 (BOSS)": 8.7,
+    "Irsic+2017 (warm IGM)": 20.0,
+    "Rogers+Peiris 2021": 200.0
+  },
+  "failure_mode": "SPARC-preferred m22 < Lyman-alpha lower bound by 7-33x",
+  "escape_route": "f_FDM < 0.14 (chi-field is sub-dominant DM component)"
+}

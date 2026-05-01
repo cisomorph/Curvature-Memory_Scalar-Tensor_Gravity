@@ -1,0 +1,54 @@
+{
+  "description": "SIM93 \u2014 CMSTG Bayesian Model Comparison via Savage-Dickey density ratio",
+  "method": "Savage-Dickey density ratio: ln B = ln p(L0=0|data) - ln p(L0=0|prior). Valid because LCDM is CMSTG at Lambda0=0 (nested models).",
+  "sampler": "emcee",
+  "n_samples_per_chain": {
+    "uniform": 25600,
+    "log_uniform": 25600,
+    "half_gaussian": 25600
+  },
+  "acceptance_fractions": {
+    "uniform": 0.546090625,
+    "log_uniform": 0.45810937500000004,
+    "half_gaussian": 0.5627781249999999
+  },
+  "bayes_factors": {
+    "uniform": {
+      "ln_B": -0.7126183483949762,
+      "B": 0.49035858549014993,
+      "jeffreys": "Inconclusive",
+      "posterior_density_at_0": 4.903585854901498,
+      "prior_density_at_0": 9.999999999999998,
+      "note": ""
+    },
+    "log_uniform": {
+      "ln_B": null,
+      "B": null,
+      "jeffreys": "undefined",
+      "posterior_density_at_0": 68.06561568378362,
+      "prior_density_at_0": null,
+      "note": "Log-uniform prior: p(Lambda0=0) undefined (diverges at 0). Bayes factor not defined via SD ratio for this prior."
+    },
+    "half_gaussian": {
+      "ln_B": -0.6729085716867926,
+      "B": 0.5102223990816845,
+      "jeffreys": "Inconclusive",
+      "posterior_density_at_0": 13.569952493435812,
+      "prior_density_at_0": 26.596152026762187,
+      "note": ""
+    }
+  },
+  "lambda0_constraints_uniform_prior": {
+    "median": 0.04998719611482688,
+    "p84": 0.08392845635491726,
+    "p95_upper_limit": 0.09514030470795831,
+    "note": "Lambda0 is unconstrained from above \u2014 posterior follows prior. 95% UL is prior-dominated."
+  },
+  "marginalised_params_uniform_prior": {
+    "H0": 67.5699066590825,
+    "Omega_m": 0.31201858294197915,
+    "rd": 147.5434623391335
+  },
+  "physical_interpretation": "Lambda0 is NOT constrained by current CMB+BAO data (the chi2 landscape is flat in Lambda0 \u2014 confirmed by SIM91, Dchi2=0.004 across 0-0.1). The Bayes factor therefore measures the Occam factor: how much prior volume does CMSTG have that is not excluded by data? A flat likelihood means B ~ p(L0=0|prior)/p(L0=0|prior) ~ 1 for the uniform prior. The half-Gaussian prior concentrates prior mass near L0=0, giving mild LCDM preference. In all cases |ln B| < 3 = inconclusive on the Jeffreys scale. CMSTG is neither preferred nor excluded.",
+  "status": "PASS"
+}

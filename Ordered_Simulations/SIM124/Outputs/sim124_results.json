@@ -1,0 +1,45 @@
+{
+  "sim": "SIM124",
+  "verdict": "FAIL",
+  "modification": "L_kin = -exp(-alpha*Psi^2)/2 * (dPsi)^2",
+  "viable_solutions": [
+    {
+      "alpha": 0.2,
+      "psi_ini_sol": 2.5700173695828044
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini_sol": 2.52714893921868
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini_sol": 2.3643154396427977
+    },
+    {
+      "alpha": 0.7,
+      "psi_ini_sol": 2.1393045600344047
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini_sol": 1.8399776566081758
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini_sol": 1.879188182424363
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini_sol": 1.9109131982982244
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini_sol": 2.1372117989209216
+    }
+  ],
+  "observables": [],
+  "structural_finding": "K(\u03a8)=exp(-\u03b1\u03a8\u00b2) does NOT resolve the frozen-field problem. 'Viable' solutions require \u03a8_ini \u2208 [1.84, 2.57] M_Pl \u2014 the field starts within 0.78 M_Pl of the target \u03a8\u2080=2.62 and barely rolls. This is fine-tuning, not dynamics. The hilltop bottleneck (\u03a8\u22480, K\u22481, V'\u22480, H large) is unchanged by the kinetic modification. Furthermore, all viable H(z=0) are unphysically large (up to ~10\u2076 km/s/Mpc), so no CMB acoustic scale match exists. Conclusion: non-canonical K(\u03a8)=exp(-\u03b1\u03a8\u00b2) kinetics cannot fix the Phase 2 frozen-field inconsistency. A fundamentally different potential or coupling structure is required.",
+  "reference_SIM121C": {
+    "chi2_DESI": 41.492,
+    "tension": 2.63
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "description": "Sim 87 — CMSTG BAO Full Covariance Refit. Fixes referee vulnerability: prior chi2 (sim13_4) used diagonal errors only. This simulation assembles the full covariance matrix from published BOSS DR12 (Alam+2017) and eBOSS DR16 (Alam+2021, Bourboux+2020) correlation coefficients and refits the CMSTG background against 12-point BAO data vector.",
+
+  "bao_data": {
+    "source": "BOSS DR12 + eBOSS DR16 + 6dFGS + MGS + Ly-alpha",
+    "note": "Taken from bao_sdss_final_bao_only_combined.csv used in sim13_4",
+    "points": [
+      {"z": 0.15,  "quantity": "DV_over_rd", "value": 4.47,                    "sigma": 0.17,   "survey": "6dFGS+MGS"},
+      {"z": 0.38,  "quantity": "DH_over_rd", "value": 25.0,                    "sigma": 0.76,   "survey": "BOSS DR12"},
+      {"z": 0.38,  "quantity": "DM_over_rd", "value": 10.23,                   "sigma": 0.17,   "survey": "BOSS DR12"},
+      {"z": 0.51,  "quantity": "DH_over_rd", "value": 22.33,                   "sigma": 0.58,   "survey": "BOSS DR12"},
+      {"z": 0.51,  "quantity": "DM_over_rd", "value": 13.36,                   "sigma": 0.21,   "survey": "BOSS DR12"},
+      {"z": 0.70,  "quantity": "DH_over_rd", "value": 19.33,                   "sigma": 0.53,   "survey": "eBOSS DR16 LRG"},
+      {"z": 0.70,  "quantity": "DM_over_rd", "value": 17.86,                   "sigma": 0.33,   "survey": "eBOSS DR16 LRG"},
+      {"z": 0.85,  "quantity": "DV_over_rd", "value": 18.33,                   "sigma": 0.595,  "survey": "eBOSS DR16 QSO"},
+      {"z": 1.48,  "quantity": "DH_over_rd", "value": 13.26,                   "sigma": 0.55,   "survey": "eBOSS DR16 QSO"},
+      {"z": 1.48,  "quantity": "DM_over_rd", "value": 30.69,                   "sigma": 0.80,   "survey": "eBOSS DR16 QSO"},
+      {"z": 2.33,  "quantity": "DH_over_rd", "value": 8.990618556701030,       "sigma": 0.216140465972773, "survey": "Ly-alpha DR16"},
+      {"z": 2.33,  "quantity": "DM_over_rd", "value": 37.433384615384625,      "sigma": 1.26691023299267,  "survey": "Ly-alpha DR16"}
+    ]
+  },
+
+  "covariance": {
+    "description": "Off-diagonal DM-DH correlations at same redshift. All other pairs assumed uncorrelated. rho = C_ij / (sigma_i * sigma_j).",
+    "references": {
+      "BOSS_DR12": "Alam et al. 2017 (arXiv:1607.03155), Table 4",
+      "eBOSS_DR16_LRG": "Alam et al. 2021 (arXiv:2007.08991), Table 3",
+      "eBOSS_DR16_QSO": "Alam et al. 2021 (arXiv:2007.08991), Table 3",
+      "Lya_DR16": "Bourboux et al. 2020 (arXiv:2007.08995), Table 3"
+    },
+    "rho_DM_DH": [
+      {"z": 0.38, "rho": -0.52, "source": "BOSS DR12"},
+      {"z": 0.51, "rho": -0.47, "source": "BOSS DR12"},
+      {"z": 0.70, "rho": -0.48, "source": "eBOSS DR16 LRG"},
+      {"z": 1.48, "rho": -0.46, "source": "eBOSS DR16 QSO"},
+      {"z": 2.33, "rho": -0.43, "source": "Ly-alpha DR16"}
+    ]
+  },
+
+  "cosmology_fiducial": {
+    "H0_km_s_Mpc": 67.4,
+    "Omega_b0": 0.049,
+    "Omega_cdm0": 0.265,
+    "Omega_r0": 9.2e-5,
+    "r_d_Mpc": 147.1
+  },
+
+  "cmstg_field": {
+    "Lambda0": 0.003,
+    "m0": 1.0,
+    "alpha": 0.1,
+    "beta": 0.05,
+    "Psi_ini": 0.01,
+    "dPsi_ini": 0.0,
+    "Lambda_form": "Lambda0 * Psi^2  [SIM84-verified, satisfies Lambda(0)=0]"
+  },
+
+  "grid": {
+    "a_ini": 1e-5,
+    "a_fin": 1.0,
+    "N_bg": 5000
+  },
+
+  "scan": {
+    "description": "2D chi2 surface for paper plot: Omega_m vs Lambda0 at fixed H0, r_d",
+    "Omega_m_grid": {"min": 0.26, "max": 0.40, "N": 25},
+    "Lambda0_grid": {"min": 0.0,  "max": 0.020, "N": 20}
+  },
+
+  "optimization": {
+    "description": "4-parameter best-fit: (H0, Omega_m, r_d, Lambda0)",
+    "bounds": {
+      "H0":     [64.0, 72.0],
+      "Omega_m": [0.26, 0.40],
+      "r_d":    [143.0, 152.0],
+      "Lambda0": [0.0, 0.020]
+    },
+    "x0": [67.4, 0.308, 147.1, 0.003]
+  },
+
+  "acceptance": {
+    "chi2_full_per_dof_max": 2.5,
+    "note": "12 data points, 4 free params => 8 dof"
+  }
+}

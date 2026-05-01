@@ -1,0 +1,20 @@
+{
+  "sim_id": "SIM106",
+  "title": "Two-Loop Graviton Self-Energy and Mixed Diagrams",
+  "description": "SIM104 left one explicit caveat: the two-loop graviton self-energy (Psi loop dressing the graviton propagator at two loops) and mixed topologies (diagrams with both Psi and graviton internal lines at two loops) were not computed. SIM106 closes this caveat by computing: (A) two-loop graviton self-energy Pi_hh^(2) from iterated Psi bubble insertions, (B) mixed two-loop diagram with one graviton loop and one Psi loop, (C) the running of the graviton wavefunction renormalization Z_h(k_m) using the same RG framework as SIM105. Determines whether memory damping regulates all two-loop graviton sector diagrams.",
+
+  "cmstg_params": {
+    "Lambda0": 0.003,
+    "m0_Mpc_inv": 0.01,
+    "k_m_values_Mpc_inv": [0.1, 1.0, 9.15, 100.0],
+    "k_UV_range": [1.0, 1000.0]
+  },
+
+  "diagrams": {
+    "A": "Two-loop Pi_hh from iterated Psi bubbles: (Lambda0 p^2)^2 * [I_Psi(p)]^2",
+    "B": "Mixed two-loop: one graviton loop (Sigma_A topology) + one Psi bubble",
+    "C": "RG running of graviton wavefunction Z_h(k_m) from beta_Z = k_m * dZ_h/dk_m"
+  },
+
+  "notes": "Ward identity Pi_hh(0)=0 must hold at two loops as well (diffeomorphism invariance is exact). Two-loop contributions expected to be suppressed by Lambda0^4 and Lambda0^2*k_m^2/m0^2 respectively. Key question: does the resummed dressed Psi propagator (from SIM104/105) make ALL two-loop graviton diagrams finite without explicit two-loop memory on graviton lines?"
+}

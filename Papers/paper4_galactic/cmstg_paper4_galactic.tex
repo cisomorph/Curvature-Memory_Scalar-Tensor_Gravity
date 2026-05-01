@@ -1,0 +1,601 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\newcommand{\CMSTG}{\textsc{cmstg}}
+\newcommand{\Lz}{\Lambda_0}
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\vflat}{v_{\rm flat}}
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords:} \textit{#1}\par\bigskip}
+
+\title{\textbf{Galactic-Scale Constraints on Curvature-Memory Scalar-Tensor Gravity:\\
+       Why the Locked Action Cannot Replace Dark Matter Without Additional Physics}}
+\author{Christopher~R.~B.~Wilson\thanks{E-mail: \texttt{C.Isomorph@gmail.com}. Independent researcher.}}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We establish systematic galactic-scale constraints on Curvature-Memory
+Scalar-Tensor Gravity (\CMSTG) through three independent simulation-based
+tests (SIM99, SIM100, SIM103) targeting NGC~3198 and NGC~6503, the
+best-observed spiral galaxies with flat rotation curves. The Phase~1 canonical
+locked action fails to produce flat rotation curves through any of the three
+candidate mechanisms: (1) the static Yukawa field profile is exponentially
+steeper than the $\rho \propto r^{-2}$ isothermal halo required for curve
+flattening (SIM99); (2) the time-domain 1+1D wave equation confirms the static
+result and shows that the curvature coupling $2\Lz|R_{\rm gal}|$ is
+$\sim2\times10^6$ times weaker than the field mass at galactic densities (using
+the simulation test mass $m_0 = 0.1\,\mathrm{kpc}^{-1}$; even weaker at the
+locked cosmological $m_0$), making condensation impossible (SIM100); (3) Vainshtein-type non-linear kinetic
+screening fails by six orders of magnitude, with the Vainshtein ratio
+$\mathcal{V} \leq 3.7\times10^{-6}$ across the full scanned parameter space
+(SIM103). The locked action energy density $\rho_\Psi = 1.6\times10^{-3}$
+$M_\odot\,\mathrm{kpc}^{-3}$ falls $2.7\times10^6$ short of the isothermal
+requirement at $r = 10$~kpc. These constraints are clean and model-independent:
+every identified mechanism within the \CMSTG\ action class has been exhausted.
+A first-principles coupling between $\Psi$ and baryonic matter is the minimum
+new physics required for galactic-scale predictions.
+\end{abstract}
+
+\keywords{dark matter; modified gravity; rotation curves; scalar-tensor theories; galactic dynamics}
+
+\tableofcontents
+\bigskip
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+
+The flat rotation curves of spiral galaxies are among the most robust
+observational arguments for cold dark matter~\cite{Rubin1980,Begeman1991}.
+In the standard picture, a dark matter halo with approximately isothermal
+density profile $\rho_{\rm DM}(r) \propto r^{-2}$ provides the additional
+gravitational potential needed to maintain $v_c(r) \approx \mathrm{const}$
+well beyond the optical disk.
+
+Scalar-tensor theories offer an alternative: the scalar field $\Psi$ could
+contribute an effective dark matter density through its stress-energy
+$T^{(\Psi)}_{\mu\nu}$ or through modification of the effective Newton
+constant $\Geff$. \CMSTG\ is a natural candidate because $\Psi$ is
+explicitly designed to track curvature history, and high-curvature galactic
+environments might in principle provide large local field amplitudes.
+
+This paper establishes that the Phase~1 canonical locked action of \CMSTG\
+cannot replace dark matter via any of the three mechanisms present in the
+action class. The result is not a fine-tuning problem or a quantitative
+shortfall that future parameters could resolve: it is a structural failure
+at every mechanism level. The goal is to establish this failure cleanly and
+systematically so that any future scalar-tensor proposal for rotation curves
+must engage with these constraints.
+
+The plan of the paper follows the sequence of mechanisms in order of
+increasing sophistication: Section~\ref{sec:setup} presents the galactic-scale
+field equations; Section~\ref{sec:sim99} establishes the static Yukawa failure;
+Section~\ref{sec:sim100} confirms with time-domain simulation and rules out
+condensation; Section~\ref{sec:sim103} exhausts the Vainshtein and direct-coupling
+alternatives; Section~\ref{sec:combined} states the combined constraint;
+Section~\ref{sec:minimum-physics} identifies the minimum new physics required;
+Section~\ref{sec:conclusions} concludes.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Galactic-Scale Field Equations}
+\label{sec:setup}
+
+\subsection{The Locked Action}
+
+The Phase~1 canonical \CMSTG\ action is
+\begin{equation}
+  S_{\rm P1} = \int\!d^4x\,\sqrt{-g}\,\Bigl[
+    \tfrac{1+2\Lz\Psi^2}{2}\,R
+    - \tfrac{1}{2}(\partial\Psi)^2
+    - \tfrac{1}{2}m_0^2\Psi^2
+  \Bigr] + S_{\rm SM}
+  \label{eq:action}
+\end{equation}
+with locked parameters $\Lz = 0.003\,\Mpl^{-2}$, $m_0 = 10^{-3}H_0
+\approx 6.88\times10^{-8}\,\mathrm{kpc}^{-1}$, $\bar\Psi = 2.62\,\Mpl$.
+The galactic simulations (SIM99--SIM103) use a larger test mass
+$m_0 = 0.1\,\mathrm{kpc}^{-1}$ (Compton length $10\,\mathrm{kpc}$)
+for numerical tractability; the locked cosmological value makes the
+curvature coupling even weaker, strengthening the no-go result.
+The effective gravitational coupling is $\Geff = G/(1 + 2\Lz\Psi^2)$;
+at the cosmological best-fit $\Geff/G = 1 - 16\,\mathrm{ppm}$, negligibly
+different from Newton's constant.
+
+\subsection{Static Field Equation in Galactic Environments}
+
+In the weak-field static limit, the $\Psi$ field equation derived from
+action~\eqref{eq:action} reduces to
+\begin{equation}
+  \Psi'' + \frac{2}{r}\Psi'
+  = m_0^2\Psi + \frac{\lambda_{\rm gal}}{1}\Psi^3
+    - 2\Lz\Psi\,|R(r)|\,,
+  \label{eq:psi-static}
+\end{equation}
+where $R(r) \approx -8\pi G\rho_{\rm bar}(r)/c^2$ is the weak-field Ricci
+scalar sourced by the observed baryonic distribution, and
+$V(\Psi) = (\lambda_{\rm gal}/4)\Psi^4$ is the simplest non-linear extension
+consistent with $V'(0) = 0$.
+
+The effective dark-matter density is
+\begin{equation}
+  \rho_\Psi = \frac{c^2}{G}\bigl[
+    \tfrac{1}{2}(\Psi')^2 + \tfrac{1}{2}m_0^2\Psi^2
+    + \tfrac{\lambda_{\rm gal}}{4}\Psi^4
+  \bigr]\,.
+  \label{eq:rho-psi}
+\end{equation}
+
+\subsection{Target Profile}
+
+For a flat rotation curve at $\vflat$, the required halo density is the
+isothermal sphere:
+\begin{equation}
+  \rho_{\rm iso}(r) = \frac{\vflat^2}{4\pi G r^2}\,.
+  \label{eq:rho-iso}
+\end{equation}
+For NGC~3198 ($\vflat = 157\,\mathrm{km\,s^{-1}}$) at $r = 10\,\mathrm{kpc}$:
+$\rho_{\rm iso} = 4163\,M_\odot\,\mathrm{kpc}^{-3}$.
+
+\subsection{Galactic Curvature Scale}
+
+The galactic Ricci scalar at the disk half-light radius peaks at
+$|R_{\rm gal}| \approx 8.5\times10^{-7}\,\mathrm{kpc}^{-2}$. Using the
+simulation test mass $m_0 = 0.1\,\mathrm{kpc}^{-1}$, the coupling ratio is
+\begin{equation}
+  \frac{2\Lz|R_{\rm gal}|}{m_0^2}
+  = \frac{2\times0.003\times8.5\times10^{-7}}{(0.1)^2}
+  \approx 5.1\times10^{-7} \approx \frac{1}{2\times10^6}\,.
+\end{equation}
+Even at the peak of a proto-galactic overdensity $\delta = 100$:
+\begin{equation}
+  \frac{2\Lz|R_{\rm gal,\,peak}|}{m_0^2} \approx 5\times10^{-5}\,.
+\end{equation}
+The curvature coupling is $\sim2\times10^6$ times weaker than the field mass
+at typical galactic densities. At the locked cosmological value
+$m_0 = 6.88\times10^{-8}\,\mathrm{kpc}^{-1}$, this ratio is
+$\approx 3.6\times10^{-8}$---even weaker, confirming the locked-action
+failure is more extreme than the simulation constraint. This single ratio
+determines the failure of all three mechanisms.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Static Yukawa Profile (SIM99)}
+\label{sec:sim99}
+
+\subsection{Method}
+
+The decaying Yukawa boundary condition selects the physical solution
+$\Psi \sim A e^{-m_0 r}/r$ by integrating equation~\eqref{eq:psi-static}
+inward from $r_{\rm max} = 30\,\mathrm{kpc}$ with
+\begin{equation}
+  \Psi(r_{\rm max}) = \Psi_{\rm bc}\,,
+  \qquad
+  \Psi'(r_{\rm max}) = -\!\Bigl(m_0 + \frac{1}{r_{\rm max}}\Bigr)\Psi_{\rm bc}\,.
+\end{equation}
+A scan of 30 combinations $(\Psi_{\rm bc}, \lambda_{\rm gal})$ was performed:
+$\Psi_{\rm bc} \in \{10^{-8}, 10^{-6}, 10^{-4}, 5\times10^{-4}, 10^{-3}\}$,
+$\lambda_{\rm gal} \in \{-10, -1, 0, +1, +10, +100\}$, at the
+cosmological best-fit $\Lz = 0.003$.
+
+Acceptance criterion: $|v_c(r) - \vflat|/\vflat < 20\%$ for $r > 15\,\mathrm{kpc}$
+AND $\rho_\Psi \geq 0$ everywhere AND $\Lz\Psi^2 < \Lz^{\rm bound}/(16\pi)$.
+
+\subsection{Result: FAIL}
+
+No combination passes. The physical reason is geometric: the Yukawa density
+profile
+\begin{equation}
+  \rho_\Psi(r) \propto (\Psi')^2 \propto \frac{e^{-2m_0 r}}{r^4}
+  \quad\text{(dominant kinetic term at large } r\text{)}
+\end{equation}
+falls exponentially for $r > 1/m_0 \approx 14{,}500\,\mathrm{kpc}$, and for
+$r < 1/m_0$ (i.e.\ all galactic scales $r \leq 30\,\mathrm{kpc}$):
+\begin{equation}
+  \rho_\Psi(r) \propto \frac{e^{2m_0(r_{\rm max} - r)}}{r^2}\,,
+\end{equation}
+which rises exponentially inward---the wrong sign relative to the
+$1/r^2$ isothermal profile. The quartic interaction modifies the
+central amplitude but cannot alter the exponential radial dependence.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig1_yukawa_profile.pdf}
+  \caption{Yukawa profile vs isothermal target for NGC~3198 (SIM99). Log-log
+  plot of $\rho_\Psi(r)$ (blue solid, from the static Yukawa solution) vs the
+  required isothermal halo $\rho_{\rm iso}(r) \propto r^{-2}$ (red dashed)
+  for $\vflat = 157\,\mathrm{km\,s^{-1}}$. The Yukawa profile rises
+  $\sim150\times$ from $r = 30\,\mathrm{kpc}$ to $r = 5\,\mathrm{kpc}$,
+  far steeper than the isothermal target. At $\Lz = 0.003$, the energy
+  density deficit at $r = 10\,\mathrm{kpc}$ is a factor of $2.7\times10^6$.}
+  \label{fig:yukawa}
+\end{figure}
+
+The $G_{\rm eff}$ channel is equally ineffective: at $\Lz = 0.003$,
+$G_{\rm eff}/G = 1 - 16\,\mathrm{ppm}$, a $10^{-5}$ correction that produces
+no flattening.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Time-Domain Condensation Test (SIM100)}
+\label{sec:sim100}
+
+\subsection{Method}
+
+SIM100 removes the static assumption by evolving the full 1+1D spherical
+wave equation
+\begin{equation}
+  \frac{\partial^2\Psi}{\partial t^2}
+  = \frac{\partial^2\Psi}{\partial r^2}
+  + \frac{2}{r}\frac{\partial\Psi}{\partial r}
+  - m_0^2\Psi - \lambda\Psi^3
+  + 2\Lz\Psi\,R(r,t)
+  \label{eq:timedomain}
+\end{equation}
+via method-of-lines with an implicit Radau solver ($N_r = 120$,
+$\Delta r = 0.25\,\mathrm{kpc}$). Initial condition: uniform cosmological
+background $\Psi(r,0) = \Psi_{\rm cosmo} = 0.003\,\Mpl$ at rest.
+Integration to $t_{\rm end} = 150\,\mathrm{kpc}/c \approx 489\,\mathrm{kyr}
+\approx 2.4$ Compton periods $T_c = 2\pi/m_0$.
+
+\subsection{Curvature Coupling Negligibility}
+
+The coupling ratio at peak galactic curvature:
+\begin{equation}
+  \frac{2\Lz|R_{\rm gal}|}{m_0^2} \approx 5\times10^{-7} \approx \frac{1}{2\times10^6}\,.
+\end{equation}
+Even with a proto-galactic overdensity $\delta = 100$, the curvature
+term is $\sim2\times10^6$ times smaller than the field mass. The $\Psi$ field
+is entirely mass-dominated on galactic scales; the curvature source cannot
+drive condensation at any astrophysical density below neutron-star nuclear
+density ($\rho \sim 10^{15}\,M_\odot\,\mathrm{kpc}^{-3}$).
+
+\subsection{Time-Domain Field Evolution}
+
+Figure~\ref{fig:timedomain} shows the radial profiles $\Psi(r)$ at four
+epochs spanning the full integration. The field relaxes from the uniform
+cosmological initial condition $\Psi_{\rm cosmo} = 0.003\,\Mpl$ to a
+quasi-static Yukawa profile within one Compton period, confirming the
+validity of the adiabatic approximation. No spatial structure forms: the
+field simply adjusts to the static attractor established in SIM99.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig2_timedomain.pdf}
+  \caption{Time-domain $\Psi(r)$ field profiles at four epochs (SIM100):
+  $t = 0$ (initial uniform background, blue), $t = t_{\rm end}/4$ (green),
+  $t = t_{\rm end}/2$ (orange), $t = t_{\rm end}$ (red). The field relaxes
+  from the cosmological uniform state to the static Yukawa profile of
+  SIM99 within one Compton period ($T_c \approx 205\,\mathrm{kyr}$).
+  No condensation occurs: the curvature source $2\Lz|R_{\rm gal}|/m_0^2
+  \approx 5\times10^{-7}$ is negligible at all radii. Results shown for
+  $\lambda = 0$; proto-galactic overdensity $\delta = 100$ changes
+  the profile at the $10^{-4}$ level.}
+  \label{fig:timedomain}
+\end{figure}
+
+\subsection{Self-Coupling Scan}
+
+To test whether an attractive quartic self-coupling can drive condensation
+independently of the curvature channel, we scan
+$\lambda \in \{0, -100, -200, -400, -600, -800, -1000, -1500\}$. The
+tachyonic instability thresholds are:
+\begin{align}
+  \lambda_{\rm crit}^{\rm spatial}
+    &= -\frac{k_{\rm min}^2 + m_0^2}{3\Psi_{\rm cosmo}^2}
+    \approx -778\,,
+    \qquad k_{\rm min} = \pi/r_{\rm max}\,,
+  \label{eq:lambda-crit}\\
+  \lambda_{\rm blow}
+    &= -\frac{m_0^2}{\Psi_{\rm cosmo}^2}
+    \approx -1111\,.
+  \label{eq:lambda-blow}
+\end{align}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig3_selfcoupling.pdf}
+  \caption{Self-coupling parameter scan (SIM100). Field growth factor
+  $G_{\rm field} = \max_r|\Psi(r, t_{\rm end})|/\Psi_{\rm cosmo}$ vs
+  quartic coupling $\lambda$. Below $\lambda_{\rm crit}^{\rm spatial}
+  \approx -778$ (blue vertical line) the field becomes tachyonically unstable
+  in spatial modes; below $\lambda_{\rm blow} \approx -1111$ (orange vertical
+  line) the potential is unbounded and the field blows up. The stable window
+  ($-778 < \lambda < 0$) produces growth factors $\leq 1.21$---the field
+  merely relaxes to the static Yukawa profile of SIM99. No value of $\lambda$
+  produces a flat rotation curve.}
+  \label{fig:selfcoupling}
+\end{figure}
+
+Results of the scan (Figure~\ref{fig:selfcoupling}):
+\begin{itemize}
+  \item $\lambda \in [0, -778)$: field stable; growth factor $\leq 1.21$;
+        field relaxes to the static Yukawa profile of SIM99.
+        $v_c(r)$ does not come within 20\% of $\vflat$.
+  \item $\lambda \in [-778, -1111)$: tachyonic spatial instability;
+        field grows but remains bounded for the duration of integration.
+        Profile does not approach isothermal.
+  \item $\lambda = -1500$ (beyond $\lambda_{\rm blow}$): unbounded blow-up
+        within $< 10\,\mathrm{kpc}/c$. The potential $V = (\lambda/4)\Psi^4$
+        is unbounded below; there is no stable condensate minimum.
+\end{itemize}
+
+No window of $\lambda$ produces a stable self-bound halo with a flat rotation
+curve. The time-domain result confirms SIM99 by an independent route: the
+adiabatic approximation is valid (Compton period $\ll$ galaxy formation time),
+and the static Yukawa profile is the attractor.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Vainshtein Screening and Direct Coupling (SIM103)}
+\label{sec:sim103}
+
+\subsection{Setup}
+
+After SIM99 and SIM100 close the Yukawa and condensation routes, the remaining
+candidates are: (a) a non-linear kinetic term of Vainshtein type, and (b) a
+direct matter coupling $\beta\Psi\rho_b$. SIM103 tests both for NGC~3198.
+
+In the Poisson limit ($m_0 r \ll 1$ on galactic scales since $1/m_0 \sim
+14{,}500\,\mathrm{kpc}$), the perturbation $\delta\Psi(r)$ satisfies
+\begin{equation}
+  \frac{d\,\delta\Psi}{dr}
+  = \frac{2G\,\Lz^{\rm eff}\,M_{\rm enc}(r)}{r^2}\,,
+  \label{eq:poisson-grad}
+\end{equation}
+where $\Lz^{\rm eff} = \Lz + \beta$ absorbs both the curvature channel and
+any direct coupling $\beta$.
+
+The Vainshtein augmentation adds a non-linear kinetic term
+$(\alpha_V/4M_V^2)(\partial\Psi)^4$ to the action:
+\begin{equation}
+  \rho_\Psi(r) = \frac{c^2}{8\pi G}
+  \cdot\tfrac{1}{2}\!\left(\frac{d\,\delta\Psi}{dr}\right)^{\!2}
+  \Bigl[1 + \underbrace{\frac{\alpha_V}{M_V^2}\!\left(\frac{d\,\delta\Psi}{dr}\right)^{\!2}}_{\mathcal{V}}\Bigr]\,.
+  \label{eq:vainshtein-rho}
+\end{equation}
+The Vainshtein ratio $\mathcal{V} = \alpha_V(\delta\Psi')^2/M_V^2$ must satisfy
+$\mathcal{V} \gg 1$ for the non-linear regime to be active.
+
+\subsection{Field Gradient}
+
+At the locked-action best-fit ($\Lz = 0.003$, $\Lz^{\rm eff} = \Lz$):
+\begin{equation}
+  \left|\frac{d\,\delta\Psi}{dr}\right|_{10\,\mathrm{kpc}}
+  = 6.1\times10^{-8}\,\mathrm{kpc}^{-1}\,.
+\end{equation}
+
+\subsection{Vainshtein Ratio Scan}
+
+\begin{table}[h!]
+  \centering
+  \caption{Vainshtein ratio $\mathcal{V}$ at $r = 10\,\mathrm{kpc}$ for NGC~3198.
+  All values lie deep in the linear regime ($\mathcal{V} \ll 1$).}
+  \label{tab:vainshtein}
+  \begin{tabular}{cccc}
+    \toprule
+    $\alpha_V$ & $M_V\,[\mathrm{kpc}^{-1}]$ & $\mathcal{V}$ & Verdict \\
+    \midrule
+    $1$    & $0.001$ & $3.7\times10^{-9}$ & Linear \\
+    $10$   & $0.001$ & $3.7\times10^{-8}$ & Linear \\
+    $100$  & $0.001$ & $3.7\times10^{-7}$ & Linear \\
+    $1000$ & $0.001$ & $3.7\times10^{-6}$ & Linear \\
+    $1000$ & $0.01$  & $3.7\times10^{-8}$ & Linear \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Even at $\alpha_V = 1000$, $M_V = 0.001\,\mathrm{kpc}^{-1}$: $\mathcal{V} =
+3.7\times10^{-6}$. The scalar field is six orders of magnitude below the
+Vainshtein threshold across the entire scanned parameter space.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/fig4_vainshtein.pdf}
+  \caption{Vainshtein ratio $\mathcal{V}$ across the $(\alpha_V, M_V)$ parameter
+  space at $r = 10\,\mathrm{kpc}$ for NGC~3198 (SIM103). All values lie below
+  $3.7\times10^{-6}$, six orders of magnitude below the nonlinear threshold
+  $\mathcal{V} = 1$ (marked by the dashed contour, off-scale above). The gradient
+  $|\delta\Psi'| \sim 10^{-8}\,\mathrm{kpc}^{-1}$ is set by the weak
+  $\Lz R_{\rm gal}$ channel, which is $10^{4}$--$10^{6}\times$ below
+  the Vainshtein threshold for any physically reasonable coupling.}
+  \label{fig:vainshtein}
+\end{figure}
+
+\subsection{Energy Density Deficit}
+
+From equation~\eqref{eq:vainshtein-rho} at the locked-action gradient:
+\begin{align}
+  \rho_\Psi(10\,\mathrm{kpc}) &= 1.6\times10^{-3}\;M_\odot\,\mathrm{kpc}^{-3} \nonumber \\
+  \rho_{\rm iso}(10\,\mathrm{kpc}) &= 4163\;M_\odot\,\mathrm{kpc}^{-3} \nonumber \\
+  \frac{\rho_{\rm iso}}{\rho_\Psi} &= 2.7\times10^6\,.
+\end{align}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.72\textwidth]{figures/fig5_deficit.pdf}
+  \caption{Energy density deficit at galactic scale (SIM103). The locked-action
+  \CMSTG\ scalar density $\rho_\Psi$ (blue bar) vs the isothermal halo
+  requirement $\rho_{\rm iso}$ (red bar) at $r = 10\,\mathrm{kpc}$ for
+  NGC~3198 ($\vflat = 157\,\mathrm{km\,s^{-1}}$). The deficit is $2.7\times10^6\times$.
+  A direct coupling $\beta \approx 4.9 \approx 1{,}600\times\Lz$ would be
+  required to supply the missing density, far exceeding the cosmological bound
+  $\Lz \lesssim 0.095$.}
+  \label{fig:deficit}
+\end{figure}
+
+\subsection{Direct Coupling Constraint}
+
+To close the density gap with a direct matter coupling $\beta$, we need
+$\Lz^{\rm eff} = \Lz + \beta \approx 4.9$, requiring $\beta \approx 4.9
+\approx 1{,}600\times\Lz$. This coupling is not contained in the locked
+action and would violate cosmological homogeneity constraints: a coupling
+of order unity would modify $\Geff$ by $O(1)$ on cosmological scales, in
+direct contradiction to the SIM88/SIM90 cosmological consistency tests
+(Paper~II of this series~\cite{WilsonPaperII}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Combined Constraint}
+\label{sec:combined}
+
+\begin{table}[h!]
+  \centering
+  \caption{Systematic exhaustion of galactic dark matter mechanisms in \CMSTG.}
+  \label{tab:combined}
+  \begin{tabular}{llll}
+    \toprule
+    SIM & Mechanism & Deficit & Verdict \\
+    \midrule
+    SIM99  & Static Yukawa $T^{(\Psi)}$  & Exponential profile vs $1/r^2$ & FAIL \\
+    SIM100 & Time-domain condensation     & $2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$ & FAIL \\
+    SIM103 & Vainshtein kinetic screening & $\mathcal{V} \leq 3.7\times10^{-6}$ & FAIL \\
+    SIM103 & Direct matter coupling $\beta$ & $\beta \sim 1{,}600\Lz$ required & FAIL \\
+    \midrule
+    \multicolumn{4}{l}{Combined: all mechanisms exhausted at $\Lz = 0.003$}\\
+    \multicolumn{4}{l}{Energy density deficit at $r = 10\,\mathrm{kpc}$: $2.7\times10^6\times$}\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The root cause of all four failures is the single ratio
+$2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$: the curvature coupling is
+$\sim2\times10^6$ times weaker than the field mass on galactic scales
+(simulation test mass $m_0 = 0.1\,\mathrm{kpc}^{-1}$; the locked cosmological
+$m_0$ gives an even smaller ratio, $\approx 3.6\times10^{-8}$). This
+makes the scalar field cosmological (Compton wavelength $\gg$ galactic
+size) and prevents any galactic-scale field gradient from building up
+to isothermal amplitudes.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Minimum New Physics}
+\label{sec:minimum-physics}
+
+The constraints above define the minimum new physics required for
+\CMSTG\ to produce flat rotation curves:
+
+\paragraph{Option A: Modified scalar mass.}
+A position-dependent mass $m_0^2 \to m_0^2(\rho)$ that drops to
+$m_0^2 \lesssim 2\Lz|R_{\rm gal}|$ in galactic environments would allow
+curvature-driven condensation. This is a chameleon-type mechanism~\cite{Khoury2004}
+with galactic screening. However, any reduction in $m_0$ inside galaxies
+must restore $m_0 \sim 10^{-3}H_0$ on cosmological scales to preserve
+the SIM90/SIM98 consistency (Paper~II~\cite{WilsonPaperII}).
+
+\paragraph{Option B: Direct $\Psi$--baryon coupling.}
+A coupling $\mathcal{L} \supset \beta\Psi\rho_b$ with $\beta \sim O(1)$
+would supply the missing density. This is not derivable from the current
+locked action and introduces a new free parameter at gravitational
+strength. It must simultaneously satisfy:
+\begin{itemize}
+  \item $|\beta\Psi_{\rm cosmo}| \ll \Lz$ on cosmological scales (else
+        violates SIM88);
+  \item $\beta + \Lz \approx 4.9$ on galactic scales.
+\end{itemize}
+This requires $\beta$ to be screened cosmologically and activated
+galactically---a coupled chameleon architecture.
+
+\paragraph{Option C: New condensation channel.}
+A stable sextic potential $V_6 = +\mu_6\Psi^6$ with $\mu_6 > 0$ would
+prevent the blow-up of the attractive quartic below $\lambda_{\rm blow}$,
+opening a window where the field can form a stable, self-bound condensate.
+The viability of this requires dedicated simulation (Phase~5 direction).
+
+All three options require new physics not contained in the Phase~1 locked
+action. The constraint established here is not a quantitative shortfall
+to be tuned away; it is a structural exclusion of all mechanisms within
+the current action class.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have established that the Phase~1 canonical locked action of \CMSTG\
+cannot replace cold dark matter at galactic scales through any of the
+mechanisms accessible within the action class. The three independent
+simulation programmes establish:
+
+\begin{enumerate}
+  \item \textbf{Static profile (SIM99):} The Yukawa field profile is
+    exponentially steeper than the isothermal halo requirement.
+    The quartic potential modifies the central amplitude but not the
+    exponential radial dependence.
+
+  \item \textbf{Time-domain dynamics (SIM100):} The curvature coupling
+    $2\Lz|R_{\rm gal}|$ is $\sim2\times10^6$ times weaker than $m_0^2$ at
+    all galactic densities (simulation test mass; locked $m_0$ is weaker still). Condensation requires neutron-star densities.
+    No quartic self-coupling produces a flat-curve condensate: the
+    sub-threshold window gives Yukawa profiles; the super-threshold window
+    gives runaway blow-up.
+
+  \item \textbf{Vainshtein screening (SIM103):} The Vainshtein ratio
+    $\mathcal{V} \leq 3.7\times10^{-6}$ across the full $(\alpha_V, M_V)$
+    parameter space. The field gradient is $10^{4}$--$10^{6}\times$ below
+    the nonlinear threshold at all galactic radii.
+\end{enumerate}
+
+The energy density deficit at $r = 10\,\mathrm{kpc}$ is
+$2.7\times10^6\times$ under all three mechanisms. A direct matter coupling
+$\beta \sim 1{,}600\,\Lz$ would supply the missing density but is excluded
+by cosmological constraints (Paper~II~\cite{WilsonPaperII}).
+
+This is a clean negative result: every mechanism within the \CMSTG\ action
+class has been tested, every mechanism fails, and the reason is a single
+structural ratio ($2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$
+at the simulation test mass, even smaller at the locked cosmological $m_0$)
+rather than a parameter choice. A first-principles coupling between $\Psi$ and baryonic
+matter, with appropriate cosmological screening, is the minimum new physics
+required for galactic-scale predictions.
+
+\bigskip
+\noindent\textbf{Data and code:}
+All simulation scripts, outputs, and JSON results are publicly available at
+\url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}
+(simulations SIM99, SIM100, SIM103).
+
+\begin{thebibliography}{99}
+\bibitem{Rubin1980}
+  V.~C.~Rubin, W.~K.~Ford, and N.~Thonnard,
+  ``Rotational properties of 21 Sc galaxies with a large range of luminosities
+    and radii,''
+  ApJ \textbf{238}, 471 (1980).
+\bibitem{Begeman1991}
+  K.~G.~Begeman, A.~H.~Broeils, and R.~H.~Sanders,
+  ``Extended rotation curves of spiral galaxies: dark haloes and modified
+    dynamics,''
+  MNRAS \textbf{249}, 523 (1991).
+\bibitem{deBlok2008}
+  W.~J.~G.~de~Blok, F.~Walter, E.~Brinks, C.~Trachternach, S.-H.~Oh, and
+  R.~C.~Kennicutt,
+  ``High-resolution rotation curves and galaxy mass models from THINGS,''
+  AJ \textbf{136}, 2648 (2008), arXiv:0810.2100.
+\bibitem{Khoury2004}
+  J.~Khoury and A.~Weltman,
+  ``Chameleon fields: Awaiting surprises for tests of gravity in space,''
+  Phys.\ Rev.\ Lett.\ \textbf{93}, 171104 (2004), arXiv:astro-ph/0309300.
+\bibitem{Vainshtein1972}
+  A.~I.~Vainshtein,
+  ``To the problem of nonvanishing gravitation mass,''
+  Phys.\ Lett.\ B \textbf{39}, 393 (1972).
+\bibitem{Milgrom1983}
+  M.~Milgrom,
+  ``A modification of the Newtonian dynamics as a possible alternative to the
+    hidden mass hypothesis,''
+  ApJ \textbf{270}, 365 (1983).
+\bibitem{SPARC2016}
+  F.~Lelli, S.~S.~McGaugh, and J.~M.~Schombert,
+  ``SPARC: Mass models for 175 disk galaxies with Spitzer photometry and
+    accurate rotation curves,''
+  AJ \textbf{152}, 157 (2016), arXiv:1606.09251.
+\bibitem{WilsonPaperII}
+  C.~R.~B.~Wilson,
+  ``Curvature-Memory Scalar-Tensor Gravity: Framework and Cosmological Consistency''
+  (Paper~II of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\end{thebibliography}
+
+\end{document}

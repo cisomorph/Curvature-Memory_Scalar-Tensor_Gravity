@@ -1,0 +1,119 @@
+{
+  "sim_id": "SIM138",
+  "timestamp": "2026-04-25T00:18:35.087241Z",
+  "action_spec": "Phase 1 canonical \u2014 diagnostic decomposition of DESI chi2",
+  "parameters": {
+    "H0": 67.59,
+    "Omega_m": 0.312,
+    "Lambda0": 0.003,
+    "F_eff": 0.521,
+    "r_d_Mpc": 147.56
+  },
+  "observational_targets": {
+    "dataset": "DESI Y1 BAO H(z) (6 bins, Adame et al. 2024 arXiv:2404.03002)",
+    "chi2": 13.152141644981672,
+    "dof": 6,
+    "tension_sqrt_chi2_per_N": 1.480548414438699,
+    "note_on_baseline": "Phase 2/3 scripts hardcode baseline chi2=18.26, tension=2.77\u03c3. Direct computation at Phase 1 canonical gives chi2=13.15, tension=1.481\u03c3. Discrepancy traced to SIM121C using MCMC MAP parameters (H0=77.76) not Phase 1 canonical (H0=67.59). The 2.77\u03c3 figure quoted in papers is consistent with chi2\u224846 via sqrt(46/6)=2.77\u03c3 at different parameter values."
+  },
+  "theoretical_checks": {
+    "gr_recovery": true,
+    "c_T_eq_c": true,
+    "no_tachyon": true,
+    "ward_identity": true,
+    "uv_finite": true,
+    "note": "Diagnostic sim; no new Lagrangian terms"
+  },
+  "lcdm_bestfit": {
+    "H0": 73.98744882874371,
+    "Omega_m": 0.28956004556494086,
+    "chi2": 2.3921929566691618,
+    "tension": 0.6314260258427166
+  },
+  "per_bin_residuals": {
+    "z_0.295": {
+      "bin": "BGS z=0.295",
+      "z": 0.295,
+      "H_model": 78.98926425598084,
+      "H_obs": 81.7,
+      "sigma": 4.5,
+      "delta": -2.7107357440191606,
+      "pull": -0.6023857208931468,
+      "chi2": 0.36286855673595614,
+      "frac_of_total": 0.027590073657274835
+    },
+    "z_0.510": {
+      "bin": "LRG1 z=0.51",
+      "z": 0.51,
+      "H_model": 89.73403800407618,
+      "H_obs": 97.9,
+      "sigma": 4.4,
+      "delta": -8.165961995923823,
+      "pull": -1.8559004536190504,
+      "chi2": 3.4443664937433973,
+      "frac_of_total": 0.2618863594019784
+    },
+    "z_0.706": {
+      "bin": "LRG2 z=0.706",
+      "z": 0.706,
+      "H_model": 101.11028944677109,
+      "H_obs": 110.7,
+      "sigma": 6.2,
+      "delta": -9.589710553228912,
+      "pull": -1.5467275085853083,
+      "chi2": 2.3923659858145148,
+      "frac_of_total": 0.1818993476798013
+    },
+    "z_0.930": {
+      "bin": "LRG3 z=0.930",
+      "z": 0.93,
+      "H_model": 115.73803008461721,
+      "H_obs": 128.1,
+      "sigma": 5.6,
+      "delta": -12.361969915382787,
+      "pull": -2.2074946277469265,
+      "chi2": 4.873032531531542,
+      "frac_of_total": 0.3705124734108148
+    },
+    "z_1.317": {
+      "bin": "ELG z=1.317",
+      "z": 1.317,
+      "H_model": 144.51358221461606,
+      "H_obs": 156.4,
+      "sigma": 8.6,
+      "delta": -11.88641778538394,
+      "pull": -1.3821416029516211,
+      "chi2": 1.9103154106096767,
+      "frac_of_total": 0.14524747848488814
+    },
+    "z_2.330": {
+      "bin": "QSO+Ly\u03b1 z=2.330",
+      "z": 2.33,
+      "H_model": 236.27536602009215,
+      "H_obs": 240.8,
+      "sigma": 11.0,
+      "delta": -4.524633979907861,
+      "pull": -0.4113303618098056,
+      "chi2": 0.16919266654658557,
+      "frac_of_total": 0.01286426736524258
+    }
+  },
+  "total_chi2": 13.152141644981672,
+  "total_chi2_reconstruction_check": 13.152141644981672,
+  "verdict": "DISTRIBUTED",
+  "dominant_bins": [
+    "LRG3 z=0.930",
+    "LRG1 z=0.51"
+  ],
+  "recommended_tier2_priority": "SIM142",
+  "concentration": {
+    "top1_frac": 0.3705124734108148,
+    "top2_frac": 0.6323988328127932,
+    "excess_top1_frac": 0.36316613791146435
+  },
+  "failure_mode": "DESI tension is distributed across multiple bins; no single-bin systematic provides an escape. Dominant bins: ['LRG3 z=0.930', 'LRG1 z=0.51'].",
+  "derived_vs_phenom": {
+    "H(z)": "derived (Friedmann from Phase 1 canonical parameters)",
+    "LCDM_bestfit": "phenomenological fit to DESI data for comparison"
+  }
+}

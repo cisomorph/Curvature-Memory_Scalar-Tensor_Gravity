@@ -1,0 +1,59 @@
+{
+  "description": "Sim 88 — CMSTG CMB full CLASS external_Pk injection (Phase 5). Fixes referee vulnerability 3: prior result used a first-order modulation approximation to P(k). This simulation derives P(k) from the CMSTG growth factor (D_CMSTG vs D_LCDM via G_eff and modified H(z)), writes it as a CLASS-compatible external_Pk table, runs full CLASS perturbation theory, and compares C_ell^CMSTG vs C_ell^LCDM.",
+
+  "class_executable": "/home/aion/Desktop/CMSTG_GitHub/CLASS/class",
+
+  "cmstg_background": {
+    "H0":      68.14,
+    "Omega_m": 0.2937,
+    "Omega_b": 0.049,
+    "Omega_r": 9.2e-5,
+    "Lambda0": 0.003,
+    "m0":      1.0,
+    "alpha":   0.1,
+    "beta":    0.05,
+    "Psi_ini": 0.01,
+    "note": "Best-fit from SIM87 full-cov BAO refit (2026-04-07)"
+  },
+
+  "lcdm_reference": {
+    "H0":       67.36,
+    "Omega_m":  0.3153,
+    "Omega_b":  0.04930,
+    "Omega_r":  9.2e-5,
+    "note": "Planck 2018 TT+TE+EE+lowE best-fit (Aghanim+2020, Table 2)"
+  },
+
+  "primordial": {
+    "A_s":     2.101e-9,
+    "n_s":     0.9649,
+    "k_pivot": 0.05,
+    "note": "Planck 2018 primordial parameters"
+  },
+
+  "class": {
+    "tau_reio":          0.0544,
+    "l_max_scalars":     2500,
+    "output":            "tCl,lCl",
+    "lensing":           "yes",
+    "k_per_decade_for_pk": 50
+  },
+
+  "external_pk": {
+    "k_min_inv_Mpc": 1e-5,
+    "k_max_inv_Mpc": 10.0,
+    "N_k":           1200,
+    "note": "Δ²_R(k) = A_s * (k/k_pivot)^(n_s-1) * R_growth^2 where R_growth = D_CMSTG(z=0)/D_LCDM(z=0)"
+  },
+
+  "grid": {
+    "a_ini": 1e-5,
+    "a_fin": 1.0,
+    "N_bg":  5000
+  },
+
+  "acceptance": {
+    "max_dCl_over_Cl_rms": 0.10,
+    "note": "RMS fractional deviation |ΔC_l/C_l| < 10% across l=2-1500"
+  }
+}

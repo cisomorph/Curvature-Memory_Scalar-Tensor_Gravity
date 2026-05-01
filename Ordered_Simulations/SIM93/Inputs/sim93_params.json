@@ -1,0 +1,72 @@
+{
+  "description": "Sim 93 — CMSTG Bayesian Model Comparison. Computes the log-Bayes factor ln B(CMSTG/LCDM) via the Savage-Dickey density ratio. LCDM is CMSTG at Lambda0=0 (nested model), so B = p(Lambda0=0|data) / p(Lambda0=0|prior). MCMC over (H0, Omega_m, rd, Lambda0) using the SIM90 joint CMB+BAO likelihood. Results for three prior choices (uniform, log-uniform, half-Gaussian).",
+
+  "mcmc": {
+    "sampler": "emcee",
+    "n_walkers": 64,
+    "n_steps": 5000,
+    "n_burnin": 1000,
+    "n_thin": 10,
+    "note": "emcee ensemble sampler. 64 walkers x 5000 steps = 320000 total, 256000 post-burnin."
+  },
+
+  "parameters": {
+    "H0":      {"min": 60.0,  "max": 75.0,  "init": 67.59, "latex": "H_0"},
+    "Omega_m": {"min": 0.25,  "max": 0.40,  "init": 0.3118, "latex": "\\Omega_m"},
+    "rd":      {"min": 140.0, "max": 160.0, "init": 147.56, "latex": "r_d"},
+    "Lambda0": {"min": 0.0,   "max": 0.10,  "init": 0.003,  "latex": "\\Lambda_0"}
+  },
+
+  "priors": {
+    "H0":      "uniform [60, 75]",
+    "Omega_m": "uniform [0.25, 0.40]",
+    "rd":      "uniform [140, 160]",
+    "Lambda0": {
+      "uniform":      {"type": "uniform",      "lo": 0.0,   "hi": 0.10,  "note": "Agnostic — all couplings equally likely"},
+      "log_uniform":  {"type": "log_uniform",  "lo": 1e-4,  "hi": 0.10,  "note": "Scale-invariant Jeffreys-like prior on positive quantity"},
+      "half_gaussian": {"type": "half_gaussian","mu": 0.0,   "sigma": 0.03, "note": "Weakly informative — centered at GR, scale from BAO best-fit"}
+    }
+  },
+
+  "likelihood": {
+    "source": "SIM90 joint CMB+BAO",
+    "cmb": {
+      "type": "gaussian",
+      "mu_H0": 67.36,
+      "mu_Omm": 0.3153,
+      "sigma_H0": 0.54,
+      "sigma_Omm": 0.0073,
+      "rho": -0.90,
+      "note": "Planck 2018 Table 2 (Aghanim+2020)"
+    },
+    "bao": {
+      "type": "full_covariance",
+      "data": "BOSS DR12 + eBOSS DR16 + Lya (same as SIM87/SIM90)",
+      "n_points": 12,
+      "note": "12x12 covariance matrix from Alam+2017, Alam+2021, Bourboux+2020"
+    }
+  },
+
+  "evidence": {
+    "method": "Savage-Dickey density ratio",
+    "note": "B(CMSTG/LCDM) = p(Lambda0=0|data) / p(Lambda0=0|prior). Valid because LCDM is CMSTG with Lambda0=0 (nested models). Posterior density at Lambda0=0 estimated via KDE on MCMC chain.",
+    "kde_bandwidth": "silverman",
+    "savage_dickey_point": 0.0
+  },
+
+  "outputs": {
+    "chain": "sim93_mcmc_chain.npz",
+    "corner_plot": "sim93_corner.png",
+    "posterior_Lambda0": "sim93_posterior_Lambda0.png",
+    "bayes_factors": "sim93_bayes_factors.png",
+    "diagnostics": "sim93_diagnostics.json"
+  },
+
+  "base_cosmology": {
+    "note": "SIM90 joint best-fit used as MCMC initialisation center",
+    "H0": 67.59,
+    "Omega_m": 0.3118,
+    "rd": 147.56,
+    "Lambda0_fiducial": 0.003
+  }
+}

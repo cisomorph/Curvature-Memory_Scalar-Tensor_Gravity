@@ -1,0 +1,43 @@
+{
+  "sim": "SIM130",
+  "verdict": "FAIL",
+  "description": "Phase 1 CMSTG unlocked \u2014 curvature-sourced Psi evolution, no SSB, no new knobs",
+  "fixed_params": {
+    "Lambda0": 0.003,
+    "h_target": 0.674
+  },
+  "reference_trajectory": {
+    "psi_ini": 2.62,
+    "psi0_today": 2.8861746227201217,
+    "delta_psi_pct": 10.15933674504281,
+    "delta_F_pct": 0.8445772742519375,
+    "H0": 67.37149897772754,
+    "chi2_DESI": 84.26031656940688,
+    "DESI_tension_sigma": 3.7474506127367637,
+    "theta_star_100": 0.9228029208174781
+  },
+  "map": {
+    "psi_ini": 3.5,
+    "psi0_today": 3.8560550811522765,
+    "F0": 0.5446074823666409,
+    "F_CMB": 0.537753758914754,
+    "H0": 67.3510446965781,
+    "theta_star_100": 0.9245156901265452
+  },
+  "fit_quality": {
+    "chi2_DESI": 91.68188882685746,
+    "chi2_DESI_per_N": 15.280314804476243,
+    "chi2_theta": 161366.51882155176,
+    "DESI_tension_sigma": 3.9090043239265215,
+    "delta_chi2_vs_SIM121C": 73.42188882685745
+  },
+  "reference_SIM121C": {
+    "chi2_DESI": 18.26,
+    "tension_sigma": 2.77,
+    "psi0_frozen": 2.62,
+    "F0_frozen": 0.5205932
+  },
+  "pass_desi": false,
+  "pass_theta": false,
+  "beats_SIM121C": false
+}

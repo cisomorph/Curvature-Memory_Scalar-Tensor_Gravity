@@ -1,0 +1,27 @@
+{
+  "sigma0_0.01": {
+    "M_final": 1858.7561621392263,
+    "monotonic": true
+  },
+  "sigma0_0.1": {
+    "M_final": 18587.56162150701,
+    "monotonic": true
+  },
+  "sigma0_1.0": {
+    "M_final": 185875.61621505299,
+    "monotonic": true
+  },
+  "params": {
+    "alpha": 1.0,
+    "beta": 1.5,
+    "xi": 10.0,
+    "a_eq": 0.0003,
+    "a_nl": 0.3,
+    "n_shear": 2,
+    "Omega_m": 0.315,
+    "Omega_r": 9.4e-05,
+    "Omega_L": 0.685,
+    "H0_kms_Mpc": 67.4,
+    "regulator_threshold_a": 0.7994521796962967
+  }
+}

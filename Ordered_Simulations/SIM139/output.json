@@ -1,0 +1,280 @@
+{
+  "sim_id": "SIM139",
+  "timestamp": "2026-04-25T00:18:48.144414Z",
+  "action_spec": "Phase 1 canonical + \u011c_eff = 1 \u2212 \u03bdM\u0302^p \u2014 diagnostic reanalysis of SIM128",
+  "parameters": {
+    "nu_ref": 0.55,
+    "p_ref": 1,
+    "alpha": 1.0,
+    "beta": 1.5,
+    "xi": 10.0,
+    "sigma0": 0.1
+  },
+  "observational_targets": {
+    "dataset": "RSD f\u03c3\u2088 compilation (14 measurements)",
+    "chi2": 31.420868044243615,
+    "dof": 14,
+    "chi2_per_N": 2.2443477174459727,
+    "S8_model": 0.7532134337051547,
+    "S8_obs": 0.759
+  },
+  "theoretical_checks": {
+    "gr_recovery": true,
+    "c_T_eq_c": true,
+    "no_tachyon": true,
+    "ward_identity": true,
+    "uv_finite": true,
+    "note": "Diagnostic; modifications are phenomenological (labelled)"
+  },
+  "sanity_check": {
+    "sim128_chi2": 31.42,
+    "reproduced_chi2": 31.420868044243615,
+    "sim128_chi2N": 2.244,
+    "reproduced_chi2N": 2.2443477174459727,
+    "sim128_S8": 0.7532,
+    "reproduced_S8": 0.7532134337051547,
+    "status": "OK"
+  },
+  "per_z_residuals": {
+    "z_0.020": {
+      "z": 0.02,
+      "survey": "2MTF",
+      "fs8_model": 0.30877513565710185,
+      "fs8_obs": 0.428,
+      "sigma": 0.047,
+      "pull": -2.5366992413382583,
+      "chi2": 6.434843041006095,
+      "frac": 0.20479520272785637
+    },
+    "z_0.067": {
+      "z": 0.067,
+      "survey": "6dFGRS",
+      "fs8_model": 0.32851557013134947,
+      "fs8_obs": 0.423,
+      "sigma": 0.055,
+      "pull": -1.717898724884555,
+      "chi2": 2.95117602895998,
+      "frac": 0.0939240769798097
+    },
+    "z_0.100": {
+      "z": 0.1,
+      "survey": "6dFGRS",
+      "fs8_model": 0.3421714493018431,
+      "fs8_obs": 0.37,
+      "sigma": 0.13,
+      "pull": -0.2140657746012067,
+      "chi2": 0.04582415585561463,
+      "frac": 0.0014583987874265535
+    },
+    "z_0.170": {
+      "z": 0.17,
+      "survey": "SDSS",
+      "fs8_model": 0.3704165250071452,
+      "fs8_obs": 0.51,
+      "sigma": 0.06,
+      "pull": -2.326391249880913,
+      "chi2": 5.412096247522476,
+      "frac": 0.17224528106294587
+    },
+    "z_0.220": {
+      "z": 0.22,
+      "survey": "SDSS",
+      "fs8_model": 0.3898736321561002,
+      "fs8_obs": 0.42,
+      "sigma": 0.07,
+      "pull": -0.4303766834842824,
+      "chi2": 0.18522408968693016,
+      "frac": 0.005894938657522662
+    },
+    "z_0.250": {
+      "z": 0.25,
+      "survey": "SDSS",
+      "fs8_model": 0.4012228708195698,
+      "fs8_obs": 0.351,
+      "sigma": 0.058,
+      "pull": 0.8659115658546522,
+      "chi2": 0.7498028398808557,
+      "frac": 0.023863212143759395
+    },
+    "z_0.300": {
+      "z": 0.3,
+      "survey": "SDSS",
+      "fs8_model": 0.41955453861424763,
+      "fs8_obs": 0.407,
+      "sigma": 0.055,
+      "pull": 0.2282643384408665,
+      "chi2": 0.05210460820384644,
+      "frac": 0.0016582803546508684
+    },
+    "z_0.370": {
+      "z": 0.37,
+      "survey": "BOSS",
+      "fs8_model": 0.44392013129928165,
+      "fs8_obs": 0.46,
+      "sigma": 0.038,
+      "pull": -0.4231544394925887,
+      "chi2": 0.1790596796622869,
+      "frac": 0.005698750251271021
+    },
+    "z_0.410": {
+      "z": 0.41,
+      "survey": "WiggleZ",
+      "fs8_model": 0.457136325916788,
+      "fs8_obs": 0.45,
+      "sigma": 0.04,
+      "pull": 0.17840814791969944,
+      "chi2": 0.031829467244137356,
+      "frac": 0.0010130040710307046
+    },
+    "z_0.570": {
+      "z": 0.57,
+      "survey": "BOSS",
+      "fs8_model": 0.5047731833036628,
+      "fs8_obs": 0.427,
+      "sigma": 0.023,
+      "pull": 3.381442752333167,
+      "chi2": 11.434155087306506,
+      "frac": 0.3639032209805952
+    },
+    "z_0.600": {
+      "z": 0.6,
+      "survey": "VIPERS",
+      "fs8_model": 0.5127879545691303,
+      "fs8_obs": 0.48,
+      "sigma": 0.1,
+      "pull": 0.32787954569130306,
+      "chi2": 0.10750499648273529,
+      "frac": 0.003421452148659861
+    },
+    "z_0.770": {
+      "z": 0.77,
+      "survey": "VIPERS",
+      "fs8_model": 0.5530921847883494,
+      "fs8_obs": 0.49,
+      "sigma": 0.08,
+      "pull": 0.788652309854368,
+      "chi2": 0.62197246583863,
+      "frac": 0.01979488488232829
+    },
+    "z_0.800": {
+      "z": 0.8,
+      "survey": "eBOSS LRG",
+      "fs8_model": 0.5593581675643211,
+      "fs8_obs": 0.47,
+      "sigma": 0.08,
+      "pull": 1.116977094554014,
+      "chi2": 1.2476378297583268,
+      "frac": 0.03970729987476897
+    },
+    "z_1.400": {
+      "z": 1.4,
+      "survey": "eBOSS QSO",
+      "fs8_model": 0.6447161033578864,
+      "fs8_obs": 0.482,
+      "sigma": 0.116,
+      "pull": 1.4027250289472968,
+      "chi2": 1.9676375068351946,
+      "frac": 0.06262199707737454
+    }
+  },
+  "shape_pattern": {
+    "top_contributor_z": 0.57,
+    "top_contributor_frac": 0.3639032209805952,
+    "lowz_mean_pull": -0.7084446734962874,
+    "highz_mean_pull": 1.4035353462760298,
+    "slope": "high-z excess"
+  },
+  "modification_scan": [
+    {
+      "modification": "power_p=0.5",
+      "p": 0.5,
+      "nu": 0.375,
+      "S8": 0.7219387671549012,
+      "dS8_sigma": -1.5442180352124486,
+      "chi2": 23.20153211415785,
+      "chi2N": 1.6572522938684178,
+      "verdict": "PARTIAL",
+      "label": "p=0.5",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "power_p=1.5",
+      "p": 1.5,
+      "nu": 0.8250000000000001,
+      "S8": 0.7567471186125287,
+      "dS8_sigma": -0.09387005781130257,
+      "chi2": 38.9980939165549,
+      "chi2N": 2.7855781368967785,
+      "verdict": "PARTIAL",
+      "label": "p=1.5",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "power_p=2.0",
+      "p": 2.0,
+      "nu": 1.05,
+      "S8": 0.7630553703672278,
+      "dS8_sigma": 0.1689737653011586,
+      "chi2": 47.33376888130429,
+      "chi2N": 3.380983491521735,
+      "verdict": "PARTIAL",
+      "label": "p=2.0",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "cutoff_zc=0.3",
+      "zc": 0.3,
+      "nu": 0.6000000000000001,
+      "S8": 0.7468912459643214,
+      "dS8_sigma": -0.5045314181532737,
+      "chi2": 29.9820164048927,
+      "chi2N": 2.1415726003494786,
+      "verdict": "PARTIAL",
+      "label": "cutoff z_c=0.3",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "cutoff_zc=0.5",
+      "zc": 0.5,
+      "nu": 0.625,
+      "S8": 0.7454298738143265,
+      "dS8_sigma": -0.5654219244030645,
+      "chi2": 28.05088003698889,
+      "chi2N": 2.0036342883563494,
+      "verdict": "PARTIAL",
+      "label": "cutoff z_c=0.5",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "cutoff_zc=0.7",
+      "zc": 0.7,
+      "nu": 0.675,
+      "S8": 0.7426664200695978,
+      "dS8_sigma": -0.6805658304334244,
+      "chi2": 25.560767948773062,
+      "chi2N": 1.825769139198076,
+      "verdict": "PARTIAL",
+      "label": "cutoff z_c=0.7",
+      "derived_or_phenom": "phenomenological"
+    },
+    {
+      "modification": "two_param_quadratic",
+      "nu": 1.8458578234563738,
+      "eta": 2.5597534420924357,
+      "S8": 0.7345008283505311,
+      "dS8_sigma": -1.0207988187278711,
+      "chi2": 11.50900922599149,
+      "chi2N": 0.8220720875708206,
+      "verdict": "PASS",
+      "label": "two-param (\u03bd=1.85, \u03b7=2.56)",
+      "derived_or_phenom": "phenomenological"
+    }
+  ],
+  "verdict": "SHAPE_FIXABLE",
+  "failure_mode": "Shape fixable with phenomenological M\u0302(a) modification",
+  "derived_vs_phenom": {
+    "M_hat_a": "derived (memory ODE from SIM125/SIM128)",
+    "nu": "derived (SIM128 best-fit)",
+    "modifications (a,b,c)": "phenomenological \u2014 labelled as such"
+  }
+}

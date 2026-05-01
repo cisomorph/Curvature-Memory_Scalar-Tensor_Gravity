@@ -1,0 +1,33 @@
+{
+  "description": "Sim 89 — CMSTG Planck TT likelihood comparison (Phase 5b). Uses CLASS C_ell from SIM88 (CMSTG and LCDM) with T_CMB^2 conversion, compared against the Planck 2018 best-fit TT theory spectrum (COM_PowerSpect_CMB-base-plikHM-TTTEEE R3.01) using the approximate full-sky Gaussian TT likelihood. Closes the remaining referee gap: prior simulations compared CMSTG vs LCDM without noise; this provides a proper chi2 vs Planck.",
+
+  "planck_theory_file": "/home/aion/Desktop/Anthropic/Ordered_Simulations/simulation_36_cmstg_plot_CMB_vs_Planck/inputs/COM_PowerSpect_CMB-base-plikHM-TTTEEE-lowl-lowE-lensing-minimum-theory_R3.01.txt",
+
+  "sim88_outputs": {
+    "cmstg_cl": "/home/aion/Desktop/Anthropic/Ordered_Simulations/SIM88/Outputs/class_cmstg",
+    "lcdm_cl": "/home/aion/Desktop/Anthropic/Ordered_Simulations/SIM88/Outputs/class_lcdm",
+    "note": "Search for 00_*cl_lensed.dat in each directory"
+  },
+
+  "T_CMB_K": 2.7255,
+
+  "likelihood": {
+    "l_min_lowl":  2,
+    "l_max_lowl":  29,
+    "l_min_highl": 30,
+    "l_max_highl": 2500,
+    "f_sky":       0.778,
+    "note": "f_sky=0.778 is the Planck 2018 plikHM TT effective sky fraction (Planck 2018 V, Table 1). Approximate Gaussian likelihood: chi2 = f_sky * sum_l (2l+1)/2 * [x - 1 - ln(x)] where x = C_l^pred / C_l^Planck. This is the exact likelihood in the full-sky cosmic-variance limit. Adds a conservative Planck noise floor: N_l = (Delta_T * theta_FWHM)^2 * exp(l(l+1)*sigma_b^2) to avoid noise bias at high l."
+  },
+
+  "planck_noise": {
+    "Delta_T_muK_arcmin": 33.0,
+    "theta_FWHM_arcmin":  7.27,
+    "note": "Planck 143 GHz approximate channel noise. Used as noise floor to prevent chi2 blow-up at l>1500 where signal is noise-dominated."
+  },
+
+  "acceptance": {
+    "Delta_chi2_CMSTG_minus_LCDM_max": 100.0,
+    "note": "CMSTG acceptable if chi2_CMSTG - chi2_LCDM < 100 (corresponds to ~10-sigma pull on combined CMB constraint). Typical acceptable tension: Delta_chi2 < 9 (3-sigma)."
+  }
+}

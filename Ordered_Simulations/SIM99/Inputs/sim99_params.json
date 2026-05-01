@@ -1,0 +1,47 @@
+{
+  "description": "SIM99 v3 — CMSTG Galaxy Rotation Curves. Shooting method (inward from r_max) selects physical decaying Yukawa halo mode. V(Psi)=(lambda_gal/4)*Psi^4 added as simplest nonlinear extension consistent with V'(0)=0 (no constant background). Tests whether ANY (Psi_bc, lambda_gal) within cosmological bounds produces flat rotation curves.",
+
+  "galaxies": {
+    "NGC3198": {
+      "note": "Classic flat-curve spiral. Freeman disk + HI gas. de Blok+ 2008.",
+      "M_disk_Msun": 3.5e10,
+      "r_d_kpc": 2.73,
+      "M_gas_Msun": 1.5e10,
+      "r_gas_kpc": 5.0,
+      "v_flat_kms": 157.0,
+      "r_max_kpc": 30.0
+    },
+    "NGC6503": {
+      "note": "Low-surface-brightness dwarf spiral. Begeman 1987.",
+      "M_disk_Msun": 2.5e10,
+      "r_d_kpc": 1.75,
+      "M_gas_Msun": 6.0e9,
+      "r_gas_kpc": 3.5,
+      "v_flat_kms": 116.0,
+      "r_max_kpc": 20.0
+    }
+  },
+
+  "cmstg": {
+    "coupling_form": "quadratic",
+    "m0_kpc_inv": 0.1,
+    "Lambda0_fiducial": 0.003,
+    "Lambda0_cosmo_bound": 0.095,
+    "psi_bc_scan": [1e-8, 1e-6, 1e-4, 5e-4, 1e-3],
+    "lambda_gal_scan": [-10.0, -1.0, 0.0, 1.0, 10.0, 100.0]
+  },
+
+  "numerics": {
+    "r_min_kpc": 0.5,
+    "n_points": 800,
+    "ode_method": "RK45",
+    "rtol": 1e-9,
+    "atol": 1e-12
+  },
+
+  "verdict": {
+    "flatness_tolerance": 0.20,
+    "flatness_fraction": 0.50,
+    "definition": "PASS if v_c(r) within +/-20% of v_flat for r > 0.5*r_max, AND Lambda0*Psi^2 < cosmo bound everywhere, AND rho_Psi >= 0 everywhere."
+  }
+}

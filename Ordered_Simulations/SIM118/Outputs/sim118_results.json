@@ -1,0 +1,20 @@
+{
+  "verdict": "PARTIAL",
+  "best_rho_c": 125849895.0641826,
+  "best_r_c_kpc": 1.750456921606637,
+  "best_rho_s": 14689600.964220462,
+  "best_r_s_kpc": 8.966989672203248,
+  "best_m22": 0.08152965274158284,
+  "best_m_chi_eV": 8.152965274158284e-24,
+  "best_M_c": 7820936862.691401,
+  "best_chi2": 0.34348539510244025,
+  "kappa": 2.367699224208335e+18,
+  "lam_chi": 2.1369029183803057e+39,
+  "chi_eq_Mpl": 8.72111796899771e-11,
+  "pass_chi2": true,
+  "pass_mass": false,
+  "pass_rho": true,
+  "pass_core": true,
+  "all_pass": false,
+  "n_pass_models": 18
+}

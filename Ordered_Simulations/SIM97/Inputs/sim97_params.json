@@ -1,0 +1,74 @@
+{
+  "description": "SIM97 — CMSTG full Planck 2018 plikHM TTTEEE likelihood. Replaces the approximate Gaussian likelihood used in SIM89 with the official Planck 2018 plikHM TTTEEE likelihood (plik_rd12_HM_v22b_TTTEEE.clik) via clipy. Tests three cosmologies: CMSTG BAO-only (SIM87), CMSTG joint CMB+BAO (SIM90), and LCDM Planck best-fit. Also tests the TTTEEE_lite_native likelihood as a cross-check. This is the definitive CMB consistency test for CMSTG against real Planck data.",
+
+  "class_executable": "/home/aion/Desktop/CMSTG_GitHub/CLASS/class",
+
+  "planck_packages_path": "/home/aion/Desktop/planck_packages",
+
+  "clik_files": {
+    "plikHM_TTTEEE": "data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik",
+    "plikHM_TT":     "data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik",
+    "plik_lite_TTTEEE": "data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik",
+    "lowl_TT":       "data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik",
+    "lowl_EE":       "data/planck_2018/baseline/plc_3.0/low_l/simall/simall_100x143_offlike5_EE_Aplanck_B.clik"
+  },
+
+  "T_CMB_K": 2.7255,
+
+  "cosmologies": {
+    "cmstg_joint": {
+      "H0": 67.59, "Omega_m": 0.312, "Omega_b": 0.0492,
+      "Lambda0": 0.008, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "CMSTG joint CMB+BAO best-fit (SIM90). Should match Planck."
+    },
+    "cmstg_bao_only": {
+      "H0": 68.14, "Omega_m": 0.294, "Omega_b": 0.0487,
+      "Lambda0": 0.003, "Psi_ini": 0.01, "m0": 1.0, "alpha": 0.1, "beta": 0.05,
+      "Omega_r": 9.2e-5,
+      "note": "CMSTG BAO-only best-fit (SIM87). Expected to show tension."
+    },
+    "lcdm_planck": {
+      "H0": 67.36, "Omega_m": 0.3153, "Omega_b": 0.04934,
+      "Lambda0": 0.0, "Psi_ini": 0.0, "m0": 1.0, "alpha": 0.0, "beta": 0.0,
+      "Omega_r": 9.2e-5,
+      "note": "LCDM Planck 2018 best-fit (Aghanim+2020). Baseline."
+    }
+  },
+
+  "primordial": {
+    "A_s": 2.101e-9,
+    "n_s": 0.9649,
+    "k_pivot": 0.05,
+    "tau_reio": 0.0544
+  },
+
+  "nuisance": {
+    "note": "Planck nuisance parameters fixed to best-fit values from Planck 2018 Table 1 (Aghanim+2020). A_planck=1 (calibration). Foreground parameters at Planck best-fit.",
+    "A_planck": 1.0,
+    "calib_100T": 1.0002,
+    "calib_217T": 0.99805,
+    "calib_100P": 1.021,
+    "calib_143P": 0.966,
+    "calib_217P": 1.04,
+    "calib_143x217P": 0.966
+  },
+
+  "class": {
+    "l_max_scalars": 2600,
+    "k_per_decade_for_pk": 50,
+    "output": "tCl,pCl,lCl",
+    "lensing": "yes"
+  },
+
+  "external_pk": {
+    "k_min_inv_Mpc": 1e-4,
+    "k_max_inv_Mpc": 50.0,
+    "N_k": 500
+  },
+
+  "acceptance": {
+    "delta_lnL_max": 5.0,
+    "note": "PASS if |Delta(-2lnL)(CMSTG_joint - LCDM)| < 5 on plikHM TTTEEE. This is the definitive test."
+  }
+}

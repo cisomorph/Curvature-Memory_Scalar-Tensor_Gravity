@@ -1,0 +1,329 @@
+{
+  "sim_id": "SIM142",
+  "timestamp": "2026-04-26T03:04:31.955565Z",
+  "action_spec": "Phase 1 + G\u2083(\u03a8)\u25a1\u03a8: L = (\u00bd+\u039b\u2080\u03a8\u00b2)R + \u00bd(\u2202\u03a8)\u00b2 \u2212 \u00bdm\u2080\u00b2\u03a8\u00b2 + G\u2083(\u03a8)\u25a1\u03a8",
+  "parameters": {
+    "Lambda0": 0.003,
+    "Psi_bar": 2.62,
+    "F_eff_phase1": 0.5205932,
+    "H0_target": 67.58999999999999,
+    "G3_forms": [
+      "G\u2083=c\u2083\u03a8 (linear)",
+      "G\u2083=c\u2083\u03a8\u00b2 (quadratic)"
+    ],
+    "c3_scan": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ]
+  },
+  "phase1_reference": {
+    "desi_chi2": 13.62921594446554,
+    "desi_tension": 1.5071615675647574,
+    "theta_star_100": 1.0409573739984184,
+    "sigma8": 0.7937303000136257,
+    "S8": 0.8107744047931634,
+    "rsd_chi2N": 1.0531711866079063,
+    "Psi_prime_today": 0.05346944533898712
+  },
+  "scan_results": [
+    {
+      "form": "linear",
+      "c3": 0.0001,
+      "H0": 67.58966947946172,
+      "Psi0": 2.882012690104147,
+      "y0": 0.05346933210397643,
+      "F_eff_today": 0.5249179914377641,
+      "dH_pct": 0.00018523903324068692,
+      "desi_chi2": 13.628653837704993,
+      "desi_tension": 1.5071304874774996,
+      "desi_pulls": [
+        -0.6145859112230975,
+        -1.8791712269350018,
+        -1.5706474079470234,
+        -2.243588545411497,
+        -1.4165820379165612,
+        -0.46078843730116276
+      ],
+      "theta_star_100": 1.0409599552890705,
+      "sigma8": 0.7937146878683284,
+      "S8": 0.8107584537951492,
+      "rsd_chi2N": 1.0533787184837238,
+      "stability": {
+        "alpha_M": 0.0017614099288115978,
+        "alpha_K": 0.0027232534627118924,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017614099288115978,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498359828755282
+      },
+      "Lambda_bare": 0.49787904511755765,
+      "verdict": "PASS"
+    },
+    {
+      "form": "linear",
+      "c3": 0.001,
+      "H0": 67.5896721862073,
+      "Psi0": 2.882011843337616,
+      "y0": 0.05346831292549356,
+      "F_eff_today": 0.5249179767954149,
+      "dH_pct": 0.0018524753919454302,
+      "desi_chi2": 13.623595420414292,
+      "desi_tension": 1.5068507679049425,
+      "desi_pulls": [
+        -0.6144642279946848,
+        -1.8789355494681845,
+        -1.5704016954616429,
+        -2.2432119056853317,
+        -1.4162133648132698,
+        -0.46022700950827944
+      ],
+      "theta_star_100": 1.040983187941324,
+      "sigma8": 0.7935741902365485,
+      "S8": 0.8106149067367507,
+      "rsd_chi2N": 1.0552489924418254,
+      "stability": {
+        "alpha_M": 0.0017613758862133166,
+        "alpha_K": 0.002723149723840315,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017613758862133166,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498359535908297
+      },
+      "Lambda_bare": 0.4978131078727275,
+      "verdict": "PASS"
+    },
+    {
+      "form": "linear",
+      "c3": 0.01,
+      "H0": 67.58969933033477,
+      "Psi0": 2.8820033737424313,
+      "y0": 0.0534581148623774,
+      "F_eff_today": 0.5249178303387882,
+      "dH_pct": 0.018533265096344165,
+      "desi_chi2": 13.573065123559232,
+      "desi_tension": 1.5040536960471875,
+      "desi_pulls": [
+        -0.6132467697720251,
+        -1.8765775481856939,
+        -1.5679432967556846,
+        -2.239443577018892,
+        -1.412524781378437,
+        -0.4546100021648504
+      ],
+      "theta_star_100": 1.0412156171209819,
+      "sigma8": 0.7921703692918848,
+      "S8": 0.8091806160496247,
+      "rsd_chi2N": 1.0741974986122569,
+      "stability": {
+        "alpha_M": 0.0017610352533215998,
+        "alpha_K": 0.0027221118044272728,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017610352533215998,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498356606775765
+      },
+      "Lambda_bare": 0.49715387463067284,
+      "verdict": "PASS"
+    },
+    {
+      "form": "linear",
+      "c3": 0.1,
+      "H0": 67.58977951198521,
+      "Psi0": 2.881918430841632,
+      "y0": 0.05335543787657758,
+      "F_eff_today": 0.5249163615260741,
+      "dH_pct": 0.18607166441416276,
+      "desi_chi2": 13.073577760527456,
+      "desi_tension": 1.4761197874002556,
+      "desi_pulls": [
+        -0.6010470089209687,
+        -1.8529081120436945,
+        -1.5432525441950027,
+        -2.2015866792852967,
+        -1.375463415608305,
+        -0.39817063260568636
+      ],
+      "theta_star_100": 1.0435496333353669,
+      "sigma8": 0.7782471522458184,
+      "S8": 0.7949574831907651,
+      "rsd_chi2N": 1.2877872868825846,
+      "stability": {
+        "alpha_M": 0.0017576059472228507,
+        "alpha_K": 0.00271167271555882,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017576059472228507,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498327230521483
+      },
+      "Lambda_bare": 0.4905713510632705,
+      "verdict": "FAIL"
+    },
+    {
+      "form": "quadratic",
+      "c3": 0.0001,
+      "H0": 67.58967091174084,
+      "Psi0": 2.8820131633705754,
+      "y0": 0.05346899981406581,
+      "F_eff_today": 0.5249179996215239,
+      "dH_pct": 0.0010449770900967535,
+      "desi_chi2": 13.62604472687863,
+      "desi_tension": 1.5069862157563922,
+      "desi_pulls": [
+        -0.6145236250916987,
+        -1.8790500160829733,
+        -1.5705207333560485,
+        -2.2433940895066637,
+        -1.416391536976712,
+        -0.46049872680330073
+      ],
+      "theta_star_100": 1.0409717721338967,
+      "sigma8": 0.7936441422284226,
+      "S8": 0.8106863761202563,
+      "rsd_chi2N": 1.0543192633958427,
+      "stability": {
+        "alpha_M": 0.0017613992441581862,
+        "alpha_K": 0.0027232195725598258,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017613992441581862,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498359992430477
+      },
+      "Lambda_bare": 0.4978441690652189,
+      "verdict": "PASS"
+    },
+    {
+      "form": "quadratic",
+      "c3": 0.001,
+      "H0": 67.58968653415334,
+      "Psi0": 2.882016575682152,
+      "y0": 0.05346498766928688,
+      "F_eff_today": 0.5249180586275201,
+      "dH_pct": 0.01045295064221248,
+      "desi_chi2": 13.597519657509908,
+      "desi_tension": 1.5054080098935474,
+      "desi_pulls": [
+        -0.6138411403953954,
+        -1.877722993476189,
+        -1.5691344826024949,
+        -2.2412666362206277,
+        -1.4143076720993677,
+        -0.45732889822506
+      ],
+      "theta_star_100": 1.04110139365826,
+      "sigma8": 0.7928690438777652,
+      "S8": 0.8098944465809703,
+      "rsd_chi2N": 1.0647283029492094,
+      "stability": {
+        "alpha_M": 0.00176126896168607,
+        "alpha_K": 0.0027228105982398513,
+        "alpha_T": 0.0,
+        "alpha_B": 0.00176126896168607,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498361172550401
+      },
+      "Lambda_bare": 0.49746437742852523,
+      "verdict": "PASS"
+    },
+    {
+      "form": "quadratic",
+      "c3": 0.01,
+      "H0": 67.5895029696971,
+      "Psi0": 2.8820505715422757,
+      "y0": 0.053424512536787185,
+      "F_eff_today": 0.5249186464907815,
+      "dH_pct": 0.10464674848253064,
+      "desi_chi2": 13.31448595341332,
+      "desi_tension": 1.489658011838809,
+      "desi_pulls": [
+        -0.6070582920342594,
+        -1.8644656881105766,
+        -1.5552612142718267,
+        -2.2199552808924063,
+        -1.393417891121552,
+        -0.4255368001314666
+      ],
+      "theta_star_100": 1.0424003892393954,
+      "sigma8": 0.7851498521166569,
+      "S8": 0.8020116775465079,
+      "rsd_chi2N": 1.1762723546616147,
+      "stability": {
+        "alpha_M": 0.0017599543996429819,
+        "alpha_K": 0.0027186865611216722,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017599543996429819,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.049837292981563
+      },
+      "Lambda_bare": 0.49366233678606447,
+      "verdict": "FAIL"
+    },
+    {
+      "form": "quadratic",
+      "c3": 0.1,
+      "H0": 67.59171722265008,
+      "Psi0": 2.8823882882051324,
+      "y0": 0.052996261595097786,
+      "F_eff_today": 0.5249244867319464,
+      "dH_pct": 1.0817771348180767,
+      "desi_chi2": 10.649653357180703,
+      "desi_tension": 1.3322695771490032,
+      "desi_pulls": [
+        -0.5360847686762137,
+        -1.7264555661156062,
+        -1.4111325846128084,
+        -1.9988740449674531,
+        -1.1770491672176848,
+        -0.09685192385337225
+      ],
+      "theta_star_100": 1.055795969110092,
+      "sigma8": 0.7110722293329536,
+      "S8": 0.7263193742703478,
+      "rsd_chi2N": 2.974508399860915,
+      "stability": {
+        "alpha_M": 0.0017460317542973033,
+        "alpha_K": 0.002675245501064094,
+        "alpha_T": 0.0,
+        "alpha_B": 0.0017460317542973033,
+        "c_T_eq_c": true,
+        "no_ghost": true,
+        "M2_star": 1.0498489734638927
+      },
+      "Lambda_bare": 0.45605521130295645,
+      "verdict": "FAIL"
+    }
+  ],
+  "theoretical_checks": {
+    "gr_recovery": true,
+    "c_T_eq_c": true,
+    "c_T_analytic_proof": "G\u2083_X=0 and G\u2085=0 \u2192 tensor speed unmodified; \u03b1_T=0 by Horndeski classification",
+    "no_tachyon": true,
+    "no_ghost": true,
+    "ward_identity": true,
+    "uv_finite": "Inherited from Phase 1; G\u2083(\u03a8) adds no new loop divergences beyond G\u2083_\u03a8 vertices, suppressed by memory kernel",
+    "galileon_type": "G\u2083(\u03a8) only \u2014 equivalent to rescaled kinetic term via IBP; NOT standard Galileon braiding (which requires G\u2083_X\u22600)"
+  },
+  "structural_diagnosis": {
+    "mechanism": "G\u2083(\u03a8)\u25a1\u03a8 with G\u2083=G\u2083(\u03a8) (no X) reduces to modified kinetic term (1+2G\u2083_\u03a8)X",
+    "suppression": "Effect on H(z) \u221d c\u2083\u00b7\u03a8'(z); Phase 1 has \u03a8'(z=0)=0.0535 (slow-roll)",
+    "needed_c3": "~0.5 for 5% H(z) boost; scan range c\u2083\u22640.1 insufficient",
+    "no_self_kick": "For linear G\u2083: scalar EOM unchanged \u2192 \u03a8' cannot be self-amplified",
+    "true_galileon": "G\u2083(X)\u25a1\u03a8 (X-dependent) would give braiding \u03b1_B\u22600 and tracker with large \u03a8\u0307; not tested here",
+    "tier2_implication": "SIM142 exhausts G\u2083(\u03a8) forms. True braiding (G\u2083_X\u22600) would require a new sim (SIM142b or similar)"
+  },
+  "verdict": "FAIL",
+  "failure_mode": "G\u2083(\u03a8)\u25a1\u03a8 with G\u2083_X=0 is structurally equivalent to a rescaled kinetic term via IBP \u2014 no true kinetic braiding (\u03b1_B=0). Correction to H(z) \u221d c\u2083\u00b7\u03a8' where \u03a8'=0.053 (Phase 1 slow-roll), giving max \u0394H/H=1.08% at c\u2083=0.1 (quadratic), far below ~5% needed to shift DESI tension. Large c\u2083 simultaneously breaks CMB (\u03b8* excess) and RSD shape. STRUCTURAL: G\u2083(\u03a8) provides no new H(z) lever. True Galileon braiding requires G\u2083_X\u22600.",
+  "derived_vs_phenom": {
+    "G3_term": "derived from action variation",
+    "Phase1_background": "derived (same as SIM90/SIM131)",
+    "c3": "free parameter (scanned)"
+  }
+}

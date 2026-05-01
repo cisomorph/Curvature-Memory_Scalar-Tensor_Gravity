@@ -1,0 +1,37 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Large/binary data files
+*.npy
+*.npz
+*.fits
+*.zip
+*.odt
+
+# Old pre-SIM80 simulation directories
+Ordered_Simulations/simulation_*/
+Ordered_Simulations/simulations*/
+Ordered_Simulations/analysis/
+Ordered_Simulations/Backup/
+Ordered_Simulations/CLASS/
+Ordered_Simulations/PHASE2_FINDINGS.md
+
+# Internal planning docs
+PHASE4_ROADMAP.md
+TIER1_SUMMARY.md
+
+# OS
+.DS_Store

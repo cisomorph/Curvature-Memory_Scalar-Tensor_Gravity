@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "CMSTG: Curvature-Memory Scalar-Tensor Gravity"
+abstract: >
+  A Lagrangian-based framework for curvature memory and modified gravity.
+  CMSTG is a covariant scalar-tensor extension of GR in which spacetime
+  curvature couples to a non-local scalar field Ψ through a retarded
+  Green's function, producing curvature memory. Dark energy emerges from
+  the Ψ–geometry coupling without a bare cosmological constant.
+authors:
+  - family-names: Wilson
+    given-names: Christopher Robert Barrick
+    email: C.Isomorph@gmail.com
+    orcid: ""
+version: "1.0.0"
+date-released: 2026-04-27
+license: CC-BY-4.0
+repository-code: "https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity"
+keywords:
+  - modified gravity
+  - scalar-tensor gravity
+  - dark energy
+  - curvature memory
+  - baryon acoustic oscillations
+  - cosmology

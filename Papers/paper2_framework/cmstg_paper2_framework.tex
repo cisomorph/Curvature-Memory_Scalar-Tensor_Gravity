@@ -850,10 +850,16 @@ At $\Lz = 0$, the integration yields
   r_d^{\Lambda{\rm CDM}} = 146.785\,\mathrm{Mpc},
 \end{equation}
 in agreement with the Planck~2018 measurement $r_d = 147.09 \pm 0.26\,\mathrm{Mpc}$
-to within $0.21\%$. This validates the integration pipeline against the
-standard result; the remaining offset reflects the difference between our SIM90
-cosmological parameters ($H_0 = 67.59$, $\Omega_m = 0.312$) and the Planck~2018
-best-fit, together with the simplified single-fluid Friedmann equation.
+to within $0.21\%$. This validates the integration pipeline against the standard
+result. The 0.21\% (2080\,ppm) offset is dominated by the simplified single-fluid
+Friedmann equation: evaluated at the Planck~2018 best-fit cosmology
+($H_0 = 67.36$, $\Omega_m = 0.315$), the same pipeline gives
+$r_d = 146.659\,\mathrm{Mpc}$, a 2940\,ppm deficit from the Planck reference.
+The SIM90 parameters ($H_0 = 67.59$, $\Omega_m = 0.312$) yield a 860\,ppm
+higher baseline within the same simplified pipeline, partially offsetting the
+Friedmann deficit to give the 2080\,ppm net offset. Both contributions are
+common-mode between \CMSTG\ and $\Lambda$CDM and therefore cancel exactly in
+the fractional shift $\Delta r_d/r_d$ reported below.
 
 \paragraph{\CMSTG\ correction.}
 At the Phase~1 canonical locked action ($\Lz = 0.003\,\Mpl^{-2}$,

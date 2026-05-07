@@ -72,5 +72,15 @@
     "rd_at_Lambda0_0p095": "146.7818 Mpc (-21.488 ppm)",
     "max_shift_ppm": "21.488 ppm across all Lambda0 tested",
     "interpretation": "If |Delta r_d / r_d| < ~1000 ppm across the full Lambda0 scan, CMSTG and LCDM are degenerate in r_d at all observationally allowed couplings. Current BAO precision is ~3000 ppm (0.3%)."
+  },
+  "offset_attribution": {
+    "total_offset_ppm": 2080.0,
+    "rd_A1_SIM90_params_Mpc": 146.785,
+    "rd_A2_planck2018_params_Mpc": 146.659,
+    "planck2018_params_used": {"H0": 67.36, "Omega_m": 0.3153, "Omega_b_h2": 0.02237, "N_eff": 3.046},
+    "friedmann_simplification_contribution_ppm": 2940.0,
+    "param_difference_contribution_ppm": -860.0,
+    "dominant_effect": "friedmann_simplification",
+    "note": "Friedmann simplification (2940 ppm) is dominant. SIM90 parameters give 860 ppm higher r_d than Planck 2018 parameters in the same simplified pipeline, partially offsetting the Friedmann deficit (net: 2080 ppm). Both effects are common-mode between cmstg and LCDM and cancel exactly in the fractional shift Delta r_d / r_d."
   }
 }

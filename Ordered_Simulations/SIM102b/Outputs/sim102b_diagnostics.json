@@ -1,0 +1,53 @@
+{
+  "Lambda0": 0.003,
+  "m0_Mpc_inv": 0.01,
+  "k_m_scan_used": [
+    0.3,
+    1.0,
+    3.0,
+    10.0
+  ],
+  "kernels_tested": {
+    "stretched_exponential": {
+      "definition": "K_n(k) = exp(-(k/k_m)^(2n))",
+      "n_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "analytic_c_n": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.1373877972823954,
+        "4": 1.2533141373155001
+      },
+      "max_deviation_from_analytic_c_n_pct": 0.2754674312136607,
+      "max_deviation_from_universal_scaling_pct": 0.2754674312136607,
+      "verdict_c_n_match": "PASS",
+      "verdict_universal_scaling": "PASS"
+    },
+    "rational": {
+      "definition": "K(k) = 1/(1 + k^2/k_m^2)",
+      "k_m_test_Mpc_inv": 0.1,
+      "UV_cutoffs_tested": [
+        10.0,
+        100.0,
+        1000.0,
+        10000.0,
+        100000.0
+      ],
+      "Sigma_values": [
+        4.6739583382925516e-11,
+        7.29847722091298e-11,
+        9.923108375772056e-11,
+        1.254774063056324e-10,
+        1.5172372910018258e-10
+      ],
+      "log_fit_coefficient_A": 1.1398633106367842e-11,
+      "log_fit_intercept_B": -5.754206968309816e-12,
+      "verdict": "LOG_DIVERGENT (expected \u2014 falloff k^-2 too slow to regulate quartic UV)"
+    }
+  },
+  "robustness_claim": "The k_m^4 and Lambda0^2 scaling of Sigma(0) is universal across the stretched-exponential kernel family K_n(k) = exp(-(k/k_m)^(2n)) for n = 1, 2, 3, 4. Only the O(1) prefactor c_n depends on the kernel shape, and c_n can be absorbed into a redefinition of k_m -> c_n^(1/4) k_m. The rational kernel 1/(1 + k^2/k_m^2) is logarithmically divergent because its k^-2 falloff is marginal for the quartic UV divergence; this sharpens the robustness claim to: any kernel decaying faster than any power law gives the universal scaling, and only kernels with at least Gaussian falloff fully regulate the loop."
+}

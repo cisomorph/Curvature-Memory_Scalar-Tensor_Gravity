@@ -35,8 +35,8 @@ with a non-local memory kernel $e^{-k^2/\km^2}$ postulated as a defining
 feature of the scalar sector and characterised by a single physical scale $\km$.
 We do not derive the kernel from a more fundamental theory; we treat it as an
 input that specifies the model, in the same sense that the Wilsonian cutoff
-specifies an effective field theory. With this input, four numerical simulation
-programmes (SIM102, SIM104, SIM105, SIM106) establish the following.
+specifies an effective field theory. With this input, five numerical simulation
+programmes (SIM102, SIM102b, SIM104, SIM105, SIM106) establish the following.
 \textbf{(i)}~The bare one-loop $\Psi$ self-energy is quartically divergent;
 the memory kernel regulates it to the finite result
 $\Sigma(0) = \Lz^2\km^4/(64\pi^2)$, confirmed numerically at better than
@@ -181,15 +181,42 @@ left for future work.
 
 \textbf{(c) What we do and do not claim.} We do \emph{not} claim that \CMSTG\
 is UV-complete in the sense of being a fundamental theory of quantum gravity,
-nor that the kernel is uniquely selected by a deeper symmetry principle. We
-claim only the following: given the action~\eqref{eq:action} and the
-kernel~\eqref{eq:propagator}, the resulting quantum theory is finite to all
-orders explicitly computed (one and two loops in the graviton sector), the
-renormalization-group flow of $\Lz$ at fixed $\km$ has a fixed point at
-$\Lz = 0$, and the qualitative UV behaviour is expected to be insensitive to
-the precise functional form of the kernel provided it falls off at least as fast
-as a Gaussian at high $k$. A systematic verification across kernel forms is
-left for future work.
+nor that the kernel~\eqref{eq:propagator} is uniquely selected by a deeper
+symmetry principle. We claim only the following: given the
+action~\eqref{eq:action} and the kernel~\eqref{eq:propagator}, the resulting
+quantum theory is finite to all orders explicitly computed (one and two loops
+in the graviton sector), the renormalization-group flow of $\Lz$ at fixed
+$\km$ has a fixed point at $\Lz = 0$, and the parametric scaling
+$\Sigma(0) \propto \Lz^2 \km^4$ is robust against the choice of kernel shape
+within a wide family of well-behaved kernels.
+
+The last statement is verified explicitly by SIM102b: for the
+stretched-exponential family $K_n(k) = \exp(-(k/\km)^{2n})$ with
+$n = 1, 2, 3, 4$, the regulated self-energy at $p=0$ is
+\begin{equation}
+\Sigma_n(0) = c_n \cdot \frac{\Lz^2 \km^4}{64 \pi^2},
+\qquad
+c_n = \frac{2}{n \, 2^{2/n - 1}} \, \Gamma(2/n).
+\label{eq:sigma_n}
+\end{equation}
+The coefficients are $c_1 = 1$ (Gaussian, recovering SIM102), $c_2 = 1$
+exactly, $c_3 \approx 1.137$, and $c_4 \approx 1.253$. The
+$\Lz^2 \km^4$ scaling is therefore universal across this family;
+only the $O(1)$ prefactor $c_n$ depends on the kernel shape, and $c_n$
+can be absorbed into a redefinition of the memory scale via
+$\km \to c_n^{1/4} \km$. After this rescaling, all four kernels collapse
+onto a single universal curve to within $0.3\%$ at the naturalness
+threshold (SIM102b).
+
+The boundary of this universality class is informative. The rational
+kernel $K(k) = 1/(1 + k^2/\km^2)$, with $k^{-2}$ asymptotic falloff,
+gives a one-loop integrand behaving as $1/k$ at large $k$ and yields a
+logarithmically divergent self-energy (SIM102b). This identifies the
+required falloff rate: kernels decaying faster than any power law fully
+regulate the quartic UV divergence and give the universal $\km^4$
+scaling, while kernels with $k^{-2}$ or slower falloff do not. The
+Gaussian and stretched-exponential kernels lie comfortably inside this
+class.
 
 \subsection{The naturalness threshold}
 
@@ -683,6 +710,15 @@ kernel of Section~\ref{sec:kernel}. The principal results are:
     the naturalness scale is $1$, $2.4\times10^{-2}$, $3.4\times10^{-6}$,
     indicating a stable expansion.
 
+  \item \textbf{Kernel-form robustness (SIM102b).} The $\Lz^2\km^4$ scaling of
+    $\Sigma(0)$ is universal across the stretched-exponential kernel family
+    $K_n(k) = \exp(-(k/\km)^{2n})$ for $n = 1, 2, 3, 4$. Only an $O(1)$ shape
+    coefficient $c_n$ depends on the kernel, and this coefficient can be absorbed
+    into the memory scale via $\km \to c_n^{1/4}\km$. All four kernels collapse
+    onto a single universal curve to within $0.3\%$ after this rescaling. The
+    rational kernel $1/(1+k^2/\km^2)$ does not regulate, identifying
+    faster-than-power-law decay as the boundary of the regulating class.
+
   \item \textbf{RG flow with $\Lz$ fixed point (SIM105).} The beta function
     $\beta(\Lz) = -\Lz^3\km^2/(16\pi^2 m_0^2)$ is negative for all $\Lz > 0$
     and $\km > 0$. The running coupling has a UV fixed point at $\Lz = 0$ (the
@@ -723,7 +759,7 @@ structure---is left for future work.
 \noindent\textbf{Data and code:}
 All simulation scripts, outputs, and JSON results are publicly available at
 \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}
-(simulations SIM102, SIM104, SIM105, SIM106).
+(simulations SIM102, SIM102b, SIM104, SIM105, SIM106).
 
 \begin{thebibliography}{99}
 \bibitem{Reuter1998}

@@ -31,21 +31,31 @@
 \maketitle
 
 \begin{abstract}
-We establish two complementary structural no-go theorems that together prove the
-Phase~1 canonical action of Curvature-Memory Scalar-Tensor Gravity (\CMSTG) is
-the unique covariant scalar-tensor solution consistent with both CMB and DESI~Y1
-BAO observations within its action class. \textbf{Theorem~1}: any scalar field
-sourced by the Ricci scalar $R>0$ and initialized at zero grows monotonically,
-increasing the effective gravitational coupling $\Feff$ and suppressing $H(z)$
-at DESI redshifts---the wrong direction to reduce the $2.77\sigma$ tension.
-\textbf{Theorem~2}: any mechanism that raises $H(z)$ in the interval
-$z\in[0,z_{\rm rec}]$ while keeping the sound horizon $\rs$ fixed necessarily
-shifts the CMB acoustic angle $\thetastar$ above the Planck bound at more
-than $30\sigma$. Thirteen simulation-based mechanism tests (SIM131--SIM136,
-SIM141--SIM143, and two structural arguments) verify both theorems exhaustively
-across the identified Tier~2 mechanism space. The $2.77\sigma$ DESI~Y1 residual
-is a structural prediction of Phase~1 canonical \CMSTG, not a defect; the
+This is Paper~I of a four-paper series on Curvature-Memory Scalar-Tensor
+Gravity (\CMSTG). We establish two complementary structural no-go theorems
+that together prove the Phase~1 canonical action is the unique covariant
+scalar-tensor solution within its action class consistent with both Planck
+CMB data and DESI~Y1 BAO data simultaneously.
+\textbf{Theorem~1}: any scalar field sourced by the Ricci scalar $R>0$
+and initialized at zero grows monotonically, increasing the effective
+gravitational coupling $\Feff$ and suppressing $H(z)$ at DESI
+redshifts---the wrong direction to reduce the $2.77\sigma$ DESI~Y1
+tension. \textbf{Theorem~2}: any mechanism that raises $H(z)$ in the
+interval $z\in[0,z_{\rm rec}]$ while keeping the sound horizon $\rs$
+fixed necessarily shifts the CMB acoustic angle $\thetastar$ above the
+Planck bound at more than $30\sigma$. Thirteen simulation-based mechanism
+tests (SIM131--SIM136, SIM141--SIM143, plus two structural arguments)
+verify both theorems exhaustively across the identified Tier~2 mechanism
+space. The $2.77\sigma$ DESI~Y1 residual is therefore a structural
+prediction of Phase~1 canonical \CMSTG, not a defect in the action; the
 decisive test is DESI~Y3.
+
+Companion papers establish (II)~the framework, field equations, and
+cosmological consistency of \CMSTG~\cite{WilsonPaperII}; (III)~the UV
+finiteness and renormalization-group flow~\cite{WilsonPaperIII}; and
+(IV)~galactic-scale constraints establishing the dark-matter boundary of
+the theory~\cite{WilsonPaperIV}. This paper establishes the dark-energy
+boundary.
 \end{abstract}
 
 \noindent\textbf{Keywords:} dark energy theory; modified gravity; CMB; baryon acoustic oscillations; scalar-tensor theories
@@ -57,7 +67,25 @@ decisive test is DESI~Y3.
 \section{Introduction}
 \label{sec:intro}
 
-The Phase~1 canonical \CMSTG\ action,
+Curvature-Memory Scalar-Tensor Gravity (\CMSTG) is a covariant scalar-tensor
+extension of general relativity in which the scalar field $\Psi$ encodes
+retarded curvature history through a non-minimal coupling $\Lz\Psi^2 R$. The
+framework, its action, and its passing record against precision cosmological
+data are developed in detail in Paper~II of this series~\cite{WilsonPaperII}.
+The single open question raised by Paper~II is whether the $2.77\sigma$
+residual against the DESI~Y1 BAO dataset can be reduced within the \CMSTG\
+action class by extending the action, deforming its parameters, or coupling
+additional fields. This paper proves that the answer is no: the residual is
+structural.
+
+The argument rests on two theorems, each verified by an exhaustive mechanism
+scan. The first theorem closes the gravitational-sector route (modifications
+acting through $\Feff$); the second closes the energy-density route
+(modifications acting through $H(z)$ directly). Together they establish that
+the Phase~1 canonical $H(z)$ profile is the unique solution consistent with
+Planck CMB and DESI~Y1 BAO simultaneously, within the action class.
+
+The Phase~1 canonical \CMSTG\ action of Paper~II~\cite{WilsonPaperII} is
 \begin{equation}
   S_{\rm P1} = \int\!d^4x\,\sqrt{-g}\,\Bigl[
     \tfrac{1+2\Lz\Psi^2}{2}\,R
@@ -70,16 +98,21 @@ gravitational coupling $\Feff = (1+2\Lz\Psibar^2)/2 = 0.521$, passes all
 current precision observational criteria: CMB TT/TE/EE power spectra (Planck
 plikHM), BOSS and DESI~Y1 BAO, RSD growth rate $f\sigma_8$, gravitational wave
 speed $c_T=c$~\cite{Abbott2017,Creminelli2017}, and Solar System PPN bounds~\cite{Planck2018,BOSS2017,DESI2024}.
-It is UV-finite through two loops with an explicit asymptotic safety fixed
-point at $\Lz=0$ (Paper~II of this series~\cite{WilsonPapers}). Its one
+It is UV-finite through two loops with an explicit asymptotic freedom fixed
+point at $\Lz=0$ (Paper~III of this series~\cite{WilsonPaperIII}). Its one
 remaining residual is a $2.77\sigma$ tension with the DESI~Y1 BAO dataset
 (joint MCMC $\chi^2_{\rm DESI}=18.26$).
 
 Whether this residual is reducible within the \CMSTG\ action class---by
 extending, deforming, or coupling additional fields---is the central question
 addressed by three successive simulation programmes (Phases 2--4, SIM112--SIM143),
-summarised in Paper~IV of this series~\cite{WilsonPapers}.
+summarised in companion notes available at the repository.
 The answer, established here, is no.
+
+This is Paper~I of a four-paper series; companion papers establish
+(II)~the framework and observational consistency~\cite{WilsonPaperII},
+(III)~the UV structure~\cite{WilsonPaperIII}, and (IV)~galactic-scale
+constraints~\cite{WilsonPaperIV}.
 
 The $2.77\sigma$ floor arises from a geometric constraint: with $\Feff > 1/2$,
 the effective Newton constant $G_{\rm eff} = G/(2\Feff) < G$, suppressing $H(z)$
@@ -566,6 +599,7 @@ expected 2026--2027, will either:
 \end{enumerate}
 
 \subsection{The Loophole and Future Directions}
+\label{sec:loophole}
 
 Both theorems share a common loophole: modify the pre-recombination physics to
 increase $\rs$. An upward shift $\Delta\rs/\rs\sim1.5\%$ could in principle
@@ -597,10 +631,11 @@ for thawing fields.
 
 Together, the two theorems prove that the Phase~1 canonical $H(z)$ profile is
 the unique solution consistent with both CMB and DESI~Y1 simultaneously, within
-the \CMSTG\ framework. \textbf{Phase~1 canonical \CMSTG\ is declared the final
-theory within the class of covariant scalar-tensor extensions with retarded
-memory kernels.} Its $2.77\sigma$ DESI tension is a structural prediction.
-The decisive test is DESI~Y3.
+the \CMSTG\ framework. We conclude that the Phase~1 canonical action exhausts
+the viable parameter space within the \CMSTG\ action class, subject to the
+loophole identified in Section~\ref{sec:loophole} (pre-recombination
+modifications that simultaneously raise the sound horizon). Its $2.77\sigma$
+DESI tension is a structural prediction. The decisive test is DESI~Y3.
 
 \bigskip
 \noindent\textbf{Data and code:}
@@ -637,10 +672,18 @@ All simulation scripts, outputs, and JSON results are publicly available at
   S.~Deser and R.~P.~Woodard,
   ``Nonlocal Cosmology,''
   Phys.\ Rev.\ Lett.\ \textbf{99}, 111301 (2007).
-\bibitem{WilsonPapers}
+\bibitem{WilsonPaperII}
   C.~R.~B.~Wilson,
-  ``Curvature-Memory Scalar-Tensor Gravity: Papers I--VII,''
-  \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2025--2026).
+  ``Curvature-Memory Scalar-Tensor Gravity: Framework, Field Equations, and Cosmological Consistency''
+  (Paper~II of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\bibitem{WilsonPaperIII}
+  C.~R.~B.~Wilson,
+  ``UV Finiteness and Renormalization Group Flow of Curvature-Memory Scalar-Tensor Gravity''
+  (Paper~III of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\bibitem{WilsonPaperIV}
+  C.~R.~B.~Wilson,
+  ``Galactic-Scale Constraints on Curvature-Memory Scalar-Tensor Gravity: Why the Locked Action Cannot Replace Dark Matter Without Additional Physics''
+  (Paper~IV of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \bibitem{Abbott2017}
   B.~P.~Abbott et~al.\ (LIGO Scientific and Virgo Collaborations),
   ``GW170817: Observation of Gravitational Waves from a Binary Neutron Star

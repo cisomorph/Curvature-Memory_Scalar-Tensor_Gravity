@@ -55,11 +55,18 @@ c_km    = 2.998e5            # speed of light [km/s]
 H0        = P['cosmology']['H0']       # [km/s/Mpc]
 Omega_m   = P['cosmology']['Omega_m']
 Omega_b   = P['cosmology']['Omega_b']
-Omega_r   = P['cosmology']['Omega_r']   # total radiation (photons + N_eff neutrinos)
 N_eff     = P['cosmology']['N_eff']
-# Photon-only density for R_b (neutrinos don't couple to photon-baryon plasma)
+T_cmb     = P['cosmology']['T_cmb']   # 2.7255 K
+
+# Derive Omega_r from T_CMB using the standard formula (Planck 2018).
+# Omega_gamma h^2 = 2.4728e-5 for T_CMB = 2.7255 K (computed from rho_gamma = pi^2/15 * T^4).
+# Neutrino contribution: (7/8)(4/11)^(4/3) per species.
+# Methodology: N_eff = 3.046, T_gamma,0 = 2.7255 K, Y_He = 0.245 (BBN), z_drag from Planck 2018.
+h         = H0 / 100.0
 _nu_frac  = N_eff * (7.0/8.0) * (4.0/11.0)**(4.0/3.0)
-Omega_gamma = Omega_r / (1.0 + _nu_frac)
+Omega_gamma = 2.4728e-5 / h**2
+Omega_r   = Omega_gamma * (1.0 + _nu_frac)
+
 Omega_L   = 1.0 - Omega_m - Omega_r   # flat universe
 Psi0    = P['scalar_field']['Psi0']
 m0      = P['scalar_field']['m0_Mpc_inv']   # [Mpc^-1], natural units c=1
@@ -94,11 +101,9 @@ def z_drag_EH():
     return 1291.0 * omh2**0.251 / (1 + 0.659*omh2**0.828) * (1 + b1*ombh2**b2)
 
 Z_DRAG_EH = z_drag_EH()
-# E&H formula underestimates z_drag by ~4% for Planck-era params.
-# Use CLASS-calibrated value for our SIM90 cosmology (H0=67.59, Omega_m=0.312, Omega_b=0.049):
-# CLASS gives z_drag ~ 1059 and r_d ~ 147 Mpc.  We use 1059 to anchor the LCDM baseline.
-Z_DRAG = 1059.0
-print(f"z_drag (E&H approx): {Z_DRAG_EH:.1f}  →  using CLASS-calibrated z_drag = {Z_DRAG:.1f}")
+# Use Planck 2018 best-fit value z_drag = 1059.94 (Table 2, Planck 2018 VI).
+Z_DRAG = 1059.94
+print(f"z_drag (E&H approx): {Z_DRAG_EH:.1f}  →  using Planck 2018 z_drag = {Z_DRAG:.2f}")
 
 # ── comoving sound horizon [Mpc] ─────────────────────────────────────────────
 # r_d = integral_{z_drag}^{inf} c_s(z) * c / H(z) dz
@@ -251,32 +256,39 @@ for Lambda0 in Lambda0_scan:
     print(f"{Lambda0:>10.4f} {rd_val:>12.4f} {delta_rd:>+16.6f} {frac_ppm:>+12.3f} {f_drag:>20.3e}")
 
 # ── Diagnostics ───────────────────────────────────────────────────────────────
-rd_ref   = 147.09   # Mpc, standard Planck 2018 value
-lcdm_ok  = abs(rd_LCDM - rd_ref) < 3.0
+rd_ref   = 147.09   # Mpc, Planck 2018 best-fit value
+lcdm_ok  = abs(rd_LCDM - rd_ref) < 0.5   # pass if within ~0.3% of Planck
 
 max_frac = max(abs(results[L0]['frac_shift']) for L0 in Lambda0_scan)
 max_ppm  = max_frac * 1e6
 
+lcdm_agree_pct = abs(rd_LCDM - rd_ref) / rd_ref * 100.0
+
 diag = {
     'rd_LCDM_Mpc':          rd_LCDM,
     'rd_LCDM_err_Mpc':      rd_LCDM_err,
-    'z_drag_EH':            Z_DRAG,
+    'z_drag_used':          Z_DRAG,
     'rd_Planck_reference':  rd_ref,
+    'lcdm_agreement_pct':   lcdm_agree_pct,
     'LCDM_baseline_PASS':   bool(lcdm_ok),
     'max_frac_shift':       max_frac,
     'max_shift_ppm':        max_ppm,
+    'methodology': (
+        f"N_eff = {N_eff}, photon temperature T_gamma,0 = {T_cmb} K, "
+        "Y_He = 0.245 (BBN), Omega_r derived from T_CMB via Omega_gamma h^2 = 2.4728e-5, "
+        f"z_drag = {Z_DRAG} (Planck 2018 Table 2), "
+        "sound speed c_s^2 = c^2/[3(1+R_b)] with R_b = 3*rho_b/(4*rho_gamma)"
+    ),
     'results_by_Lambda0': {str(k): v for k, v in results.items()},
     'verdict': {
-        'LCDM_baseline':       'PASS' if lcdm_ok else f'FAIL (got {rd_LCDM:.2f} vs {rd_ref:.2f} Mpc)',
-        'rd_at_Lambda0_0p003': f"{results[0.003]['delta_rd_Mpc']:+.6f} Mpc ({results[0.003]['frac_ppm']:+.3f} ppm)",
-        'rd_at_Lambda0_0p095': f"{results[0.095]['delta_rd_Mpc']:+.6f} Mpc ({results[0.095]['frac_ppm']:+.3f} ppm)",
+        'LCDM_baseline':       'PASS' if lcdm_ok else f'FAIL (got {rd_LCDM:.4f} vs {rd_ref:.2f} Mpc, diff={lcdm_agree_pct:.3f}%)',
+        'rd_at_Lambda0_0p003': f"{results[0.003]['rd_Mpc']:.4f} Mpc ({results[0.003]['frac_ppm']:+.3f} ppm)",
+        'rd_at_Lambda0_0p095': f"{results[0.095]['rd_Mpc']:.4f} Mpc ({results[0.095]['frac_ppm']:+.3f} ppm)",
         'max_shift_ppm':       f"{max_ppm:.3f} ppm across all Lambda0 tested",
         'interpretation': (
             "If |Delta r_d / r_d| < ~1000 ppm across the full Lambda0 scan, "
-            "CMSTG and LCDM are degenerate in r_d. The echo-shell narrative "
-            "is confirmed as a physical interpretation of standard BAO physics, "
-            "not a distinct prediction. "
-            "If shift > current BAO precision (~0.3%), CMSTG makes a testable r_d prediction."
+            "CMSTG and LCDM are degenerate in r_d at all observationally allowed couplings. "
+            "Current BAO precision is ~3000 ppm (0.3%)."
         )
     }
 }
@@ -318,6 +330,15 @@ ax.set_title(r'Scalar energy fraction at drag epoch')
 plt.tight_layout()
 plt.savefig(os.path.join(OUT_DIR, 'sim101_rd_vs_lambda0.pdf'), bbox_inches='tight')
 plt.savefig(os.path.join(OUT_DIR, 'sim101_rd_vs_lambda0.png'), dpi=150, bbox_inches='tight')
+# Copy as Figure 9 for Paper II
+FIG9_DIR = os.path.expanduser('~/Papers/paper2_framework/figures')
+if os.path.isdir(FIG9_DIR):
+    import shutil
+    shutil.copy(os.path.join(OUT_DIR, 'sim101_rd_vs_lambda0.pdf'),
+                os.path.join(FIG9_DIR, 'fig9_sound_horizon.pdf'))
+    shutil.copy(os.path.join(OUT_DIR, 'sim101_rd_vs_lambda0.png'),
+                os.path.join(FIG9_DIR, 'fig9_sound_horizon.png'))
+    print(f"Figure 9 updated at {FIG9_DIR}")
 plt.close()
 
 # Psi evolution

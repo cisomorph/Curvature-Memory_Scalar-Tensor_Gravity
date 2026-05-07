@@ -24,26 +24,37 @@
 \maketitle
 
 \begin{abstract}
-We establish systematic galactic-scale constraints on Curvature-Memory
-Scalar-Tensor Gravity (\CMSTG) through three independent simulation-based
-tests (SIM99, SIM100, SIM103) targeting NGC~3198 and NGC~6503, the
-best-observed spiral galaxies with flat rotation curves. The Phase~1 canonical
-locked action fails to produce flat rotation curves through any of the three
-candidate mechanisms: (1) the static Yukawa field profile is exponentially
-steeper than the $\rho \propto r^{-2}$ isothermal halo required for curve
-flattening (SIM99); (2) the time-domain 1+1D wave equation confirms the static
-result and shows that the curvature coupling $2\Lz|R_{\rm gal}|$ is
-$\sim2\times10^6$ times weaker than the field mass at galactic densities (using
-the simulation test mass $m_0 = 0.1\,\mathrm{kpc}^{-1}$; even weaker at the
-locked cosmological $m_0$), making condensation impossible (SIM100); (3) Vainshtein-type non-linear kinetic
-screening fails by six orders of magnitude, with the Vainshtein ratio
-$\mathcal{V} \leq 3.7\times10^{-6}$ across the full scanned parameter space
-(SIM103). The locked action energy density $\rho_\Psi = 1.6\times10^{-3}$
-$M_\odot\,\mathrm{kpc}^{-3}$ falls $2.7\times10^6$ short of the isothermal
-requirement at $r = 10$~kpc. These constraints are clean and model-independent:
-every identified mechanism within the \CMSTG\ action class has been exhausted.
-A first-principles coupling between $\Psi$ and baryonic matter is the minimum
-new physics required for galactic-scale predictions.
+This is Paper~IV of a four-paper series on Curvature-Memory Scalar-Tensor
+Gravity (\CMSTG). The first three papers of the series establish that \CMSTG\
+passes all current precision cosmological tests (Paper~II~\cite{WilsonPaperII}),
+is UV-finite to two loops in the resummed propagator
+(Paper~III~\cite{WilsonPaperIII}), and has a structural $2.77\sigma$ residual
+against DESI~Y1 BAO that is irreducible within the action class by any late-time
+mechanism (Paper~I~\cite{WilsonPaperI}). This paper establishes the
+corresponding dark-matter boundary: the Phase~1 canonical locked action cannot
+produce flat galactic rotation curves through any mechanism within the action
+class.
+
+We test three independent candidate mechanisms against NGC~3198 and NGC~6503,
+the best-observed spiral galaxies with flat rotation curves: (1)~the static
+Yukawa field profile is exponentially steeper than the $\rho \propto r^{-2}$
+isothermal halo required for curve flattening (SIM99); (2)~the time-domain
+1+1D wave equation confirms the static result and shows that the curvature
+coupling $2\Lz|R_{\rm gal}|$ is $\sim2\times10^6$ times weaker than the field
+mass at galactic densities, making condensation impossible (SIM100); (3)~Vainshtein-type
+non-linear kinetic screening fails by six orders of magnitude, with the
+Vainshtein ratio $\mathcal{V} \leq 3.7\times10^{-6}$ across the full scanned
+parameter space (SIM103). The locked-action energy density $\rho_\Psi =
+1.6\times10^{-3}\,M_\odot\,\mathrm{kpc}^{-3}$ falls $2.7\times10^6$ short of
+the isothermal requirement at $r = 10$~kpc.
+
+These constraints are clean and model-independent: every identified mechanism
+within the \CMSTG\ action class has been exhausted. A first-principles coupling
+between $\Psi$ and baryonic matter, with appropriate cosmological screening, is
+the minimum new physics required for galactic-scale predictions. We identify
+three concrete extension options (chameleon-screened mass term, coupled chameleon
+architecture, sextic-stabilized condensate) that define the programme of future
+work.
 \end{abstract}
 
 \keywords{dark matter; modified gravity; rotation curves; scalar-tensor theories; galactic dynamics}
@@ -54,6 +65,26 @@ new physics required for galactic-scale predictions.
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Introduction}
 \label{sec:intro}
+
+The first three papers of this series establish the cosmological status of
+Curvature-Memory Scalar-Tensor Gravity (\CMSTG): the Phase~1 canonical action
+passes all current precision tests (Paper~II~\cite{WilsonPaperII}), is UV-finite
+in the resummed propagator (Paper~III~\cite{WilsonPaperIII}), and has a
+structural irreducible $2.77\sigma$ residual against DESI~Y1 BAO that defines
+the dark-energy boundary of the framework (Paper~I~\cite{WilsonPaperI}). The
+natural question, addressed in this paper, is whether the same locked action
+can also account for the flat rotation curves of spiral galaxies, replacing the
+cold dark matter component of standard cosmology.
+
+The result of this paper is negative: it cannot. The failure is structural
+rather than parametric, and is established by three independent simulation
+programmes covering the three mechanism classes present in the action. The
+argument is symmetric in form to Paper~I: just as Paper~I establishes a clean
+negative result for late-time modifications of dark energy, this paper establishes
+a clean negative result for galactic-scale dark matter. Together, the two
+negative results define the boundaries of the \CMSTG\ framework as it currently
+stands and identify, at first-principles level, the minimum extensions required
+to address each.
 
 The flat rotation curves of spiral galaxies are among the most robust
 observational arguments for cold dark matter~\cite{Rubin1980,Begeman1991}.
@@ -71,7 +102,8 @@ environments might in principle provide large local field amplitudes.
 
 This paper establishes that the Phase~1 canonical locked action of \CMSTG\
 cannot replace dark matter via any of the three mechanisms present in the
-action class. The result is not a fine-tuning problem or a quantitative
+action class. The companion no-go theorems of Paper~I~\cite{WilsonPaperI}
+bound the dark energy sector; this paper bounds the dark matter sector. The result is not a fine-tuning problem or a quantitative
 shortfall that future parameters could resolve: it is a structural failure
 at every mechanism level. The goal is to establish this failure cleanly and
 systematically so that any future scalar-tensor proposal for rotation curves
@@ -479,6 +511,15 @@ to isothermal amplitudes.
 The constraints above define the minimum new physics required for
 \CMSTG\ to produce flat rotation curves:
 
+The three options below mirror the structure of Paper~I~\cite{WilsonPaperI}
+in a useful way: just as Paper~I identified the curvature-sourcing route and
+the $H(z)$-boost route as the two mechanism classes available for late-time
+modifications, the three options below identify the position-dependent mass
+route, the direct-coupling route, and the new-condensation-channel route as the
+three available for galactic-scale modifications. Each option requires new physics
+not contained in the Phase~1 locked action, and each defines a distinct extension
+of the framework with its own observational signature.
+
 \paragraph{Option A: Modified scalar mass.}
 A position-dependent mass $m_0^2 \to m_0^2(\rho)$ that drops to
 $m_0^2 \lesssim 2\Lz|R_{\rm gal}|$ in galactic environments would allow
@@ -592,10 +633,19 @@ All simulation scripts, outputs, and JSON results are publicly available at
   ``SPARC: Mass models for 175 disk galaxies with Spitzer photometry and
     accurate rotation curves,''
   AJ \textbf{152}, 157 (2016), arXiv:1606.09251.
+\bibitem{WilsonPaperI}
+  C.~R.~B.~Wilson,
+  ``Two Structural No-Go Theorems for Late-Time Modifications of Dark Energy
+    in Curvature-Memory Scalar-Tensor Gravity''
+  (Paper~I of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \bibitem{WilsonPaperII}
   C.~R.~B.~Wilson,
-  ``Curvature-Memory Scalar-Tensor Gravity: Framework and Cosmological Consistency''
+  ``Curvature-Memory Scalar-Tensor Gravity: Framework, Field Equations, and Cosmological Consistency''
   (Paper~II of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\bibitem{WilsonPaperIII}
+  C.~R.~B.~Wilson,
+  ``UV Finiteness and Renormalization Group Flow of Curvature-Memory Scalar-Tensor Gravity''
+  (Paper~III of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \end{thebibliography}
 
 \end{document}

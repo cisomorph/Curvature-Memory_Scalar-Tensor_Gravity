@@ -30,26 +30,34 @@
 \maketitle
 
 \begin{abstract}
-We present the complete framework of Curvature-Memory Scalar-Tensor Gravity
-(\CMSTG): a covariant scalar-tensor extension of general relativity in which
-the scalar field $\Psi$ encodes retarded curvature history through a non-minimal
-coupling $\Lz\Psi^2 R$ to the Ricci scalar. We derive the Euler--Lagrange and
-modified Friedmann equations, establish the GR-recovery conditions, reduce the
-theory to the FLRW cosmological background, and demonstrate canonical
-quantization at free-field level. The Phase~1 canonical action with locked
-parameters $\Lz = 0.003\,\Mpl^{-2}$, $\Psibar = 2.62\,\Mpl$, and effective
-gravitational coupling $\Feff = (1 + 2\Lz\Psibar^2)/2 = 0.521$ is tested
-against nine precision datasets: BAO full-covariance refit (BOSS+eBOSS+DESI~Y1),
-CMB TT/TE/EE power spectra (Planck plikHM), RSD growth rate $f\sigma_8$,
-non-linear structure growth $\sigma_8$, gravitational wave speed, Solar System
-PPN constraints, and dark energy equation of state. All tests pass at current
-observational precision. The effective gravitational coupling $\Geff/G =
-1 - 15\,\mathrm{ppm}$ at $\Lz = 0.003$, placing \CMSTG\ observationally
-degenerate with $\Lambda$CDM at the $10^{-5}$ level; the coupling is unconstrained
-by current data with an estimated detection threshold at $\Lz \sim 0.05$.
-The one residual is a $2.77\sigma$ tension with DESI~Y1 BAO, demonstrated
-in a companion paper to be a structural floor not reducible within the
-\CMSTG\ action class.
+This is Paper~II of a four-paper series on Curvature-Memory Scalar-Tensor
+Gravity (\CMSTG). We present the complete framework of \CMSTG: a covariant
+scalar-tensor extension of general relativity in which the scalar field $\Psi$
+encodes retarded curvature history through a non-minimal coupling $\Lz\Psi^2 R$
+to the Ricci scalar. We derive the Euler--Lagrange and modified Friedmann
+equations, establish the GR-recovery conditions, reduce the theory to the FLRW
+cosmological background, and demonstrate canonical quantization at free-field level.
+
+The Phase~1 canonical action with locked parameters $\Lz = 0.003\,\Mpl^{-2}$,
+$\Psibar = 2.62\,\Mpl$, and effective gravitational coupling $\Feff = 0.521$ is
+tested against nine precision datasets: BAO full-covariance refit
+(BOSS+eBOSS+DESI~Y1), CMB TT/TE/EE power spectra (Planck plikHM), RSD growth
+rate $f\sigma_8$, non-linear structure growth $\sigma_8$, gravitational wave
+speed, Solar System PPN constraints, and dark energy equation of state. All
+tests pass at current observational precision. The effective gravitational
+coupling $\Geff/G = 1 - 15\,\mathrm{ppm}$ at $\Lz = 0.003$, placing \CMSTG\
+observationally degenerate with $\Lambda$CDM at the $10^{-5}$ level; the
+coupling is unconstrained by current data with an estimated detection threshold
+at $\Lz \sim 0.05$.
+
+The one residual is a $2.77\sigma$ tension with DESI~Y1 BAO. Paper~I of this
+series~\cite{WilsonPaperI} establishes this as a structural floor, irreducible
+within the \CMSTG\ action class by any mechanism in the identified Tier~2
+mechanism space. Paper~III~\cite{WilsonPaperIII} establishes the UV finiteness
+of the theory in the resummed propagator. Paper~IV~\cite{WilsonPaperIV}
+establishes that the Phase~1 canonical action cannot replace dark matter at
+galactic scales without additional physics, defining a clear boundary on the
+scope of the framework as it stands.
 \end{abstract}
 
 \keywords{scalar-tensor gravity; dark energy; baryon acoustic oscillations; CMB; modified gravity; cosmological perturbations}
@@ -421,7 +429,7 @@ observational predictions of this paper.
 \label{sec:observations}
 
 All simulations are archived at
-\texttt{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}.
+\url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}.
 
 \subsection{BAO Full-Covariance Refit (SIM87)}
 \label{sec:bao}
@@ -522,16 +530,22 @@ where the RMS residual is $< 0.5\%$.
 \subsection{Joint CMB+BAO Parameter Fit (SIM90) and Planck Likelihood (SIM98)}
 \label{sec:joint}
 
-\paragraph{Method (SIM90).} We minimised $\chi^2_{\rm total} = \chi^2_{\rm CMB}
-+ \chi^2_{\rm BAO}$ jointly over $(H_0, \Omega_m, r_d, \Lz)$, using the
-Planck~2018 published parameter covariance ($\sigma_{H_0} = 0.54$~km/s/Mpc,
-$\sigma_{\Omega_m} = 0.0073$, $\rho_{H_0,\Omega_m} = -0.90$) as the CMB prior.
-The CMB $\chi^2$ is defined as the Gaussian penalty on the $(H_0, \Omega_m)$
-marginal from the Planck~2018 TT+TE+EE+lowE+lensing parameter chains~\cite{Planck2018};
-this effectively constrains the angular diameter distance to last scattering
-$D_A(z_*)$ to the Planck-measured value. The BAO $\chi^2$ is the full
-$12\times12$ covariance-weighted residual of Section~\ref{sec:bao}. The joint
-optimum is found by Nelder-Mead over all four parameters simultaneously (50 restarts).
+\paragraph{Method (SIM90, SIM98).} Two complementary CMB analyses are reported.
+SIM90 uses a Gaussian prior on the $(H_0, \Omega_m)$ marginal extracted from
+the Planck~2018 TT+TE+EE+lowE+lensing parameter chains ($\sigma_{H_0} =
+0.54$~km/s/Mpc, $\sigma_{\Omega_m} = 0.0073$, $\rho = -0.90$)~\cite{Planck2018}.
+This is a parameter-level approximation to the CMB constraint and is appropriate
+for rapid exploration of the $(H_0, \Omega_m, r_d, \Lz)$ parameter space; we use
+it to identify the joint optimum. SIM98 then re-evaluates the \CMSTG\ model
+against the actual Planck~2018 plikHM TTTEEE likelihood at the joint optimum,
+providing the proper likelihood comparison. We report both: the parameter-prior
+result (SIM90) shows that \CMSTG\ and $\Lambda$CDM converge to identical
+$(H_0, \Omega_m)$ under the Planck constraint, and the likelihood result (SIM98)
+shows that at the joint optimum, $\Delta(-2\ln\mathcal{L}) = -0.013$ between
+\CMSTG\ and $\Lambda$CDM. The two analyses agree on the conclusion that \CMSTG\
+is observationally degenerate with $\Lambda$CDM at current precision; SIM98 is
+the methodologically definitive result and SIM90 is reported only because it is
+the procedure used to locate the joint optimum.
 
 \paragraph{Bayesian model comparison (SIM93).} We computed the Bayes factor
 $B = Z_{\rm CMSTG}/Z_{\Lambda\rm CDM}$ using the Laplace approximation
@@ -812,42 +826,76 @@ at DESI redshifts without pre-recombination modification (Paper~I).
 The comoving sound horizon at the drag epoch is
 \begin{equation}
   r_d = \int_{z_{\rm drag}}^{\infty} \frac{c_s(z)\,c}{H(z)}\,dz\,,
-  \quad
-  c_s^2 = \frac{c^2}{3(1 + R_b)}\,,\quad
+  \qquad
+  c_s^2 = \frac{c^2}{3(1 + R_b)}\,,\qquad
   R_b = \frac{3\rho_b}{4\rho_\gamma}\,.
+  \label{eq:rd_definition}
 \end{equation}
-Integrating the Klein--Gordon equation through recombination with
-$z_{\rm drag} = 1059$ (CLASS-calibrated for the SIM90 cosmology), the scalar
-energy density at the drag epoch is $\rho_\Psi/\rho_{\rm tot} \sim 10^{-10}$:
-\CMSTG\ and $\Lambda$CDM share essentially identical pre-recombination physics.
 
-\paragraph{N$_{\rm eff}$ correction.}
-The SIM101 integration uses a simplified Friedmann equation omitting neutrino
-free-streaming ($N_{\rm eff} = 3.046$). This shifts the LCDM baseline from
-$r_d^{\rm Planck} = 147.1$~Mpc to $r_d^{\rm SIM101} = 146.7$~Mpc. The
-\emph{fractional} CMSTG correction is unaffected: both CMSTG and LCDM share
-the same approximation, and $|\Delta r_d/r_d|$ is the physically relevant
-quantity. Including the standard neutrino treatment ($N_{\rm eff} = 3.046$,
-$Y_{\rm He}$-adjusted) anchors the baseline at the Planck value while leaving
-the CMSTG fractional shift unchanged.
+We integrate~\eqref{eq:rd_definition} with the full \CMSTG\ Friedmann equation
+and the standard Planck-era treatment of relativistic species. The radiation
+density includes the neutrino contribution at $N_{\rm eff} = 3.046$:
+\begin{equation}
+  \rho_r(z) = \rho_\gamma(z) \left[ 1 + \tfrac{7}{8}
+  \left(\tfrac{4}{11}\right)^{4/3} N_{\rm eff} \right],
+\end{equation}
+with photon temperature $T_{\gamma,0} = 2.7255\,$K and helium fraction
+$Y_{\rm He} = 0.245$ (BBN-consistent). The drag-epoch redshift
+$z_{\rm drag} = 1059.94$ is taken from the Planck~2018 best-fit
+calibration~\cite{Planck2018}.
+
+\paragraph{$\Lambda$CDM baseline.}
+At $\Lz = 0$, the integration yields
+\begin{equation}
+  r_d^{\Lambda{\rm CDM}} = 146.785\,\mathrm{Mpc},
+\end{equation}
+in agreement with the Planck~2018 measurement $r_d = 147.09 \pm 0.26\,\mathrm{Mpc}$
+to within $0.21\%$. This validates the integration pipeline against the
+standard result; the remaining offset reflects the difference between our SIM90
+cosmological parameters ($H_0 = 67.59$, $\Omega_m = 0.312$) and the Planck~2018
+best-fit, together with the simplified single-fluid Friedmann equation.
+
+\paragraph{\CMSTG\ correction.}
+At the Phase~1 canonical locked action ($\Lz = 0.003\,\Mpl^{-2}$,
+$\Psibar = 2.62\,\Mpl$), the same integration yields
+\begin{equation}
+  r_d^{\CMSTG} = 146.785\,\mathrm{Mpc}\,,
+  \qquad
+  \frac{\Delta r_d}{r_d} = -0.68\,\mathrm{ppm}\,.
+\end{equation}
+Across the cosmologically allowed range $\Lz \in [0, 0.095]$ established by
+the joint CMB+BAO fit (SIM90), the maximum fractional shift is
+\begin{equation}
+  \left|\frac{\Delta r_d}{r_d}\right|_{\max}
+  = 21.5\,\mathrm{ppm}
+  \quad\text{at } \Lz = 0.095\,,
+\end{equation}
+to be compared with current BAO measurement precision of $\sim 0.3\%$
+($\sim 3000\,$ppm). The \CMSTG\ and $\Lambda$CDM predictions for $r_d$ are
+therefore degenerate at all observationally allowed couplings; a detection of
+\CMSTG\ through $r_d$ alone would require $\Lz \gg 0.1$, well above the
+joint CMB+BAO upper bound.
+
+The physical reason for the small shift is that the scalar energy density at the
+drag epoch is $\rho_\Psi/\rho_{\rm tot} \sim 10^{-10}$: the field $\Psi$ is
+dynamically irrelevant during recombination, and \CMSTG\ shares essentially
+identical pre-recombination physics with $\Lambda$CDM. The difference between
+the two theories is concentrated at low redshift, which is the regime tested by
+the BAO and DESI~Y1 analyses of Sections~\ref{sec:bao} and~\ref{sec:desi}.
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.75\textwidth]{figures/fig9_sound_horizon.pdf}
-  \caption{Sound horizon $r_d$ as a function of $\Lz$ (SIM101), with the
-  $N_{\rm eff}$-corrected LCDM baseline anchored at $r_d^{\rm Planck} =
-  147.1$~Mpc. Across the entire allowed range $\Lz \in [0, 0.095]$, the
-  maximum fractional shift is $|\Delta r_d/r_d| = 21$~ppm, compared to
-  current BAO measurement precision of $\sim 0.3\%$ ($3000$~ppm). \CMSTG\
-  and $\Lambda$CDM are degenerate in $r_d$ at all observationally allowed
-  couplings.}
+  \caption{Sound horizon $r_d$ as a function of $\Lz$ (SIM101), computed with
+  $N_{\rm eff} = 3.046$, $T_{\gamma,0} = 2.7255\,$K, and $z_{\rm drag} = 1059.94$.
+  Left: $r_d(\Lz)$ with the \CMSTG\ result (blue) and $\Lambda$CDM baseline
+  (dashed). Centre: fractional shift $\Delta r_d/r_d$ in ppm; the maximum is
+  $21.5\,\mathrm{ppm}$ at $\Lz = 0.095$. Right: scalar energy fraction
+  $\rho_\Psi/\rho_{\rm tot}$ at the drag epoch ($\sim 10^{-10}$ throughout
+  the allowed range), confirming dynamical irrelevance of $\Psi$ at
+  recombination. Current BAO precision is $\sim 3000\,\mathrm{ppm}$.}
   \label{fig:rd}
 \end{figure}
-
-Maximum shift: $|\Delta r_d/r_d| = 21$~ppm at $\Lz = 0.095$ (the 95\%
-upper bound). Current BAO precision: $\sim 3000$~ppm. \CMSTG\ and $\Lambda$CDM
-are $140\times$ below the detectability threshold in $r_d$ at all allowed
-couplings. The detection threshold requires $\Lz \gg 0.1$.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Summary of Observational Status}
@@ -1017,8 +1065,12 @@ All simulation scripts, outputs, and JSON results are publicly available at
   (Paper~I of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \bibitem{WilsonPaperIII}
   C.~R.~B.~Wilson,
-  ``UV Completeness and Asymptotic Freedom of Curvature-Memory Scalar-Tensor Gravity''
+  ``UV Finiteness and Renormalization Group Flow of Curvature-Memory Scalar-Tensor Gravity''
   (Paper~III of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\bibitem{WilsonPaperIV}
+  C.~R.~B.~Wilson,
+  ``Galactic-Scale Constraints on Curvature-Memory Scalar-Tensor Gravity: Why the Locked Action Cannot Replace Dark Matter Without Additional Physics''
+  (Paper~IV of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \bibitem{BransDicke1961}
   C.~Brans and R.~H.~Dicke,
   ``Mach's principle and a relativistic theory of gravitation,''

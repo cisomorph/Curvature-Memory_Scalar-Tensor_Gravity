@@ -17,7 +17,7 @@
 \newcommand{\knat}{{k_m^{\rm nat}}}
 \newcommand{\Pih}{\Pi_{hh}}
 
-\title{\textbf{UV Completeness and Asymptotic Freedom of\\
+\title{\textbf{UV Finiteness and Renormalization Group Flow of\\
        Curvature-Memory Scalar-Tensor Gravity}}
 \author{Christopher~R.~B.~Wilson\thanks{Email: \texttt{C.Isomorph@gmail.com}. Independent researcher.}}
 \date{2026}
@@ -28,33 +28,51 @@
 \maketitle
 
 \begin{abstract}
-We establish the UV structure of Curvature-Memory Scalar-Tensor Gravity
-(\CMSTG) at one loop and two loops through four numerical simulation programmes
-(SIM102, SIM104, SIM105, SIM106). The one-loop $\Psi$ self-energy in the bare
-theory diverges quartically; the memory kernel $e^{-2k^2/k_m^2}$ regulates
-this to the finite result $\Sigma(0) = \Lz^2 k_m^4/(64\pi^2)$, confirmed
-numerically at better than 0.22\% across two orders of magnitude in $k_m$.
-We compute all four 1PI diagrams at one loop: (A) the $\Psi$ self-energy,
-regulated by the memory kernel; (B) the graviton wavefunction renormalization,
-protected by diffeomorphism Ward identity $\Pih(0) = 0$; (C) the vertex
-correction $\delta\Lz/\Lz$; and (D) the two-loop $\Psi$ self-energy. The
-three contributions form a hierarchical expansion with magnitudes $1$,
+We establish the ultraviolet structure of Curvature-Memory Scalar-Tensor
+Gravity (\CMSTG) at one and two loops in the resummed propagator. The theory
+is defined by the canonical action of Paper~II~\cite{WilsonPaperII} together
+with a non-local memory kernel $e^{-k^2/\km^2}$ postulated as a defining
+feature of the scalar sector and characterised by a single physical scale $\km$.
+We do not derive the kernel from a more fundamental theory; we treat it as an
+input that specifies the model, in the same sense that the Wilsonian cutoff
+specifies an effective field theory. With this input, four numerical simulation
+programmes (SIM102, SIM104, SIM105, SIM106) establish the following.
+\textbf{(i)}~The bare one-loop $\Psi$ self-energy is quartically divergent;
+the memory kernel regulates it to the finite result
+$\Sigma(0) = \Lz^2\km^4/(64\pi^2)$, confirmed numerically at better than
+$0.22\%$ across two orders of magnitude in $\km$.
+\textbf{(ii)}~All four 1PI diagrams at one loop are finite in the resummed
+theory: the $\Psi$ self-energy (regulated by the kernel), the graviton
+wavefunction renormalization (protected by the diffeomorphism Ward identity
+$\Pi_{hh}(0) = 0$), the vertex correction, and the two-loop $\Psi$ self-energy.
+The three contributions form a hierarchical expansion with magnitudes $1$,
 $2.4\times10^{-2}$, and $3.4\times10^{-6}$ at the naturalness threshold
-$\knat = 9.15\,\mathrm{Mpc}^{-1}$, confirming a stable perturbative expansion.
-The renormalization-group flow of $\Lz$ is negative at all scales:
-$\beta(\Lz, \km) = -\Lz^3 \km^2/(16\pi^2 m_0^2)$, establishing asymptotic
-freedom with UV fixed point $\Lz \to 0$ (the GR limit) and no IR Landau pole.
-At two loops, the graviton sector is UV-finite via three independent mechanisms:
-the Ward identity, Dyson resummation of the $\Psi$ propagator, and the
-finiteness of $\partial^2\Pi_{hh}/\partial p^4$ in $d = 4$. The graviton
+$\knat = 9.15\,\mathrm{Mpc}^{-1}$.
+\textbf{(iii)}~The renormalization-group flow of $\Lz$ at fixed $\km$ is
+negative at all scales: $\beta(\Lz) = -\Lz^3\km^2/(16\pi^2 m_0^2)$. The
+running coupling has a UV fixed point at $\Lz = 0$ (the GR limit) and no
+infrared Landau pole. We refer to this as a ``$\Lz$ fixed point'' rather than
+asymptotic freedom in the strict sense, because $\km$ is a fixed input of the
+theory rather than a coupling that runs.
+\textbf{(iv)}~At two loops, the graviton sector is UV-finite via three
+independent mechanisms: the Ward identity, Dyson resummation of the $\Psi$
+propagator, and the finiteness of $dI/dp^2|_0$ in $d=4$. The graviton
 wavefunction renormalization $\Delta Z_h/Z_h \approx 1.4\times10^{-6}$ is
-negligible. Together these results establish that \CMSTG\ is UV-finite at
-full one-loop in the resummed propagator and UV-complete at two loops in the
-graviton sector, with an explicit RG trajectory connecting the observed
-$\Lz_{\rm obs} = 0.003\,\Mpl^{-2}$ to the GR fixed point.
+negligible.
+These results establish that \CMSTG\ is UV-finite to two loops in the resummed
+propagator, with an explicit RG trajectory connecting the observed
+$\Lz_{\rm obs} = 0.003\,\Mpl^{-2}$ to the GR fixed point. The theory is not
+perturbatively renormalizable in the standard sense; it is finite as a regulated
+quantum field theory with a physical memory scale $\km$. This is made explicit
+throughout, and is contrasted with asymptotic safety and the Horndeski
+quantization programme in Section~\ref{sec:comparison}.
+This is Paper~III of a four-paper series; companion papers establish
+(I)~the no-go theorems~\cite{WilsonPaperI}, (II)~the framework and
+observational consistency~\cite{WilsonPaperII}, and (IV)~galactic-scale
+constraints~\cite{WilsonPaperIV}.
 \end{abstract}
 
-\keywords{scalar-tensor gravity; UV completeness; asymptotic freedom; memory kernel; renormalization group; loop corrections}
+\keywords{scalar-tensor gravity; UV finiteness; asymptotic freedom; renormalization group flow; memory kernel; loop corrections}
 
 \tableofcontents
 \bigskip
@@ -65,19 +83,48 @@ $\Lz_{\rm obs} = 0.003\,\Mpl^{-2}$ to the GR fixed point.
 
 The ultraviolet behaviour of scalar-tensor theories of gravity is a central
 open question in theoretical cosmology. Two programmes have made the most
-progress: asymptotic safety~\cite{Reuter1998,Reuter2012}, which seeks a
-non-Gaussian UV fixed point in the full theory space of metric gravity; and
-the Horndeski quantization programme~\cite{Horndeski1974,deRham2011,Gleyzes2015},
-which analyses specific scalar-tensor actions for renormalizability and
-stability. \CMSTG\ belongs to neither programme directly: it is a covariant
-scalar-tensor theory in which the scalar $\Psi$ acquires a non-minimal
-curvature coupling $\Lz\Psi^2 R$ and a non-local memory kernel that softens
-its UV propagator~\cite{WilsonPaperII}. This paper (Paper~III of this series)
-establishes where \CMSTG\ sits in the UV landscape; the companion
-paper~\cite{WilsonPaperII} (Paper~II) derives the framework and cosmological
-consistency of the theory.
+progress: asymptotic safety~\cite{Reuter1998,Reuter2012,Percacci2007}, which
+seeks a non-Gaussian UV fixed point in the full theory space of metric gravity;
+and the Horndeski quantization programme~\cite{Horndeski1974,deRham2011,Gleyzes2015},
+which analyses specific scalar-tensor actions for renormalizability and stability.
+\CMSTG\ belongs to neither programme directly: it is a covariant scalar-tensor
+theory in which the scalar $\Psi$ acquires a non-minimal curvature coupling
+$\Lz\Psi^2 R$ and is supplemented by a non-local memory kernel that softens its
+UV propagator. This paper establishes where \CMSTG\ sits in the UV landscape; the
+companion Paper~II~\cite{WilsonPaperII} derives the framework and cosmological
+consistency of the theory, and Paper~I~\cite{WilsonPaperI} establishes structural
+constraints on its dark-energy phenomenology.
 
-The Phase~1 canonical \CMSTG\ action is
+The strategy of this paper is to define the quantum theory by combining the
+classical action of Paper~II with a postulated memory kernel of Gaussian form,
+then compute one- and two-loop quantities directly in the resulting regulated
+theory. We do not attempt to derive the kernel from a more fundamental
+construction; we treat it as a defining feature of the model, and report the
+consequences. Section~\ref{sec:kernel} states this postulate explicitly.
+Section~\ref{sec:oneloop-psi} presents the one-loop $\Psi$ self-energy (SIM102).
+Section~\ref{sec:diagrams} covers the complete four-diagram one-loop structure
+(SIM104). Section~\ref{sec:ward} establishes the Ward identity protection of the
+graviton sector. Section~\ref{sec:rg} derives the renormalization-group flow of
+$\Lz$ at fixed $\km$ (SIM105). Section~\ref{sec:twoloop} covers the two-loop
+graviton sector (SIM106). Section~\ref{sec:comparison} places the results in the
+context of asymptotic safety and the Horndeski programme, and is the natural
+place for a reader to evaluate the scope and limitations of the framework.
+Section~\ref{sec:conclusions} concludes.
+
+The principal claim is that, given the postulated kernel, the theory is UV-finite
+to two loops in the graviton sector with the explicit RG trajectory and
+perturbative hierarchy reported below. The principal caveat is that this is
+finiteness in the sense of a regulated effective theory, not perturbative
+renormalizability in the standard sense; we return to this distinction in
+Section~\ref{sec:comparison}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Memory Kernel as a Defining Input}
+\label{sec:kernel}
+
+\subsection{Definition of the theory}
+
+The Phase~1 canonical \CMSTG\ action of Paper~II is
 \begin{equation}
   S_{\rm P1} = \int\!d^4x\,\sqrt{-g}\,\Bigl[
     \tfrac{1+2\Lz\Psi^2}{2}\,R
@@ -86,30 +133,65 @@ The Phase~1 canonical \CMSTG\ action is
   \Bigr] + S_{\rm SM}\,,
   \label{eq:action}
 \end{equation}
-with locked parameters $\Lz = 0.003\,\Mpl^{-2}$, $m_0 = 0.01\,\mathrm{Mpc}^{-1}$,
-and cosmological background value $\Psibar = 2.62\,\Mpl$. The effective
-gravitational coupling is $G_{\rm eff} = G/(1 + 2\Lz\Psibar^2)$; at the
-best-fit $G_{\rm eff}/G = 1 - 16\,\mathrm{ppm}$.
+with $\Lz = 0.003\,\Mpl^{-2}$, $m_0 = 0.01\,\mathrm{Mpc}^{-1}$ (or the
+cosmological value $10^{-3}H_0$ as appropriate), and cosmological background
+value $\Psibar = 2.62\,\Mpl$. The action by itself does not determine the
+ultraviolet behaviour of the theory: a generic cutoff prescription would yield
+a non-renormalizable scalar-tensor theory in the sense of
+Donoghue~\cite{Donoghue1994}, with one-loop counterterms outside the original
+action class.
 
-The scalar propagator in momentum space is
+We define the quantum theory by supplementing~\eqref{eq:action} with a
+\emph{memory kernel} that softens the ultraviolet behaviour of the scalar
+propagator. In momentum space, the scalar two-point function is taken to be
 \begin{equation}
-  \Delta_\Psi(k) = \frac{e^{-k^2/k_m^2}}{k^2 + m_0^2}\,,
+  \Delta_\Psi(k) = \frac{e^{-k^2/\km^2}}{k^2 + m_0^2}\,,
   \label{eq:propagator}
 \end{equation}
-where $\km$ is the memory scale. Equation~\eqref{eq:propagator} is the
-resummed propagator obtained by Dyson-summing the memory self-energy
-insertions; it reduces to the standard massive propagator as $\km \to \infty$.
-The exponential damping converts all loop integrals from power-law divergent
-to finite once $\km < \infty$.
+where $\km$ is a physical scale that characterises the theory. We do not derive
+equation~\eqref{eq:propagator} from a more fundamental construction. We treat it
+as a defining feature of \CMSTG, in the same sense that a Wilsonian effective
+field theory is defined by an action together with a cutoff prescription.
 
-This paper is organized as follows. Section~\ref{sec:oneloop-psi} presents the
-one-loop $\Psi$ self-energy (SIM102). Section~\ref{sec:diagrams} covers the
-complete four-diagram one-loop structure (SIM104). Section~\ref{sec:ward}
-establishes the Ward identity protection. Section~\ref{sec:rg} derives the
-RG flow and asymptotic freedom (SIM105). Section~\ref{sec:twoloop} covers the
-two-loop graviton sector (SIM106). Section~\ref{sec:comparison} places the
-results in the context of asymptotic safety and the Horndeski programme.
-Section~\ref{sec:conclusions} concludes.
+\subsection{Status of the postulate}
+
+Three remarks on this choice.
+
+\textbf{(a) Physical interpretation.} The Gaussian factor $e^{-k^2/\km^2}$ in
+equation~\eqref{eq:propagator} corresponds to a non-local kernel in position
+space whose spatial extent is ${\sim}1/\km$. The interpretation, consistent with
+the curvature-memory motivation of Paper~II, is that the field $\Psi$ has finite
+resolving power for curvature fluctuations: events on length scales shorter than
+$1/\km$ are not resolved and contribute exponentially suppressed amplitudes. This
+is the quantum-mechanical statement of the memory structure that Paper~II
+establishes classically through the retarded boundary condition
+$\Psi = \Box_R^{-1}[2\Lz\Psi R]$.
+
+\textbf{(b) Lorentz invariance.} The kernel is written in Euclidean form. We
+work throughout in Euclidean signature appropriate for loop calculations and
+analytically continue to Lorentzian signature for physical observables. In a
+frame where $\km$ is fixed, the kernel is rotationally invariant but not
+boost-invariant; this is the standard situation for a non-local effective
+theory with a physical cutoff. The framework is therefore most naturally
+interpreted as an effective theory valid in the cosmological rest frame defined
+by the CMB, with $\km$ characterising a physical memory scale rather than a
+fundamental Lorentz-invariant parameter. A fully covariant formulation would
+require promoting $\km$ to a function of the background curvature, which is
+left for future work.
+
+\textbf{(c) What we do and do not claim.} We do \emph{not} claim that \CMSTG\
+is UV-complete in the sense of being a fundamental theory of quantum gravity,
+nor that the kernel is uniquely selected by a deeper symmetry principle. We
+claim only the following: given the action~\eqref{eq:action} and the
+kernel~\eqref{eq:propagator}, the resulting quantum theory is finite to all
+orders explicitly computed (one and two loops in the graviton sector), the
+renormalization-group flow of $\Lz$ at fixed $\km$ has a fixed point at
+$\Lz = 0$, and the qualitative UV behaviour is expected to be insensitive to
+the precise functional form of the kernel provided it falls off at least as fast
+as a Gaussian at high $k$. A systematic verification across kernel forms is
+left for future work.
+
+\subsection{The naturalness threshold}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{One-Loop \texorpdfstring{$\Psi$}{Psi} Self-Energy and Memory Regulation}
@@ -294,7 +376,7 @@ numerically by SIM104: $\Pi_{hh}(0) = 0$ to machine precision at all values
 of $\km$ and $p$. The consequence is that the graviton remains massless at
 one loop: no graviton mass is generated by quantum corrections.
 
-\subsection{Implications for UV Completeness}
+\subsection{Implications for UV Finiteness}
 
 Because $\Pi_{hh}(0) = 0$ exactly, the dangerous UV contributions to
 $\Pi_{hh}$ at small $p$ are suppressed by at least $p^2$. The leading
@@ -305,7 +387,7 @@ without any memory regulation). The graviton sector requires no UV
 counterterms at one loop beyond the classical renormalization of $G$.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\section{Renormalization Group Flow and Asymptotic Freedom}
+\section{Renormalization Group Flow of $\Lz$ at Fixed $\km$}
 \label{sec:rg}
 
 \subsection{The Beta Function}
@@ -319,9 +401,21 @@ equation~\eqref{eq:vertex}: at one loop
   \quad [\km \gg m_0]\,.
   \label{eq:beta}
 \end{equation}
-The beta function is \emph{negative} for all $\Lz > 0$, $\km > 0$. This is
-the hallmark of asymptotic freedom: the coupling weakens as the UV scale
-increases.
+The beta function is \emph{negative} for all $\Lz > 0$, $\km > 0$: the
+coupling weakens as the probe scale increases.
+
+We emphasise that equation~\eqref{eq:beta} describes the flow of $\Lz$ at
+\emph{fixed} memory scale $\km$. In the strict sense, asymptotic freedom is
+a property of theories in which the high-energy limit is taken by sending the
+renormalization scale to infinity at fixed matter content, with all couplings
+running. Here $\km$ is a fixed input of the theory and does not itself run;
+the negative beta function describes the running of $\Lz$ as the probe scale
+$\mu$ approaches $\km$ from below. The ``UV fixed point'' $\Lz \to 0$ is
+correspondingly the limit in which $\Lz$ is probed at the memory scale itself,
+where the kernel becomes maximally effective. This is a weaker statement than
+asymptotic freedom in Yang--Mills theory, and we use the term only by analogy.
+The physical content is unchanged: $\Lz$ is a small, decreasing function of the
+probe scale, with no Landau pole at any accessible scale.
 
 Integrating~\eqref{eq:beta} gives the running coupling:
 \begin{equation}
@@ -413,17 +507,21 @@ contributions from three diagram classes, all computed in SIM106:
     which is negligible (SIM106).
 \end{enumerate}
 
-\subsection{Conclusion from SIM106}
+\subsection{Two-loop finiteness in the graviton sector}
 
-All three two-loop graviton diagrams are UV-finite. The three mechanisms
-responsible are: (1)~the Ward identity $\Pih(0) = 0$ exact at all loop
-orders; (2)~the resummed $\Psi$ propagator regulates $\Psi$-bubble
-insertions; (3)~$dI/dp^2|_0$ is finite in $d=4$ without memory regulation.
+All three two-loop graviton diagrams are UV-finite given the postulated
+kernel of Section~\ref{sec:kernel}. The three mechanisms responsible are:
+(1)~the Ward identity $\Pih(0) = 0$, exact at all loop orders;
+(2)~the resummed $\Psi$ propagator, which regulates $\Psi$-bubble insertions;
+(3)~$dI/dp^2|_0$ is finite in $d=4$ without memory regulation.
 
 The last remaining UV caveat from SIM104---whether $dI/dp^2|_0$ is fully
 regulated at two loops---is closed by SIM106: the two-loop graviton
 wavefunction renormalization is $O(\Lz^4)$ suppressed and finite.
-\CMSTG\ is UV-complete through two loops in the graviton sector.
+The graviton sector is therefore UV-finite to two loops in the resummed
+propagator. We do not claim this constitutes UV-completeness in the sense of
+a fundamental theory; it is finiteness within the regulated framework defined
+in Section~\ref{sec:kernel}.
 
 \subsection{Perturbative Hierarchy}
 
@@ -497,17 +595,20 @@ Gleyzes et al.~\cite{Gleyzes2015}. The key results from those studies are:
   \item \CMSTG\ belongs to the general Horndeski class but acquires
     UV finiteness through a different mechanism: the memory kernel rather
     than a shift symmetry. Unlike the Galileon, the memory regulation is
-    not imposed by a symmetry of the action; it emerges from the Dyson
-    resummation of an infinite class of memory self-energy insertions.
+    not imposed by a symmetry of the action; it is postulated as a defining
+    feature of the theory (Section~\ref{sec:kernel}).
 \end{itemize}
 
 The implication is that \CMSTG\ avoids the non-renormalizability of generic
 Horndeski theories at one loop, but via a mechanism that is distinct from
 the Galileon's shift-symmetry cancellations. The price is that the
-UV completeness depends on the memory scale $\km$ remaining finite:
-taking $\km \to \infty$ recovers the bare quartic divergence. The theory
-is UV-complete as a regulated QFT with a physical cutoff at $\km$, not as
-a standard perturbatively renormalizable theory.
+UV finiteness depends on the memory scale $\km$ remaining finite.
+The theory is UV-finite as a regulated QFT with a physical scale at $\km$.
+It is not perturbatively renormalizable in the standard sense: taking
+$\km \to \infty$ recovers the bare quartic divergence. Whether $\km$ itself
+is determined by a deeper principle, or whether the theory admits a
+perturbatively renormalizable completion in some other variable, is left as
+an open question.
 
 \subsection{Comparison to Minimal Scalar-Tensor Quantization}
 
@@ -568,43 +669,55 @@ range $0 < \km < \knat$.
 \section{Conclusions}
 \label{sec:conclusions}
 
-We have established the UV structure of \CMSTG\ at one loop and two loops
-through four independent simulation programmes:
+We have established the UV structure of \CMSTG\ at one and two loops in the
+resummed propagator, where the resummation is defined by the postulated memory
+kernel of Section~\ref{sec:kernel}. The principal results are:
 
 \begin{enumerate}
-  \item \textbf{SIM102}: The one-loop $\Psi$ self-energy is quartically
-    divergent in the bare theory and exactly regulated by the memory kernel
-    to $\Sigma(0) = \Lz^2\km^4/(64\pi^2)$. Agreement with the analytic
-    formula is better than 0.22\% across two orders of magnitude in $\km$.
+  \item \textbf{One-loop finiteness (SIM102, SIM104).} All four 1PI one-loop
+    diagrams are finite in the resummed theory. The bare quartic divergence
+    of the $\Psi$ self-energy is regulated to $\Sigma(0) = \Lz^2\km^4/(64\pi^2)$,
+    confirmed numerically at better than $0.22\%$ across two orders of magnitude
+    in $\km$. The graviton mass is protected by the diffeomorphism Ward identity,
+    $\Pi_{hh}(0) = 0$, exactly at each loop order. The perturbative hierarchy at
+    the naturalness scale is $1$, $2.4\times10^{-2}$, $3.4\times10^{-6}$,
+    indicating a stable expansion.
 
-  \item \textbf{SIM104}: All four 1PI one-loop diagrams are accounted for.
-    The graviton mass $\Pi_{hh}(0) = 0$ is protected by the Ward identity.
-    The perturbative hierarchy at the naturalness scale is $1$, $2.4\times10^{-2}$,
-    $3.4\times10^{-6}$, confirming a convergent loop expansion.
+  \item \textbf{RG flow with $\Lz$ fixed point (SIM105).} The beta function
+    $\beta(\Lz) = -\Lz^3\km^2/(16\pi^2 m_0^2)$ is negative for all $\Lz > 0$
+    and $\km > 0$. The running coupling has a UV fixed point at $\Lz = 0$ (the
+    GR limit) and no infrared Landau pole. We use the term ``asymptotic freedom''
+    by analogy to Yang--Mills only; $\km$ is a fixed input rather than a running
+    coupling, so the result is weaker than asymptotic freedom in the strict sense.
 
-  \item \textbf{SIM105}: The beta function $\beta = -\Lz^3\km^2/(16\pi^2 m_0^2)$
-    is negative, establishing asymptotic freedom. The running coupling satisfies
-    $1/\Lz^2(\km) = 1/\Lz_{\rm obs}^2 + (\km^2 - \knat^2)/(16\pi^2 m_0^2)$
-    with a UV fixed point at $\Lz = 0$ and no IR Landau pole.
-
-  \item \textbf{SIM106}: All two-loop graviton sector diagrams are UV-finite.
-    The graviton wavefunction renormalization $\Delta Z_h/Z_h \approx 1.4\times10^{-6}$
-    is negligible. \CMSTG\ is UV-complete through two loops in the graviton sector.
+  \item \textbf{Two-loop finiteness in the graviton sector (SIM106).} All
+    three two-loop graviton diagrams are UV-finite via three independent
+    mechanisms: the Ward identity, Dyson resummation of the $\Psi$ propagator,
+    and the finiteness of $dI/dp^2|_0$ in $d=4$. The graviton wavefunction
+    renormalization $\Delta Z_h/Z_h \approx 1.4\times10^{-6}$ is negligible.
 \end{enumerate}
 
 The mechanism that achieves UV finiteness is distinct from both the
 non-Gaussian fixed points of asymptotic safety and the shift-symmetry
-cancellations of the Galileon. It is instead a combination of (i)~memory
-damping, which converts power-law divergences into finite functions of
-$\km$; (ii)~the Ward identity, which protects the graviton mass at all
-loop orders; and (iii)~asymptotic freedom, which guarantees $\Lz \to 0$
-in the deep UV.
+cancellations of the Galileon. It is a combination of (i)~memory damping,
+which converts power-law divergences into finite functions of $\km$;
+(ii)~the Ward identity, which protects the graviton mass at all loop orders;
+and (iii)~the running of $\Lz$ to zero in the deep UV.
 
-The open question is whether the memory scale $\km$ itself is determined
-by a deeper principle or remains a free parameter. The naturalness constraint
-$\km < 9.15\,\mathrm{Mpc}^{-1}$ is consistent with current observational
-bounds, but a first-principles derivation of $\km$ from the full non-local
-action is left for future work.
+The principal caveat, stated in Section~\ref{sec:kernel} and reiterated in
+Section~\ref{sec:comparison}, is that this finiteness depends on the postulated
+kernel as a defining feature of the theory. \CMSTG\ is not perturbatively
+renormalizable in the standard sense; it is finite as a regulated quantum field
+theory with a physical memory scale $\km$. The question of whether $\km$ itself
+is determined by a deeper principle, or whether the theory admits a
+perturbatively renormalizable completion in some other variable, is open and is
+not addressed here.
+
+The naturalness constraint $\km < 9.15\,\mathrm{Mpc}^{-1}$ is consistent with
+current observational bounds. A first-principles derivation of $\km$ from a
+more fundamental non-local action---or, alternatively, a demonstration that the
+predictions of the theory are insensitive to the detailed form of the memory
+structure---is left for future work.
 
 \bigskip
 \noindent\textbf{Data and code:}
@@ -672,10 +785,19 @@ All simulation scripts, outputs, and JSON results are publicly available at
   C.~Wetterich,
   ``Exact evolution equation for the effective potential,''
   Phys.\ Lett.\ B \textbf{301}, 90 (1993).
+\bibitem{WilsonPaperI}
+  C.~R.~B.~Wilson,
+  ``Two Structural No-Go Theorems for Late-Time Modifications of Dark Energy
+    in Curvature-Memory Scalar-Tensor Gravity''
+  (Paper~I of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \bibitem{WilsonPaperII}
   C.~R.~B.~Wilson,
-  ``Curvature-Memory Scalar-Tensor Gravity: Framework and Cosmological Consistency''
+  ``Curvature-Memory Scalar-Tensor Gravity: Framework, Field Equations, and Cosmological Consistency''
   (Paper~II of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
+\bibitem{WilsonPaperIV}
+  C.~R.~B.~Wilson,
+  ``Galactic-Scale Constraints on Curvature-Memory Scalar-Tensor Gravity: Why the Locked Action Cannot Replace Dark Matter Without Additional Physics''
+  (Paper~IV of this series), \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity} (2026).
 \end{thebibliography}
 
 \end{document}

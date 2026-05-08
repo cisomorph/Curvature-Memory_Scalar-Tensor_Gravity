@@ -33,5 +33,11 @@ Ordered_Simulations/PHASE2_FINDINGS.md
 PHASE4_ROADMAP.md
 TIER1_SUMMARY.md
 
+# Local compiled paper output (no .tex source; superseded by Papers/paper*_*/)
+Papers/phase1/
+Papers/phase2/
+Papers/phase3/
+Papers/phase4/
+
 # OS
 .DS_Store

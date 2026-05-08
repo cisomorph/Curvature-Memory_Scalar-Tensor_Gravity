@@ -4,7 +4,7 @@
 
 CMSTG is a covariant scalar-tensor extension of GR in which spacetime curvature couples to a non-local scalar field Ψ through a retarded Green's function, producing *curvature memory*. Dark energy emerges from the Ψ–geometry coupling without a bare cosmological constant. The dark matter sector (Phase 2) introduces an ultra-light χ field seeded by Ψ.
 
-**Status:** Phase 1 canonical action is locked and declared final. Two structural no-go theorems (Papers VII and VIII) prove that no covariant scalar-tensor extension within the CMSTG class can reduce the 2.77σ DESI Y1 residual without modifying pre-recombination physics. Next decisive test: DESI Y3 (~2027).
+**Status:** Phase 1 canonical action is locked and declared final. Two structural no-go theorems (Paper I) prove that no covariant scalar-tensor extension within the CMSTG class can reduce the 2.77σ DESI Y1 residual without modifying pre-recombination physics. Next decisive test: DESI Y3 (~2027).
 
 ---
 
@@ -27,40 +27,25 @@ $$S = \int d^4x\sqrt{-g}\left[\frac{1+2\Lambda_0\Psi^2}{2}R - \frac{1}{2}(\nabla
 
 ## Papers
 
-Eight papers document the full research programme. All LaTeX source lives in `Papers/`.
+Four papers with LaTeX source document the full research programme, plus a master compilation. All source lives in `Papers/`.
 
 ```
 Papers/
-├── phase1/
-│   ├── I_original/          Paper I  — Theory and Phase 1 foundations
-│   ├── v2/                  Paper I  — arxiv submission draft
-│   ├── II_observational/    Paper II — Full observational programme
-│   ├── III_sound_horizon/   Paper III — BAO sound horizon
-│   ├── IV_uv_structure/     Paper IV — UV structure and RG flow
-│   ├── V_dark_matter/       Paper V  — Dark matter failure analysis
-│   └── master/              Master compilation (44pp, Papers I–V unified)
-├── phase2/
-│   ├── P2_I_framework/      Phase 2 Paper I  — Unlocked action framework
-│   ├── P2_II_dark_matter/   Phase 2 Paper II — χ-DM seeded by Ψ
-│   └── P2_III_validation/   Phase 2 Paper III — Cosmological validation
-├── phase3/
-│   └── P3_conclusions/      Paper VII — Phase 3 no-go: curvature-sourced scalars
-└── phase4/
-    └── P4_conclusions/      Paper VIII — Phase 4 no-go: late-time H(z) boosts
+├── paper1_nogo/             Paper I   — Two Structural No-Go Theorems
+├── paper2_framework/        Paper II  — Framework, Field Equations, Observational Tests
+├── paper3_uv/               Paper III — UV Finiteness and Asymptotic Freedom
+├── paper4_galactic/         Paper IV  — Galactic-Scale Constraints
+└── master/                  Master compilation (Papers I–IV unified)
 ```
 
 ### Paper summary
 
-| Paper | Phase | Topic | Sims | Verdict |
-|-------|-------|-------|------|---------|
-| I | 1 | Theory foundations, locked action | SIM80–86 | PASS |
-| II | 1 | Full observational programme | SIM87–111 | PASS (2.77σ DESI floor) |
-| III | 1 | BAO sound horizon | SIM101 | PASS |
-| IV | 1 | UV structure, two-loop finiteness | SIM102–106 | PASS |
-| V | 1 | Dark matter failure (Ψ-sector) | SIM99–100 | FAIL (Ψ cannot be DM) |
-| VI | 2 | Phase 2 synthesis: Ψ-quintessence + χ-DM | SIM112–130 | PARTIAL (2.77σ floor structural) |
-| VII | 3 | No-go: curvature-sourced scalars | SIM131–136 | FAIL/NO-GO |
-| **VIII** | **4** | **No-go: late-time H(z) boosts** | **SIM137–143** | **FAIL/NO-GO — Phase 1 final** |
+| Paper | Title | Sims | Verdict |
+|-------|-------|------|---------|
+| I | Two structural no-go theorems for late-time modifications | SIM131–143 | FAIL/NO-GO |
+| II | Framework, field equations, and 22 observational tests | SIM80–111 | PASS (2.77σ floor) |
+| III | UV finiteness, two-loop, asymptotic freedom of Λ₀ | SIM102–106 | PASS |
+| IV | Galactic constraints; Ψ cannot replace dark matter | SIM99–100, 103 | FAIL |
 
 ---
 
@@ -68,10 +53,10 @@ Papers/
 
 Two structural no-go theorems together prove that the 2.77σ DESI residual is irreducible within CMSTG:
 
-**Theorem 1 (Paper VII — Phase 3):**
+**Theorem 1 (Paper I — Phase 3):**
 Any scalar field φ sourced by curvature R > 0 and initialized at zero grows monotonically, increasing F_eff and thereby *suppressing* H(z) at DESI redshifts. This is the wrong direction.
 
-**Theorem 2 (Paper VIII — Phase 4):**
+**Theorem 2 (Paper I — Phase 4):**
 Any mechanism that raises H(z) in the interval z ∈ [0, z_rec] with fixed sound horizon r_s necessarily increases θ* = r_s/D_C* above the Planck bound 100θ* = 1.04101 ± 0.00029. The DESI fix and CMB preservation are mutually exclusive for any pure late-time modification.
 
 **Loophole (Phase 5, if warranted):** Simultaneously increase r_s via pre-recombination physics (early dark energy, extra relativistic species). This is separately constrained by Planck CMB power spectra and constitutes a distinct theoretical programme.
@@ -169,8 +154,7 @@ Phase 1 canonical CMSTG makes the following predictions, distinguishable from Λ
 Curvature-Memory_Scalar-Tensor_Gravity/
 ├── README.md                         ← this file
 ├── RESEARCH_RULES.md                 standing rules for all simulation work
-├── PHASE4_ROADMAP.md                 Phase 4 complete programme
-├── TIER1_SUMMARY.md                  Tier 1 gate document
+├── CITATION.cff                      citation metadata
 ├── Papers/                           all papers (LaTeX source)
 └── Ordered_Simulations/              all simulations (SIM80–SIM146)
 ```
@@ -197,4 +181,4 @@ CC BY 4.0 — Attribution. Free to share, adapt, and use commercially with credi
 
 **Author:** Christopher Robert Barrick Wilson  
 **Contact:** C.Isomorph@gmail.com  
-**Last updated:** 2026-05-01
+**Last updated:** 2026-05-07

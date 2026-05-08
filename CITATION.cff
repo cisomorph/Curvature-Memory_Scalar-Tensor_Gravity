@@ -7,15 +7,16 @@ abstract: >
   CMSTG is a covariant scalar-tensor extension of GR in which spacetime
   curvature couples to a non-local scalar field Ψ through a retarded
   Green's function, producing curvature memory. Dark energy emerges from
-  the Ψ–geometry coupling without a bare cosmological constant.
+  the Ψ–geometry coupling without a bare cosmological constant. Two
+  structural no-go theorems prove that the 2.77σ DESI Y1 BAO residual is
+  irreducible within the CMSTG class without pre-recombination new physics.
 authors:
   - family-names: Wilson
     given-names: Christopher Robert Barrick
     email: C.Isomorph@gmail.com
-    orcid: ""
-version: "1.0.0"
-date-released: 2026-04-27
-license: CC-BY-4.0
+version: "1.1.0"
+date-released: 2026-05-07
+license: CC-BY-NC-4.0
 repository-code: "https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity"
 keywords:
   - modified gravity
@@ -23,4 +24,18 @@ keywords:
   - dark energy
   - curvature memory
   - baryon acoustic oscillations
+  - DESI
+  - fuzzy dark matter
+  - no-go theorem
   - cosmology
+preferred-citation:
+  type: article
+  title: >
+    Curvature-Memory Scalar-Tensor Gravity: Framework, Field Equations,
+    and Cosmological Consistency
+  authors:
+    - family-names: Wilson
+      given-names: Christopher Robert Barrick
+  year: 2026
+  url: "https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity"
+  notes: "Paper II of the CMSTG series. See repository for full paper series and simulation code."

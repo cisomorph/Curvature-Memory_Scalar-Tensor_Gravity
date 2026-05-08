@@ -177,7 +177,7 @@ SIM97/98 additionally require [CLASS](https://github.com/lesgourg/class_public) 
 
 ## License
 
-CC BY 4.0 — Attribution. Free to share, adapt, and use commercially with credit.
+CC BY-NC 4.0 — Attribution-NonCommercial. Free to share and adapt with credit; commercial use prohibited.
 
 **Author:** Christopher Robert Barrick Wilson  
 **Contact:** C.Isomorph@gmail.com  

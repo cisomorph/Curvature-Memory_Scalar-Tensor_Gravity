@@ -339,16 +339,85 @@ modification to $H(z)$ without simultaneously breaking the CMB acoustic scale.
 \end{theorem}
 
 \begin{proof}
-Any increase in $H(z)$ at $z<z_{\rm rec}$ reduces the integrand
-$c/H(z)$, decreasing $\DC$ for fixed $z_{\rm rec}$. With $\rs$ fixed (no
-pre-recombination modification), $\thetastar = \rs/\DC$ increases. The
-Planck constraint $100\thetastar=1.04101\pm0.00029$ has a fractional
-precision of $0.03\%$. Resolving the DESI tension requires raising $H(z)$
-by approximately $5\%$ over $z\in[0.5,1.3]$, which shifts $\DC$ by
-$\sim1.5\%$ and hence $\thetastar$ by $\sim50\sigma$. The CMB and DESI
-constraints are mutually exclusive for any late-time $H(z)$ boost with
-fixed $\rs$. $\square$
+\textbf{Step~1 (monotonicity of $\DC$).}
+Let $\tilde H(z) = H(z) + \delta H(z)$ where $\delta H(z) \geq 0$ for all
+$z \in [0,z_{\rm rec}]$, with $\delta H > 0$ on a set of positive measure.
+Since $1/\tilde H(z) \leq 1/H(z)$ pointwise, with strict inequality wherever
+$\delta H > 0$,
+\begin{equation}
+  \DC[\tilde H]
+  = \int_0^{z_{\rm rec}} \frac{c\,dz}{\tilde H(z)}
+  < \int_0^{z_{\rm rec}} \frac{c\,dz}{H(z)}
+  = \DC[H]\,.
+  \label{eq:dc-ineq}
+\end{equation}
+With $\rs$ fixed (no pre-recombination modification),
+$\thetastar[\tilde H] = \rs/\DC[\tilde H] > \rs/\DC[H] = \thetastar[H]$:
+$\thetastar$ is strictly increasing under any non-negative $\delta H$.
+
+\textbf{Step~2 (Planck bound).}
+Define the fractional $\DC$ reduction
+$\varepsilon \equiv (\DC[H] - \DC[\tilde H])/\DC[H] = \Delta\thetastar/\thetastar$.
+The Planck measurement $100\thetastar = 1.04101 \pm 0.00029$ constrains
+\begin{equation}
+  \varepsilon < \varepsilon_{\rm Pl}
+  \equiv \frac{0.00029}{1.04101} = 2.79\times10^{-4}
+  \label{eq:planck-eps}
+\end{equation}
+at $1\sigma$. Any $\delta H \geq 0$ that produces $\varepsilon \geq
+\varepsilon_{\rm Pl}$ violates the Planck acoustic scale.
+
+\textbf{Step~3 (lower bound on $\varepsilon$ from the DESI tension).}
+The four primary DESI tension bins span $z\in[z_1,z_2]=[0.51,1.32]$
+(SIM138). Define their fractional contribution to $\DC$:
+\begin{equation}
+  f_{\rm DESI}
+  \equiv \frac{\displaystyle\int_{z_1}^{z_2} c\,dz/H(z)}{\DC[H]}
+  = \frac{2136\,\mathrm{Mpc}}{13879\,\mathrm{Mpc}}
+  \approx 0.154\,.
+  \label{eq:f-desi}
+\end{equation}
+(Computed from the Phase~1 canonical $H(z)$ via scipy quadrature; SIM138.)
+A boost $\delta H/H \geq \eta$ over $[z_1,z_2]$ produces
+$\varepsilon \geq f_{\rm DESI}\,\eta$.
+The SIM138 bin-by-bin decomposition gives the mean $H(z)$ deficit of the
+Phase~1 canonical model below the DESI measurements:
+$\eta_0 \approx 9.4\%$ (per-bin: $z=0.51$: 9.1\%, $z=0.71$: 9.5\%,
+$z=0.93$: 10.7\%, $z=1.32$: 8.2\%). Reducing the tension by
+$\Delta\sigma \geq 1$ requires closing at least a fraction
+$\Delta\sigma/2.77 \approx 36\%$ of this deficit:
+\begin{equation}
+  \eta_{\rm min}
+  = \frac{\eta_0}{2.77}
+  \approx 0.034\,.
+\end{equation}
+Substituting into the bound:
+\begin{equation}
+  \varepsilon_{\rm min}
+  \geq f_{\rm DESI}\,\eta_{\rm min}
+  \approx 0.154 \times 0.034
+  = 5.2\times10^{-3}
+  \approx 19\,\varepsilon_{\rm Pl}\,.
+  \label{eq:eps-compare}
+\end{equation}
+The minimum $\DC$ reduction required for any $1\sigma$ DESI improvement
+exceeds the Planck $1\sigma$ bound by a factor of $\approx 19$.
+The two constraints are mutually exclusive for any late-time $\delta H \geq 0$
+with fixed $\rs$. $\square$
 \end{proof}
+
+\paragraph{Worked example.}
+For full resolution of the $2.77\sigma$ tension, the SIM138 pipeline gives
+$\eta \approx 9.4\%$ over $z\in[0.51,1.32]$ ($f_{\rm DESI}=0.154$), so
+$\varepsilon \approx 0.154 \times 0.094 = 1.45\%$, a shift of
+$1.45\%/0.028\% \approx 52\sigma$ above the Planck bound via the
+DESI-interval contribution alone. When the mechanism also modifies $H(z)$
+outside $[z_1,z_2]$---as all tested mechanisms do---the effective
+$f_{\rm DESI}$ increases and the violation is larger. The SIM141 scan
+confirms this: the best-performing mechanism ($a_{\rm tr}=0.50$,
+$\gamma=1.00$) achieves $0.547\sigma$ DESI tension while shifting
+$\thetastar$ by $63\sigma$ (Table~\ref{tab:sim141}), consistent with
+equation~\eqref{eq:eps-compare}.
 
 The only loophole would be a simultaneous increase in $\rs$, requiring
 modified physics at $z\sim1090$---early dark energy, extra relativistic
@@ -376,6 +445,18 @@ without commensurate DESI improvement.
 \textbf{Verdict: FAIL (STRUCTURAL).} True kinetic braiding requires $G_{3,X}\neq0$,
 which would require a more complex Horndeski sector; the $G_3(\Psi)$ extension
 probed here provides no new physics.
+
+\textit{Scope limitation.} SIM142 probed only the $G_{3,X}=0$ slice of Horndeski
+Galileon space. A general $G_3(\Psi,X)$ term with $G_{3,X}\neq0$ introduces genuine
+kinetic braiding ($\alpha_B\neq0$) and could in principle modify $H(z)$ through
+braiding-induced friction on $\dot\Psi$. Whether such terms can raise $H(z)$ at
+DESI redshifts without shifting $\thetastar$ beyond the Planck bound is not decided
+by SIM142. Theorem~\ref{thm:nogo2} applies to any mechanism that raises $H(z)$ with
+fixed $\rs$---so if $G_{3,X}\neq0$ braiding does raise $H(z)$ in the DESI bins it
+falls under the theorem automatically; but if braiding modifies the sound horizon
+$\rs$ through pre-recombination effects the argument would require re-examination.
+Testing $G_{3,X}\neq0$ is identified as a Phase~5 open direction (Horndeski kinetic
+braiding sector).
 
 \subsubsection{SIM141 --- Running $\Lz(a)$ / Brans--Dicke Analog (P4-B)}
 
@@ -477,24 +558,22 @@ without modifying $\rs$).
   \label{fig:biscalar}
 \end{figure}
 
-\subsubsection{SIM140 --- Step Potential $V(\Psi)$ (P4-C, deferred)}
-
-SIM140 specifies a step potential keeping $\Psi$ frozen at $\Psibar=2.62\,\Mpl$
-until $z_{\rm trans}\sim2$, then releasing it to roll to smaller $\Psi$. The
-SIM138 diagnostic showed the DESI tension is distributed across $z\in[0.51,1.32]$,
-requiring $H(z)$ enhancement across this range. A step at $z_{\rm trans}\sim2$
-must raise $H(z)$ in exactly this range---making the $\thetastar$ violation
-from Theorem~\ref{thm:nogo2} unavoidable. The $\rs$ loophole is absent by
-SIM143. SIM140 was not executed; its verdict is predicted FAIL\_CMB by
-structural argument.
-
 \subsection{Completeness of the Phase~4 Search}
 
-Table~\ref{tab:p4summary} lists all four Tier~2 mechanism classes.
+Table~\ref{tab:p4summary} lists the three executed Tier~2 mechanism classes.\footnote{%
+  A fourth class, SIM140 (step potential $V(\Psi)$, P4-C), was not executed.
+  SIM140 specifies a step potential keeping $\Psi$ frozen at $\Psibar=2.62\,\Mpl$
+  until $z_{\rm trans}\sim2$, then releasing it to roll to smaller $\Psi$.
+  The SIM138 diagnostic shows the DESI tension is distributed across $z\in[0.51,1.32]$,
+  requiring $H(z)$ enhancement across this range. Any step release at $z_{\rm trans}\sim2$
+  must raise $H(z)$ over exactly this interval---making the $\thetastar$ violation
+  from Theorem~\ref{thm:nogo2} unavoidable. The $\rs$ loophole is closed by SIM143.
+  The structural argument predicts FAIL\_CMB without simulation; execution was deferred
+  on this basis.}
 
 \begin{table}[h!]
 \centering
-\caption{Phase~4 Tier~2 exhaustion. All four mechanism classes fail.}
+\caption{Phase~4 Tier~2 mechanisms executed. All three fail; see footnote for the deferred P4-C class.}
 \label{tab:p4summary}
 \begin{tabular}{lllll}
 \toprule
@@ -503,7 +582,6 @@ SIM & Mechanism & Class & DESI min & Verdict \\
 SIM142 & Galileon $G_3(\Psi)\Box\Psi$ & P4-A & ${\sim}1.33\sigma$ & FAIL/STRUCTURAL \\
 SIM141 & Running $\Lz(a)$             & P4-B & $0.547\sigma$       & PARTIAL (CMB $63\sigma$) \\
 SIM143 & Bi-scalar $\Psi+\phi$        & P4-D & $1.053\sigma$       & FAIL/STRUCTURAL \\
-SIM140 & Step potential $V(\Psi)$     & P4-C & (predicted)         & DEFERRED/STRUCTURAL \\
 \bottomrule
 \end{tabular}
 \end{table}

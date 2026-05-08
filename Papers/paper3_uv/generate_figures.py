@@ -1,5 +1,5 @@
 """
-Generate publication figures for Paper 3: UV Completeness and Asymptotic Freedom of CMSTG.
+Generate publication figures for Paper 3: UV Finiteness and the Lz Fixed Point of CMSTG.
 Produces fig1_sigma_km.pdf, fig2_diagrams.pdf, fig3_rg_flow.pdf, fig4_hierarchy.pdf
 """
 
@@ -185,7 +185,7 @@ ax.text(0.22, inv_L0_sq_obs*0.7,
         r'$\Lambda_{0,{\rm obs}} = 0.003$', color='C3', fontsize=10)
 ax.set_xlabel(r'Memory scale $k_m\;[{\rm Mpc}^{-1}]$')
 ax.set_ylabel(r'$1/\Lambda_0^2\;[M_{\rm Pl}^4]$')
-ax.set_title(r'SIM105 — RG flow of $\Lambda_0$ (asymptotic freedom)')
+ax.set_title(r'SIM105 — RG flow of $\Lambda_0$ ($\Lambda_0$ fixed point)')
 ax.legend(fontsize=9.5)
 # Annotate UV fixed point
 ax.text(2e3, 1.0/Lambda0_obs**2 * 1.5,

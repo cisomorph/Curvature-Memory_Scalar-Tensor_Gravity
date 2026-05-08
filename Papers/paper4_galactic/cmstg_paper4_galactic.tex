@@ -109,6 +109,24 @@ at every mechanism level. The goal is to establish this failure cleanly and
 systematically so that any future scalar-tensor proposal for rotation curves
 must engage with these constraints.
 
+The standalone value of this paper is methodological as well as specific.
+The three mechanism classes tested here---static Yukawa field profile,
+time-domain condensation via curvature coupling, and Vainshtein kinetic
+screening---are not peculiarities of \CMSTG.  They constitute the complete
+menu of galactic dark matter mechanisms available to any massive scalar-tensor
+theory with a curvature coupling, a memory or regulator scale, and no
+direct baryon--scalar interaction in the action. The structural ratio
+$2\Lz|R_{\rm gal}|/m_0^2$ (Section~\ref{sec:galcurv}) that governs all three
+failures is determined by the galactic environment and the coupling structure,
+not by \CMSTG\ specifics: any theory of this class with a similar $\Lz/m_0^2$
+ratio faces the same constraints. The failure modes identified here, and the
+three minimum-physics extensions catalogued in Section~\ref{sec:minimum-physics},
+therefore serve as the reference classification for future scalar-tensor proposals
+that aim to address galactic rotation curves without a separate dark matter
+component. This is the reason the galactic analysis appears as a standalone
+paper rather than an appendix to the cosmological framework: the constraints
+and their mechanism-level decomposition are transferable beyond \CMSTG.
+
 The plan of the paper follows the sequence of mechanisms in order of
 increasing sophistication: Section~\ref{sec:setup} presents the galactic-scale
 field equations; Section~\ref{sec:sim99} establishes the static Yukawa failure;
@@ -193,11 +211,18 @@ Even at the peak of a proto-galactic overdensity $\delta = 100$:
   \frac{2\Lz|R_{\rm gal,\,peak}|}{m_0^2} \approx 5\times10^{-5}\,.
 \end{equation}
 The curvature coupling is $\sim2\times10^6$ times weaker than the field mass
-at typical galactic densities. At the locked cosmological value
+at typical galactic densities. All simulations in this paper use
+$m_0 = 0.1\,\mathrm{kpc}^{-1}$, which is the numerically convenient value
+that maximises the Compton wavenumber and therefore maximises the
+coupling ratio relative to any larger $m_0$. At the locked cosmological value
 $m_0 = 6.88\times10^{-8}\,\mathrm{kpc}^{-1}$, this ratio is
-$\approx 3.6\times10^{-8}$---even weaker, confirming the locked-action
-failure is more extreme than the simulation constraint. This single ratio
-determines the failure of all three mechanisms.
+$\approx 3.6\times10^{-8}$---weaker by a further factor
+$(0.1)^2/(6.88\times10^{-8})^2 \approx 2.1\times10^{12}$.
+Every negative result reported below is therefore conservative: using the
+simulation $m_0$ maximises the coupling and understates the locked-action
+failure. This is the complete statement of the simulation-vs-locked-$m_0$
+distinction; it is not revisited in the mechanism sections. This single ratio
+$2\Lz|R_{\rm gal}|/m_0^2$ determines the failure of all three mechanisms.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Static Yukawa Profile (SIM99)}
@@ -498,11 +523,9 @@ direct contradiction to the SIM88/SIM90 cosmological consistency tests
 The root cause of all four failures is the single ratio
 $2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$: the curvature coupling is
 $\sim2\times10^6$ times weaker than the field mass on galactic scales
-(simulation test mass $m_0 = 0.1\,\mathrm{kpc}^{-1}$; the locked cosmological
-$m_0$ gives an even smaller ratio, $\approx 3.6\times10^{-8}$). This
-makes the scalar field cosmological (Compton wavelength $\gg$ galactic
-size) and prevents any galactic-scale field gradient from building up
-to isothermal amplitudes.
+(Section~\ref{sec:galcurv}). This makes the scalar field cosmological
+(Compton wavelength $\gg$ galactic size) and prevents any galactic-scale
+field gradient from building up to isothermal amplitudes.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Minimum New Physics}
@@ -569,7 +592,7 @@ simulation programmes establish:
 
   \item \textbf{Time-domain dynamics (SIM100):} The curvature coupling
     $2\Lz|R_{\rm gal}|$ is $\sim2\times10^6$ times weaker than $m_0^2$ at
-    all galactic densities (simulation test mass; locked $m_0$ is weaker still). Condensation requires neutron-star densities.
+    all galactic densities. Condensation requires neutron-star densities.
     No quartic self-coupling produces a flat-curve condensate: the
     sub-threshold window gives Yukawa profiles; the super-threshold window
     gives runaway blow-up.
@@ -587,9 +610,8 @@ by cosmological constraints (Paper~II~\cite{WilsonPaperII}).
 
 This is a clean negative result: every mechanism within the \CMSTG\ action
 class has been tested, every mechanism fails, and the reason is a single
-structural ratio ($2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$
-at the simulation test mass, even smaller at the locked cosmological $m_0$)
-rather than a parameter choice. A first-principles coupling between $\Psi$ and baryonic
+structural ratio ($2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$;
+Section~\ref{sec:galcurv}) rather than a parameter choice. A first-principles coupling between $\Psi$ and baryonic
 matter, with appropriate cosmological screening, is the minimum new physics
 required for galactic-scale predictions.
 

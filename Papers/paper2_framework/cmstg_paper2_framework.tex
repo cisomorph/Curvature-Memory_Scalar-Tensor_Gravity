@@ -546,6 +546,12 @@ shows that at the joint optimum, $\Delta(-2\ln\mathcal{L}) = -0.013$ between
 is observationally degenerate with $\Lambda$CDM at current precision; SIM98 is
 the methodologically definitive result and SIM90 is reported only because it is
 the procedure used to locate the joint optimum.
+SIM97 provides a diagnostic baseline by evaluating the same Planck~2018 plikHM
+TTTEEE likelihood at the BAO-only best-fit parameters ($H_0 = 68.14$~km/s/Mpc,
+$\Omega_m = 0.294$) rather than the joint CMB+BAO optimum; the resulting
+$\Delta(-2\ln\mathcal{L}) = +7.0$ quantifies the CMB penalty incurred by using
+BAO-only parameters and motivates the joint optimisation. SIM98 supersedes it
+as the methodologically definitive likelihood comparison.
 
 \paragraph{Bayesian model comparison (SIM93).} We computed the Bayes factor
 $B = Z_{\rm CMSTG}/Z_{\Lambda\rm CDM}$ using the Laplace approximation
@@ -767,9 +773,11 @@ coupling (scalar--Gauss--Bonnet) produces $c_T \neq c$~\cite{Creminelli2017}.
 GW170817 multi-messenger bound $|c_T/c - 1| < 7\times10^{-16}$~\cite{Abbott2017}:
 \textbf{PASS (exact, $c_T/c - 1 = 0$)}. Additional checks:
 graviton mass $m_g = 0$ (protected by Ward identity, Paper~III);
-luminosity distance ratio $|d_L^{\rm GW}/d_L^{\rm EM} - 1| = 1.8\times10^{-11}$
-at $z = 0.009$ (GW170817); BBN: $\Geff(z_{\rm BBN})/G = 0.994$ (inside 10\%
-bound). All six GW tests pass.
+luminosity distance ratio $|d_L^{\rm GW}/d_L^{\rm EM} - 1|
+= \tfrac{1}{2}|\Delta\ln M_{\rm eff}^2|$ integrated over $z\in[0,0.009]$;
+since $\Psi$ is frozen at $\Psibar$ to $O(10^{-5})$ over this interval
+(SIM108 background), this evaluates to $1.8\times10^{-11}$;
+BBN: $\Geff(z_{\rm BBN})/G = 0.994$ (inside 10\% bound). All six GW tests pass.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Dark Energy Equation of State (SIM109)}
@@ -1012,16 +1020,19 @@ Three future tests are decisive:
 
 \subsection{Uniqueness of the Phase~1 Locked Action}
 
-The Phase~1 locked action is unique in the following sense: it is the only
-parameter combination in the $\Lz\Psi^2 R$ coupling class that simultaneously
-satisfies (i) $\Geff > 0$ everywhere, (ii) $c_T = c$ exactly, (iii) $|\gamma-1| <
-2.3\times10^{-5}$, (iv) $\chi^2_{\rm CMB+BAO} \leq \chi^2_{\Lambda\rm CDM} +
-0.5$, and (v) $|\Delta r_d/r_d| < 10^{-3}$. The locked values $\Lz = 0.003$,
-$\Psibar = 2.62\,\Mpl$ emerge from the joint CMB+BAO optimisation (SIM90);
-the alternative $\Lz = 0.013$ has $\Delta\chi^2 < 0.004$ (SIM90 landscape),
-confirming that the observational constraint is that $\Lz$ is small, not that
-it is precisely $0.003$. The detection threshold $\Lz \sim 0.05$ sets the
-boundary of the currently unconstrained regime.
+The Phase~1 locked action defines the observationally preferred parameter
+combination in the $\Lz\Psi^2 R$ coupling class: one that simultaneously
+satisfies (i) $\Geff > 0$ everywhere, (ii) $c_T = c$ exactly,
+(iii) $|\gamma-1| < 2.3\times10^{-5}$,
+(iv) $\chi^2_{\rm CMB+BAO} \leq \chi^2_{\Lambda\rm CDM} + 0.5$, and
+(v) $|\Delta r_d/r_d| < 10^{-3}$. It is not a sharply isolated point: the
+best-fit values $\Lz = 0.003$, $\Psibar = 2.62\,\Mpl$ emerge from the joint
+CMB+BAO optimisation (SIM90), but $\Lz = 0.013$ lies on the same landscape
+with $\Delta\chi^2 < 0.004$, establishing a flat degeneracy valley extending
+to $\Lz \lesssim 0.095$ (95\% confidence, SIM91). The observational constraint
+is that $\Lz$ is small, not that it is precisely $0.003$. The detection
+threshold $\Lz \sim 0.05$ marks the boundary above which future surveys would
+distinguish \CMSTG\ from $\Lambda$CDM.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}

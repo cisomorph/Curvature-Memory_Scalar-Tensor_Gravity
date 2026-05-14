@@ -165,6 +165,16 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 
 ---
 
+## Phase 5 — Post-JCAP Exploratory
+
+### Kernel Characterization
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM147 | Curvature-memory kernel decay characterization | RED gate | K(Δt) ∝ Δt·exp(−(k_m Δt)²/4); τ_mem = 2/k_m = 0.2 Mpc ≈ 2×10⁻⁴ Gyr at locked k_m=10 Mpc⁻¹; w(13.4 Gyr)=0 to double precision; both Ψ_pre and Ψ_local conjectures dead; ℓ_coh = 1/k_m = 0.1 Mpc = R_vir |
+
+---
+
 ## Summary Statistics
 
 | Phase | Sims | PASS | FAIL | PARTIAL |
@@ -179,9 +189,11 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | Phase 3 (Tier 2 curv)|  6 |  0 |  6 | 0 |
 | Phase 4 (Tier 1 diag)|  3 |  3 |  0 | 0 |
 | Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
-| **Total (run)**      | **59** | **30** | **24** | **5** |
+| Phase 5              |  1 |  0 |  0 | 1 |
+| **Total (run)**      | **60** | **30** | **24** | **6** |
 
 SIM140, SIM145, SIM146 not counted (spec only, not run).
+SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
 
 ---
 

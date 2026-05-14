@@ -1,0 +1,67 @@
+{
+  "sim": "SIM147",
+  "date": "2026-05-14T19:45:43.998345",
+  "kernel_form": "Gaussian: K(dt) = dt * exp(-(km*dt)^2/4)",
+  "tau_mem_Gyr": 0.00020454080589077525,
+  "tau_mem_Mpc": 0.2,
+  "dt_peak_Gyr": 0.0001446321908747285,
+  "alpha": null,
+  "best_fit_form": "exponential",
+  "best_fit_r2": -0.003344481605354055,
+  "w_10Gyr": 0.0,
+  "w_13.4Gyr": 0.0,
+  "w_13.8Gyr": 0.0,
+  "l_coh_Mpc": 0.1,
+  "k_m_locked": 10.0,
+  "m0_Mpc": 2.2453333333333333e-07,
+  "m0_over_km": 2.2453333333333332e-08,
+  "l_coh_over_Rvir": 1.0,
+  "uniform_across_galaxy": true,
+  "gate": "RED",
+  "gate_message": "\u03c4_mem \u226a 1 Gyr and w(13.4 Gyr) < 10\u207b\u2074. Both conjectures effectively dead. SIM148 and SIM149 should run for completeness but flag results as conditional on large unphysical \u03a8_pre or \u03a8_local amplitudes.",
+  "km_dominates_m0": true,
+  "km_for_tau_1Gyr_Mpcinv": 0.0020454080589077522,
+  "km_for_tau_10Gyr_Mpcinv": 0.00020454080589077522,
+  "sweep": {
+    "1.0": {
+      "tau_Gyr": 0.0020454080589077522,
+      "tau_Mpc": 2.0,
+      "w_10Gyr": 0.0,
+      "w_13.4Gyr": 0.0,
+      "w_13.8Gyr": 0.0,
+      "winner": "exp_powerlaw"
+    },
+    "3.0": {
+      "tau_Gyr": 0.000681802686302584,
+      "tau_Mpc": 0.6666666666666666,
+      "w_10Gyr": 0.0,
+      "w_13.4Gyr": 0.0,
+      "w_13.8Gyr": 0.0,
+      "winner": "exp_powerlaw"
+    },
+    "10.0": {
+      "tau_Gyr": 0.00020454080589077525,
+      "tau_Mpc": 0.2,
+      "w_10Gyr": 0.0,
+      "w_13.4Gyr": 0.0,
+      "w_13.8Gyr": 0.0,
+      "winner": "exponential"
+    },
+    "30.0": {
+      "tau_Gyr": 6.81802686302584e-05,
+      "tau_Mpc": 0.06666666666666667,
+      "w_10Gyr": 0.0,
+      "w_13.4Gyr": 0.0,
+      "w_13.8Gyr": 0.0,
+      "winner": "exponential"
+    },
+    "100.0": {
+      "tau_Gyr": 2.0454080589077523e-05,
+      "tau_Mpc": 0.02,
+      "w_10Gyr": 0.0,
+      "w_13.4Gyr": 0.0,
+      "w_13.8Gyr": 0.0,
+      "winner": "exponential"
+    }
+  }
+}

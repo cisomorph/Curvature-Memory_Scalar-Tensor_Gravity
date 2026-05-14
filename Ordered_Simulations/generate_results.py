@@ -147,6 +147,10 @@ SIM_META = {
                "Would recheck UV finiteness of winning mechanism; deferred"),
     "SIM146": ("Phase 4", "Tier 3: Distinctive prediction extraction (not run)",
                "Would extract 2–3 testable predictions for DESI Y3/Euclid; deferred"),
+    "SIM147": ("Phase 5", "Curvature-memory kernel decay characterization",
+               "Gate: RED. K(Δt)=Δt·exp(−(k_m Δt)²/4); τ_mem=2/k_m=2×10⁻⁴ Gyr at locked k_m=10 Mpc⁻¹; "
+               "w(13.4 Gyr)=0 to double precision; both Ψ_pre (SIM148) and Ψ_local (SIM149) conjectures "
+               "effectively dead; ℓ_coh=1/k_m=0.1 Mpc; m₀/k_m≈10⁻⁸ (k_m dominates entirely)."),
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -523,6 +527,7 @@ def main():
     print("=== Generating results.md for all SIM### sims ===")
     phase4_with_result = {"SIM137", "SIM138", "SIM139", "SIM141", "SIM142", "SIM143"}
     unrun = {"SIM140", "SIM144", "SIM145", "SIM146"}
+    phase5_run = {"SIM147"}
 
     for sim_id, meta in SIM_META.items():
         sim_dir = os.path.join(BASE, sim_id)

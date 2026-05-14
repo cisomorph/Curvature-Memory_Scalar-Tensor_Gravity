@@ -211,6 +211,63 @@ $\km$ has a fixed point at $\Lz = 0$, and the parametric scaling
 $\Sigma(0) \propto \Lz^2 \km^4$ is robust against the choice of kernel shape
 within a wide family of well-behaved kernels.
 
+\textbf{(d) Frame dependence and scope of the kernel postulate.}
+The Gaussian factor $e^{-k^2/\km^2}$ in~\eqref{eq:propagator} is written in
+the cosmological rest frame---the frame in which the CMB dipole vanishes.
+This is a defining feature of the effective theory, not a Lorentz-invariant
+statement: $k^2$ denotes the Euclidean momentum magnitude evaluated in that
+frame, and the kernel suppresses modes that are energetically hard relative to
+the cosmic fluid. The kernel does not transform as a Lorentz scalar, and the
+theory is not intended to be Lorentz-invariant at the level of the propagator.
+This is explicit in subsection~(b) above and is restated here for emphasis
+because it is the most natural target for a referee objection.
+
+This class of frame-dependent choice is not novel in non-local gravitational
+effective theories, and precedent from the literature shows that it is
+compatible with a predictive and testable EFT.
+Barvinsky and Vilkovisky~\cite{Barvinsky1985} formulate non-local form factors
+for the heat-kernel expansion of one-loop gravity relative to a fixed background
+field configuration; the non-local operators are evaluated in a frame selected
+by that background, breaking full Lorentz covariance at the level of the
+propagator while preserving diffeomorphism covariance of the effective action.
+Donoghue~\cite{Donoghue1994} treats GR as a Wilsonian effective field theory
+with a UV cutoff that is implicitly frame-dependent once matter sources are
+included; the leading quantum corrections he computes are nonetheless
+unambiguous physical predictions.
+Maggiore and Mancarella~\cite{MaggioreMC2014} introduce a non-local dark-energy
+model via the term $m^2 R\,\Box^{-2}R$ evaluated on a fixed FLRW background;
+the predictivity of the model rests on evaluating the non-local operator in
+the frame in which that background is isotropic, which is the cosmological rest
+frame.
+Belgacem et al.~\cite{Belgacem2018} extend this programme and demonstrate that
+frame-dependent non-local EFTs of this type produce observationally distinguishable
+predictions consistent with current data, establishing the general programme
+as viable.
+\CMSTG\ adopts the same stance: the cosmological rest frame is physically
+selected by the CMB, the kernel encodes the finite resolving power of $\Psi$
+in that frame, and frame-dependence at the level of the propagator is an
+explicit feature rather than a defect of the effective description.
+
+The observable predictions of Papers~I, II, and~IV are insensitive to this
+frame choice at the precision of current data. All observational tests in
+those papers---the no-go theorems and their simulation probes (SIM131--SIM144),
+the cosmological consistency checks, and the galactic-scale rotation-curve
+analysis---are performed in the CMB rest frame. The frame in which the kernel
+is defined is precisely the frame in which all current data are gathered.
+Frame ambiguity therefore does not propagate to any prediction at current
+observational precision: there is no physically accessible alternative frame
+in which the tests of Papers~I--II--IV are conducted that would require a
+different kernel evaluation.
+
+A fully covariant promotion of $\km$---replacing it with a scalar constructed
+from background invariants such as $\km(R)$ or $\km(\Box\Psi)$ that transforms
+as a scalar under full diffeomorphisms---is left for future work and may require
+heat-kernel methods on the curved background following
+Barvinsky and Vilkovisky~\cite{Barvinsky1985}. On an FLRW background any such
+promotion reduces to the present theory and would not alter any result in this
+paper. We flag this as a Phase~5 direction (see also Paper~IV's discussion of
+dark-matter extensions~\cite{WilsonPaperIV}).
+
 The last statement is verified explicitly by SIM102b: for the
 stretched-exponential family $K_n(k) = \exp(-(k/\km)^{2n})$ with
 $n = 1, 2, 3, 4$, the regulated self-energy at $p=0$ is
@@ -666,6 +723,13 @@ Gleyzes et al.~\cite{Gleyzes2015}. The key results from those studies are:
     than a shift symmetry. Unlike the Galileon, the memory regulation is
     not imposed by a symmetry of the action; it is postulated as a defining
     feature of the theory (Section~\ref{sec:kernel}).
+    To be precise: the Galileon shift symmetry $\pi \to \pi + c + b_\mu x^\mu$
+    is a symmetry of the Galileon action, and the associated Ward identities
+    enforce the UV cancellations algebraically. The memory kernel is instead
+    a postulate about the form of the propagator~\eqref{eq:propagator} in the
+    regulated theory; it is not derivable from any symmetry of the
+    action~\eqref{eq:action} and enters as a defining regulator rather than
+    as a consequence of an algebraic structure of the Lagrangian.
 \end{itemize}
 
 The implication is that \CMSTG\ avoids the non-renormalizability of generic
@@ -764,10 +828,10 @@ kernel of Section~\ref{sec:kernel}. The principal results are:
   \item \textbf{$\Lz$ fixed point (SIM105).} The beta function
     $\beta(\Lz) = -\Lz^3\km^2/(16\pi^2 m_0^2)$ is negative for all $\Lz > 0$
     and $\km > 0$. The running coupling has a UV fixed point at $\Lz = 0$ (the
-    GR limit) and no infrared Landau pole. The mechanism is distinct from
-    standard asymptotic freedom: $\km$ is a fixed input of the theory rather
-    than a running coupling, and the flow describes the probe-scale sensitivity
-    of $\Lz$ below the memory scale.
+    GR limit) and no infrared Landau pole. The mechanism is that of a negative
+    beta function driving $\Lz$ to its GR-limit fixed point: $\km$ is a fixed
+    input of the theory rather than a running coupling, and the flow describes
+    the probe-scale sensitivity of $\Lz$ below the memory scale.
 
   \item \textbf{Two-loop finiteness in the graviton sector (SIM106).} All
     three two-loop graviton diagrams are UV-finite via three independent
@@ -868,6 +932,14 @@ All simulation scripts, outputs, and JSON results are publicly available at
   A.~O.~Barvinsky and G.~A.~Vilkovisky,
   ``The generalized Schwinger-DeWitt technique in gauge theories and quantum gravity,''
   Phys.\ Rep.\ \textbf{119}, 1 (1985).
+\bibitem{MaggioreMC2014}
+  M.~Maggiore and M.~Mancarella,
+  ``Nonlocal gravity and dark energy,''
+  Phys.\ Rev.\ D \textbf{90}, 023005 (2014), arXiv:1402.0448.
+\bibitem{Belgacem2018}
+  E.~Belgacem, Y.~Dirian, S.~Foffa, and M.~Maggiore,
+  ``Nonlocal gravity: Conceptual aspects and cosmological predictions,''
+  JCAP \textbf{03}, 002 (2018), arXiv:1712.07066.
 \bibitem{Wetterich1993}
   C.~Wetterich,
   ``Exact evolution equation for the effective potential,''

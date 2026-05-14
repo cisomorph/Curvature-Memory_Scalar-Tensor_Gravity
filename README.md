@@ -33,7 +33,7 @@ Four papers with LaTeX source document the full research programme, plus a maste
 Papers/
 ├── paper1_nogo/             Paper I   — Two Structural No-Go Theorems
 ├── paper2_framework/        Paper II  — Framework, Field Equations, Observational Tests
-├── paper3_uv/               Paper III — UV Finiteness and Asymptotic Freedom
+├── paper3_uv/               Paper III — UV Finiteness and Λ₀ Fixed Point
 ├── paper4_galactic/         Paper IV  — Galactic-Scale Constraints
 └── master/                  Master compilation (Papers I–IV unified)
 ```
@@ -44,7 +44,7 @@ Papers/
 |-------|-------|------|---------|
 | I | Two structural no-go theorems for late-time modifications | SIM131–144 | FAIL/NO-GO |
 | II | Framework, field equations, and 22 observational tests | SIM80–111 | PASS (2.77σ floor) |
-| III | UV finiteness, two-loop, asymptotic freedom of Λ₀ | SIM102–106 | PASS |
+| III | UV finiteness, two-loop; Λ₀ fixed point (negative β function); §2.2(d) kernel frame scope | SIM102–106 | PASS |
 | IV | Galactic constraints; Ψ cannot replace dark matter | SIM99–100, 103 | FAIL |
 
 ---
@@ -182,4 +182,4 @@ CC BY-NC 4.0 — Attribution-NonCommercial. Free to share and adapt with credit;
 
 **Author:** Christopher Robert Barrick Wilson  
 **Contact:** C.Isomorph@gmail.com  
-**Last updated:** 2026-05-13
+**Last updated:** 2026-05-14

@@ -63,7 +63,7 @@ Papers: `Papers/phase1/`
 |-----|-------|--------|-------|
 | SIM102 | One-Loop Scalar Self-Energy — UV structure and memory regulation | PASS | Memory damping regulates loop integrals |
 | SIM104 | Full One-Loop UV Structure — all diagrams (Ψ self-energy, graviton, vertex) | PASS | UV finiteness at full one-loop confirmed |
-| SIM105 | RG Flow of Λ₀ — beta function and running coupling | PASS | Λ₀ asymptotically free; dΛ₀/d ln μ < 0 |
+| SIM105 | RG Flow of Λ₀ — beta function and running coupling | PASS | Λ₀ fixed point at Λ₀=0 (GR limit); negative beta function; dΛ₀/d ln μ < 0 |
 | SIM106 | Two-Loop Graviton Sector — graviton self-energy and mixed diagrams | PASS | Final UV caveat closed |
 
 ---

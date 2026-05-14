@@ -531,31 +531,14 @@ where the RMS residual is $< 0.5\%$.
   \label{fig:cmb_Cl}
 \end{figure}
 
-\subsection{Joint CMB+BAO Parameter Fit (SIM90) and Planck Likelihood (SIM98)}
+\subsection{Planck Likelihood Evaluation (SIM98)}
 \label{sec:joint}
 
-\paragraph{Method (SIM90, SIM98).} Two complementary CMB analyses are reported.
-SIM90 uses a Gaussian prior on the $(H_0, \Omega_m)$ marginal extracted from
-the Planck~2018 TT+TE+EE+lowE+lensing parameter chains ($\sigma_{H_0} =
-0.54$~km/s/Mpc, $\sigma_{\Omega_m} = 0.0073$, $\rho = -0.90$)~\cite{Planck2018}.
-This is a parameter-level approximation to the CMB constraint and is appropriate
-for rapid exploration of the $(H_0, \Omega_m, r_d, \Lz)$ parameter space; we use
-it to identify the joint optimum. SIM98 then re-evaluates the \CMSTG\ model
-against the actual Planck~2018 plikHM TTTEEE likelihood at the joint optimum,
-providing the proper likelihood comparison. We report both: the parameter-prior
-result (SIM90) shows that \CMSTG\ and $\Lambda$CDM converge to identical
-$(H_0, \Omega_m)$ under the Planck constraint, and the likelihood result (SIM98)
-shows that at the joint optimum, $\Delta(-2\ln\mathcal{L}) = -0.013$ between
-\CMSTG\ and $\Lambda$CDM. The two analyses agree on the conclusion that \CMSTG\
-is observationally degenerate with $\Lambda$CDM at current precision; SIM98 is
-the methodologically definitive result and SIM90 is reported only because it is
-the procedure used to locate the joint optimum.
-SIM97 provides a diagnostic baseline by evaluating the same Planck~2018 plikHM
-TTTEEE likelihood at the BAO-only best-fit parameters ($H_0 = 68.14$~km/s/Mpc,
-$\Omega_m = 0.294$) rather than the joint CMB+BAO optimum; the resulting
-$\Delta(-2\ln\mathcal{L}) = +7.0$ quantifies the CMB penalty incurred by using
-BAO-only parameters and motivates the joint optimisation. SIM98 supersedes it
-as the methodologically definitive likelihood comparison.
+\paragraph{Method.} The joint CMB+BAO parameter optimum was located by SIM90
+using a Gaussian prior on the $(H_0, \Omega_m)$ marginal extracted from the
+Planck~2018 chains~\cite{Planck2018}; the methodologically definitive CMB
+likelihood evaluation at this optimum is reported below using the full
+Planck~2018 plikHM TTTEEE likelihood (SIM98).
 
 \paragraph{Bayesian model comparison (SIM93).} We computed the Bayes factor
 $B = Z_{\rm CMSTG}/Z_{\Lambda\rm CDM}$ using the Laplace approximation
@@ -567,25 +550,6 @@ to ``inconclusive'' on the Jeffreys scale ($|\ln B| < 1$): neither model is
 preferred by the data given their similar number of parameters and the
 flat $\Lz$ landscape.
 
-\paragraph{Results (SIM90).}
-\begin{center}
-  \setlength{\tabcolsep}{5pt}
-  \begin{tabular}{lcccccc}
-    \toprule
-    Model & $H_0$ & $\Omega_m$ & $r_d$ & $\Lz$ & $\chi^2_{\rm CMB}$ & $\chi^2_{\rm BAO}$ \\
-    \midrule
-    $\Lambda$CDM & $67.59$ & $0.312$ & $147.6$ & $0$            & $0.23$ & $11.02$ \\
-    \CMSTG       & $67.59$ & $0.312$ & $147.6$ & $0.013\dagger$ & $0.23$ & $11.02$ \\
-    \bottomrule
-    \multicolumn{7}{l}{\footnotesize $\dagger$ Numerically unconstrained: $\Delta\chi^2 < 0.004$ across $\Lz \in [0, 0.1]$.}
-  \end{tabular}
-\end{center}
-$\Delta\chi^2(\CMSTG - \Lambda\mathrm{CDM}) = 0.000$ (PASS). The CMB prior
-dominates the joint fit; both models converge to identical $(H_0, \Omega_m)$.
-$\Lz = 0.003$ modifies $H(z)$ at 15~ppm, making \CMSTG\ and $\Lambda$CDM
-observationally indistinguishable at current precision. Bayesian model
-comparison (SIM93): $\ln B = -0.71$ (inconclusive on Jeffreys' scale).
-
 \paragraph{Results (SIM98).} Using the real Planck~2018 plikHM TTTEEE likelihood
 at the true joint CMB+BAO optimum ($H_0 = 67.30$, $\Omega_m = 0.317$, $\Lz =
 0.005$):
@@ -593,6 +557,10 @@ at the true joint CMB+BAO optimum ($H_0 = 67.30$, $\Omega_m = 0.317$, $\Lz =
   \Delta(-2\ln\mathcal{L}) = \CMSTG - \Lambda\mathrm{CDM} = -0.013 \quad\text{(PASS)}\,.
 \end{equation}
 \CMSTG\ is very marginally preferred at the real optimum.
+An earlier evaluation at the BAO-only best-fit parameters (SIM97,
+$H_0 = 68.14$~km/s/Mpc, $\Omega_m = 0.294$) gave
+$\Delta(-2\ln\mathcal{L}) = +7.0$; this is superseded by SIM98 at the
+joint optimum, which is the methodologically appropriate comparison point.
 
 \subsection{CMB Polarization EE and TE (SIM95)}
 \label{sec:polarization}
@@ -605,7 +573,7 @@ At the joint best-fit cosmology, the CLASS Boltzmann computation gives:
 Both within Planck measurement precision. The $\chi^2$ improvements ($\Delta\chi^2_{\rm EE} =
 +31.5$ against a $\Lambda$CDM baseline of $57.6$, and $\Delta\chi^2_{\rm TE} = +22.8$
 against $37.2$) should be interpreted as parameter-consistency results at
-the SIM90 joint cosmology, not as EE/TE tensions.
+the joint best-fit cosmology, not as EE/TE tensions.
 
 \begin{figure}[h!]
   \centering

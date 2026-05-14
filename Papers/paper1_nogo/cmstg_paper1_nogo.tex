@@ -49,10 +49,12 @@ redshifts---the wrong direction to reduce the $2.77\sigma$ DESI~Y1
 tension. \textbf{Theorem~2}: any mechanism that raises $H(z)$ in the
 interval $z\in[0,z_{\rm rec}]$ while keeping the sound horizon $\rs$
 fixed necessarily shifts the CMB acoustic angle $\thetastar$ above the
-Planck bound at more than $30\sigma$. Thirteen simulation-based mechanism
-tests (SIM131--SIM136, SIM141--SIM143, plus two structural arguments)
+Planck bound at more than $30\sigma$. Fourteen simulation-based mechanism
+tests (SIM131--SIM136, SIM141--SIM144, plus two structural arguments)
 verify both theorems exhaustively across the identified Tier~2 mechanism
-space. The $2.77\sigma$ DESI~Y1 residual is therefore a structural
+space, including a completeness probe (SIM144) confirming that scalars
+with simultaneous curvature and matter coupling also fail.
+The $2.77\sigma$ DESI~Y1 residual is therefore a structural
 prediction of Phase~1 canonical \CMSTG, not a defect in the action; the
 decisive test is DESI~Y3.
 
@@ -111,7 +113,7 @@ remaining residual is a $2.77\sigma$ tension with the DESI~Y1 BAO dataset
 
 Whether this residual is reducible within the \CMSTG\ action class---by
 extending, deforming, or coupling additional fields---is the central question
-addressed by three successive simulation programmes (Phases 2--4, SIM112--SIM143),
+addressed by three successive simulation programmes (Phases 2--4, SIM112--SIM144),
 summarised in companion notes available at the repository.
 The answer, established here, is no.
 
@@ -573,18 +575,74 @@ Table~\ref{tab:p4summary} lists the three executed Tier~2 mechanism classes.\foo
 
 \begin{table}[h!]
 \centering
-\caption{Phase~4 Tier~2 mechanisms executed. All three fail; see footnote for the deferred P4-C class.}
+\caption{Phase~4 Tier~2 mechanisms executed. All fail; see footnote for the deferred P4-C class.
+SIM144 is the completeness probe for the mixed-source gap.}
 \label{tab:p4summary}
 \begin{tabular}{lllll}
 \toprule
 SIM & Mechanism & Class & DESI min & Verdict \\
 \midrule
-SIM142 & Galileon $G_3(\Psi)\Box\Psi$ & P4-A & ${\sim}1.33\sigma$ & FAIL/STRUCTURAL \\
-SIM141 & Running $\Lz(a)$             & P4-B & $0.547\sigma$       & PARTIAL (CMB $63\sigma$) \\
-SIM143 & Bi-scalar $\Psi+\phi$        & P4-D & $1.053\sigma$       & FAIL/STRUCTURAL \\
+SIM142 & Galileon $G_3(\Psi)\Box\Psi$           & P4-A & ${\sim}1.33\sigma$ & FAIL/STRUCTURAL \\
+SIM141 & Running $\Lz(a)$                        & P4-B & $0.547\sigma$       & PARTIAL (CMB $63\sigma$) \\
+SIM143 & Bi-scalar $\Psi+\phi$ quintessence      & P4-D & $1.053\sigma$       & FAIL/STRUCTURAL \\
+SIM144 & Mixed-source $\phi$ (completeness probe) & P4-E & $0.999\sigma^\dagger$ & FAIL/STRUCTURAL \\
 \bottomrule
+\multicolumn{5}{l}{$\dagger$ Achieved at $(\xi_R,\beta_m)=(0,0.1)$; fails $100\thetastar$ by $118\sigma$ and $|\Delta\rs/\rs|>0.3\%$.}
 \end{tabular}
 \end{table}
+
+\subsubsection{SIM144 --- Mixed-Source Scalar $\phi$ (P4-E, Completeness Probe)}
+\label{sec:sim144}
+
+The completeness of the Tier~2 mechanism space was tested by SIM144, which probed
+the final gap: a scalar field sourced simultaneously by both $R$ and $\rho_{\rm matter}$.
+This class is not covered by SIM131--136 (pure $R$-sourcing with $\phi_{\rm ini}=0$)
+or SIM143 (quintessence decoupled from $R$). The action is
+\begin{equation}
+  S = \int\!d^4x\,\sqrt{-g}\,\Bigl[
+    \tfrac{1+2\Lz\Psi^2}{2}\,R
+    - \tfrac{1}{2}(\partial\Psi)^2
+    - \tfrac{1}{2}(\partial\phi)^2
+    + \xi_R\,\phi R
+    + 2\beta_m\,\phi\,\rho_{\rm m}
+  \Bigr] + S_{\rm SM}\,,
+  \label{eq:sim144}
+\end{equation}
+with $\Feff = (1+2\Lz\Psi^2)/2 + \xi_R\phi$ and $\phi$ equation of motion
+\begin{equation}
+  \phi'' + (3-\varepsilon_H)\phi'
+  = \xi_R\cdot\frac{R}{H^2} + 2\beta_m\cdot\frac{\rho_{\rm m}}{H^2}\,,
+  \label{eq:sim144-eom}
+\end{equation}
+where both source terms are non-negative. Initial condition $\phi_{\rm ini}=0$ as required
+by the Deser--Woodard boundary condition. A $4\times4$ grid was scanned:
+$\xi_R\in\{0,0.01,0.1,1.0\}$, $\beta_m\in\{0,0.01,0.1,1.0\}$ (16 cases).
+
+No case satisfies all three success criteria simultaneously. The failure pattern is
+precisely the one predicted by the two theorems:
+
+The $\beta_m=0$ column (pure $R$-sourcing) reproduces the Phase~3 Theorem~1 result:
+$\phi$ grows monotonically from $\phi_{\rm ini}=0$, increasing $\Feff$ and suppressing
+$H(z)$ at DESI redshifts. DESI tension reaches $2.89\sigma$ at $\xi_R=0.1$ and
+$16.2\sigma$ at $\xi_R=1.0$; simultaneously $100\thetastar$ falls below $0.97$,
+a downward violation of the Planck bound from the growing $D_C^*$.
+
+The $\xi_R=0$ column (pure matter-sourcing) reproduces the Theorem~2 result: the
+matter coupling raises $H(z)$ at late times, improving DESI tension to $0.999\sigma$
+at $\beta_m=0.1$, but compressing $D_C^*$ and shifting $100\thetastar$ to $1.075$
+($+118\sigma$ above Planck). The sound horizon shifts by $\Delta\rs/\rs=-0.37\%$,
+exceeding the BAO precision bound. The $\rs$ loophole does not exist: $\phi$ energy
+at $z\sim z_{\rm drag}$ is non-negligible at $\beta_m=0.1$, yet the resulting $\Delta\rs$
+exacerbates rather than compensates the $\thetastar$ violation.
+
+Mixed cases ($\xi_R>0$, $\beta_m>0$) inherit both failures with no synergistic cancellation:
+adding $\beta_m>0$ to a fixed $\xi_R>0$ column partially offsets DESI worsening but
+always amplifies the $\thetastar$ shift, keeping the exclusion regions disjoint.
+
+Since action~\eqref{eq:sim144} is the most general scalar coupling linear in both
+$R$ and $\rho_{\rm m}$ within the \CMSTG\ action class, and both limiting columns fail
+for independent structural reasons, SIM144 closes the final gap in the Tier~2
+mechanism space. The $2.77\sigma$ DESI residual is structural under the full action class.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Combined No-Go Structure}
@@ -619,7 +677,10 @@ Jointly, these two theorems prove that within the \CMSTG\ framework---or any
 covariant scalar-tensor theory with a memory kernel and purely late-time
 dynamics---the Phase~1 canonical $H(z)$ profile is the unique solution
 consistent with both CMB and DESI~Y1 simultaneously, at the $2.77\sigma$
-residual level.
+residual level. The completeness of the Tier~2 mechanism space is confirmed
+by SIM144 (Section~\ref{sec:sim144}): scalars with simultaneous curvature
+and matter coupling interpolate continuously between the two excluded columns
+and evade neither theorem, closing the only remaining gap in the mechanism survey.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Implications and Outlook}
@@ -711,7 +772,9 @@ fixed sound horizon $\rs$ necessarily shifts the CMB acoustic angle $\thetastar$
 above the Planck bound. The best-performing mechanism (running $\Lz(a)$) reduces
 DESI tension to $0.547\sigma$ while producing a $63\sigma$ CMB violation; the
 bi-scalar quintessence test (SIM143) confirms the $\rs$-loophole does not exist
-for thawing fields.
+for thawing fields. The mechanism-completeness probe SIM144 confirms the no-go
+extends to scalars with simultaneous curvature and matter coupling, closing the
+only gap in the Tier~2 mechanism space.
 
 Together, the two theorems prove that the Phase~1 canonical $H(z)$ profile is
 the unique solution consistent with both CMB and DESI~Y1 simultaneously, within
@@ -725,7 +788,7 @@ DESI tension is a structural prediction. The decisive test is DESI~Y3.
 \noindent\textbf{Data and code:}
 All simulation scripts, outputs, and JSON results are publicly available at
 \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}
-(simulations SIM131--SIM143).
+(simulations SIM131--SIM144).
 
 \begin{thebibliography}{99}
 \bibitem{DESI2024}

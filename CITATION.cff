@@ -32,6 +32,41 @@ keywords:
   - no-go theorem
   - mechanism completeness
   - cosmology
+references:
+  - type: article
+    title: "Nonlocal gravity and dark energy"
+    authors:
+      - family-names: Maggiore
+        given-names: Michele
+      - family-names: Mancarella
+        given-names: Matteo
+    year: 2014
+    journal: "Physical Review D"
+    volume: 90
+    start: 023005
+    identifiers:
+      - type: other
+        value: "arXiv:1402.0448"
+  - type: article
+    title: >
+      Nonlocal gravity: Conceptual aspects and cosmological predictions
+    authors:
+      - family-names: Belgacem
+        given-names: Enis
+      - family-names: Dirian
+        given-names: Yves
+      - family-names: Foffa
+        given-names: Stefano
+      - family-names: Maggiore
+        given-names: Michele
+    year: 2018
+    journal: "Journal of Cosmology and Astroparticle Physics"
+    volume: 2018
+    issue: 3
+    start: 002
+    identifiers:
+      - type: other
+        value: "arXiv:1712.07066"
 preferred-citation:
   type: article
   title: >

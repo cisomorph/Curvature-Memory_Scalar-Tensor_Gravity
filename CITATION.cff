@@ -7,12 +7,19 @@ abstract: >
   CMSTG is a covariant scalar-tensor extension of GR in which spacetime
   curvature couples to a non-local scalar field Psi through a retarded
   Green's function, producing curvature memory. Dark energy emerges from
-  the Psi-geometry coupling without a bare cosmological constant. Two
-  structural no-go theorems (Paper I) prove that the 2.77-sigma DESI Y1
-  BAO residual is irreducible within the CMSTG action class without
-  pre-recombination new physics. A completeness probe (SIM144) confirms
-  the no-go extends to all curvature-sourced, late-time H(z), and
-  mixed-source scalar mechanisms (SIM131-SIM144, exhaustive).
+  the Psi-geometry coupling without a bare cosmological constant. The
+  theory is UV-finite through two loops in the resummed propagator, with
+  a negative beta function driving the coupling Lambda_0 to its GR-limit
+  fixed point (Lambda_0=0) in the UV and no infrared Landau pole (Paper III,
+  SIM102-SIM106). The non-local memory kernel is written in the cosmological
+  rest frame as a defining feature of the effective theory; the frame
+  dependence, non-local EFT precedents, and scope of this postulate are
+  addressed in Paper III, Section 2.2(d). Two structural no-go theorems
+  (Paper I) prove that the 2.77-sigma DESI Y1 BAO residual is irreducible
+  within the CMSTG action class without pre-recombination new physics.
+  A completeness probe (SIM144) confirms the no-go extends to all
+  curvature-sourced, late-time H(z), and mixed-source scalar mechanisms
+  (SIM131-SIM144, exhaustive).
 authors:
   - family-names: Wilson
     given-names: Christopher Robert Barrick

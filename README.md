@@ -2,7 +2,7 @@
 
 **A Lagrangian-based framework for curvature memory and modified gravity**
 
-CMSTG is a covariant scalar-tensor extension of GR in which spacetime curvature couples to a non-local scalar field Ψ through a retarded Green's function, producing *curvature memory*. Dark energy emerges from the Ψ–geometry coupling without a bare cosmological constant. The dark matter sector (Phase 2) introduces an ultra-light χ field seeded by Ψ.
+CMSTG is a covariant scalar-tensor extension of GR in which spacetime curvature couples to a non-local scalar field Ψ through a retarded Green's function, producing *curvature memory*. Dark energy emerges from the Ψ–geometry coupling without a bare cosmological constant. The theory is UV-finite through two loops in the resummed propagator, with a negative beta function driving Λ₀ to its GR-limit fixed point (Λ₀ = 0) and no infrared Landau pole. The non-local memory kernel is defined in the cosmological rest frame as a feature of the effective theory; the frame dependence and EFT scope are addressed in Paper III §2.2(d). The dark matter sector (Phase 2) introduces an ultra-light χ field seeded by Ψ.
 
 **Status:** Phase 1 canonical action is locked and declared final. Two structural no-go theorems (Paper I) prove that no covariant scalar-tensor extension within the CMSTG class can reduce the 2.77σ DESI Y1 residual without modifying pre-recombination physics. A completeness probe (SIM144) exhausts the mixed-source scalar sector, confirming the no-go covers all 14 Tier 2 mechanism tests (SIM131–SIM144). Next decisive test: DESI Y3 (~2027).
 

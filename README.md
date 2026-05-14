@@ -4,7 +4,7 @@
 
 CMSTG is a covariant scalar-tensor extension of GR in which spacetime curvature couples to a non-local scalar field Ψ through a retarded Green's function, producing *curvature memory*. Dark energy emerges from the Ψ–geometry coupling without a bare cosmological constant. The dark matter sector (Phase 2) introduces an ultra-light χ field seeded by Ψ.
 
-**Status:** Phase 1 canonical action is locked and declared final. Two structural no-go theorems (Paper I) prove that no covariant scalar-tensor extension within the CMSTG class can reduce the 2.77σ DESI Y1 residual without modifying pre-recombination physics. Next decisive test: DESI Y3 (~2027).
+**Status:** Phase 1 canonical action is locked and declared final. Two structural no-go theorems (Paper I) prove that no covariant scalar-tensor extension within the CMSTG class can reduce the 2.77σ DESI Y1 residual without modifying pre-recombination physics. A completeness probe (SIM144) exhausts the mixed-source scalar sector, confirming the no-go covers all 14 Tier 2 mechanism tests (SIM131–SIM144). Next decisive test: DESI Y3 (~2027).
 
 ---
 
@@ -42,7 +42,7 @@ Papers/
 
 | Paper | Title | Sims | Verdict |
 |-------|-------|------|---------|
-| I | Two structural no-go theorems for late-time modifications | SIM131–143 | FAIL/NO-GO |
+| I | Two structural no-go theorems for late-time modifications | SIM131–144 | FAIL/NO-GO |
 | II | Framework, field equations, and 22 observational tests | SIM80–111 | PASS (2.77σ floor) |
 | III | UV finiteness, two-loop, asymptotic freedom of Λ₀ | SIM102–106 | PASS |
 | IV | Galactic constraints; Ψ cannot replace dark matter | SIM99–100, 103 | FAIL |
@@ -121,20 +121,21 @@ All six probes fail. Structural no-go established (Paper VII).
 | SIM135 | Bi-scalar (Ψ frozen, φ sourced by R) | 3.73–5.60σ | FAIL |
 | SIM136 | Horndeski G^{μν}∂Ψ² kinetic | 3.53–3.75σ | FAIL |
 
-### Phase 4 — Late-Time Extensions (SIM137–SIM143)
+### Phase 4 — Late-Time Extensions (SIM137–SIM144)
 
-Second structural no-go established (Paper VIII). Phase 4 gate reached.
+Second structural no-go established. Tier 2 mechanism space exhaustively covered by SIM144.
 
 | Sim | Tier | Mechanism | Verdict |
 |-----|------|-----------|---------|
 | SIM137 | T1 | SPARC failure-mode analysis | STRUCTURAL\_PATTERN |
 | SIM138 | T1 | DESI per-bin sensitivity | DISTRIBUTED |
 | SIM139 | T1 | RSD shape diagnostic | SHAPE\_FIXABLE |
-| SIM142 | T2 | Galileon G₃(Ψ)□Ψ (P4-A) | FAIL/STRUCTURAL |
-| SIM141 | T2 | Running Λ₀(a) / BD analog (P4-B) | PARTIAL — θ* 63σ |
+| SIM140 | T2 | Step potential (P4-A) | PREDICTED FAIL (not run) |
+| SIM141 | T2 | Running Λ₀(a) / BD analog (P4-B) | FAIL/STRUCTURAL — θ* 63σ |
+| SIM142 | T2 | Galileon G₃(Ψ)□Ψ (P4-C) | FAIL/STRUCTURAL |
 | SIM143 | T2 | Bi-scalar Ψ+φ quintessence (P4-D) | FAIL/STRUCTURAL |
-| SIM140 | T2 | Step potential (P4-C) | PREDICTED FAIL (not run) |
-| SIM144–146 | T3 | MCMC / UV recheck / predictions | DEFERRED (no Tier 2 PASS) |
+| SIM144 | T2 | Mixed-source φ (ξ_R + β_m) — completeness probe (P4-E) | FAIL/STRUCTURAL |
+| SIM145–146 | T3 | UV recheck / predictions | DEFERRED (no Tier 2 PASS) |
 
 ---
 
@@ -181,4 +182,4 @@ CC BY-NC 4.0 — Attribution-NonCommercial. Free to share and adapt with credit;
 
 **Author:** Christopher Robert Barrick Wilson  
 **Contact:** C.Isomorph@gmail.com  
-**Last updated:** 2026-05-07
+**Last updated:** 2026-05-13

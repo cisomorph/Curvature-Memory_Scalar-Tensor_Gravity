@@ -117,18 +117,71 @@ Papers: `Papers/phase2/`
 
 ---
 
+## Phase 3 — Tier 2 Curvature-Sourced Extensions
+
+Objective: test whether any curvature-sourced scalar modification of the Phase 1 action can reduce the DESI tension while preserving CMB constraints. All six tests return FAIL (Theorem 1: R-sourced scalars initialized at zero grow monotonically, increasing F_eff and suppressing H(z) at DESI redshifts).  
+Paper: Paper I §3.3 (SIM131–SIM136).
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM131 | ξΨR conformal coupling (ξ = 1/6) — direct Theorem 1 test | FAIL | φ grows monotonically; F_eff increases; DESI tension worsens |
+| SIM132 | ξΨR scan over ξ ∈ {0.01, 0.1, 1.0, 10} | FAIL | Monotone failure confirmed across all ξ; Theorem 1 holds |
+| SIM133 | Gauss-Bonnet coupling αφ𝒢 | FAIL | 𝒢-sourced φ grows; same monotone-F_eff structure as Theorem 1 |
+| SIM134 | Gauss-Bonnet parameter scan | FAIL | No α evades F_eff increase; DESI tension worsens or θ* violated |
+| SIM135 | k-essence: non-standard kinetic term X + X² | FAIL | Kinetic modification cannot raise H(z) without CMB violation |
+| SIM136 | Horndeski G^{μν}∂_μΨ∂_νΨ coupling | FAIL | Derivative coupling produces same structural suppression of H(z) |
+
+---
+
+## Phase 4 — Tier 1 Diagnostics and Tier 2 Late-Time H(z) Extensions
+
+Objective: test whether any late-time H(z) boost mechanism can reduce the DESI tension while preserving CMB constraints. Tier 1 sims are diagnostics that guided Tier 2 mechanism selection; Tier 2 tests all return FAIL (Theorem 2: any δH ≥ 0 at z < z_rec with fixed r_s shifts θ* above the Planck bound).  
+Paper: Paper I §3.4 (SIM137–SIM144).
+
+### Tier 1 — Diagnostics
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM137 | SPARC PASS/FAIL pattern analysis — KS tests on galaxy structural features | PASS | χ-DM succeeds for low-mass gas-dominated dwarfs; structural soliton-size failure for massive galaxies; 5 features KS p < 0.01 |
+| SIM138 | DESI Y1 tension bin decomposition — identify z-distribution of residual | PASS | Tension distributed across z=0.5–1.3 (LRG1/2/3, ELG); favours smooth H(z) evolution over sharp transition |
+| SIM139 | RSD shape failure analysis (SIM128 follow-up) — systematic slope identification | PASS | fσ₈ deficit at z<0.5, excess at z≥0.5; structurally interpretable; two-parameter phenomenological fix identified |
+| SIM140 | Symmetron step potential (P4-A) | — | Not run (spec only); deprioritised after SIM138 |
+
+### Tier 2 — Mechanism Tests
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM141 | Running Λ₀(a) — phenomenological Brans-Dicke analog (P4-B) | FAIL | Best case: DESI 0.547σ at (tanh, a_trans=0.50) but θ* shifts 63σ above Planck; structural anti-correlation confirmed |
+| SIM142 | Galileon G₃(Ψ)□Ψ sector (P4-C) — simplest Horndeski G₃ extension | FAIL | G₃(Ψ) only ≡ rescaled kinetic; max ΔH/H=1.08% at c₃=0.1; 5× too small for DESI; G₃_X≠0 not tested here |
+| SIM143 | Bi-scalar: Phase 1 Ψ + decoupled quintessence φ (P4-D) | FAIL | Thawing φ: Ω_φ(z_drag)=0 universally; Δr_s=0 for all scan cases; SIM141 anti-correlation applies without exception |
+| SIM144 | Mixed-source scalar φ (ξ_R coupling + β_m matter coupling) — completeness probe (P4-E) | FAIL | 4×4 grid (ξ_R,β_m)∈{0,0.01,0.1,1.0}²; no case evades both theorems; closes final gap in Tier 2 mechanism space |
+
+### Tier 3 — Not Run
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM145 | UV consistency recheck of winning mechanism | — | Not run (no Tier 2 winner) |
+| SIM146 | Distinctive prediction extraction for DESI Y3/Euclid | — | Not run (no Tier 2 winner) |
+
+---
+
 ## Summary Statistics
 
 | Phase | Sims | PASS | FAIL | PARTIAL |
 |-------|------|------|------|---------|
-| Phase 1 (P-I)    | 6  | 5 | 0 | 1 |
-| Phase 1 (P-II)   | 16 | 14 | 2 | 0 |
-| Phase 1 (P-III)  | 1  | 1 | 0 | 0 |
-| Phase 1 (P-IV)   | 4  | 4 | 0 | 0 |
-| Phase 1 (P-V)    | 3  | 1 | 2 | 0 |
-| Phase 1 extension| 1  | 0 | 1 | 0 |
-| Phase 2          | 15 | 2 | 9 | 4 |
-| **Total**        | **46** | **27** | **14** | **5** |
+| Phase 1 (P-I)        |  6 |  5 |  0 | 1 |
+| Phase 1 (P-II)       | 16 | 14 |  2 | 0 |
+| Phase 1 (P-III)      |  1 |  1 |  0 | 0 |
+| Phase 1 (P-IV)       |  4 |  4 |  0 | 0 |
+| Phase 1 (P-V)        |  3 |  1 |  2 | 0 |
+| Phase 1 extension    |  1 |  0 |  1 | 0 |
+| Phase 2              | 15 |  2 |  9 | 4 |
+| Phase 3 (Tier 2 curv)|  6 |  0 |  6 | 0 |
+| Phase 4 (Tier 1 diag)|  3 |  3 |  0 | 0 |
+| Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
+| **Total (run)**      | **59** | **30** | **24** | **5** |
+
+SIM140, SIM145, SIM146 not counted (spec only, not run).
 
 ---
 
@@ -136,4 +189,4 @@ Papers: `Papers/phase2/`
 
 - **SIM81** was skipped (reserved / not published).
 - **SIM1–SIM79**: Pre-series exploratory runs (old `simulation_XX` format, pre-locked-action framework). Superseded by SIM80+ series. Key issues: SIM04/SIM11 READMEs swapped, SIM09 Ψ→−40 unphysical, SIM14 sweep broken.
-- **SIM114+**: Phase 2 programme pending (DM sector, full cosmological tests, Solar System screening with β coupling).
+- **Phase 3/4 no-go conclusion**: All 14 mechanism tests (SIM131–SIM144) returned FAIL. The 2.77σ DESI residual is structural and irreducible within the CMSTG action class.

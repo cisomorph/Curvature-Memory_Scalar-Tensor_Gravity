@@ -17,5 +17,5 @@
     "note": "Integrate dLambda0/d(ln k_m) = beta(Lambda0, k_m) forward (IR->UV) and backward (UV->IR)"
   },
 
-  "notes": "From SIM104 vertex correction: delta_Lambda0 ~ -Lambda0^3 * k_m^2 / (16pi^2 * m0^2). Analytic prediction: Lambda0(k_m)^-2 = Lambda0(k_m0)^-2 + (k_m^2 - k_m0^2)/(16pi^2 m0^2). This predicts asymptotic freedom: Lambda0 -> 0 as k_m -> infinity. Verify numerically and compute the UV boundary condition."
+  "notes": "From SIM104 vertex correction: delta_Lambda0 ~ -Lambda0^3 * k_m^2 / (16pi^2 * m0^2). Analytic prediction: Lambda0(k_m)^-2 = Lambda0(k_m0)^-2 + (k_m^2 - k_m0^2)/(16pi^2 m0^2). This predicts a GR-limit fixed point (negative beta function): Lambda0 -> 0 as k_m -> infinity. Verify numerically and compute the UV boundary condition."
 }

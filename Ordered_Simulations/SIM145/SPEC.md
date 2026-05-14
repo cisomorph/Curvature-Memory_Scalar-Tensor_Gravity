@@ -12,7 +12,7 @@ Does the winning Phase 4 mechanism preserve the UV finiteness and Ward identity 
 
 ## Motivation
 
-SIM104 established Ward identity Π_hh(0) = 0 at full one-loop. SIM105 established RG flow with Λ₀ = 0 UV fixed point (asymptotic freedom). SIM106 closed the two-loop graviton sector. These are CMSTG's strongest theoretical results — the theory is UV-complete at loop level.
+SIM104 established Ward identity Π_hh(0) = 0 at full one-loop. SIM105 established RG flow with Λ₀ = 0 UV fixed point (negative beta function, GR limit). SIM106 closed the two-loop graviton sector. These are CMSTG's strongest theoretical results — the theory is UV-complete at loop level.
 
 Any new term in the Lagrangian can silently break these results. A winning mechanism that solves DESI but introduces UV divergences is not a physical theory — it is an effective description that needs to be embedded in something better.
 
@@ -51,7 +51,7 @@ The tests required depend on which sim won:
 
 1. Read winner's RESULT.md. Identify the new Lagrangian term(s).
 2. Determine new Feynman vertices arising from the term.
-3. For each Phase 1 UV result (Ward identity, asymptotic freedom, two-loop graviton), check whether the new vertex contributes to the relevant diagrams.
+3. For each Phase 1 UV result (Ward identity, Λ₀ fixed point, two-loop graviton), check whether the new vertex contributes to the relevant diagrams.
 4. For each diagram that does receive new contributions:
    - Compute one-loop correction with memory-regulated propagators
    - Verify finiteness (either exact cancellation, symmetry argument, or explicit regulation by k_m)

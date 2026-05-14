@@ -24,7 +24,7 @@ Theoretical note:
   Λ₀(a) is NOT derived from the action — it is a phenomenological parametrization.
   c_T = c analytically (same argument as Phase 1: G₃=G₅=0, F_X=0).
   SIM105 RG consistency: tanh form preserves Λ₀→Λ₀_CMB at high z (CONSISTENT);
-  linear and exponential forms give Λ₀→∞ at a→0 (INCONSISTENT with asymptotic freedom).
+  linear and exponential forms give Λ₀→∞ at a→0 (INCONSISTENT with negative beta function / GR-limit fixed point).
   A PASS result requires SIM145 UV recheck + Phase 5 first-principles derivation.
 
 PASS criteria (all must hold):
@@ -307,7 +307,7 @@ def compute_rsd(res):
 
 # ── SIM105 RG consistency check ───────────────────────────────────────────────
 def sim105_check(form, params, res):
-    """Check SIM105 asymptotic-freedom consistency for this Λ₀(a) form."""
+    """Check SIM105 RG consistency (negative beta function, GR-limit fixed point) for this Λ₀(a) form."""
     L0_today = res['L0_today']
     L0_at_CMB = L0_func(a_CMB, form, params)
     # UV consistency: at a→0, does Λ₀ → Λ₀_CMB (not diverge)?

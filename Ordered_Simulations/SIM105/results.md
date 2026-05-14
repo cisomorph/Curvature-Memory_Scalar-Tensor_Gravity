@@ -1,12 +1,12 @@
 # SIM105 — Results
 
 **Phase:** Phase 1  
-**Title:** Λ₀ Running / Asymptotic Freedom  
+**Title:** Λ₀ Running / RG Flow and Fixed Point  
 **Verdict:** N/A
 
 ## What was tested
 
-Λ₀(μ) RG flow; asymptotic freedom (Λ₀→0 as μ→∞).
+Λ₀(μ) RG flow; negative beta function; Λ₀ fixed point at Λ₀=0 (GR limit, μ→∞).
 
 ## Context
 

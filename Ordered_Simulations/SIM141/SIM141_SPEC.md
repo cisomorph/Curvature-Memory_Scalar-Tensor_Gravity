@@ -8,7 +8,7 @@
 
 ## Question
 
-Can a time-varying coupling Λ₀(a), decreasing after recombination, produce F_eff(z < 1) < F_eff(z_CMB) while preserving the CMB acoustic scale and respecting the SIM105 asymptotic-freedom UV structure?
+Can a time-varying coupling Λ₀(a), decreasing after recombination, produce F_eff(z < 1) < F_eff(z_CMB) while preserving the CMB acoustic scale and respecting the SIM105 UV structure (negative beta function, Λ₀ fixed point)?
 
 ## Motivation
 
@@ -66,7 +66,7 @@ All with Λ₀_CMB = 0.003 (Phase 1 locked).
 
 - (a) CMB preserved: 100θ* ∈ [1.0408, 1.0414], Δ(−2 ln L_plik) < +5
 - (b) DESI tension < 2σ (joint χ² < 12)
-- (c) SIM105 RG structure not contradicted (Λ₀ flow remains monotone and asymptotic-free)
+- (c) SIM105 RG structure not contradicted (Λ₀ flow remains monotone with negative beta function)
 - (d) No tachyon; BBN G_eff bound satisfied
 - (e) Phase 1 passes preserved (BBN, Solar System, GW speed)
 

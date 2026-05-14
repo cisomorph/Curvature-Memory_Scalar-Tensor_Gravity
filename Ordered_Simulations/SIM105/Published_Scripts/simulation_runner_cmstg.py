@@ -9,7 +9,7 @@ which implies a nontrivial beta function for Lambda0. This simulation:
 
   1. Computes beta(Lambda0, k_m) numerically from the one-loop vertex correction
   2. Integrates the RG flow ODE: d(Lambda0)/d(ln k_m) = beta(Lambda0, k_m)
-  3. Determines whether Lambda0 has a UV fixed point (asymptotic freedom) or UV Landau pole
+  3. Determines whether Lambda0 has a UV fixed point (negative beta function) or UV Landau pole
   4. Maps the UV boundary condition: what Lambda0(k_UV) flows to Lambda0_obs ~ 0.003?
   5. Computes the IR Landau pole scale (if any)
 
@@ -96,7 +96,7 @@ for i, k in enumerate(np.logspace(-2, 3, 10)):
     print(f"  {k:8.3f}  {bn:14.3e}  {ba:14.3e}  {rt:7.3f}")
 print()
 
-# Check sign: negative beta = asymptotic freedom (coupling decreases at high k_m)
+# Check sign: negative beta drives Lambda0 to GR-limit fixed point (coupling decreases at high k_m)
 print(f"  Beta sign: {'NEGATIVE' if beta_num[-1] < 0 else 'POSITIVE'}")
 print(f"  => Lambda0 {'DECREASES' if beta_num[-1] < 0 else 'INCREASES'} with k_m")
 print(f"  => {'ASYMPTOTICALLY FREE (UV fixed point at Lambda0=0)' if beta_num[-1] < 0 else 'LANDAU POLE in UV'}")
@@ -312,7 +312,7 @@ ax.axvline(k_m_nat, color='green', ls=':', lw=1.5, label=r'$k_m^{\rm nat}=9.15$'
 ax.axvline(m0, color='gray', ls=':', lw=1.5, label=r'$m_0=0.01$')
 ax.set_xlabel(r'$k_m$ [Mpc$^{-1}$]')
 ax.set_ylabel(r'$\Lambda_0(k_m)$')
-ax.set_title(r'Running $\Lambda_0$: asymptotic freedom')
+ax.set_title(r'Running $\Lambda_0$: negative beta function, GR-limit fixed point')
 ax.legend(fontsize=8)
 ax.grid(True, alpha=0.3)
 ax.set_ylim(1e-7, 1.0)
@@ -384,7 +384,7 @@ diag = {
     },
     "numerical_vs_analytic": num_vs_ana,
     "conclusion": (
-        "Lambda0 is asymptotically free: beta < 0, Lambda0 -> 0 as k_m -> inf. "
+        "Lambda0 has a negative beta function and a GR-limit fixed point: beta < 0, Lambda0 -> 0 as k_m -> inf. "
         "The UV fixed point Lambda0=0 is pure GR — CMSTG deforms away from GR in the IR. "
         "Lambda0_obs = 0.003 is stable: IR running < 0.003% from k_m=0 to 9.15. "
         "Analytic formula 1/Lambda0^2 = 1/Lambda0_obs^2 + km^2/(16pi^2 m0^2) validated to <1%. "

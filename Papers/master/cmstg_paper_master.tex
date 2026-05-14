@@ -121,7 +121,7 @@ The key results are:
     $\delta\Lambda_0/\Lambda_0\approx2.4\times10^{-2}$ finite; two-loop
     $\Sigma_D/m_0^2=3.4\times10^{-6}$ (perturbative hierarchy stable);
     UV-finiteness confirmed at full one-loop level in the resummed theory;
-(xvi)~RG flow of $\Lambda_0$ (Sim~105): beta function negative (asymptotically free);
+(xvi)~RG flow of $\Lambda_0$ (Sim~105): beta function negative ($\Lambda_0$ fixed point at $\Lambda_0=0$);
     $\Lambda_0=0$ is a UV fixed point (theory reduces to GR+scalar at high energies);
     analytic formula $1/\Lambda_0^2=1/\Lambda_{0,\rm obs}^2+(k_m^2-k_{m,\rm nat}^2)/(16\pi^2 m_0^2)$
     validated; no IR Landau pole; IR running $< 2.5\%$;
@@ -194,7 +194,7 @@ all content from Papers~I--V\@:
 Paper~I (cosmological framework, Sims~82--98);
 Paper~II (extended observational constraints, Sims~87--110);
 Paper~III (BAO sound horizon from first principles, Sim~101);
-Paper~IV (UV structure and asymptotic freedom, Sims~102--106);
+Paper~IV (UV structure and $\Lambda_0$ fixed point, Sims~102--106);
 Paper~V (dark matter exhaustive tests, Sims~99--100, 103).
 All simulation sections, figures, tables, and appendices are unified here.
 Appendix~\ref{app:loop_integrals} collects the loop integral identities
@@ -1855,10 +1855,10 @@ $\infty$ (UV)    & $0$        \\
 \end{tabular}
 \end{center}
 
-\paragraph{Asymptotic freedom.}
+\paragraph{$\Lambda_0$ fixed point.}
 $\Lambda_0 = 0$ is a UV fixed point: the theory approaches pure GR at
-high energies ($k_m\to\infty$).  CMSTG is \emph{asymptotically free} in
-the coupling $\Lambda_0$.
+high energies ($k_m\to\infty$).  The coupling $\Lambda_0$ has a negative
+beta function and flows to its GR-limit fixed point in the UV\@.
 
 In the infrared ($k_m \lesssim m_0$), the coupling freezes.
 The total IR running from $k_m\to 0$ to $k_m = k_m^{\rm nat}$ is
@@ -1877,7 +1877,7 @@ coupling is irrelevant and the theory reduces to GR plus a free massive
 scalar.  CMSTG deforms away from GR only in the infrared
 ($k_m\sim m_0$), generating the observed coupling $\Lambda_0\approx 0.003$
 as an IR attractor.  The $\Lambda_0 = 0.003$ is not a fine-tuned
-input but the natural IR value for a theory with asymptotic freedom
+input but the natural IR value for a theory with a negative beta function
 and memory scale $\tau_m\sim 1/k_m^{\rm nat} \approx 0.11\,\mathrm{Mpc}$.
 
 % ============================================================
@@ -1934,7 +1934,7 @@ sector.  The last explicit caveat from Sim~104 is now closed.
 Combined with Sims~102--105, the UV structure of CMSTG is:
 \begin{itemize}
 \item All one-loop diagrams: UV-finite under memory damping + Ward identity (Sim~104).
-\item $\Lambda_0$ RG flow: asymptotically free, UV fixed point $\Lambda_0=0$ (Sim~105).
+\item $\Lambda_0$ RG flow: negative beta function, GR-limit fixed point $\Lambda_0=0$ (Sim~105).
 \item Two-loop graviton sector: UV-finite under Dyson resummation (Sim~106).
 \end{itemize}
 The CMSTG theory is UV-finite through the two-loop graviton sector under
@@ -2506,7 +2506,7 @@ physics: curvature is not statically sourced by mass, but dynamically shaped by 
   \item Observational consistency (Sims~87--98): BAO $\chi^2/\mathrm{dof} = 1.22$ (BOSS, Sim~87), $1.36$ (DESI Y1, Sim~94); CMB TT RMS $= 2.93\%$ (Sim~88); joint CMB+BAO $\Delta\chi^2 = 0$ (both datasets); $\sigma_8$ unmodified $|\Delta\sigma_8| < 0.007\%$; EE/TE RMS $< 0.2\%/0.5\%$ at joint best-fit (Sim~95); RSD $f\sigma_8$: $\chi^2/\mathrm{dof}=0.86$, $\Delta\chi^2(\mathrm{CMSTG}-\Lambda\mathrm{CDM})=-0.14$ (Sim~96); official Planck plikHM: $\Delta(-2\ln\mathcal{L})=-0.013$ at optimum (Sim~98).
   \item Galaxy rotation curve tests (Sims~99--100, 103): the locked action at $\Lambda_0=0.003$ does not replace dark matter.  Static test (Sim~99): Yukawa halo exponentially steeper than the $1/r^2$ isothermal profile required for flat curves.  Time-domain test (Sim~100): the galactic curvature coupling $2\Lambda_0|R_{\rm gal}|\approx5\times10^{-9}\,{\rm kpc}^{-2}$ is $5\times10^7$ times weaker than $m_0^2$---curvature condensation is impossible at galactic densities.  Vainshtein screening (Sim~103): the galactic field gradient $|\delta\Psi'|\sim10^{-8}\,\mathrm{kpc}^{-1}$ is $10^6\times$ below the nonlinear threshold for all scanned $(\alpha_V,M_V)$; energy density deficit is $2.7\times10^6\times$ the isothermal requirement.  All kinetic modifications of the locked action are exhausted; new physics (a first-principles coupling between $\Psi$ and baryonic matter) is required.
   \item Phase~2 matter sector (Sims~112--130): the unlocked action with SSB hilltop quintessence reduces the DESI tension to $2.70\sigma$ (Sim~113) but leaves a structural floor; a fuzzy $\chi$ boson seeded by $\Psi$ passes the full 161-galaxy SPARC rotation-curve test with median $m_{22}=0.28$ (65/161 PASS, Sim~119); $\chi$-DM decouples from the $\Psi$ dark-energy sector at background order (Sim~120); the joint DESI+Planck MCMC confirms the $\sim2.7\sigma$ floor is structural even with the unlocked action (Sim~121C, $2.63\sigma$~MAP); the H$_0$ tension cannot be addressed via $G_{\rm eff}$ variation within \CMSTG\ (Sim~121B).
-  \item RG flow (Sim~105): $\Lambda_0$ is asymptotically free --- beta function is negative, $\Lambda_0\to 0$ as $k_m\to\infty$, UV fixed point is pure GR.  Analytic running: $\Lambda_0(k_m)^{-2} = \Lambda_0^{-2}+(k_m^2-k_{m,\rm nat}^2)/(16\pi^2 m_0^2)$, confirmed numerically to $<0.001\%$.  IR running $<2.5\%$; $\Lambda_0=0.003$ is an IR attractor; no Landau pole.
+  \item RG flow (Sim~105): $\Lambda_0$ has a negative beta function; $\Lambda_0\to 0$ as $k_m\to\infty$, UV fixed point is pure GR.  Analytic running: $\Lambda_0(k_m)^{-2} = \Lambda_0^{-2}+(k_m^2-k_{m,\rm nat}^2)/(16\pi^2 m_0^2)$, confirmed numerically to $<0.001\%$.  IR running $<2.5\%$; $\Lambda_0=0.003$ is an IR attractor; no Landau pole.
   \item Two-loop graviton sector (Sim~106): Ward identity $\Pi_{hh}(0)=0$ exact at all loop orders; resummed $\Psi$ propagator regulates mixed diagrams; $\delta Z_h\sim10^{-5}$ negligible. Combined with Sims~102, 104, 105: CMSTG UV-finite through two-loop graviton sector under Dyson resummation.
   \item UV regulation (Sims~102, 104): one-loop $\Psi$ self-energy from $\Lambda_0\Psi R$ vertex confirmed finite under memory damping --- $\Sigma(0) = \Lambda_0^2 k_m^4/(64\pi^2)$; quartic UV divergence regulated; naturalness requires $\tau_m > 0.11\,\mathrm{Mpc}$ (Sim~102).  Full one-loop calculation (Sim~104): graviton wavefunction renormalization protected by diffeomorphism Ward identity $\Pi_{hh}(0)=0$; vertex correction $\delta\Lambda_0/\Lambda_0 \approx 2.4\times10^{-2}$ finite; two-loop $\Sigma_D/m_0^2 = 3.4\times10^{-6}$ (perturbative hierarchy $\Sigma_A \gg \Sigma_C \gg \Sigma_D$ confirmed).  UV-finiteness holds at full one-loop level in the resummed theory; two-loop graviton self-energy remains open.
   \item Predicts recursive graviton emission via curvature memory spikes.

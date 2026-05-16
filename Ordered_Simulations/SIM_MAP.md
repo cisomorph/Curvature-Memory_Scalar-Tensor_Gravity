@@ -7,7 +7,7 @@ Organised by phase and paper. Results: **PASS** / **FAIL** / **PARTIAL** (see no
 
 ## Standalone Paper Status
 
-Submission-ready papers at `Papers/paper{1–4}_*/`. Last updated: 2026-05-15.
+Submission-ready papers at `Papers/paper{1–4}_*/`. Last updated: 2026-05-16.
 
 | # | Title | File | Target | Pages | Sims | Status |
 |---|---|---|---|---|---|---|
@@ -201,9 +201,14 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 
 | SIM | Description | Result | Notes |
 |-----|-------------|--------|-------|
-| SIM151 | Coupled chameleon Ψ-baryon derivation: extended action, KG equation, screening conditions, fifth-force law | SELF-CONSISTENT | Pre-check PASS: back-reaction ΔG_eff/G_N = 1.56×10⁻⁸ ≪ 4% bound — Option B is a genuinely separate channel; fifth-force formula a_tot/a_N = 1.041 + 2β₀² (Λ₀-independent, uncapped); β₀* = 1.018 for NGC 3198; β_∞ ≲ 2.4×10⁻¹⁰ from z_drag subdominance; f(x) = tanh²(x) screening profile; no algebraic obstruction; SIM152/SIM153 queued |
+| SIM151 | Coupled chameleon Ψ-baryon derivation: extended action, KG equation, screening conditions, fifth-force law | SELF-CONSISTENT | Pre-check PASS: back-reaction ΔG_eff/G_N = 1.56×10⁻⁸ ≪ 4% bound — Option B is a genuinely separate channel; fifth-force formula a_tot/a_N = 1.041 + 2β₀² (Λ₀-independent, uncapped); β₀* = 1.018 for NGC 3198; β_∞ ≲ 2.4×10⁻¹⁰ from z_drag subdominance; f(x) = tanh²(x) screening profile; no algebraic obstruction |
 | SIM152 | Single-galaxy rotation curve fit — NGC 3198 at β₀ = 1.018 | FAIL | Stage 1 χ²/dof = 91.9 (threshold ≤ 2.0); ρ_sc* pinned at lower boundary (uniform limit optimal); shape inversion: E_required(r) monotonically increasing, E_model(r) monotonically decreasing, Pearson r = −0.811 (anti-correlated); structural no-go theorem: monotone-increasing β(ρ) cannot produce flat rotation curves; Stage 2 not reached |
-| SIM153 | Cosmological checks — f_σ8, BAO r_s, Ψ subdominance at z_drag | QUEUED | |
+
+## Paper V — Option C Branch
+
+| SIM | Description | Result | Notes |
+|-----|-------------|--------|-------|
+| SIM153 | Sextic condensate derivation: V(Ψ) + μ₆Ψ⁶ soliton as DM candidate — two fail-fast pre-checks | HALT (PC1=PASS, PC2=FAIL) | PC1 PASS: condensate E(r) qualitatively compatible with flat rotation curves; all four reference radii within factor 2 of E_required (vs SIM152 structural inversion). PC2 FAIL — three independent obstructions: (1) 466× mass gap: M_C_gal=7.2×10¹⁰ M_sun vs M_C_cosmo_req=3.35×10¹³ M_sun; (2) gap-closing via extended r_c (≥232 kpc) produces solid-body V_C ∝ r incompatible with flat V_obs; (3) coupling sign: locked m₀²>0, λ>0 (both repulsive) — soliton formation requires negative lower-order coupling, breaking the locked action. SIM154/SIM155 not warranted. Completes A–B–C trilogy: all three DM channels fail structurally. |
 
 ---
 
@@ -223,7 +228,8 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
 | Phase 5              |  4 |  0 |  3 | 1 |
 | Paper V Option B     |  2 |  1 |  1 | 0 |
-| **Total (run)**      | **65** | **31** | **28** | **6** |
+| Paper V Option C     |  1 |  0 |  1 | 0 |
+| **Total (run)**      | **66** | **31** | **29** | **6** |
 
 SIM140, SIM145, SIM146 not counted (spec only, not run).
 SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
@@ -232,6 +238,7 @@ SIM149 counted as FAIL (three independent failure modes).
 SIM150 counted as FAIL/INCOMPATIBLE (Stage 2 all five constraints violated).
 SIM151 counted as PASS/SELF-CONSISTENT (analytical derivation, no pass/fail threshold; architecture passes all pre-checks).
 SIM152 counted as FAIL (Stage 1 FAIL χ²/dof = 91.9; structural no-go theorem for monotone-increasing β(ρ); Stage 2 not reached).
+SIM153 counted as FAIL (HALT at Pre-check 2; PC1 PASS but PC2 fails on three independent structural grounds; SIM154/155 not warranted).
 
 ---
 
@@ -241,3 +248,4 @@ SIM152 counted as FAIL (Stage 1 FAIL χ²/dof = 91.9; structural no-go theorem f
 - **SIM1–SIM79**: Pre-series exploratory runs (old `simulation_XX` format, pre-locked-action framework). Superseded by SIM80+ series. Key issues: SIM04/SIM11 READMEs swapped, SIM09 Ψ→−40 unphysical, SIM14 sweep broken.
 - **Phase 3/4 no-go conclusion**: All 14 mechanism tests (SIM131–SIM144) returned FAIL. The 2.77σ DESI residual is structural and irreducible within the CMSTG action class.
 - **Phase 5 no-go conclusion**: Both Theorem 2 loopholes (Ψ_pre, SIM148; Ψ_local, SIM149) returned FAIL; SIM150 confirms universality. The kernel weight w=0 at all pre-recombination and galactic timescales at locked k_m=10 Mpc⁻¹ (Ψ_pre dead, Λ₀-independent). The G_eff/G ceiling is structural: the only Λ₀ that lifts it to 3.115 (Λ₀=0.154, 51×locked) violates Cassini PPN by 2×10⁴×, f_σ8 by 39σ, and UV finiteness by 38×. No parameter in the locked action revives either loophole. DESI tension and galactic rotation are both structurally irreducible within CMSTG.
+- **Paper V Option A–B–C no-go conclusion**: All three proposed dark-matter channels fail on independent structural grounds. Option A (G_eff modification via m(Ψ)): ceiling G_eff/G_max = 1.041 vs 3.115 required (SIM149, Mode 3). Option B (fifth force via β(ρ_b)Ψρ_b): shape inversion — E_model ↘ while E_required ↗, Pearson r = −0.81 (SIM152). Option C (sextic condensate, T_μν sourcing): 466× mass gap between galactic fit and cosmological DM density; gap-closing produces solid-body rotation curve; coupling sign breaks lock (SIM153). The Paper V DM programme is complete and closed.

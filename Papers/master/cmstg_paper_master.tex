@@ -171,7 +171,20 @@ The key results are:
     (65/161 PASS, Sim~119); $\chi$-DM decouples exactly from the $\Psi$
     dark-energy sector at background order (Sim~120); the joint DESI+Planck
     MCMC confirms the $\sim2.7\sigma$ DESI floor is structural even with the
-    unlocked action (Sim~121C, $2.63\sigma$~MAP).
+    unlocked action (Sim~121C, $2.63\sigma$~MAP);
+(xxvi)~Phase~5 Theorem~2 loophole closure (SIM147--SIM150): the two
+    Deser--Woodard loopholes in Paper~I's no-go theorems are both structurally
+    closed. The memory kernel $K(\Delta t)\propto\Delta t\,e^{-(k_m\Delta t)^2/4}$
+    decays on $\tau_{\rm mem}\approx200\,\mathrm{kyr}$ at locked
+    $k_m=10\,\mathrm{Mpc}^{-1}$, giving zero kernel weight at all
+    cosmological ($\geq13.4$~Gyr, SIM148) and galactic ($\geq10$~Gyr, SIM149)
+    timescales.  Separately, the $G_{\rm eff}/G_N$ ceiling $1+2\Lambda_0\Psi_0^2=
+    1.041$ at locked $\Lambda_0=0.003$ is $\sim3\times$ below the 3.115
+    required by NGC~3198 rotation curves; a $\Lambda_0$ sweep over eight decades
+    (SIM150) shows this ceiling is structural and parameter-universal: the only
+    $\Lambda_0$ that lifts it to 3.115 ($\Lambda_0=0.154$, $51\times$ the locked
+    value) violates the Cassini PPN bound by $\sim2\times10^4\times$ and all five
+    remaining locked constraints simultaneously.
 In all cosmological tests (Sims~87--98 and 107--110), CMSTG at the joint best-fit is
 statistically indistinguishable from $\Lambda$CDM at current precision. The memory
 field coupling is constrained to $\Lambda_0 < 0.095$ (95\% CL) and is cosmologically
@@ -2079,6 +2092,56 @@ cosmological best-fit cannot replace dark matter through any modification of the
 existing Lagrangian}.  A new coupling between $\Psi$ and baryonic matter,
 derivable from first principles, is the minimum new physics required.
 
+\paragraph{Phase~5 closure: Theorem~2 loopholes (SIM147--SIM150).}
+Paper~IV identifies two residual loopholes in the Paper~I no-go theorems that
+could, in principle, allow the $\Psi_{\rm local}$ halo mechanism to produce a
+sufficient $G_{\rm eff}$ boost without introducing new physics.  Phase~5
+(SIM147--SIM150) closes both.
+
+\emph{Loophole~1: pre-recombination $\Psi_{\rm pre}$ (SIM148).}
+If $\Psi$ carries a non-trivial boundary condition from before recombination,
+Theorem~2 is not directly applicable.  SIM147 characterises the CMSTG memory
+kernel and establishes a RED gate: $K(\Delta t) \propto
+\Delta t\,e^{-(k_m\Delta t)^2/4}$ with $k_m=10\,\mathrm{Mpc}^{-1}$ gives
+$\tau_{\rm mem}=2/k_m\approx200\,\mathrm{kyr}$, so $K(13.4\,\mathrm{Gyr})=
+e^{-2.4\times10^9}\equiv0$ (IEEE~754 underflow).  SIM148 scans 75 pre-phase
+model variants (agnostic $\Psi_{\rm pre}$, bounce, inflation-extended) and
+finds $\Psi_{\rm eff}(a_{\rm rec})=\Psi_{\rm pre}\times0+\Psi_{\rm locked}=
+\Psi_{\rm locked}$ identically: no pre-recombination model produces any change
+in the forward cosmological evolution.  $\Delta\chi^2_{\rm DESI}=0$ exactly.
+
+\emph{Loophole~2: local $\Psi_{\rm local}$ accumulation (SIM149--SIM150).}
+Local halo curvature could accumulate a field shift $\Delta\Psi_{\rm local}$
+and modify $G_{\rm eff}/G_N=F(\Psi_0)/F(\Psi_{\rm local})$.  SIM149 closes
+this by three independent arguments applied to NGC~3198: (i)~kernel failure
+($w(10\,\mathrm{Gyr})=0$, same decay mechanism as loophole~1); (ii)~source
+amplitude too small (even with $K=1$ throughout, $\Delta\Psi_{\rm hyp}=
+-2.79\,M_{\rm Pl}$ gives $G_{\rm eff}/G_N=1.041$, far below the required
+3.115); (iii)~mechanism ceiling: the maximum $G_{\rm eff}/G_N$ at fixed
+$\Lambda_0=0.003$ is
+\begin{equation}
+  \left.\frac{G_{\rm eff}}{G_N}\right|_{\rm max}
+    = 1 + 2\Lambda_0\Psi_0^2 = 1.041,
+  \label{eq:geff_ceiling}
+\end{equation}
+set by $\Psi_{\rm local}\to0$, which is $\sim3\times$ below the required 3.115.
+SIM150 subsequently sweeps $\Lambda_0\in[10^{-6},10^2]$ and demonstrates that
+the ceiling is \emph{structural and parameter-universal}: the analytic crossing
+$\Lambda_{0,{\rm req}}=(G_{\rm target}-1)/(2\Psi_0^2)=0.154$ (51 times the
+locked value) violates the Cassini PPN bound $|\gamma_{\rm PPN}-1|<2.3\times
+10^{-5}$ by a factor $\sim2\times10^4$ and all five remaining locked constraints
+simultaneously ($f\sigma_8$ tension $39\sigma$; UV self-energy $\Sigma(0)$
+exceeds threshold by $38\times$; $\Delta\chi^2_{\rm BAO}=1629$; $\Psi$
+contributes $7.7\%$ of the energy budget at recombination).  No
+$\Lambda_0$ within the Solar-System-consistent locked action revives the
+loophole.
+
+Both loopholes are independently dead via distinct structural arguments
+($k_m$-driven for loophole~1; Solar-System coupling for loophole~2).
+Phase~5 confirms: \emph{DESI tension and galactic rotation are both
+structurally irreducible within the locked \CMSTG\ action, with no parameter
+rescaling available}.
+
 % ============================================================
 \section{Effective Matter-$\Psi$ Coupling and Solar System Viability (Sim~107)}
 \label{sec:sim107}
@@ -2615,6 +2678,47 @@ occurs.  The Tier~2 mechanism space is now exhaustively covered.
 The $2.77\sigma$ DESI~Y1 residual is a \emph{structural prediction} of the
 Phase~1 locked action.  The decisive experimental test is DESI~Y3.
 
+\paragraph{Phase~5 loophole closure (SIM147--SIM150).}
+Paper~I identified two residual Deser--Woodard loopholes in Theorem~2 that the
+Phase~3/4 analysis did not cover: a non-trivial pre-recombination boundary
+condition $\Psi_{\rm pre}$ and a locally-accumulated halo field $\Psi_{\rm
+local}$.  Phase~5 (SIM147--SIM150) closes both by direct simulation.
+
+SIM147 characterises the memory kernel and establishes a RED gate: at locked
+$k_m=10\,\mathrm{Mpc}^{-1}$, the characteristic decay time is
+$\tau_{\rm mem}=2/k_m\approx200\,\mathrm{kyr}$, so $K(\Delta t)$ undergoes
+IEEE~754 double underflow at $\Delta t\gtrsim1\,\mathrm{Myr}$ --- far below
+both the recombination horizon (13.4~Gyr) and galactic halo ages ($\sim$10~Gyr).
+
+SIM148 tests $\Psi_{\rm pre}$ via 75 pre-phase model variants (agnostic scan,
+bounce, inflation-extended).  In every case $\Psi_{\rm eff}(a_{\rm rec})=
+\Psi_{\rm locked}$ identically because $K(13.4\,\mathrm{Gyr})\equiv0$:
+$\Delta\chi^2_{\rm DESI}=0$ for all scan points.  The loophole is closed.
+
+SIM149 tests $\Psi_{\rm local}$ against NGC~3198.  Three independent failure
+modes: (i)~kernel underflow ($K(10\,\mathrm{Gyr})=0$, same root cause);
+(ii)~source amplitude insufficient (even with flat $K=1$ over the full
+10.2~Gyr halo lifetime, $\Delta\Psi_{\rm hyp}=-2.79\,M_{\rm Pl}$ yields
+$G_{\rm eff}/G_N=1.041$, vs required 3.115); (iii)~coupling ceiling:
+$G_{\rm eff}/G_N\leq1+2\Lambda_0\Psi_0^2=1.041$ at any $\Psi_{\rm local}$,
+a $\sim3\times$ deficit independent of kernel amplitude.
+
+SIM150 sweeps $\Lambda_0\in[10^{-6},10^2]$ to determine whether the
+ceiling~\eqref{eq:geff_ceiling} is a feature of the locked value or an
+unavoidable structural property.  The analytic crossing point
+$\Lambda_{0,{\rm req}}=0.154$ ($51\times$ locked) produces $G_{\rm
+eff}/G_N=3.115$ but simultaneously violates the Cassini bound
+$|\gamma_{\rm PPN}-1|<2.3\times10^{-5}$ by $\sim2\times10^4\times$, raises
+$f\sigma_8$ tension to $39\sigma$, pushes the UV self-energy $\Sigma(0)$
+to $38\times$ its finiteness threshold, gives $\Delta\chi^2_{\rm BAO}=1629$,
+and makes $\Psi$ contribute $7.7\%$ of the energy budget at recombination.
+No $\Lambda_0$ within the Solar-System-consistent range satisfies both
+$G_{\rm eff}/G_N\geq3.115$ and $|\gamma_{\rm PPN}-1|<2.3\times10^{-5}$:
+these two requirements are \emph{algebraically incompatible} within
+$F(\Psi)=\tfrac{1}{2}+\Lambda_0\Psi^2$.  Both Theorem~2 loopholes are
+closed; the DESI residual and galactic rotation deficit are irreducible within
+the locked action at any $\Lambda_0$.
+
 \paragraph{Limitations and future work.}
 The observational signature of CMSTG is expected primarily at non-linear
 scales (structure formation, galaxy cluster counts, void statistics)
@@ -2741,7 +2845,7 @@ diffeomorphism invariance and is independent of eqs.~\eqref{eq:gaussian_moment}-
 % ============================================================
 \bigskip
 \noindent\textbf{Data and code availability.}
-All simulation scripts, outputs, and JSON diagnostic files (SIM82--SIM144) are
+All simulation scripts, outputs, and JSON diagnostic files (SIM82--SIM150) are
 publicly available at
 \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}.
 The four standalone journal papers are in the \texttt{Papers/paper1\_nogo},

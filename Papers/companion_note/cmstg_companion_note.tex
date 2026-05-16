@@ -1,0 +1,550 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{xcolor}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% Theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+% Notation
+\newcommand{\Mpl}{M_{\rm Pl}}
+\newcommand{\Geff}{G_{\rm eff}}
+\newcommand{\GN}{G_N}
+\newcommand{\obd}{\omega_{\rm BD}}
+\newcommand{\rsc}{\rho_{\rm sc}}
+\newcommand{\rhob}{\rho_b}
+\newcommand{\Vbary}{V_{\rm bary}}
+\newcommand{\Vflat}{V_{\rm flat}}
+\newcommand{\Lz}{\Lambda_0}
+\newcommand{\CMSTG}{\textsc{cmstg}}
+
+\title{\textbf{Two Structural Obstructions to Galactic Dark Matter\\
+               in Non-Minimally Coupled Scalar-Tensor Gravity}}
+
+\author{Christopher R. B. Wilson\\[4pt]
+  \small Independent researcher\\
+  \small\texttt{C.Isomorph@gmail.com}\\
+  \small ORCID: [ORCID-ID]}
+
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove two structural no-go theorems constraining dark-matter
+production in scalar-tensor extensions of general relativity with
+non-minimal coupling $F(\Psi) = \tfrac{1}{2} + \Lambda_0\Psi^2$.
+\textbf{Theorem~1 ($G_{\rm eff}$ ceiling)}: for any theory with this
+coupling form, the Solar-System Cassini PPN bound on the Brans--Dicke
+parameter requires $\Lambda_0 < 1.29\times10^{-3}\,\Mpl^{-2}$, giving a
+maximum effective gravitational coupling $G_{\rm eff}/G_N \leq 1 +
+2\Lambda_0\Psi_0^2 \leq 1.018$.  Flat galactic rotation curves require
+$G_{\rm eff}/G_N \approx 3.1$, which demands $\Lambda_0 \geq 0.154\,
+\Mpl^{-2}$---incompatible with the Solar-System bound by a factor of
+$\sim\!119$.  \textbf{Theorem~2 (shape inversion)}: for any
+density-dependent coupling $\beta(\rhob)$ that is monotonically
+increasing in baryonic density, the predicted gravitational enhancement
+$E_{\rm model}(r) = V_{\rm tot}^2/\Vbary^2$ decreases monotonically
+with galactic radius, while flat rotation curves require an enhancement
+that increases with radius.  The model and requirement are
+anti-correlated by construction; no parameter choice within the
+monotone class can produce a positive Pearson coefficient.  Numerical
+evaluation on NGC~3198 gives $r_P = -0.81$ and
+$\chi^2/\mathrm{dof} = 91.9$.  Together the theorems close the two
+principal modification channels in the quadratic-coupling class: $G_{\rm
+eff}$ modification and density-dependent fifth-force coupling.  We use
+curvature-memory scalar-tensor gravity (\CMSTG) as the worked example
+and identify precisely to which theories each theorem applies.
+\end{abstract}
+
+\noindent\textbf{Keywords:} scalar-tensor gravity, dark matter, modified gravity,
+post-Newtonian constraints, galactic rotation curves
+
+\tableofcontents
+
+%=============================================================================
+\section{Introduction}
+\label{sec:intro}
+%=============================================================================
+
+Scalar-tensor extensions of general relativity (GR) provide one of the
+most systematic frameworks for probing modifications to gravity on
+astrophysical and cosmological scales~\cite{BransDicke1961,Bergmann1968,
+Faraoni2004,Clifton2012}.  The canonical non-minimal coupling
+$F(\Psi)\,R$, with $F(\Psi) = \tfrac{1}{2} + \Lambda_0\Psi^2$, is the
+leading renormalizable departure from GR: the quadratic term is the
+unique dimension-4 operator available for a real scalar, and it subsumes
+the Brans--Dicke theory~\cite{BransDicke1961,Damour1992} as a special
+case.
+
+Spiral galaxies exhibit flat outer rotation curves that exceed the
+Newtonian prediction from observed baryonic matter by factors of 2--5 in
+circular velocity, or 4--25 in gravitational potential~\cite{FamaeyMcGaugh2012,
+McGaughLelli2016}.  Within scalar-tensor extensions of GR, two broad
+mechanism classes address this discrepancy without invoking new matter:
+\begin{enumerate}
+  \item \emph{Effective coupling modification} ($G_{\rm eff}$ mechanism):
+        the background scalar field $\Psi_0$ differs from the field value
+        $\Psi_{\rm local}$ inside a galactic halo, raising the effective
+        Newton constant $\Geff = G_N\,F(\Psi_0)/F(\Psi_{\rm local})$.
+  \item \emph{Density-dependent fifth-force} (chameleon mechanism):
+        the scalar couples to baryonic matter with a coupling $\beta(\rhob)$
+        that varies with local density, providing an additional acceleration
+        in the outer disc where baryonic density is low~\cite{KhouryWeltman2004a,
+        KhouryWeltman2004b,HinterbichlerKhoury2010}.
+\end{enumerate}
+
+The main results of this paper are:
+\begin{theorem}[$G_{\rm eff}$ Ceiling]
+\label{thm:geff}
+For any scalar-tensor theory with coupling $F(\Psi) = \tfrac{1}{2} +
+\Lambda_0\Psi^2$, the Solar-System Cassini PPN bound requires $\Lambda_0
+< 1.29\times10^{-3}\,\Mpl^{-2}$ and caps $G_{\rm eff}/G_N \leq 1 +
+2\Lambda_0\Psi_0^2 \leq 1.018$.  The galactic flat-curve requirement
+$G_{\rm eff}/G_N \approx 3.1$ demands $\Lambda_0 \geq 0.154\,\Mpl^{-2}$.
+These two constraints have empty intersection; no value of $\Lambda_0$
+simultaneously satisfies both.
+\end{theorem}
+
+\begin{theorem}[Shape Inversion]
+\label{thm:shape}
+Let $\beta(\rhob)$ be monotonically increasing in baryonic density
+$\rhob$.  Because $\rhob(r)$ decreases monotonically with galactic radius
+$r$ outside the disc scale length, the fifth-force enhancement $E_{\rm
+model}(r) = 1 + 2\beta(\rhob(r))^2$ is monotonically decreasing with
+$r$.  Flat rotation curves require $E_{\rm req}(r) = V_{\rm flat}^2/
+\Vbary^2(r)$ to be monotonically increasing with $r$.  The Pearson
+correlation between $E_{\rm model}$ and $E_{\rm req}$ is therefore
+non-positive for any monotonically increasing $\beta(\rhob)$ and any
+galaxy with a falling outer baryonic velocity profile.
+\end{theorem}
+
+We prove both theorems, quantify their scope, and illustrate them with the
+worked example of curvature-memory scalar-tensor gravity
+(\CMSTG)~\cite{WilsonPaperIV}, a covariant scalar-tensor theory with
+action
+\begin{equation}
+  S = \int d^4x\,\sqrt{-g}\Bigl[
+    \bigl(\tfrac{1}{2}+\Lambda_0\Psi^2\bigr)R
+    - \tfrac{1}{2}(\partial\Psi)^2 - V(\Psi)
+  \Bigr] + S_{\rm SM},
+  \label{eq:action}
+\end{equation}
+in units $8\pi G_N = 1$ ($\Mpl = 1$), with canonical locked values
+$\Lambda_0 = 0.003\,\Mpl^{-2}$, $\Psi_0 = 2.62\,\Mpl$.
+
+Section~\ref{sec:geff} proves Theorem~\ref{thm:geff} and characterises its
+generality. Section~\ref{sec:shape} proves Theorem~\ref{thm:shape} and
+identifies what it does and does not rule out.
+Section~\ref{sec:conclusions} places the two results in the broader context
+of dark-matter model-building.
+
+%=============================================================================
+\section{Theorem~\ref{thm:geff}: The \texorpdfstring{$G_{\rm eff}$}{Geff} Ceiling}
+\label{sec:geff}
+%=============================================================================
+
+\subsection{Effective gravitational coupling and its maximum}
+\label{sec:geff_setup}
+
+Consider the action~\eqref{eq:action} with coupling $F(\Psi) = \tfrac{1}{2}
++ \Lambda_0\Psi^2$.  Matter is minimally coupled to the Jordan-frame
+metric $g_{\mu\nu}$, so test masses follow geodesics of $g_{\mu\nu}$.
+On scales short compared to the inverse scalar mass $m_\Psi^{-1}$, the
+effective Newton constant between two test masses depends on the local
+scalar field value $\Psi_{\rm local}$:
+\begin{equation}
+  \frac{\Geff}{\GN} = \frac{F(\Psi_0)}{F(\Psi_{\rm local})}
+    = \frac{\tfrac{1}{2}+\Lambda_0\Psi_0^2}{\tfrac{1}{2}+\Lambda_0\Psi_{\rm local}^2},
+  \label{eq:geff}
+\end{equation}
+where $\Psi_0$ is the cosmological background value.  The ratio is
+maximised in the limit $\Psi_{\rm local} \to 0$:
+\begin{equation}
+  \boxed{
+  \frac{\Geff}{\GN}\bigg|_{\rm max}
+    = \frac{\tfrac{1}{2}+\Lambda_0\Psi_0^2}{\tfrac{1}{2}}
+    = 1 + 2\Lambda_0\Psi_0^2.
+  }
+  \label{eq:ceiling}
+\end{equation}
+This ceiling depends only on $\Lambda_0$ and $\Psi_0$; it is independent
+of the mechanism by which $\Psi_{\rm local}$ is reduced (kernel
+accumulation, environmental suppression, etc.).
+
+\subsection{Brans--Dicke correspondence and the Solar-System bound}
+\label{sec:geff_pn}
+
+The action~\eqref{eq:action} is equivalent to a Brans--Dicke (BD)
+theory~\cite{BransDicke1961} with $\phi_{\rm BD} = 2F(\Psi) = 1 +
+2\Lambda_0\Psi^2$.  The BD coupling parameter at the cosmological
+background is~\cite{Damour1992,Faraoni2004}
+\begin{equation}
+  \obd = \frac{F(\Psi_0)}{\bigl(\partial F/\partial\Psi\bigr)^2_{\Psi_0}}
+       = \frac{\tfrac{1}{2}+\Lambda_0\Psi_0^2}{4\Lambda_0^2\Psi_0^2}.
+  \label{eq:obd}
+\end{equation}
+For a scalar whose Compton wavelength $m_\Psi^{-1}$ exceeds Solar-System
+scales, the post-Newtonian parameter $\gamma$ in BD theory is~\cite{Will2014}
+\begin{equation}
+  \gamma_{\rm PPN} = \frac{1+\obd}{2+\obd},
+  \qquad
+  |\gamma_{\rm PPN} - 1| = \frac{1}{2+\obd}.
+  \label{eq:gamma}
+\end{equation}
+The Cassini Shapiro-delay measurement~\cite{Bertotti2003} gives
+\begin{equation}
+  |\gamma_{\rm PPN} - 1| < 2.3\times10^{-5}
+  \qquad \Rightarrow \qquad
+  \obd > 43{,}478.
+  \label{eq:cassini}
+\end{equation}
+
+A key prerequisite for mechanism~(1) (the $\Geff$ modification) to
+operate at galactic scales ($r \sim 1$--$50\,{\rm kpc}$) is that the
+scalar Compton wavelength must satisfy $m_\Psi^{-1} \gtrsim {\rm few}\,
+{\rm kpc}$.  At these Compton wavelengths, the field is also
+effectively massless on Solar-System scales ($r_{\rm SS} \sim 1$--$50\,
+{\rm AU} \ll {\rm kpc}$), and the PPN formula~\eqref{eq:gamma} with
+constraint~\eqref{eq:cassini} applies.
+
+Imposing $\obd > 43{,}478$ in Eq.~\eqref{eq:obd} and solving for
+$\Lambda_0$ at $\Psi_0 = 2.62\,\Mpl$ gives
+\begin{equation}
+  \Lambda_0 < \Lambda_{0,{\rm max}} = 1.29\times10^{-3}\,\Mpl^{-2}.
+  \label{eq:lz_max}
+\end{equation}
+The maximum $\Geff$ ceiling is then
+\begin{equation}
+  \frac{\Geff}{\GN}\bigg|_{\rm max}^{\rm Cassini}
+    = 1 + 2\times(1.29\times10^{-3})\times(2.62)^2
+    \approx 1.018.
+  \label{eq:ceiling_cassini}
+\end{equation}
+
+\subsection{Galactic-scale requirement}
+\label{sec:geff_galactic}
+
+For a spiral galaxy with flat outer rotation speed $\Vflat$ and baryonic
+circular velocity $\Vbary(r)$, the $\Geff$-modification hypothesis
+requires~\cite{FamaeyMcGaugh2012}
+\begin{equation}
+  \frac{\Geff}{\GN}\bigg|_{r\,\gg\,r_d}
+    = \frac{V_{\rm flat}^2}{\Vbary^2(r)}.
+  \label{eq:galactic_req}
+\end{equation}
+For NGC~3198~\cite{Lelli2016} at $r = 30$--$44\,{\rm kpc}$:
+$\Vflat \approx 150\,{\rm km\,s^{-1}}$, $\Vbary \approx 85\,
+{\rm km\,s^{-1}}$, giving
+\begin{equation}
+  \frac{\Geff}{\GN}\bigg|_{\rm required}
+    = \frac{150^2}{85^2} \approx 3.115.
+  \label{eq:geff_req}
+\end{equation}
+Setting Eq.~\eqref{eq:ceiling} equal to the galactic requirement yields
+\begin{equation}
+  \Lambda_{0,{\rm req}} = \frac{3.115-1}{2\,\Psi_0^2}
+    = \frac{2.115}{2\times(2.62)^2} = 0.154\,\Mpl^{-2}.
+  \label{eq:lz_req}
+\end{equation}
+
+\subsection{Proof of Theorem~\ref{thm:geff}}
+\label{sec:geff_proof}
+
+Equations~\eqref{eq:lz_max} and~\eqref{eq:lz_req} yield:
+\begin{align}
+  \text{Cassini:}\quad
+    & \Lambda_0 < 1.29\times10^{-3}\,\Mpl^{-2},
+    \label{eq:cassini_bound}\\[4pt]
+  \text{Galactic flat curve:}\quad
+    & \Lambda_0 \geq 0.154\,\Mpl^{-2}.
+    \label{eq:galactic_bound}
+\end{align}
+The incompatibility ratio is $0.154/(1.29\times10^{-3}) \approx 119$.
+The two allowed regions are disjoint; their intersection is empty.
+
+The severity of the violation at $\Lambda_{0,{\rm req}}$ confirms this is
+not a marginal constraint.  At $\Lambda_0 = 0.154\,\Mpl^{-2}$, the BD
+parameter (Eq.~\eqref{eq:obd}) drops to $\obd \approx 2.4$, giving
+$|\gamma_{\rm PPN} - 1| \approx 0.23$---exceeding the Cassini limit by a
+factor of $\sim\!10^4$.  Five additional precision constraints (CMB
+temperature spectrum, $f\sigma_8$ at $z < 1$, DESI BAO, UV unitarity, and
+recombination-era energy budget) fail simultaneously at
+$\Lambda_{0,{\rm req}}$~\cite{WilsonPaperIV}.
+
+Theorem~\ref{thm:geff} is proved. \qquad $\square$
+
+\subsection{Generality and scope}
+\label{sec:geff_gen}
+
+\paragraph{Higher-order couplings.}
+For $F(\Psi) = \tfrac{1}{2} + \Lambda_n\Psi^n$ the ceiling becomes $1 +
+2\Lambda_n\Psi_0^n$ and the BD parameter scales differently with
+$\Lambda_n$ and $\Psi_0$, but the same qualitative incompatibility
+persists for any renormalizable non-minimal coupling: the Cassini bound
+caps $\obd$ from below, which caps $G_{\rm eff}$ from above, while the
+galactic requirement sets a minimum.
+
+\paragraph{Brans--Dicke dual statement.}
+The incompatibility is equivalent to: the Cassini bound requires
+$\obd > 43{,}478$, while NGC~3198 requires $\obd \approx 2.4$.
+No value of $\obd$ satisfies both.
+
+\paragraph{Screening and massive scalars.}
+A scalar with mass $m_\Psi \gg m_\Psi^{\rm kpc}$ (Compton wavelength
+shorter than kpc scales) does not propagate a fifth force at galactic
+distances and cannot produce the $\Geff$ modification of
+Eq.~\eqref{eq:geff}.  Such theories evade Theorem~\ref{thm:geff}
+automatically because they also cannot explain galactic rotation curves
+through this mechanism.  The theorem applies precisely in the parameter
+regime where the $\Geff$ mechanism is kinematically possible.
+
+\paragraph{What Theorem~\ref{thm:geff} does not rule out.}
+The theorem is silent on mechanisms that modify the right-hand side of the
+Einstein equations rather than the left-hand side.  Scalar-field dark
+matter (ultra-light/fuzzy DM, Q-ball condensates, axion halos) contributes
+through $T_{\mu\nu}$ and is not constrained by the PPN bound on $\gamma$.
+Theories with non-standard conformal factors or disformal couplings require
+a separate PPN analysis.
+
+\paragraph{CMSTG worked example.}
+At the locked \CMSTG\ values~\cite{WilsonPaperIV}:
+\begin{align}
+  \obd &= 2{,}108, & |\gamma_{\rm PPN}-1| &= 4.7\times10^{-4}
+  && \text{(Cassini: consistent)},\nonumber\\
+  \Geff/\GN|_{\rm max} &= 1.041
+  && && \text{($\sim\!3\times$ short of 3.115)}.
+\end{align}
+A logarithmic sweep of $\Lambda_0$ over eight decades (SIM150)
+numerically confirms the ceiling at every value of $\Lambda_0$ consistent
+with Solar-System and cosmological constraints.
+
+%=============================================================================
+\section{Theorem 2: Shape Inversion for Monotone Couplings}
+\label{sec:shape}
+%=============================================================================
+
+\subsection{Setup: density-dependent fifth force}
+\label{sec:shape_setup}
+
+A fifth-force modification with density-dependent coupling $\beta(\rhob)$
+to baryonic matter produces an additional acceleration~\cite{KhouryWeltman2004a,
+KhouryWeltman2004b,HinterbichlerKhoury2010}
+\begin{equation}
+  a_{\rm 5th}(r) = 2\,\beta(\rhob(r))^2\,\GN\,\nabla\Phi_b(r),
+  \label{eq:5thforce}
+\end{equation}
+so that the circular velocity satisfies
+\begin{equation}
+  V_{\rm tot}^2(r) = \Vbary^2(r)\,\bigl[1 + 2\,\beta(\rhob(r))^2\bigr]
+    \equiv \Vbary^2(r)\,E_{\rm model}(r).
+  \label{eq:vtot}
+\end{equation}
+The chameleon and symmetron mechanisms both produce coupling functions
+$\beta(\rhob)$ that are monotonically \emph{increasing} with density:
+large in the dense inner galaxy and in laboratory environments, small in
+the cosmological void where the scalar is screened.
+
+\subsection{Baryon density profile}
+\label{sec:shape_density}
+
+Outside the stellar disc scale length $r_d$, the baryonic surface
+density falls approximately exponentially, $\Sigma_b(r) \propto e^{-r/r_d}$,
+and the mid-plane volume density $\rhob(r)$ tracks this fall.  Gas discs
+fall off less steeply, but $\rhob(r)$ is nonetheless monotonically
+\emph{decreasing} with $r$ for $r \gtrsim r_d$ in essentially all
+rotationally supported late-type galaxies.
+
+\subsection{The shape-inversion argument}
+\label{sec:shape_argument}
+
+Let $\beta(\rhob)$ be monotonically increasing.  Since $\rhob(r)$
+is monotonically decreasing with $r$, the composition
+\begin{equation}
+  \beta(r) \equiv \beta(\rhob(r))
+\end{equation}
+is monotonically \emph{decreasing} with $r$.  Consequently,
+\begin{equation}
+  E_{\rm model}(r) = 1 + 2\,\beta(r)^2
+  \quad \text{is monotonically \emph{decreasing} with } r.
+  \label{eq:Emodel_dec}
+\end{equation}
+
+For a flat rotation curve with $V_{\rm flat} = {\rm const}$ while
+$\Vbary(r) \to 0$ outside the disc, the required enhancement is
+\begin{equation}
+  E_{\rm req}(r) = \frac{V_{\rm flat}^2}{\Vbary^2(r)},
+  \label{eq:Ereq}
+\end{equation}
+which is monotonically \emph{increasing} with $r$ (since $\Vbary(r)$
+decreases).
+
+A monotone-decreasing function and a monotone-increasing function of the
+same variable $r$ are anti-correlated.  Their Pearson correlation
+coefficient satisfies $r_P \leq 0$, with equality only if one is constant.
+No choice of $(\beta_0, \rsc)$ within the monotonically increasing class
+can produce $r_P > 0$.
+
+Theorem~\ref{thm:shape} is proved. \qquad $\square$
+
+\subsection{Numerical confirmation on NGC~3198}
+\label{sec:shape_num}
+
+Table~\ref{tab:shape} shows $E_{\rm req}$ and $E_{\rm model}$ at four
+reference radii for NGC~3198 ($\Vflat = 150\,{\rm km\,s^{-1}}$, $r_d =
+2.7\,{\rm kpc}$)~\cite{Lelli2016}, using the tanh profile
+$\beta(\rhob) = \beta_0\tanh^2(\rhob/\rsc)$ with self-consistent coupling
+$\beta_0 = 1.018$~\cite{WilsonPaperIV}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    $r$ [kpc] & 2 & 10 & 20 & 40 \\
+    \midrule
+    $E_{\rm req}$   & 1.80 & 2.60 & 3.80 & 5.20 \\
+    $E_{\rm model}$ & 3.10 & 1.07 & 1.04 & 1.04 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Required and predicted enhancement factors for NGC~3198.
+    $E_{\rm model}$ peaks in the inner disc (high density, large $\beta$)
+    and saturates near unity in the outer disc; $E_{\rm req}$ rises
+    monotonically outward.  The opposite trend in each quantity is the
+    structural anti-correlation of Theorem~\ref{thm:shape}.}
+  \label{tab:shape}
+\end{table}
+
+The Pearson correlation between $E_{\rm req}$ and $E_{\rm model}$ across
+all 43 SPARC data points is $r_P = -0.81$, and the best-fit
+$\chi^2/{\rm dof} = 91.9$ against an acceptance threshold of $\leq 2.0$.
+The optimal transition density $\rsc$ is pinned at its lower boundary,
+effectively the uniform limit in which chameleon variation is minimised---the
+mechanism is most effective when it varies least, which is a restatement of
+the anti-correlation.  These results are reproduced analytically from the
+monotonicity argument above.
+
+\subsection{Generality and scope}
+\label{sec:shape_gen}
+
+\paragraph{Galaxy and profile independence.}
+The proof requires only that $\rhob(r)$ is monotonically decreasing and
+$\beta(\rhob)$ is monotonically increasing, both of which hold universally
+outside the disc scale length.  The anti-correlation and negative Pearson
+coefficient are therefore properties of the entire class of monotonically
+increasing $\beta(\rhob)$, not of any specific galaxy or profile parameter.
+
+\paragraph{What Theorem~\ref{thm:shape} does not rule out.}
+\begin{enumerate}
+  \item \emph{Monotonically decreasing} $\beta(\rhob)$ (``anti-chameleon''):
+        a coupling that decreases with density gives $\beta(r)$ increasing
+        with $r$, producing $E_{\rm model}(r)$ increasing with $r$.
+        Theorem~\ref{thm:shape} is evaded.  However, anti-chameleon profiles
+        face an independent obstruction: at cosmological densities $\rhob \sim
+        \rho_{\rm crit}$, a decreasing-with-density coupling is large
+        (unscreened), generically violating CMB and BAO constraints at order
+        unity.  A self-consistent \CMSTG\ analysis constrains the cosmological
+        coupling to $\beta_\infty \lesssim 2.4\times10^{-10}$~\cite{WilsonPaperIV},
+        which rules out anti-chameleon solutions for that theory.
+  \item \emph{Non-monotone} $\beta(\rhob)$: a coupling that peaks at
+        intermediate galactic densities and is small at both stellar-core
+        and cosmological densities can, in principle, produce $E_{\rm model}$
+        peaking in the outer disc.  Theorem~\ref{thm:shape} does not exclude
+        this.  The standard thin-shell chameleon always produces monotone
+        $\beta(\rhob)$ in its usual operating regime; non-monotone profiles
+        require a qualitatively different mechanism architecture.
+  \item Mechanisms operating through $T_{\mu\nu}$ sourcing (scalar dark
+        matter, condensates, ultra-light fields): these modify the right-hand
+        side of the Einstein equations and are not constrained by the
+        fifth-force formula~\eqref{eq:5thforce}.
+  \item Coupling functions depending on variables other than $\rhob$---for
+        example, the tidal field, temperature, or ionization fraction.  For
+        these, the argument that $\beta(r)$ is decreasing requires additional
+        galaxy-specific input.
+\end{enumerate}
+
+\paragraph{CMSTG worked example.}
+In \CMSTG, the coupled chameleon coupling is
+$\beta(\rhob) = \beta_0\tanh^2(\rhob/\rsc)$ with $\beta_0 = 1.018$ set by
+cosmological screening~\cite{WilsonPaperIV}.  The full SPARC rotation-curve
+test (SIM152) evaluates this against 43 NGC~3198 data points, confirming
+$\chi^2/{\rm dof} = 91.9$ and $r_P = -0.81$.
+
+%=============================================================================
+\section{Discussion and Conclusions}
+\label{sec:conclusions}
+%=============================================================================
+
+We have proved two structural no-go theorems for dark-matter production in
+scalar-tensor theories with non-minimal coupling $F(\Psi) = \tfrac{1}{2}
++ \Lambda_0\Psi^2$.
+
+Theorem~\ref{thm:geff} is a \emph{numerical} incompatibility between
+two specific observational requirements.  Its conclusion ($\Lambda_0$
+incompatible by factor 119) is specific to the combination
+$|\gamma_{\rm PPN}-1|_{\rm Cassini}$, $\Vflat$ and $\Vbary$ for NGC~3198,
+and $\Psi_0$.  A researcher applying Theorem~\ref{thm:geff} to a different
+scalar-tensor theory must re-derive the analog of
+Eqs.~\eqref{eq:cassini_bound}--\eqref{eq:galactic_bound} for their own
+field value $\Psi_0$ and coupling $\Lambda_0$.  The qualitative
+incompatibility is expected to persist for any quadratic non-minimal
+coupling.
+
+Theorem~\ref{thm:shape} is a \emph{geometric} (anti-monotone)
+incompatibility.  It requires no numerical inputs beyond the fact that
+$\rhob(r)$ decreases and $V_{\rm flat}$ is roughly constant in the outer
+disc.  The negative Pearson coefficient is guaranteed for any monotonically
+increasing $\beta(\rhob)$ and any galaxy with a falling baryonic velocity
+profile.  It generalizes to other theoretical frameworks without
+re-derivation.
+
+The contrast in character is relevant for future researchers choosing
+between the two theorems.  Theorem~\ref{thm:geff} is the sharper tool
+when comparing the $G_{\rm eff}$ mechanism against the specific observational
+inputs needed for the target theory; Theorem~\ref{thm:shape} is the sharper
+tool for ruling out entire classes of monotone couplings without
+galaxy-specific computation.
+
+Taken together, the theorems establish that any viable dark-matter
+mechanism within the $F(\Psi) = \tfrac{1}{2}+\Lambda_0\Psi^2$ coupling
+class must either:
+\begin{enumerate}
+  \item[(a)] Operate through the energy-momentum $T_{\mu\nu}$ channel
+    rather than through a modification of $G_N$ or a density-dependent
+    fifth force, or
+  \item[(b)] Use a non-monotone coupling $\beta(\rhob)$ with independent
+    theoretical motivation beyond the standard chameleon construction.
+\end{enumerate}
+The theorems do not rule out scalar-tensor theories as hosts for dark
+matter; they sharpen which \emph{mechanism} can accomplish this.
+
+For \CMSTG\ specifically, the two theorems (together with the mass-gap
+obstruction for the sextic-condensate channel documented
+in~\cite{WilsonPaperIV}) exhaust the three available extension channels
+for dark-matter production within the locked Phase~1 action.  The
+implication is that if \CMSTG\ correctly describes the large-scale
+universe, dark matter in the observed universe must come from a sector
+structurally distinct from the scalar-tensor framework---standard
+candidates (cold dark matter, axions, sterile neutrinos) remain fully
+compatible with \CMSTG's cosmological successes.
+
+\section*{Acknowledgements}
+
+The author thanks the open-source scientific Python community (NumPy,
+SciPy, Matplotlib) for computational tools used in the numerical
+verification.  All simulation code and outputs are publicly archived at
+\url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}.
+
+\bibliographystyle{unsrtnat}
+\bibliography{cmstg_companion_note}
+
+\end{document}

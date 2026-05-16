@@ -173,6 +173,14 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 |-----|-------|--------|-------|
 | SIM147 | Curvature-memory kernel decay characterization | RED gate | K(Δt) ∝ Δt·exp(−(k_m Δt)²/4); τ_mem = 2/k_m = 0.2 Mpc ≈ 2×10⁻⁴ Gyr at locked k_m=10 Mpc⁻¹; w(13.4 Gyr)=0 to double precision; both Ψ_pre and Ψ_local conjectures dead; ℓ_coh = 1/k_m = 0.1 Mpc = R_vir |
 
+### Loophole Tests
+
+| Sim | Topic | Result | Notes |
+|-----|-------|--------|-------|
+| SIM148 | Pre-bang Ψ_pre boundary condition scan (3 variants) | FAIL | w(13.4 Gyr)=0 → Ψ_eff invariant under Ψ_pre for ALL scan points; Δχ²_DESI=0 identically; Variants A (51 pts), B (9 bounce combinations), C (15 inflation-extended combinations) all FAIL; sensitivity scan: requires |ΔΨ_eff|≥0.12 M_Pl → kernel weight w≥4 (SIM147: w=0); loophole not occupiable at locked k_m=10 Mpc⁻¹ |
+| SIM149 | Single-galaxy local Ψ test — NGC 3198 halo curvature integral | FAIL | Three independent failure modes: (1) kernel: w(10 Gyr)=0 → ΔΨ≈0 → G_eff/G=1.000; (2) source amplitude: ΔΨ_hyp=−2.79 M_Pl with flat K=1 → G_eff/G=1.041 (+4.1% vs +212% required); (3) mechanism limit: G_eff/G_max=1.041 (Ψ_local→0) vs G_req=3.115; best χ²/dof=396.8 (Υ_disk=0.8); all 7 marginalization points FAIL; Ψ_local conjecture triply closed |
+| SIM150 | Λ₀ sweep — universality of G_eff/G ceiling; Stage 1 + Stage 2 constraint check | INCOMPATIBLE | Stage 1 MATCH: Λ₀_required = 0.1541 (analytic) lifts G_eff/G_max to 3.115 but is 51.4× the locked value; Stage 2 INCOMPATIBLE: Cassini |γ_PPN−1|=4.56×10⁻¹ exceeds bound by 1.98×10⁴×; all 5 constraints fail (f_σ8 tension=39σ; UV Σ(0) excess 37.6×; Δχ²_BAO=1629; Ψ subdom=7.7% at z_drag); cross-conjecture: Λ₀_required does NOT revive Ψ_pre (k_m-driven failure unchanged); both loopholes independently dead; G_eff ceiling structural and universal |
+
 ---
 
 ## Summary Statistics
@@ -189,11 +197,14 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | Phase 3 (Tier 2 curv)|  6 |  0 |  6 | 0 |
 | Phase 4 (Tier 1 diag)|  3 |  3 |  0 | 0 |
 | Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
-| Phase 5              |  1 |  0 |  0 | 1 |
-| **Total (run)**      | **60** | **30** | **24** | **6** |
+| Phase 5              |  4 |  0 |  3 | 1 |
+| **Total (run)**      | **63** | **30** | **27** | **6** |
 
 SIM140, SIM145, SIM146 not counted (spec only, not run).
 SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
+SIM148 counted as FAIL (all 3 variants).
+SIM149 counted as FAIL (three independent failure modes).
+SIM150 counted as FAIL/INCOMPATIBLE (Stage 2 all five constraints violated).
 
 ---
 
@@ -202,3 +213,4 @@ SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
 - **SIM81** was skipped (reserved / not published).
 - **SIM1–SIM79**: Pre-series exploratory runs (old `simulation_XX` format, pre-locked-action framework). Superseded by SIM80+ series. Key issues: SIM04/SIM11 READMEs swapped, SIM09 Ψ→−40 unphysical, SIM14 sweep broken.
 - **Phase 3/4 no-go conclusion**: All 14 mechanism tests (SIM131–SIM144) returned FAIL. The 2.77σ DESI residual is structural and irreducible within the CMSTG action class.
+- **Phase 5 no-go conclusion**: Both Theorem 2 loopholes (Ψ_pre, SIM148; Ψ_local, SIM149) returned FAIL; SIM150 confirms universality. The kernel weight w=0 at all pre-recombination and galactic timescales at locked k_m=10 Mpc⁻¹ (Ψ_pre dead, Λ₀-independent). The G_eff/G ceiling is structural: the only Λ₀ that lifts it to 3.115 (Λ₀=0.154, 51×locked) violates Cassini PPN by 2×10⁴×, f_σ8 by 39σ, and UV finiteness by 38×. No parameter in the locked action revives either loophole. DESI tension and galactic rotation are both structurally irreducible within CMSTG.

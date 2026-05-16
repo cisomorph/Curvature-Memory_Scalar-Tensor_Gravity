@@ -1,0 +1,72 @@
+{
+  "sim": "SIM150",
+  "date": "2026-05-15T22:20:14.370520",
+  "phase": 5,
+  "gate_inherited": "RED",
+  "locked_params": {
+    "Lambda0": 0.003,
+    "Psi0_Mpl": 2.62,
+    "v_SSB_Mpl": 13.16,
+    "F0_locked": 0.5205932,
+    "km_Mpcinv": 10.0
+  },
+  "stage1": {
+    "flag": "MATCH",
+    "G_eff_target": 3.115,
+    "G_eff_max_at_locked": 1.0411864,
+    "Lambda0_required": 0.15405570770934093,
+    "Lambda0_req_over_locked": 51.35190256978031,
+    "formula": "G_eff/G_max = 1 + 2*Lambda0*Psi0^2 (Psi_local -> 0)"
+  },
+  "stage2": {
+    "flag": "INCOMPATIBLE",
+    "constraints": {
+      "Cassini": {
+        "value_locked": 0.0009484719167959801,
+        "value_req": 0.4555740160292269,
+        "bound": 2.3e-05,
+        "pass": false,
+        "excess_factor": 19807.565914314215
+      },
+      "f_sigma8": {
+        "fs8_locked": 0.8,
+        "fs8_req": 0.253141846982895,
+        "tension_sigma": 39.06129664407893,
+        "pass": false
+      },
+      "UV_finiteness": {
+        "Sigma0_locked": 0.00014248291449703749,
+        "Sigma0_req": 0.37572999562180937,
+        "threshold": 0.01,
+        "excess_factor": 37.57299956218093,
+        "pass": false
+      },
+      "BAO": {
+        "chi2_locked": 95.91605066540566,
+        "chi2_req": 1725.1888187406043,
+        "dchi2": 1629.2727680751987,
+        "pass": "False"
+      },
+      "Subdominance": {
+        "rho_zdrag_locked": 0.00014542002194742267,
+        "rho_today_locked": 0.7837964290217444,
+        "rho_zdrag_req": 0.0769611906638699,
+        "rho_today_req": 0.997291145745118,
+        "threshold": 0.01,
+        "pass": false
+      }
+    }
+  },
+  "cross_conjecture": {
+    "Psi_pre_revived_at_Lambda0_req": false,
+    "reason": "Psi_pre failure is k_m-driven (tau_mem = 2/k_m); k_m unchanged",
+    "conjectures_share_revival_path": false,
+    "both_independently_dead": true
+  },
+  "phase5_summary": {
+    "SIM147": "RED gate \u2014 tau_mem = 205 kyr",
+    "SIM148": "FAIL \u2014 w(13.4 Gyr) = 0 (k_m-driven)",
+    "SIM149": "FAIL \u2014 w(10 Gyr) = 0 + Geff ceiling at 1.041",
+    "SIM150": "Stage1=MATCH, Stage2=INCOMPATIBLE \u2014 Cassini violation"
+  }
+}

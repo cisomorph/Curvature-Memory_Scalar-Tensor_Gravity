@@ -5,6 +5,22 @@ Organised by phase and paper. Results: **PASS** / **FAIL** / **PARTIAL** (see no
 
 ---
 
+## Standalone Paper Status
+
+Submission-ready papers at `Papers/paper{1–4}_*/`. Last updated: 2026-05-15.
+
+| # | Title | File | Target | Pages | Sims | Status |
+|---|---|---|---|---|---|---|
+| I | Two Structural No-Go Theorems for Late-Time Modifications of Dark Energy | `paper1_nogo/cmstg_paper1_nogo.tex` | JCAP | 14pp | SIM131–SIM144 | Submission-ready |
+| II | CMSTG: Framework, Field Equations, and Cosmological Consistency | `paper2_framework/cmstg_paper2_framework.tex` | JCAP / PRD | 22pp | SIM82–SIM109 | Submission-ready |
+| III | UV Finiteness and Renormalization Group Flow of CMSTG | `paper3_uv/cmstg_paper3_uv.tex` | PRD / CQG | 16pp | SIM102–SIM106 | Submission-ready |
+| IV | Galactic-Scale Constraints on CMSTG: Why the Locked Action Cannot Replace Dark Matter | `paper4_galactic/cmstg_paper4_galactic.tex` | MNRAS / JCAP | 14pp | SIM99–SIM103, SIM149–SIM150 | Submission-ready |
+| master | CMSTG: Full Compilation (Papers I–IV + Phase 5) | `master/cmstg_paper_master.tex` | — | 52pp | SIM82–SIM150 | Reference compilation |
+
+**Key updates (2026-05-15):** Paper IV updated from 13pp → 14pp with SIM149/SIM150 Phase 5 loophole closure (fourth mechanism, G_eff/G ceiling derivation, Λ₀ universality sweep). Master updated from 50pp → 52pp with abstract item (xxvi) and two new Phase 5 paragraphs.
+
+---
+
 ## Phase 1 — Locked Action
 
 Action: `S = ∫d⁴x√(-g) [(M_Pl²+2Λ₀Ψ²)/2 R - ½(∇Ψ)² - ½m₀²Ψ² - ρ_Λ] + S_SM`  

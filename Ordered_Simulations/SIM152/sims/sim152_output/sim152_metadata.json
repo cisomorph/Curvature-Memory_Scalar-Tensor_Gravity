@@ -1,0 +1,60 @@
+{
+  "sim": "SIM152",
+  "phase": "Paper V \u2014 Option B branch",
+  "date": "2026-05-15",
+  "model": {
+    "formula": "a_tot/a_N = G_eff/G_N + 2*beta(rho_b)^2",
+    "beta_profile": "beta(rho_b) = beta0 * tanh^2(rho_b / rho_sc)",
+    "GEFF_baseline": 1.0411864,
+    "beta0_star": 1.018286207311088,
+    "beta_inf_bound": 2.4e-10,
+    "Upsilon_locked": 0.5
+  },
+  "stage1": {
+    "galaxy": "NGC3198",
+    "Npts": 43,
+    "chi2_uniform": 91.90795640939164,
+    "chi2_radial_best": 91.90795640939164,
+    "rho_sc_star_gcm3": 1e-26,
+    "chi2_free_beta0": 91.40681498048716,
+    "beta0_free": 0.9990316688505518,
+    "beta0_drift_frac": 0.01890876879436507,
+    "r_sc_kpc": 44.08,
+    "screened_mass_frac": 1.0,
+    "shape_correlation_r": -0.8109394012441138,
+    "E_required": {
+      "r_2kpc": 1.7098143527737213,
+      "r_10kpc": 2.635773779513189,
+      "r_20kpc": 3.8049649658765263,
+      "r_40kpc": 5.164740057944252
+    },
+    "E_model_radial": {
+      "r_2kpc": 3.1150000000000007,
+      "r_10kpc": 3.1150000000000007,
+      "r_20kpc": 3.1150000000000007,
+      "r_40kpc": 3.1150000000000007
+    },
+    "E_required_trend": "INCREASING (1.8 at 2kpc to 5.2 at 40kpc)",
+    "E_model_trend": "DECREASING (3.1 at 2kpc to 1.04 at 40kpc)",
+    "structural_diagnosis": "beta(rho_b) = beta0*tanh^2(rho/rho_sc) gives LARGE enhancement where rho_b is HIGH (inner disk) and SMALL where rho_b is LOW (outer disk). Flat rotation curves require INCREASING E(r) with r (outer disk needs more, not less, gravity). E_model and E_required are anti-correlated (Pearson r < 0). No choice of rho_sc can reconcile this \u2014 the shape mismatch is structural.",
+    "verdict": "FAIL",
+    "pass_threshold_chi2dof": 2.0
+  },
+  "stage2": {
+    "verdict": "NOT REACHED",
+    "reason": "Not reached \u2014 Stage 1 FAIL stops Stage 2 per spec.",
+    "results": null
+  },
+  "conclusion": {
+    "option_B_viable": false,
+    "reason": "The coupled chameleon architecture \u03b2(\u03c1_b)=\u03b2\u2080tanh\u00b2(\u03c1/\u03c1_sc) provides fifth-force enhancement PROPORTIONAL to local baryon density. Flat galactic rotation curves require enhancement INVERSELY proportional to local baryon density (large where stars/gas are sparse, small where dense). These are structurally incompatible. No parameter sweep over (\u03b2\u2080, \u03c1_sc, \u03a5_disk) can reconcile them because the radial shape of E(r) is monotonically opposite to what is needed. A viable chameleon coupling for flat rotation curves would require \u03b2 DECREASING with density \u2014 e.g. \u03b2 \u221d sech\u00b2(\u03c1/\u03c1_sc) \u2014 but this would make \u03b2_\u221e large at cosmological densities, violating SIM151 \u03a8-subdominance bound, unless a non-monotone profile is introduced.",
+    "next_options": [
+      "Option B (inverted): test \u03b2 \u221d sech\u00b2(\u03c1/\u03c1_sc) \u2014 anti-chameleon screening. Would need separate cosmological analysis (\u03b2 large at low density threatens f_\u03c38).",
+      "Option A: m(\u03a8) mass modification (SIM112-type). Already explored Phase 2 \u2014 FAIL.",
+      "Option C: sextic condensate / Bose-star (mentioned Paper III \u00a7Option C). Not yet tested."
+    ]
+  },
+  "outputs": [
+    "/home/aion/Ordered_Simulations/SIM152/sims/sim152_output/sim152_main.pdf"
+  ]
+}

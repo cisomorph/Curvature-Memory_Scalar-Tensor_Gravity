@@ -202,7 +202,7 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | SIM | Description | Result | Notes |
 |-----|-------------|--------|-------|
 | SIM151 | Coupled chameleon Ψ-baryon derivation: extended action, KG equation, screening conditions, fifth-force law | SELF-CONSISTENT | Pre-check PASS: back-reaction ΔG_eff/G_N = 1.56×10⁻⁸ ≪ 4% bound — Option B is a genuinely separate channel; fifth-force formula a_tot/a_N = 1.041 + 2β₀² (Λ₀-independent, uncapped); β₀* = 1.018 for NGC 3198; β_∞ ≲ 2.4×10⁻¹⁰ from z_drag subdominance; f(x) = tanh²(x) screening profile; no algebraic obstruction; SIM152/SIM153 queued |
-| SIM152 | Single-galaxy rotation curve fit — NGC 3198 at β₀ = 1.018 | QUEUED | |
+| SIM152 | Single-galaxy rotation curve fit — NGC 3198 at β₀ = 1.018 | FAIL | Stage 1 χ²/dof = 91.9 (threshold ≤ 2.0); ρ_sc* pinned at lower boundary (uniform limit optimal); shape inversion: E_required(r) monotonically increasing, E_model(r) monotonically decreasing, Pearson r = −0.811 (anti-correlated); structural no-go theorem: monotone-increasing β(ρ) cannot produce flat rotation curves; Stage 2 not reached |
 | SIM153 | Cosmological checks — f_σ8, BAO r_s, Ψ subdominance at z_drag | QUEUED | |
 
 ---
@@ -222,8 +222,8 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | Phase 4 (Tier 1 diag)|  3 |  3 |  0 | 0 |
 | Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
 | Phase 5              |  4 |  0 |  3 | 1 |
-| Paper V Option B     |  1 |  1 |  0 | 0 |
-| **Total (run)**      | **64** | **31** | **27** | **6** |
+| Paper V Option B     |  2 |  1 |  1 | 0 |
+| **Total (run)**      | **65** | **31** | **28** | **6** |
 
 SIM140, SIM145, SIM146 not counted (spec only, not run).
 SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
@@ -231,6 +231,7 @@ SIM148 counted as FAIL (all 3 variants).
 SIM149 counted as FAIL (three independent failure modes).
 SIM150 counted as FAIL/INCOMPATIBLE (Stage 2 all five constraints violated).
 SIM151 counted as PASS/SELF-CONSISTENT (analytical derivation, no pass/fail threshold; architecture passes all pre-checks).
+SIM152 counted as FAIL (Stage 1 FAIL χ²/dof = 91.9; structural no-go theorem for monotone-increasing β(ρ); Stage 2 not reached).
 
 ---
 

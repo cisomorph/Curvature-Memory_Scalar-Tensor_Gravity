@@ -197,6 +197,14 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | SIM149 | Single-galaxy local Ψ test — NGC 3198 halo curvature integral | FAIL | Three independent failure modes: (1) kernel: w(10 Gyr)=0 → ΔΨ≈0 → G_eff/G=1.000; (2) source amplitude: ΔΨ_hyp=−2.79 M_Pl with flat K=1 → G_eff/G=1.041 (+4.1% vs +212% required); (3) mechanism limit: G_eff/G_max=1.041 (Ψ_local→0) vs G_req=3.115; best χ²/dof=396.8 (Υ_disk=0.8); all 7 marginalization points FAIL; Ψ_local conjecture triply closed |
 | SIM150 | Λ₀ sweep — universality of G_eff/G ceiling; Stage 1 + Stage 2 constraint check | INCOMPATIBLE | Stage 1 MATCH: Λ₀_required = 0.1541 (analytic) lifts G_eff/G_max to 3.115 but is 51.4× the locked value; Stage 2 INCOMPATIBLE: Cassini |γ_PPN−1|=4.56×10⁻¹ exceeds bound by 1.98×10⁴×; all 5 constraints fail (f_σ8 tension=39σ; UV Σ(0) excess 37.6×; Δχ²_BAO=1629; Ψ subdom=7.7% at z_drag); cross-conjecture: Λ₀_required does NOT revive Ψ_pre (k_m-driven failure unchanged); both loopholes independently dead; G_eff ceiling structural and universal |
 
+## Paper V — Option B Branch
+
+| SIM | Description | Result | Notes |
+|-----|-------------|--------|-------|
+| SIM151 | Coupled chameleon Ψ-baryon derivation: extended action, KG equation, screening conditions, fifth-force law | SELF-CONSISTENT | Pre-check PASS: back-reaction ΔG_eff/G_N = 1.56×10⁻⁸ ≪ 4% bound — Option B is a genuinely separate channel; fifth-force formula a_tot/a_N = 1.041 + 2β₀² (Λ₀-independent, uncapped); β₀* = 1.018 for NGC 3198; β_∞ ≲ 2.4×10⁻¹⁰ from z_drag subdominance; f(x) = tanh²(x) screening profile; no algebraic obstruction; SIM152/SIM153 queued |
+| SIM152 | Single-galaxy rotation curve fit — NGC 3198 at β₀ = 1.018 | QUEUED | |
+| SIM153 | Cosmological checks — f_σ8, BAO r_s, Ψ subdominance at z_drag | QUEUED | |
+
 ---
 
 ## Summary Statistics
@@ -214,13 +222,15 @@ Paper: Paper I §3.4 (SIM137–SIM144).
 | Phase 4 (Tier 1 diag)|  3 |  3 |  0 | 0 |
 | Phase 4 (Tier 2 mech)|  4 |  0 |  4 | 0 |
 | Phase 5              |  4 |  0 |  3 | 1 |
-| **Total (run)**      | **63** | **30** | **27** | **6** |
+| Paper V Option B     |  1 |  1 |  0 | 0 |
+| **Total (run)**      | **64** | **31** | **27** | **6** |
 
 SIM140, SIM145, SIM146 not counted (spec only, not run).
 SIM147 counted as PARTIAL (exploratory gate, no pass/fail threshold).
 SIM148 counted as FAIL (all 3 variants).
 SIM149 counted as FAIL (three independent failure modes).
 SIM150 counted as FAIL/INCOMPATIBLE (Stage 2 all five constraints violated).
+SIM151 counted as PASS/SELF-CONSISTENT (analytical derivation, no pass/fail threshold; architecture passes all pre-checks).
 
 ---
 

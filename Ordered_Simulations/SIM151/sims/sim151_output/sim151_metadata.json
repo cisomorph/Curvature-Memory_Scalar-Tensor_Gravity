@@ -1,0 +1,78 @@
+{
+  "sim": "SIM151",
+  "phase": "Paper V \u2014 Option B branch",
+  "date": "2026-05-15",
+  "mode": "Analytical derivation \u2014 no pass/fail threshold",
+  "precheck": {
+    "description": "Back-reaction of beta*Psi*rho_b on G_eff",
+    "formula": "dGeff = 2*Lambda0*Psi0*(2*Lambda0*Psi0+beta0)*rho_int_R2 / (3*F0)",
+    "beta0_candidate": 1.018,
+    "delta_Psi_MPlank": 5.168599999999999e-07,
+    "delta_Geff_fraction": 1.560727108997966e-08,
+    "delta_Geff_percent": 1.560727108997966e-06,
+    "bound_percent": 4.0,
+    "result": "PASS",
+    "verdict": "Option B is a genuinely separate channel from G_eff modification"
+  },
+  "locked_params": {
+    "Lambda0": 0.003,
+    "Psi0_MPl": 2.62,
+    "F0": 0.5205932,
+    "Geff_max_ceiling": 1.0411864
+  },
+  "extended_action": {
+    "F_Psi": "1/2 + Lambda0*Psi^2",
+    "coupling_term": "beta(rho_b) * Psi * rho_b",
+    "beta_profile": "beta_inf + (beta0 - beta_inf) * tanh^2(rho_b / rho_screen)",
+    "interpolant_choice": "tanh^2(x): smooth, f(0)=0, f(inf)=1; Mota & Shaw (2007)",
+    "sign_convention": "metric (-,+,+,+); 8piG_N = 1; F variation gives -F'R in KG"
+  },
+  "modified_KG": {
+    "equation": "Box(Psi) = V'(Psi) - 2*Lambda0*Psi*R - beta(rho_b)*rho_b",
+    "static_nonrel": "nabla^2(Psi) = m^2*Psi - 2*Lambda0*Psi*rho_b - beta(rho_b)*rho_b",
+    "note": "beta(rho_b)*rho_b is chameleon source on RHS; curvature term 2*Lambda0*Psi*R retained"
+  },
+  "modified_einstein": {
+    "form": "2*F*G_mu_nu + [g_mu_nu*Box - nabla_mu*nabla_nu](2F) = T_Psi + T_SM + T_coupling",
+    "T_coupling_position": "RHS only; does not modify F(Psi); G_eff/G_N unchanged at leading order"
+  },
+  "screening": {
+    "meff_R_galaxy": 3e-05,
+    "regime": "light-field (m_eff*R << 1); epsilon >= 1; Psi ~ Psi0 throughout galaxy",
+    "thin_shell_formula": "epsilon = (Psi_inf - Psi_min) / (6*beta0*rho_int*R^2)",
+    "Psi_min_galactic": "beta0*rho_int / m_eff^2"
+  },
+  "fifth_force": {
+    "formula": "a_total/a_Newton = G_eff/G_N + 2*beta0^2 = 1.041 + 2*beta0^2",
+    "derivation": "Poisson: nabla^2(delta_Psi) = -beta0*rho_b; exterior: delta_Psi = beta0*M/(4pi*r); force = beta0*d(delta_Psi)/dr = -beta0^2*M/(4pi*r^2); ratio to Newton = 2*beta0^2",
+    "ceiling": "NONE \u2014 uncapped; bypasses Lambda0 structure entirely",
+    "G_target": 3.115,
+    "G_eff_max": 1.0411864,
+    "G_deficit": 2.0738136000000003,
+    "beta0_required": 1.018286207311088,
+    "beta0_formula": "sqrt((G_target - G_eff_max) / 2)"
+  },
+  "cosmological_constraints": {
+    "beta_inf_bound_subdominance": 2.385496183206107e-10,
+    "beta_inf_bound_fs8": 0.18,
+    "binding_constraint": "Psi subdominance at z_drag",
+    "beta_inf_binding": 2.385496183206107e-10,
+    "BAO_rs": "unchanged if beta_inf << 10^-5; coupling energy negligible at z_drag"
+  },
+  "parameter_space": {
+    "beta0": 1.018286207311088,
+    "beta_inf_max": 2.385496183206107e-10,
+    "rho_screen_range": "rho_cosmo << rho_screen << rho_gal (free parameter, SIM152/153 constrain)",
+    "degeneracy": "none \u2014 (beta0, beta_inf, rho_screen) independently constrained",
+    "fixed_points": "none found at derivation level"
+  },
+  "consistency": {
+    "self_consistent": true,
+    "verdict": "No algebraic obstruction. Architecture passes back-reaction pre-check and full derivation.",
+    "next": [
+      "SIM152: single-galaxy rotation curve fit (NGC 3198, beta0~1.018)",
+      "SIM153: cosmological constraints (f_sigma8, BAO, Psi subdominance at z_drag)"
+    ]
+  },
+  "output_pdf": "/home/aion/Ordered_Simulations/SIM151/sims/sim151_output/sim151_main.pdf"
+}

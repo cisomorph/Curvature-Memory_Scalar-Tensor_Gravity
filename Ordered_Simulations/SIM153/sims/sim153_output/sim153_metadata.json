@@ -1,0 +1,68 @@
+{
+  "sim": "SIM153",
+  "phase": "Paper V \u2014 Option C branch",
+  "date": "2026-05-16",
+  "option": "C \u2014 sextic-stabilized \u03a8-condensate as dark matter",
+  "mechanism": "V(\u03a8) + \u03bc_6 \u03a8^6 \u2192 stable soliton \u2192 T_\u03bc\u03bd energy-density sourcing (not G_eff)",
+  "locked_params": {
+    "Lambda0": 0.003,
+    "Psi0": 2.62,
+    "F0": 0.5205932,
+    "Geff_max": 1.0411864,
+    "G_req_NGC3198": 3.115
+  },
+  "precheck1": {
+    "verdict": "PASS",
+    "E_model_at_ref_radii": {
+      "r_2kpc": 1.377130586933745,
+      "r_10kpc": 4.5018694249894695,
+      "r_20kpc": 3.43313641245972,
+      "r_40kpc": 2.7849096168508845
+    },
+    "E_required_at_ref_radii": {
+      "r_2kpc": 1.8,
+      "r_10kpc": 2.6,
+      "r_20kpc": 3.8,
+      "r_40kpc": 5.2
+    },
+    "E_ratios": {
+      "r_2kpc": 0.7650725482965249,
+      "r_10kpc": 1.7314882403805651,
+      "r_20kpc": 0.9034569506472947,
+      "r_40kpc": 0.5355595417020932
+    },
+    "all_within_factor_2": true,
+    "monotonicity_outer_disk": "non-monotone (peaks at r_c, then falls; E increases where V_bary falls fast)",
+    "shape_obstruction": "none \u2014 condensate E(r) qualitatively compatible with flat rotation curves"
+  },
+  "precheck2": {
+    "verdict": "FAIL",
+    "Mc_galactic_Msun": 72033054393.30545,
+    "Mc_cosmo_required_Msun": 33537516645600.0,
+    "mass_gap_factor": 465.5850973982422,
+    "rc_min_to_close_gap_kpc": 231.8988826171275,
+    "V_total_extended_condensate_44kpc_kms": 163.2007659295753,
+    "V_obs_44kpc_kms": 149.0,
+    "cosmo_back_reaction_frac": 0.0005670284583318295,
+    "SIM101_bound": 1e-10,
+    "back_reaction_pass": false,
+    "fraction_DM_supplied": 0.002147835069438748,
+    "coupling_sign_problem": "Locked m0^2 > 0 and lambda > 0 (both repulsive). Non-topological soliton requires at least one attractive term. Soliton formation breaks the locked action \u2014 structural obstruction.",
+    "parameter_space_dim": 2,
+    "parameter_window_exists": false,
+    "obstruction_1": "mass gap: 466x between galactic and cosmological requirements",
+    "obstruction_2": "extended condensate (to close mass gap) produces rising rotation curve (solid body)",
+    "obstruction_3": "coupling sign: soliton requires negative-sign lower-order coupling (breaks lock)"
+  },
+  "overall": {
+    "PC1": "PASS",
+    "PC2": "FAIL",
+    "proceed_to_full_derivation": false,
+    "SIM154_warranted": false,
+    "SIM155_warranted": false,
+    "conclusion": "Option C (sextic condensate) fails Pre-check 2 on two independent structural grounds: (1) the condensate mass needed for galactic rotation curves is ~500x too small to supply the cosmological DM density, and this gap cannot be closed without extending r_c >> virial radius, which produces a solid-body (rising) rotation curve incompatible with flat V_obs; (2) the locked CMSTG potential has no attractive term, so soliton formation requires breaking the lock. Option C is not viable as a DM candidate within CMSTG. The Pattern: Options A, B, and C each fail on a different structural ground, suggesting that the CMSTG locked action is structurally incompatible with providing galactic dark matter through any of the three proposed channels."
+  },
+  "outputs": [
+    "/home/aion/Ordered_Simulations/SIM153/sims/sim153_output/sim153_main.pdf"
+  ]
+}

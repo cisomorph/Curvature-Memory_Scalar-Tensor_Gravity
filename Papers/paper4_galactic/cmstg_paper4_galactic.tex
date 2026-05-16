@@ -36,7 +36,7 @@ corresponding dark-matter boundary: the Phase~1 canonical locked action cannot
 produce flat galactic rotation curves through any mechanism within the action
 class.
 
-We test three independent candidate mechanisms against NGC~3198 and NGC~6503,
+We test four independent candidate mechanisms against NGC~3198 and NGC~6503,
 the best-observed spiral galaxies with flat rotation curves: (1)~the static
 Yukawa field profile is exponentially steeper than the $\rho \propto r^{-2}$
 isothermal halo required for curve flattening (SIM99); (2)~the time-domain
@@ -45,9 +45,21 @@ coupling $2\Lz|R_{\rm gal}|$ is $\sim2\times10^6$ times weaker than the field
 mass at galactic densities, making condensation impossible (SIM100); (3)~Vainshtein-type
 non-linear kinetic screening fails by six orders of magnitude, with the
 Vainshtein ratio $\mathcal{V} \leq 3.7\times10^{-6}$ across the full scanned
-parameter space (SIM103). The locked-action energy density $\rho_\Psi =
-1.6\times10^{-3}\,M_\odot\,\mathrm{kpc}^{-3}$ falls $2.7\times10^6$ short of
-the isothermal requirement at $r = 10$~kpc.
+parameter space (SIM103); (4)~the \CMSTG\ memory-kernel halo mechanism
+accumulates zero effective $\Geff$ boost in NGC~3198 because the Gaussian
+kernel decays on $\tau_{\rm mem}\approx200\,\mathrm{kyr}$, and even granting
+perfect kernel support the theoretical ceiling $\Geff/G_N = 1 + 2\Lz\Psi_0^2
+= 1.041$ falls a factor $\sim3\times$ short of the required 3.115 (SIM149). The
+locked-action energy density $\rho_\Psi = 1.6\times10^{-3}\,M_\odot\,\mathrm{kpc}^{-3}$
+falls $2.7\times10^6$ short of the isothermal requirement at $r = 10$~kpc.
+
+A subsequent $\Lz$ sweep over eight decades (SIM150) establishes that the
+$\Geff/G_N$ ceiling is structural and parameter-universal: the only value
+satisfying $\Geff/G_N \geq 3.115$ is $\Lambda_{0,{\rm req}} = 0.154$ (51 times the
+locked value), which violates the Cassini Solar-System PPN bound by
+$\sim2\times10^4\times$ and all four remaining locked cosmological constraints
+simultaneously. No $\Lz$ within the Solar-System-consistent range of the locked
+action can revive the galactic mechanism.
 
 These constraints are clean and model-independent: every identified mechanism
 within the \CMSTG\ action class has been exhausted. A first-principles coupling
@@ -135,9 +147,9 @@ increasing sophistication: Section~\ref{sec:setup} presents the galactic-scale
 field equations; Section~\ref{sec:sim99} establishes the static Yukawa failure;
 Section~\ref{sec:sim100} confirms with time-domain simulation and rules out
 condensation; Section~\ref{sec:sim103} exhausts the Vainshtein and direct-coupling
-alternatives; Section~\ref{sec:combined} states the combined constraint;
-Section~\ref{sec:minimum-physics} identifies the minimum new physics required;
-Section~\ref{sec:conclusions} concludes.
+alternatives; Section~\ref{sec:combined} states the combined constraint and the
+Phase~5 universality confirmation; Section~\ref{sec:minimum-physics} identifies
+the minimum new physics required; Section~\ref{sec:conclusions} concludes.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Galactic-Scale Field Equations}
@@ -517,19 +529,54 @@ direct contradiction to the SIM88/SIM90 cosmological consistency tests
     SIM100 & Time-domain condensation     & $2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$ & FAIL \\
     SIM103 & Vainshtein kinetic screening & $\mathcal{V} \leq 3.7\times10^{-6}$ & FAIL \\
     SIM103 & Direct matter coupling $\beta$ & $\beta \sim 1{,}600\Lz$ required & FAIL \\
+    SIM149 & Memory-kernel $\Geff$ boost  & $\Geff/G_N^{\rm max}=1.041$ vs 3.115 required & FAIL \\
+    SIM150 & $\Lz$ sweep (universality)  & $\Lambda_{0,{\rm req}}=0.154$: Cassini by $2\times10^4\times$ & FAIL \\
     \midrule
-    \multicolumn{4}{l}{Combined: all mechanisms exhausted at $\Lz = 0.003$}\\
-    \multicolumn{4}{l}{Energy density deficit at $r = 10\,\mathrm{kpc}$: $2.7\times10^6\times$}\\
+    \multicolumn{4}{l}{Combined: all mechanisms exhausted at all $\Lz$ within Solar-System constraints}\\
+    \multicolumn{4}{l}{Energy density deficit at $r=10\,\mathrm{kpc}$: $2.7\times10^6\times$; $\Geff/G_N$ ceiling: structural}\\
     \bottomrule
   \end{tabular}
 \end{table}
 
-The root cause of all four failures is the single ratio
+The root cause of the first four failures is the single ratio
 $2\Lz|R_{\rm gal}|/m_0^2 \approx 5\times10^{-7}$: the curvature coupling is
 $\sim2\times10^6$ times weaker than the field mass on galactic scales
 (Section~\ref{sec:galcurv}). This makes the scalar field cosmological
 (Compton wavelength $\gg$ galactic size) and prevents any galactic-scale
 field gradient from building up to isothermal amplitudes.
+
+Phase~5 simulations introduce a fourth mechanism formally distinct from the
+three action-level tests above: the \CMSTG\ memory-kernel accumulation of a
+local field shift $\Delta\Psi_{\rm local}$ in a virialised halo, which modifies
+the effective Newton constant as $\Geff/G_N = F(\Psi_0)/F(\Psi_{\rm local})$
+where $F(\Psi) = \tfrac{1}{2} + \Lz\Psi^2$. The theoretical ceiling of this
+ratio---achieved in the extreme limit $\Psi_{\rm local}\to 0$---is
+\begin{equation}
+  \frac{\Geff}{G_N}\bigg|_{\rm max} = \frac{\tfrac{1}{2}+\Lz\Psi_0^2}{\tfrac{1}{2}}
+    = 1 + 2\Lz\Psi_0^2 = 1.041 \quad (\Lz=0.003,\;\Psi_0=2.62\,\Mpl).
+\end{equation}
+NGC~3198 requires $\Geff/G_N \approx 3.115$ at $r = 30$--$44\,\mathrm{kpc}$
+to reproduce the observed flat outer curve; the mechanism ceiling falls a
+factor $\sim3\times$ short regardless of kernel weight, halo formation
+history, or mass-to-light ratio (SIM149).
+
+SIM150 subsequently sweeps $\Lz$ logarithmically over $[10^{-6},\,10^2]$ to
+test whether any $\Lz$ within the locked CMSTG constraints lifts the ceiling
+to 3.115. The analytic crossing point is
+\begin{equation}
+  \Lambda_{0,{\rm req}} = \frac{G_{\rm target}-1}{2\Psi_0^2} = \frac{3.115-1}{2\times2.62^2} = 0.154,
+\end{equation}
+which is 51 times the locked value. At $\Lambda_{0,{\rm req}}$ the post-Newtonian
+Brans--Dicke parameter drops from $\omega_{\rm BD}=2{,}110$ (locked) to
+$\omega_{\rm BD}=2.4$, giving $|\gamma_{\rm PPN}-1| = 0.456$---exceeding the
+Cassini bound $2.3\times10^{-5}$ by a factor $\sim2\times10^4$. All five
+remaining locked constraints fail simultaneously: $f\sigma_8$ tension rises to
+$39\sigma$, the UV self-energy $\Sigma(0)$ exceeds its finiteness threshold by
+$38\times$, $\Delta\chi^2_{\rm BAO} = 1629$, and $\Psi$ contributes $7.7\%$
+of the energy budget at recombination. The $\Geff/G_N$ ceiling is therefore
+\emph{structural and parameter-universal}: no $\Lz$ within the Solar-System-consistent
+locked action raises $\Geff/G_N$ above $4.1\%$, far below the factor $\sim3.1$
+required for galactic rotation curves.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Minimum New Physics}
@@ -572,7 +619,12 @@ galactically---a coupled chameleon architecture.
 A stable sextic potential $V_6 = +\mu_6\Psi^6$ with $\mu_6 > 0$ would
 prevent the blow-up of the attractive quartic below $\lambda_{\rm blow}$,
 opening a window where the field can form a stable, self-bound condensate.
-The viability of this requires dedicated simulation (Phase~5 direction).
+The viability of this remains an open direction. Phase~5 simulations
+(SIM147--SIM150) investigated the complementary question of whether the
+\CMSTG\ memory kernel can accumulate sufficient local curvature in a galactic
+halo to produce the required $\Geff$ boost, and found this route closed by
+three independent structural arguments (Section~\ref{sec:combined}); the
+sextic-condensate mechanism is distinct and untested.
 
 All three options require new physics not contained in the Phase~1 locked
 action. The constraint established here is not a quantitative shortfall
@@ -585,7 +637,7 @@ the current action class.
 
 We have established that the Phase~1 canonical locked action of \CMSTG\
 cannot replace cold dark matter at galactic scales through any of the
-mechanisms accessible within the action class. The three independent
+mechanisms accessible within the action class. Four independent
 simulation programmes establish:
 
 \begin{enumerate}
@@ -605,12 +657,24 @@ simulation programmes establish:
     $\mathcal{V} \leq 3.7\times10^{-6}$ across the full $(\alpha_V, M_V)$
     parameter space. The field gradient is $10^{4}$--$10^{6}\times$ below
     the nonlinear threshold at all galactic radii.
+
+  \item \textbf{Memory-kernel $\Geff$ boost (SIM149--SIM150):} The
+    theoretical ceiling $\Geff/G_N = 1 + 2\Lz\Psi_0^2 = 1.041$, achieved
+    when $\Psi_{\rm local}\to0$, falls a factor $\sim3\times$ short of the
+    3.115 required by NGC~3198. A $\Lz$ sweep (SIM150) confirms the
+    ceiling is universal: the only $\Lz$ that lifts it to 3.115
+    ($\Lambda_{0,{\rm req}} = 0.154$) violates the Cassini PPN bound by
+    $\sim2\times10^4\times$ and all five remaining locked constraints.
 \end{enumerate}
 
 The energy density deficit at $r = 10\,\mathrm{kpc}$ is
-$2.7\times10^6\times$ under all three mechanisms. A direct matter coupling
+$2.7\times10^6\times$ under all four mechanisms. A direct matter coupling
 $\beta \sim 1{,}600\,\Lz$ would supply the missing density but is excluded
-by cosmological constraints (Paper~II~\cite{WilsonPaperII}).
+by cosmological constraints (Paper~II~\cite{WilsonPaperII}). The
+$\Geff/G_N$ ceiling is structural: it is built into the form of $F(\Psi)
+= \tfrac{1}{2}+\Lz\Psi^2$ and the requirement $|\Geff/G_N - 1| < 10^{-5}$
+on cosmological scales, which jointly fix $\Lz\Psi_0^2 \ll 1$ and hence
+the ceiling at $1 + 2\Lz\Psi_0^2 \approx 1 + O(10^{-2})$.
 
 This is a clean negative result: every mechanism within the \CMSTG\ action
 class has been tested, every mechanism fails, and the reason is a single
@@ -623,7 +687,7 @@ required for galactic-scale predictions.
 \noindent\textbf{Data and code:}
 All simulation scripts, outputs, and JSON results are publicly available at
 \url{https://github.com/cisomorph/Curvature-Memory_Scalar-Tensor_Gravity}
-(simulations SIM99, SIM100, SIM103).
+(simulations SIM99, SIM100, SIM103, SIM149, SIM150).
 
 \begin{thebibliography}{99}
 \bibitem{Rubin1980}

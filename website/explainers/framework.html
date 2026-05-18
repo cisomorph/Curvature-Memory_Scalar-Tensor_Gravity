@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CMSTG — Framework explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0b1d3a;
+    --ink-2:  #2a3a55;
+    --ink-3:  #5a6b85;
+    --paper:  #f5f0e6;
+    --paper-2:#eee5d3;
+    --rule:   #c9bda3;
+    --ochre:  oklch(0.62 0.11 65);
+    --ochre-soft: oklch(0.92 0.05 65);
+    --pass:   oklch(0.52 0.08 150);
+    --fail:   oklch(0.55 0.13 30);
+  }
+  html, body { margin:0; padding:0; background:#1b1a17; }
+  body { font-family: "Inter", system-ui, sans-serif; color: var(--ink); }
+  .stage {
+    width: 1400px;
+    margin: 0 auto;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 20% 12%, rgba(11,29,58,0.04), transparent 40%),
+      radial-gradient(circle at 85% 88%, rgba(180,140,70,0.06), transparent 45%);
+    padding: 72px 80px 64px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .serif { font-family: "STIX Two Text", "Iowan Old Style", Georgia, serif; }
+  .mono  { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* ---- Header ---- */
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 14px;
+    margin-bottom: 34px;
+  }
+  .eyebrow .right { color: var(--ochre); }
+  h1 {
+    font-family: "STIX Two Text", serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 500;
+  }
+  .sub {
+    font-family: "STIX Two Text", serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-2);
+    max-width: 1100px;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .meta {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    font-size: 12px;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+  .meta dt {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 6px;
+  }
+  .meta dd { margin: 0; color: var(--ink); font-size: 14px; }
+
+  /* ---- Section labels ---- */
+  .sec-label {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 56px 0 22px;
+  }
+  .sec-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    color: var(--ochre);
+    letter-spacing: 0.1em;
+  }
+  .sec-title {
+    font-family: "STIX Two Text", serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .sec-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    align-self: center;
+    margin-left: 8px;
+  }
+
+  /* ---- Big-idea diagram ---- */
+  .idea {
+    display: grid;
+    grid-template-columns: 1.05fr 1.4fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .idea-text { font-family: "STIX Two Text", serif; font-size: 18px; line-height: 1.55; color: var(--ink-2); }
+  .idea-text p { margin: 0 0 14px; }
+  .idea-text strong { color: var(--ink); font-weight: 600; font-style: normal; }
+  .idea-text .lede {
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .diagram {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 28px 24px 18px;
+    position: relative;
+  }
+  .diagram-caption {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+
+  /* ---- Action equation ---- */
+  .action {
+    margin: 42px 0 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 38px 48px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .action .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,230,0.5);
+    margin-bottom: 6px;
+  }
+  .action .name {
+    font-family: "STIX Two Text", serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245,240,230,0.85);
+  }
+  .action .eq {
+    font-family: "STIX Two Text", serif;
+    font-size: 30px;
+    text-align: center;
+    flex: 1;
+  }
+  .action sup, .action sub { font-size: 0.62em; }
+  .action .hl { color: var(--ochre); }
+
+  /* ---- Locked params ---- */
+  .locked {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-top: 28px;
+  }
+  .locked .cell {
+    padding: 22px 24px;
+    border-right: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  .locked .cell:last-child { border-right: none; }
+  .locked .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+  }
+  .locked .v {
+    font-family: "STIX Two Text", serif;
+    font-size: 26px;
+    color: var(--ink);
+  }
+  .locked .n { font-family: "STIX Two Text", serif; font-size: 13px; color: var(--ink-3); margin-top: 6px; font-style: italic; }
+
+  /* ---- Mechanism three-step ---- */
+  .mech {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 8px;
+  }
+  .step {
+    padding: 26px 26px 22px;
+    border-right: 1px dashed var(--rule);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step .num {
+    font-family: "STIX Two Text", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ochre);
+    margin-bottom: 8px;
+  }
+  .step h3 {
+    font-family: "STIX Two Text", serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    letter-spacing: -0.005em;
+  }
+  .step .eq {
+    font-family: "STIX Two Text", serif;
+    font-size: 20px;
+    padding: 14px 0 12px;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 12px 0;
+    text-align: center;
+  }
+  .step p {
+    font-family: "STIX Two Text", serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  /* ---- Tests table ---- */
+  .tests {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 56px;
+    margin-top: 4px;
+  }
+  .test {
+    display: grid;
+    grid-template-columns: 56px 1fr auto auto;
+    align-items: baseline;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .test .sim {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.05em;
+  }
+  .test .what {
+    font-family: "STIX Two Text", serif;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .test .res {
+    font-family: "STIX Two Text", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-2);
+    text-align: right;
+  }
+  .test .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 1px;
+  }
+  .pass-tag   { background: var(--pass); color: var(--paper); }
+  .struct-tag { background: var(--ochre); color: var(--paper); }
+  .incl-tag   { background: transparent; color: var(--ink-3); border: 1px solid var(--rule); }
+
+  /* ---- Residual callout ---- */
+  .resid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    background: var(--ochre-soft);
+    border-left: 3px solid var(--ochre);
+    padding: 28px 32px;
+  }
+  .resid h3 {
+    font-family: "STIX Two Text", serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 6px;
+  }
+  .resid .small {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 8px;
+  }
+  .resid .big {
+    font-family: "STIX Two Text", serif;
+    font-size: 56px;
+    line-height: 1;
+    margin: 6px 0 4px;
+    letter-spacing: -0.02em;
+  }
+  .resid p {
+    font-family: "STIX Two Text", serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 6px 0 0;
+  }
+
+  /* ---- Paper series footer ---- */
+  .series {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  .paper {
+    padding: 18px 18px 16px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  .paper.here { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .paper .roman {
+    font-family: "STIX Two Text", serif;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--ochre);
+  }
+  .paper.here .roman { color: var(--ochre-soft); }
+  .paper .title {
+    font-family: "STIX Two Text", serif;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .paper.here .title { color: var(--paper); }
+  .paper .you {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-top: 8px;
+  }
+
+  .colophon {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+
+  /* ---- SVG accents ---- */
+  .cone-svg { width: 100%; height: 340px; display: block; }
+  .corner-num {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: "STIX Two Text", serif;
+    font-style: italic;
+    color: var(--ink-3);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="stage" data-screen-label="01 CMSTG Framework Explainer">
+
+  <!-- Header -->
+  <div class="eyebrow">
+    <span>Paper II · Framework, Field Equations &amp; Cosmological Consistency</span>
+    <span class="right">C. R. B. Wilson · 2026</span>
+  </div>
+
+  <h1>Curvature-Memory<br/><em>Scalar-Tensor Gravity</em></h1>
+  <p class="sub">A covariant extension of General Relativity in which a scalar field&nbsp;Ψ encodes <em>retarded curvature history</em> through a non-minimal coupling&nbsp;Λ<sub>0</sub>Ψ<sup>2</sup><span class="serif">R</span> to the Ricci scalar — tested against nine precision cosmological datasets at the 10<sup>−5</sup> level.</p>
+
+  <dl class="meta">
+    <div><dt>Theory class</dt><dd class="serif">Horndeski, <em>G</em><sub>4</sub>=<em>M</em><sup>2</sup><sub>eff</sub>/2, <em>G</em><sub>5</sub>=0</dd></div>
+    <div><dt>GR limit</dt><dd class="serif">Λ<sub>0</sub> → 0&nbsp;&nbsp;(strict)</dd></div>
+    <div><dt>GW speed</dt><dd class="serif">c<sub>T</sub> = c &nbsp;(exact)</dd></div>
+    <div><dt>UV behaviour</dt><dd class="serif">one-loop finite (Paper III)</dd></div>
+  </dl>
+
+  <!-- 01 — Core idea + cone diagram -->
+  <div class="sec-label">
+    <span class="sec-num">§ 01</span>
+    <span class="sec-title">The core idea</span>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="idea">
+    <div class="idea-text">
+      <p class="lede"><strong>Geometry remembers.</strong> The scalar Ψ at any spacetime point is a weighted integral over past curvature, transported along the retarded Green's function.</p>
+      <p>Each past curvature event contributes according to its causal influence, attenuated by the field mass <em>m</em><sub>0</sub>. The result is a covariant scalar-tensor theory that <em>contains GR as a strict limit</em>, admits canonical quantization, and propagates gravitational waves at exactly the speed of light.</p>
+      <p style="color:var(--ink-3); font-size:15px;">Causality of the retarded kernel verified numerically (<span class="mono">SIM82</span>): pre-source amplitude &lt; 2 × 10<sup>−14</sup>.</p>
+    </div>
+
+    <div class="diagram">
+      <div class="corner-num serif">Fig. A</div>
+      <div class="diagram-caption">Past light cone → scalar field at x</div>
+      <svg class="cone-svg" viewBox="0 0 560 340" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="coneFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="oklch(0.62 0.11 65)" stop-opacity="0.02"/>
+            <stop offset="100%" stop-color="oklch(0.62 0.11 65)" stop-opacity="0.18"/>
+          </linearGradient>
+        </defs>
+        <!-- time axis -->
+        <line x1="40" y1="20" x2="40" y2="320" stroke="#5a6b85" stroke-width="0.8" />
+        <polygon points="40,14 36,24 44,24" fill="#5a6b85"/>
+        <text x="48" y="22" font-family="STIX Two Text" font-style="italic" font-size="14" fill="#5a6b85">t</text>
+        <text x="48" y="38" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em" fill="#5a6b85">FUTURE</text>
+        <text x="48" y="316" font-family="JetBrains Mono" font-size="9" letter-spacing="0.1em" fill="#5a6b85">PAST</text>
+
+        <!-- past light cone (apex at x; opens downward into past) -->
+        <polygon points="280,150 80,330 480,330" fill="url(#coneFill)" stroke="oklch(0.62 0.11 65)" stroke-width="1" />
+        <line x1="280" y1="150" x2="80"  y2="330" stroke="oklch(0.62 0.11 65)" stroke-width="1" stroke-dasharray="2 3"/>
+        <line x1="280" y1="150" x2="480" y2="330" stroke="oklch(0.62 0.11 65)" stroke-width="1" stroke-dasharray="2 3"/>
+
+        <!-- curvature events inside cone -->
+        <g fill="#0b1d3a">
+          <circle cx="190" cy="280" r="3.5"/>
+          <circle cx="350" cy="260" r="2.5"/>
+          <circle cx="240" cy="220" r="3"/>
+          <circle cx="400" cy="305" r="2.5"/>
+          <circle cx="150" cy="305" r="2"/>
+          <circle cx="310" cy="200" r="2"/>
+        </g>
+        <text x="430" y="298" font-family="STIX Two Text" font-style="italic" font-size="13" fill="#0b1d3a">R(x′)</text>
+
+        <!-- influence arrows toward apex -->
+        <g stroke="#0b1d3a" stroke-width="0.7" fill="none" opacity="0.55">
+          <path d="M 190 280 Q 240 215 278 152"/>
+          <path d="M 350 260 Q 320 210 282 152"/>
+          <path d="M 240 220 Q 262 190 280 154"/>
+        </g>
+
+        <!-- apex point x -->
+        <circle cx="280" cy="150" r="5" fill="#0b1d3a"/>
+        <circle cx="280" cy="150" r="11" fill="none" stroke="#0b1d3a" stroke-width="0.7" opacity="0.4"/>
+        <text x="292" y="146" font-family="STIX Two Text" font-style="italic" font-size="16" fill="#0b1d3a">Ψ(x)</text>
+
+        <!-- now line -->
+        <line x1="60" y1="150" x2="500" y2="150" stroke="#5a6b85" stroke-width="0.5" stroke-dasharray="3 4"/>
+        <text x="502" y="154" font-family="JetBrains Mono" font-size="9" fill="#5a6b85">now</text>
+
+        <!-- kernel formula -->
+        <text x="280" y="100" text-anchor="middle" font-family="STIX Two Text" font-size="17" fill="#0b1d3a">
+          Ψ(x) = ∫ G<tspan baseline-shift="sub" font-size="11">R</tspan>(x, x′) · 2Λ<tspan baseline-shift="sub" font-size="11">0</tspan>Ψ(x′) R(x′) d⁴x′
+        </text>
+        <text x="280" y="120" text-anchor="middle" font-family="STIX Two Text" font-style="italic" font-size="11" fill="#5a6b85">
+          G<tspan baseline-shift="sub" font-size="9">R</tspan>(x,x′) = 0  for  x⁰ &lt; x′⁰   (retarded — causal only)
+        </text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 02 — Action -->
+  <div class="action">
+    <div>
+      <div class="lbl">Phase 1 canonical action</div>
+      <div class="name">S<sub>P1</sub></div>
+    </div>
+    <div class="eq serif">
+      = ∫ d⁴x √−g &nbsp;
+      [ &nbsp;<span class="hl">(1 + 2Λ<sub>0</sub>Ψ²)</span> / 2 · R
+      &nbsp;−&nbsp; ½ (∂Ψ)²
+      &nbsp;−&nbsp; ½ m<sub>0</sub>² Ψ²&nbsp;]
+      &nbsp;+ S<sub>SM</sub>
+    </div>
+  </div>
+
+  <div class="locked">
+    <div class="cell">
+      <div class="k">Curvature coupling</div>
+      <div class="v serif">Λ<sub>0</sub> = 0.003<span style="font-size:16px"> M<sub>Pl</sub><sup>−2</sup></span></div>
+      <div class="n">locked from joint CMB+BAO fit</div>
+    </div>
+    <div class="cell">
+      <div class="k">Cosmological bg.</div>
+      <div class="v serif">Ψ̄ = 2.62<span style="font-size:16px"> M<sub>Pl</sub></span></div>
+      <div class="n">grows ∝ a<sup>1/2</sup> in matter era</div>
+    </div>
+    <div class="cell">
+      <div class="k">Scalar mass</div>
+      <div class="v serif">m<sub>0</sub> = 10<sup>−3</sup> H<sub>0</sub></div>
+      <div class="n">slow-roll regime, w ≈ −1</div>
+    </div>
+    <div class="cell">
+      <div class="k">Eff. coupling</div>
+      <div class="v serif">F<sub>eff</sub> = 0.521</div>
+      <div class="n">G<sub>eff</sub>/G = 1 − 15 ppm</div>
+    </div>
+  </div>
+
+  <!-- 03 — Mechanism in three equations -->
+  <div class="sec-label">
+    <span class="sec-num">§ 02</span>
+    <span class="sec-title">Mechanism, in three equations</span>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="mech">
+    <div class="step">
+      <div class="num">i.</div>
+      <h3>Curvature sources Ψ</h3>
+      <div class="eq serif">□Ψ + m<sub>0</sub><sup>2</sup>Ψ = 2Λ<sub>0</sub>Ψ <span style="font-style:italic">R</span></div>
+      <p>A Klein–Gordon equation with the Ricci scalar on the right-hand side. Retarded boundary conditions select the unique causal solution — past events only.</p>
+    </div>
+    <div class="step">
+      <div class="num">ii.</div>
+      <h3>Ψ back-reacts on geometry</h3>
+      <div class="eq serif">G<sub>μν</sub> = 8πG<sub>eff</sub>(Ψ) T<sub>μν</sub><sup>(Ψ)</sup> + T<sub>μν</sub><sup>(m)</sup> + …</div>
+      <p>Einstein equations with Ψ-dependent Newton constant&nbsp;<span class="serif">G<sub>eff</sub> = G / (1 + 2Λ<sub>0</sub>Ψ²)</span>. Gradient terms vanish whenever Ψ is constant.</p>
+    </div>
+    <div class="step">
+      <div class="num">iii.</div>
+      <h3>FLRW closes the loop</h3>
+      <div class="eq serif">3H²(1 + 2Λ<sub>0</sub>Ψ²) + 6Λ<sub>0</sub>ΨΨ′ − ½Ψ′² = ρ</div>
+      <p>The −6HΛ<sub>0</sub>ΨΨ̇ <em>memory-feedback</em> term is the defining signature. Friedmann constraint residual ≤ 3 × 10<sup>−16</sup> in numerical integration.</p>
+    </div>
+  </div>
+
+  <!-- 04 — Observational status -->
+  <div class="sec-label">
+    <span class="sec-num">§ 03</span>
+    <span class="sec-title">Observational status — nine precision tests</span>
+    <span class="sec-rule"></span>
+  </div>
+
+  <div class="tests">
+    <div class="test">
+      <div class="sim mono">SIM87</div>
+      <div class="what">BAO full-covariance (BOSS + eBOSS + Lyα)</div>
+      <div class="res">χ²/dof = 1.22</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM88</div>
+      <div class="what">CMB TT (full CLASS Boltzmann)</div>
+      <div class="res">RMS 2.93%</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM90</div>
+      <div class="what">Joint CMB + BAO consistency</div>
+      <div class="res">Δχ² = 0.000</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM93</div>
+      <div class="what">Bayesian evidence vs ΛCDM</div>
+      <div class="res">ln B = −0.71</div>
+      <div class="tag incl-tag">inconcl.</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM95</div>
+      <div class="what">CMB EE / TE polarization</div>
+      <div class="res">RMS 0.19% / 0.43%</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM96</div>
+      <div class="what">RSD growth rate fσ<sub>8</sub></div>
+      <div class="res">χ²/dof = 0.86</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM98</div>
+      <div class="what">Planck plikHM TTTEEE (joint optimum)</div>
+      <div class="res">Δ(−2 ln L) = −0.013</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM92</div>
+      <div class="what">Non-linear σ<sub>8</sub> &nbsp;(HALOFIT)</div>
+      <div class="res">|Δσ<sub>8</sub>| &lt; 0.007%</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM107</div>
+      <div class="what">Solar System PPN γ &nbsp;(Cassini)</div>
+      <div class="res">|γ − 1| = 1.78 × 10<sup>−5</sup></div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM108</div>
+      <div class="what">GW speed (GW170817)</div>
+      <div class="res">|c<sub>T</sub>/c − 1| = 0</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM109</div>
+      <div class="what">Dark energy EoS (w<sub>0</sub>, w<sub>a</sub>)</div>
+      <div class="res">(−0.992, −0.082)</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+    <div class="test">
+      <div class="sim mono">SIM101</div>
+      <div class="what">Sound horizon r<sub>d</sub> from first principles</div>
+      <div class="res">|Δr<sub>d</sub>/r<sub>d</sub>| ≤ 21 ppm</div>
+      <div class="tag pass-tag">pass</div>
+    </div>
+  </div>
+
+  <!-- 05 — Residual -->
+  <div class="resid">
+    <div>
+      <div class="small">The one residual</div>
+      <h3>DESI Y1 BAO tension</h3>
+      <div class="big serif">2.77<span style="font-size:34px; color:var(--ochre)">σ</span></div>
+      <div class="small" style="color:var(--ink-3); letter-spacing:0.14em;">joint MCMC · SIM121C</div>
+    </div>
+    <div>
+      <p style="margin-top:6px;">
+        F<sub>eff</sub> = 0.521 &lt; ½ implies G<sub>eff</sub> = G/(2F<sub>eff</sub>) &lt; G, which suppresses H(z) at DESI redshifts z ∈ [0.5, 1.3]. Paper&nbsp;I establishes this as a <strong>structural floor</strong> — irreducible within the CMSTG action class by any Tier&nbsp;2 mechanism, including mixed-source scalars (SIM144).
+      </p>
+      <p style="margin-top:14px; color:var(--ink-3); font-size:14px;">
+        <span class="mono" style="color:var(--ochre); letter-spacing:0.12em; text-transform:uppercase; font-size:10px;">Decisive test →</span>&nbsp; DESI Y3 / Y5 (2027–2028). Persistence at ≥&nbsp;3σ confirms the structural prediction; otherwise excludes the Phase&nbsp;1 canonical action.
+      </p>
+    </div>
+  </div>
+
+  <!-- 06 — Series footer -->
+  <div class="series">
+    <div class="paper">
+      <div class="roman serif">I</div>
+      <div class="title">Two structural no-go theorems for late-time dark energy modifications</div>
+    </div>
+    <div class="paper here">
+      <div class="roman serif">II</div>
+      <div class="title">Framework, field equations &amp; cosmological consistency</div>
+      <div class="you">you are here</div>
+    </div>
+    <div class="paper">
+      <div class="roman serif">III</div>
+      <div class="title">UV finiteness &amp; renormalization group flow</div>
+    </div>
+    <div class="paper">
+      <div class="roman serif">IV</div>
+      <div class="title">Galactic-scale constraints — why the locked action cannot replace dark matter</div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>Curvature-Memory Scalar-Tensor Gravity · explanatory summary</span>
+    <span>cisomorph/Curvature-Memory_Scalar-Tensor_Gravity &nbsp;·&nbsp; SIM82–SIM109</span>
+  </div>
+
+</div>
+</body>
+</html>

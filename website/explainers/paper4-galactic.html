@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CMSTG Paper IV — Why the locked action cannot replace dark matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: oklch(0.975 0.006 85);
+    --paper-2: oklch(0.955 0.008 85);
+    --rule: oklch(0.88 0.01 80);
+    --rule-2: oklch(0.80 0.012 80);
+    --ink: oklch(0.22 0.012 70);
+    --ink-2: oklch(0.38 0.012 70);
+    --ink-3: oklch(0.55 0.012 70);
+    --fail: oklch(0.50 0.14 28);
+    --fail-tint: oklch(0.93 0.04 28);
+    --ok: oklch(0.48 0.09 150);
+    --highlight: oklch(0.95 0.05 90);
+    --serif: 'Crimson Pro', 'Iowan Old Style', Georgia, serif;
+    --sans: 'Inter', -apple-system, system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  html, body { margin: 0; padding: 0; background: oklch(0.93 0.01 80); }
+  body {
+    font-family: var(--serif);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .poster {
+    width: 1600px;
+    margin: 0 auto;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 10% 5%, oklch(0.97 0.012 70) 0%, transparent 40%),
+      radial-gradient(circle at 92% 88%, oklch(0.965 0.014 60) 0%, transparent 45%);
+    padding: 72px 88px 80px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .poster::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.18  0 0 0 0 0.14  0 0 0 0.035 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.6;
+  }
+  .poster > * { position: relative; z-index: 1; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 22px;
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+  .eyebrow .dot { color: var(--fail); }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 58px;
+    line-height: 1.02;
+    letter-spacing: -0.012em;
+    margin: 10px 0 6px;
+    max-width: 1050px;
+  }
+  h1 em { font-style: italic; color: var(--ink-2); }
+  .deck {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink-2);
+    max-width: 1050px;
+    font-weight: 400;
+  }
+  .deck b { color: var(--fail); font-weight: 600; font-style: normal; }
+  .meta {
+    text-align: right;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+  }
+  .meta .stamp {
+    display: inline-block;
+    border: 1.2px solid var(--fail);
+    color: var(--fail);
+    padding: 6px 10px 5px;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    transform: rotate(-2deg);
+    margin-bottom: 12px;
+  }
+
+  /* ---------- TL;DR strip ---------- */
+  .tldr {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.6fr 0.9fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+  .tldr-cell {
+    border-top: 1px solid var(--rule-2);
+    padding-top: 14px;
+  }
+  .tldr-label {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 10px;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .tldr-num {
+    font-family: var(--mono);
+    font-size: 38px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .tldr-num .unit { font-size: 18px; color: var(--ink-3); margin-left: 6px;}
+  .tldr-cell p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin: 10px 0 0;
+  }
+  .tldr-cell.middle { border-top-color: var(--ink); }
+
+  /* ---------- Hero diagram ---------- */
+  .hero {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 36px;
+    align-items: stretch;
+  }
+  .galaxy-card {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 26px 28px 22px;
+    position: relative;
+  }
+  .panel-eyebrow {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-3);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+  .panel-eyebrow .sim { font-family: var(--mono); color: var(--fail); }
+  .panel-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 6px 0 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  .curve-svg { width: 100%; height: auto; display: block; }
+  .axis-note {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 22px;
+    margin-top: 16px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 22px; height: 3px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+  .legend .swatch.dashed {
+    background: repeating-linear-gradient(90deg, var(--ink-2) 0 5px, transparent 5px 9px);
+    height: 2px;
+  }
+
+  /* The "ratio" stack on the right */
+  .gap-card {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 26px 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .big-ratio {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+  .ratio-num {
+    font-family: var(--mono);
+    font-size: 88px;
+    line-height: 0.92;
+    color: var(--fail);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .ratio-num .x { font-size: 44px; color: var(--ink-2); margin-left: 2px; }
+  .ratio-blurb {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+  .ratio-blurb b { color: var(--ink); font-weight: 600; }
+  .ratio-rule {
+    border-top: 1px dashed var(--rule-2);
+    margin: 22px 0 14px;
+  }
+  .ratio-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 28px;
+  }
+  .ratio-stats dt {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .ratio-stats dd {
+    font-family: var(--mono);
+    font-size: 17px;
+    color: var(--ink);
+    margin: 4px 0 0;
+  }
+  .ratio-stats dd .small { color: var(--ink-3); font-size: 13px; }
+  .ratio-stats dd.fail { color: var(--fail); }
+
+  /* ---------- The four mechanisms ---------- */
+  .section-head {
+    margin: 56px 0 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: baseline;
+    gap: 22px;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .section-head .nudge {
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-head .roman {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-3);
+  }
+
+  .mechs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .mech {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 24px 26px 22px;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+  }
+  .mech-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .mech-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.16em;
+  }
+  .mech-num b { color: var(--fail); margin-right: 8px; }
+  .mech-sim {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 3px 8px;
+    letter-spacing: 0.1em;
+  }
+  .mech-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 4px 0 10px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .mech-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+  }
+  .mech-body {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .mech-body em { font-style: italic; color: var(--ink); }
+  .mech-foot {
+    margin-top: 18px;
+    border-top: 1px dashed var(--rule-2);
+    padding-top: 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+  .verdict {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--fail);
+    color: var(--paper);
+    padding: 5px 9px 4px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+  }
+  .shortfall {
+    font-family: var(--mono);
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .shortfall b { color: var(--fail); font-weight: 600; }
+
+  .mech-diagram {
+    margin: 4px 0 8px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 10px 12px;
+  }
+  .mech-diagram svg { display: block; width: 100%; height: 88px; }
+
+  /* ---------- Verdict bar ---------- */
+  .verdict-bar {
+    margin-top: 44px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px 30px;
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr;
+    gap: 36px;
+  }
+  .verdict-bar .vb-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: oklch(0.78 0.02 80);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .verdict-bar h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.12;
+    margin: 0;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+  .verdict-bar h3 b { color: oklch(0.78 0.12 28); font-weight: 600; }
+  .verdict-bar p {
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.5;
+    color: oklch(0.86 0.014 80);
+    margin: 0 0 12px;
+  }
+  .verdict-bar ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .verdict-bar li {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.45;
+    color: oklch(0.88 0.014 80);
+    padding-left: 22px;
+    position: relative;
+  }
+  .verdict-bar li::before {
+    content: "→";
+    position: absolute;
+    left: 0; top: 0;
+    color: oklch(0.78 0.12 28);
+    font-family: var(--mono);
+  }
+  .verdict-bar li b { color: var(--paper); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  .colophon {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .colophon .right { font-family: var(--mono); }
+
+  /* utility */
+  .mono { font-family: var(--mono); }
+</style>
+</head>
+<body>
+<main class="poster" data-screen-label="Paper IV Explainer">
+
+  <!-- ============ Masthead ============ -->
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Paper IV <span style="color:var(--rule-2)">·</span> CMSTG series <span style="color:var(--rule-2)">·</span> Galactic-scale boundary <span class="dot">·</span> No-go result</div>
+      <h1>Why a curvature-memory scalar <em>cannot</em> replace dark matter at galactic scales.</h1>
+      <p class="deck">The locked action of Curvature-Memory Scalar-Tensor Gravity passes every cosmological test — but at the scale of spiral galaxies, every mechanism in the action class fails to flatten rotation curves. Four independent tests against NGC&nbsp;3198 and NGC&nbsp;6503; <b>all four fail structurally, not parametrically.</b></p>
+    </div>
+    <div class="meta">
+      <div class="stamp">NO-GO · STRUCTURAL</div>
+      <div>Independent summary diagram</div>
+      <div>Source: Paper IV preprint, 2026</div>
+      <div>NGC&nbsp;3198 · NGC&nbsp;6503</div>
+    </div>
+  </header>
+
+  <!-- ============ TL;DR strip ============ -->
+  <section class="tldr">
+    <div class="tldr-cell">
+      <div class="tldr-label">Required boost at r = 10 kpc</div>
+      <div class="tldr-num">G<sub style="font-size:18px">eff</sub>/G<sub style="font-size:18px">N</sub> = 3.115</div>
+      <p>The empirical multiplier needed to flatten NGC&nbsp;3198's rotation curve from baryons alone.</p>
+    </div>
+    <div class="tldr-cell middle">
+      <div class="tldr-label">What the locked action can deliver</div>
+      <div class="tldr-num">≤ 1.041<span class="unit">ceiling</span></div>
+      <p>Even granting perfect kernel support across the disk, the theoretical ceiling falls <b style="color:var(--fail)">~3× short</b> of what's needed — and the realised value is effectively zero.</p>
+    </div>
+    <div class="tldr-cell">
+      <div class="tldr-label">Energy-density shortfall</div>
+      <div class="tldr-num">2.7 × 10<sup style="font-size:18px">6</sup><span class="unit">×</span></div>
+      <p>ρ<sub>Ψ</sub> = 1.6&nbsp;×&nbsp;10⁻³ M<sub>☉</sub>&nbsp;kpc⁻³ vs. the isothermal halo requirement.</p>
+    </div>
+  </section>
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <!-- Rotation curve diagram -->
+    <div class="galaxy-card">
+      <div class="panel-eyebrow"><span>The observation</span><span class="sim">NGC 3198 · NGC 6503</span></div>
+      <div class="panel-title">Flat rotation curves demand a halo the scalar field cannot supply.</div>
+
+      <svg class="curve-svg" viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg" aria-label="Rotation curve schematic">
+        <defs>
+          <pattern id="grid" width="40" height="32" patternUnits="userSpaceOnUse">
+            <path d="M40 0 H0 V32" fill="none" stroke="oklch(0.88 0.01 80)" stroke-width="0.6"/>
+          </pattern>
+          <linearGradient id="diskFade" x1="0" x2="1">
+            <stop offset="0" stop-color="oklch(0.88 0.018 70)" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="oklch(0.88 0.018 70)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Plot frame -->
+        <rect x="56" y="20" width="560" height="260" fill="url(#grid)"/>
+        <rect x="56" y="20" width="560" height="260" fill="none" stroke="oklch(0.55 0.01 80)" stroke-width="1"/>
+
+        <!-- Optical disk shaded region -->
+        <rect x="56" y="20" width="180" height="260" fill="url(#diskFade)"/>
+        <text x="146" y="38" font-family="Inter" font-size="11" fill="oklch(0.45 0.01 80)" text-anchor="middle" letter-spacing="1.2">OPTICAL DISK</text>
+
+        <!-- Observed flat curve -->
+        <path d="M 60 240 Q 110 170 170 120 Q 220 92 260 86 Q 360 82 480 84 Q 560 86 612 88"
+              fill="none" stroke="oklch(0.22 0.012 70)" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- Markers -->
+        <g fill="oklch(0.22 0.012 70)">
+          <circle cx="120" cy="158" r="3"/>
+          <circle cx="180" cy="116" r="3"/>
+          <circle cx="260" cy="90" r="3"/>
+          <circle cx="340" cy="86" r="3"/>
+          <circle cx="440" cy="86" r="3"/>
+          <circle cx="540" cy="86" r="3"/>
+        </g>
+
+        <!-- Baryonic Keplerian fall-off -->
+        <path d="M 60 250 Q 110 175 170 140 Q 230 140 280 170 Q 360 215 460 245 Q 540 263 612 270"
+              fill="none" stroke="oklch(0.50 0.14 28)" stroke-width="2.2" stroke-dasharray="6 5"/>
+
+        <!-- Scalar Yukawa attempt -->
+        <path d="M 60 230 Q 100 200 140 230 Q 200 268 280 276 Q 380 278 460 278 Q 540 278 612 278"
+              fill="none" stroke="oklch(0.55 0.012 70)" stroke-width="1.8" stroke-dasharray="2 4"/>
+
+        <!-- Gap arrows -->
+        <g stroke="oklch(0.50 0.14 28)" stroke-width="1.2" fill="none">
+          <line x1="440" y1="92" x2="440" y2="240"/>
+          <polygon points="440,92 436,102 444,102" fill="oklch(0.50 0.14 28)" stroke="none"/>
+          <polygon points="440,240 436,230 444,230" fill="oklch(0.50 0.14 28)" stroke="none"/>
+        </g>
+        <text x="450" y="170" font-family="JetBrains Mono" font-size="13" fill="oklch(0.50 0.14 28)">missing v²</text>
+        <text x="450" y="186" font-family="JetBrains Mono" font-size="13" fill="oklch(0.50 0.14 28)">≈ 3.1×</text>
+
+        <!-- Axes labels -->
+        <text x="336" y="312" font-family="Inter" font-size="12" fill="oklch(0.38 0.012 70)" text-anchor="middle" letter-spacing="0.8">radius&nbsp;&nbsp;r&nbsp;&nbsp;(kpc) →</text>
+        <g transform="translate(28 150) rotate(-90)">
+          <text font-family="Inter" font-size="12" fill="oklch(0.38 0.012 70)" text-anchor="middle" letter-spacing="0.8">circular velocity v(r)</text>
+        </g>
+
+        <!-- Tick labels -->
+        <g font-family="JetBrains Mono" font-size="10" fill="oklch(0.55 0.01 80)">
+          <text x="60" y="296" text-anchor="middle">0</text>
+          <text x="176" y="296" text-anchor="middle">5</text>
+          <text x="296" y="296" text-anchor="middle">10</text>
+          <text x="416" y="296" text-anchor="middle">20</text>
+          <text x="536" y="296" text-anchor="middle">30</text>
+        </g>
+      </svg>
+
+      <div class="legend">
+        <span><span class="swatch" style="background: oklch(0.22 0.012 70)"></span>observed (flat)</span>
+        <span><span class="swatch dashed" style="background: repeating-linear-gradient(90deg, oklch(0.50 0.14 28) 0 6px, transparent 6px 11px)"></span>baryons only (Keplerian)</span>
+        <span><span class="swatch" style="background: repeating-linear-gradient(90deg, oklch(0.55 0.012 70) 0 2px, transparent 2px 5px)"></span>locked-action scalar prediction</span>
+      </div>
+    </div>
+
+    <!-- Big ratio card -->
+    <div class="gap-card">
+      <div class="panel-eyebrow"><span>The structural gap</span><span class="sim">SIM149 · SIM150</span></div>
+      <div class="panel-title">A single number kills every mechanism in the action class.</div>
+
+      <div class="big-ratio">
+        <div class="ratio-num">2 × 10<sup style="font-size:40px;">6</sup><span class="x">×</span></div>
+        <div class="ratio-blurb">The curvature coupling <span class="mono">2Λ<sub>0</sub>|R<sub>gal</sub>|</span> is this much <b>weaker</b> than the field-mass term at galactic densities. No condensation, no halo, no flattening.</div>
+      </div>
+
+      <div class="ratio-rule"></div>
+
+      <dl class="ratio-stats">
+        <div>
+          <dt>Required Λ<sub>0</sub></dt>
+          <dd class="fail">0.154 <span class="small">= 51 × locked value</span></dd>
+        </div>
+        <div>
+          <dt>Cassini PPN bound, if forced</dt>
+          <dd class="fail">violated by 2 × 10⁴×</dd>
+        </div>
+        <div>
+          <dt>Vainshtein ratio (best case)</dt>
+          <dd class="fail">V ≤ 3.7 × 10⁻⁶</dd>
+        </div>
+        <div>
+          <dt>Memory kernel decay τ<sub>mem</sub></dt>
+          <dd>≈ 200 kyr <span class="small">(too fast)</span></dd>
+        </div>
+        <div>
+          <dt>G<sub>eff</sub>/G<sub>N</sub> theoretical ceiling</dt>
+          <dd>1 + 2Λ<sub>0</sub>Ψ₀² = 1.041</dd>
+        </div>
+        <div>
+          <dt>Required at r = 10 kpc</dt>
+          <dd class="fail">3.115</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ Mechanisms ============ -->
+  <div class="section-head">
+    <span class="roman">§ 3 – 5</span>
+    <h2>Four mechanisms in the action class. Four independent failures.</h2>
+    <span class="nudge">Test galaxies&nbsp;·&nbsp;NGC&nbsp;3198 &amp; NGC&nbsp;6503</span>
+  </div>
+
+  <section class="mechs">
+
+    <!-- Mechanism 1 -->
+    <article class="mech">
+      <div class="mech-head">
+        <div class="mech-num"><b>01</b> Static field profile</div>
+        <div class="mech-sim">SIM 99</div>
+      </div>
+      <div class="mech-title">Yukawa decays exponentially — not as r⁻².</div>
+      <div class="mech-tag">Test: solve the static field equation around a baryonic disk</div>
+
+      <div class="mech-diagram">
+        <svg viewBox="0 0 380 88" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="74" x2="370" y2="74" stroke="oklch(0.55 0.01 80)" stroke-width="0.8"/>
+          <line x1="20" y1="12" x2="20" y2="74" stroke="oklch(0.55 0.01 80)" stroke-width="0.8"/>
+          <!-- Required isothermal r^-2 -->
+          <path d="M 28 18 Q 80 28 140 42 Q 220 58 360 70" fill="none" stroke="oklch(0.22 0.012 70)" stroke-width="2" stroke-dasharray="5 4"/>
+          <!-- Yukawa exponential -->
+          <path d="M 28 14 Q 50 16 70 28 Q 100 55 140 70 L 360 73" fill="none" stroke="oklch(0.50 0.14 28)" stroke-width="2.2"/>
+          <text x="220" y="22" font-family="JetBrains Mono" font-size="11" fill="oklch(0.22 0.012 70)">required ρ ∝ r⁻²</text>
+          <text x="48" y="46" font-family="JetBrains Mono" font-size="11" fill="oklch(0.50 0.14 28)">Yukawa e^(−mr)</text>
+          <text x="346" y="86" font-family="JetBrains Mono" font-size="9" fill="oklch(0.55 0.01 80)" text-anchor="end">r →</text>
+        </svg>
+      </div>
+
+      <p class="mech-body">The static solution to <em>(∇² − m²)Ψ = source</em> falls off on the scale ~ℏ/mc. That length is microscopic compared to galactic radii, so the field is <em>exponentially steeper</em> than the isothermal profile a halo requires.</p>
+
+      <div class="mech-foot">
+        <span class="verdict">FAIL</span>
+        <span class="shortfall">Profile mismatch — <b>not a parameter problem</b>.</span>
+      </div>
+    </article>
+
+    <!-- Mechanism 2 -->
+    <article class="mech">
+      <div class="mech-head">
+        <div class="mech-num"><b>02</b> Time-domain condensation</div>
+        <div class="mech-sim">SIM 100</div>
+      </div>
+      <div class="mech-title">Curvature coupling is six orders too weak.</div>
+      <div class="mech-tag">Test: 1+1D wave evolution with 2Λ₀|R<sub>gal</sub>| source</div>
+
+      <div class="mech-diagram">
+        <svg viewBox="0 0 380 88" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="46" x2="370" y2="46" stroke="oklch(0.55 0.01 80)" stroke-width="0.8"/>
+          <!-- Mass term bar -->
+          <rect x="80" y="20" width="220" height="14" fill="oklch(0.22 0.012 70)"/>
+          <text x="84" y="16" font-family="JetBrains Mono" font-size="10" fill="oklch(0.22 0.012 70)">m₀² (field mass term)</text>
+          <!-- Curvature coupling tiny bar -->
+          <rect x="80" y="58" width="2" height="14" fill="oklch(0.50 0.14 28)"/>
+          <text x="90" y="70" font-family="JetBrains Mono" font-size="10" fill="oklch(0.50 0.14 28)">2Λ₀|R<tspan baseline-shift="sub" font-size="7">gal</tspan>|   →   ÷ 2×10⁶</text>
+        </svg>
+      </div>
+
+      <p class="mech-body">Even in fully dynamical evolution, the curvature drive that <em>could</em> seed a condensate is dwarfed by the field's own restoring mass. Condensation never starts. The Gaussian memory kernel decays on <span class="mono">τ<sub>mem</sub> ≈ 200&nbsp;kyr</span> — far shorter than orbital timescales.</p>
+
+      <div class="mech-foot">
+        <span class="verdict">FAIL</span>
+        <span class="shortfall">Drive/restoring ratio <b>2 × 10⁻⁶</b>.</span>
+      </div>
+    </article>
+
+    <!-- Mechanism 3 -->
+    <article class="mech">
+      <div class="mech-head">
+        <div class="mech-num"><b>03</b> Vainshtein screening</div>
+        <div class="mech-sim">SIM 103</div>
+      </div>
+      <div class="mech-title">Non-linear kinetic boost fails by six orders.</div>
+      <div class="mech-tag">Test: scan Vainshtein ratio V across the full coupling space</div>
+
+      <div class="mech-diagram">
+        <svg viewBox="0 0 380 88" xmlns="http://www.w3.org/2000/svg">
+          <!-- target line at top -->
+          <line x1="20" y1="22" x2="360" y2="22" stroke="oklch(0.22 0.012 70)" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="20" y="16" font-family="JetBrains Mono" font-size="10" fill="oklch(0.22 0.012 70)">V ≈ 1  (screening active)</text>
+          <!-- baseline -->
+          <line x1="20" y1="72" x2="360" y2="72" stroke="oklch(0.55 0.01 80)" stroke-width="0.8"/>
+          <!-- scatter dots near bottom -->
+          <g fill="oklch(0.50 0.14 28)">
+            <circle cx="40" cy="68" r="2.4"/><circle cx="78" cy="69" r="2.4"/><circle cx="112" cy="70" r="2.4"/>
+            <circle cx="150" cy="67" r="2.4"/><circle cx="186" cy="71" r="2.4"/><circle cx="220" cy="68" r="2.4"/>
+            <circle cx="256" cy="70" r="2.4"/><circle cx="290" cy="66" r="2.4"/><circle cx="326" cy="71" r="2.4"/>
+            <circle cx="356" cy="69" r="2.4"/>
+          </g>
+          <text x="370" y="78" font-family="JetBrains Mono" font-size="10" fill="oklch(0.50 0.14 28)" text-anchor="end">V ≤ 3.7 × 10⁻⁶</text>
+        </svg>
+      </div>
+
+      <p class="mech-body">Vainshtein-type screening can let scalar gradients amplify gravity inside a heavy source. Here the ratio <em>V</em> sits a million times below the screening threshold across the entire parameter scan — the non-linearity simply never switches on.</p>
+
+      <div class="mech-foot">
+        <span class="verdict">FAIL</span>
+        <span class="shortfall"><b>V ≤ 3.7 × 10⁻⁶</b> over 8 decades of Λ₀.</span>
+      </div>
+    </article>
+
+    <!-- Mechanism 4 -->
+    <article class="mech">
+      <div class="mech-head">
+        <div class="mech-num"><b>04</b> Memory-kernel halo</div>
+        <div class="mech-sim">SIM 149 · SIM 150</div>
+      </div>
+      <div class="mech-title">Even granted perfect kernel support, the ceiling is 3× too low.</div>
+      <div class="mech-tag">Test: ceiling on G<sub>eff</sub>/G<sub>N</sub> from accumulated memory</div>
+
+      <div class="mech-diagram">
+        <svg viewBox="0 0 380 88" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="74" x2="360" y2="74" stroke="oklch(0.55 0.01 80)" stroke-width="0.8"/>
+          <!-- required height bar -->
+          <rect x="80" y="12" width="60" height="62" fill="none" stroke="oklch(0.22 0.012 70)" stroke-width="1.4"/>
+          <text x="110" y="8" font-family="JetBrains Mono" font-size="10" fill="oklch(0.22 0.012 70)" text-anchor="middle">3.115</text>
+          <!-- locked ceiling small bar -->
+          <rect x="200" y="63" width="60" height="11" fill="oklch(0.50 0.14 28)"/>
+          <text x="230" y="58" font-family="JetBrains Mono" font-size="10" fill="oklch(0.50 0.14 28)" text-anchor="middle">1.041</text>
+          <!-- labels under -->
+          <text x="110" y="86" font-family="Inter" font-size="9" fill="oklch(0.45 0.01 80)" text-anchor="middle">REQUIRED</text>
+          <text x="230" y="86" font-family="Inter" font-size="9" fill="oklch(0.45 0.01 80)" text-anchor="middle">CEILING</text>
+          <text x="320" y="40" font-family="JetBrains Mono" font-size="10" fill="oklch(0.50 0.14 28)">~3× short</text>
+        </svg>
+      </div>
+
+      <p class="mech-body">The accumulated G<sub>eff</sub>/G<sub>N</sub> boost from the memory kernel saturates at <span class="mono">1 + 2Λ₀Ψ₀² = 1.041</span>. Forcing it up to 3.115 needs Λ₀ that <em>violates Cassini Solar-System tests by 2 × 10⁴×</em>.</p>
+
+      <div class="mech-foot">
+        <span class="verdict">FAIL</span>
+        <span class="shortfall">Ceiling 1.041 vs. required <b>3.115</b>.</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ Verdict ============ -->
+  <section class="verdict-bar">
+    <div>
+      <div class="vb-eyebrow">Conclusion · § 7–8</div>
+      <h3>The boundary is structural. <b>New physics is needed</b> — at first-principles, not as a fitted parameter.</h3>
+    </div>
+    <div>
+      <p>The four mechanisms above exhaust the menu available to any massive scalar-tensor theory with curvature coupling, a memory scale, and no direct baryon–scalar term. A future galactic-scale extension of CMSTG needs:</p>
+      <ul>
+        <li><b>Chameleon-screened mass term</b> — environmental softening of m so the Yukawa range stretches to galactic scales while Solar-System bounds survive.</li>
+        <li><b>Coupled chameleon architecture</b> — a direct, screened Ψ–baryon coupling absent from the locked action.</li>
+        <li><b>Sextic-stabilised condensate</b> — higher-order self-interactions that can support a halo where the quadratic mass term cannot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <span>Explanatory diagram · drawn from Paper IV (Wilson, 2026) · CMSTG series — Paper I (DE boundary) · II (precision tests) · III (UV completion) · IV (DM boundary).</span>
+    <span class="right">SIM99 · SIM100 · SIM103 · SIM149 · SIM150</span>
+  </footer>
+
+</main>
+</body>
+</html>

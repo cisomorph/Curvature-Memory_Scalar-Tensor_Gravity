@@ -527,6 +527,29 @@ a:hover { text-decoration: underline; }
 .modal-close:hover { background: var(--fail); border-color: var(--fail); color: #fff; }
 .modal-iframe { width: 100%; height: 100%; border: none; display: block; }
 
+/* ── Tooltip ────────────────────────────────────────────────── */
+.has-tip {
+  cursor: help;
+  border-bottom: 1px dotted rgba(244,239,230,0.22);
+}
+.has-tip.has-tip-block { display: block; border-bottom: none; }
+.tooltip-bubble {
+  position: fixed;
+  z-index: 9999;
+  max-width: 300px;
+  background: #222019;
+  border: 1px solid rgba(244,239,230,0.12);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(244,239,230,0.82);
+  pointer-events: none;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.6);
+}
+
 /* ── KaTeX overrides ────────────────────────────────────────── */
 .katex { font-size: 1em !important; }
 

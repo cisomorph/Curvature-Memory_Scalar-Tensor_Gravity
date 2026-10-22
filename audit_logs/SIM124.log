@@ -1,0 +1,37 @@
+======================================================================
+SIM124 — K(Ψ) = exp(−αΨ²) kinetic modification   [audited]
+======================================================================
+
+Part A: Ψ(z=0) over (α, Ψ_ini)
+  α \ Ψ_ini   0.001    0.01    0.05     0.1     0.3     0.5     1.0     2.0     2.5
+       0.00   0.001   0.011   0.054   0.109   0.327   0.545   1.089   2.180   2.726
+       0.10   0.001   0.011   0.054   0.109   0.327   0.546   1.100   2.290   2.994
+       0.30   0.001   0.011   0.054   0.109   0.328   0.549   1.127     nan     nan
+       0.50   0.001   0.011   0.054   0.109   0.328   0.551   1.164     nan     nan
+       1.00   0.001   0.011   0.054   0.109   0.330   0.560   1.380     nan     nan
+       1.50   0.001   0.011   0.054   0.109   0.331   0.570     nan     nan     nan
+       2.00   0.001   0.011   0.054   0.109   0.333   0.582     nan     nan     nan
+       3.00   0.001   0.011   0.055   0.109   0.337   0.618     nan     nan     nan
+       5.00   0.001   0.011   0.055   0.109   0.346     nan     nan     nan     nan
+
+Part B: Ψ_ini(α) such that Ψ(z=0) = 2.62
+  α=0.00: Ψ_ini = 2.4031 → Ψ(z=0) = 2.62  (ΔΨ = 0.217)
+  α=0.10: Ψ_ini = 2.2461 → Ψ(z=0) = 2.62  (ΔΨ = 0.374)
+  α=0.20: no crossing (max Ψ(z=0) = 1.915)
+  α=0.30: no crossing (max Ψ(z=0) = 2.054)
+  α=0.50: no crossing (max Ψ(z=0) = 1.204)
+  α=0.70: no crossing (max Ψ(z=0) = 1.268)
+  α=1.00: no crossing (max Ψ(z=0) = 1.484)
+  α=1.50: no crossing (max Ψ(z=0) = 0.775)
+  α=2.00: no crossing (max Ψ(z=0) = 0.825)
+  α=3.00: no crossing (max Ψ(z=0) = 0.475)
+  α=5.00: no crossing (max Ψ(z=0) = 0.518)
+
+Part C: observables for the viable solutions (θ*-matched; λ recalibrated)
+  α=0.00 Ψ_ini=2.403: H0=66.66 Ψ0=2.620 χ²DR1=17.80 Δχ²=+4.24 (DR2 +10.99) Cassini×41 → PASS
+  α=0.10 Ψ_ini=2.246: H0=67.09 Ψ0=2.620 χ²DR1=15.94 Δχ²=+6.09 (DR2 +15.60) Cassini×82 → PASS
+======================================================================
+  unresolved (time budget exceeded): [{'alpha': 0.3, 'psi_ini': 2.0}, {'alpha': 0.3, 'psi_ini': 2.5}, {'alpha': 0.5, 'psi_ini': 2.0}, {'alpha': 0.5, 'psi_ini': 2.5}, {'alpha': 1.0, 'psi_ini': 2.0}, {'alpha': 1.0, 'psi_ini': 2.5}, {'alpha': 1.5, 'psi_ini': 1.0}, {'alpha': 1.5, 'psi_ini': 2.0}, {'alpha': 1.5, 'psi_ini': 2.5}, {'alpha': 2.0, 'psi_ini': 1.0}, {'alpha': 2.0, 'psi_ini': 2.0}, {'alpha': 2.0, 'psi_ini': 2.5}, {'alpha': 3.0, 'psi_ini': 1.0}, {'alpha': 3.0, 'psi_ini': 2.0}, {'alpha': 3.0, 'psi_ini': 2.5}, {'alpha': 5.0, 'psi_ini': 0.5}, {'alpha': 5.0, 'psi_ini': 1.0}, {'alpha': 5.0, 'psi_ini': 2.0}, {'alpha': 5.0, 'psi_ini': 2.5}, {'alpha': 0.2, 'psi_ini': np.float64(2.5938)}, {'alpha': 0.3, 'psi_ini': np.float64(2.5938)}, {'alpha': 0.5, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 0.5, 'psi_ini': np.float64(2.5938)}, {'alpha': 0.7, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 0.7, 'psi_ini': np.float64(2.5938)}, {'alpha': 1.0, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 1.0, 'psi_ini': np.float64(2.5938)}, {'alpha': 1.5, 'psi_ini': np.float64(1.0287193273485018)}, {'alpha': 1.5, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 1.5, 'psi_ini': np.float64(2.5938)}, {'alpha': 2.0, 'psi_ini': np.float64(1.0287193273485018)}, {'alpha': 2.0, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 2.0, 'psi_ini': np.float64(2.5938)}, {'alpha': 3.0, 'psi_ini': np.float64(0.6478539425737128)}, {'alpha': 3.0, 'psi_ini': np.float64(1.0287193273485018)}, {'alpha': 3.0, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 3.0, 'psi_ini': np.float64(2.5938)}, {'alpha': 5.0, 'psi_ini': np.float64(0.6478539425737128)}, {'alpha': 5.0, 'psi_ini': np.float64(1.0287193273485018)}, {'alpha': 5.0, 'psi_ini': np.float64(1.6334907992628989)}, {'alpha': 5.0, 'psi_ini': np.float64(2.5938)}]
+SIM124 RESULT (audited): FAIL — viable roll-ups need Ψ_ini ∈ [2.25, 2.40] (fine-tuning criterion: Ψ_ini < 0.5 counts as genuine roll from the hilltop)   (published: FAIL)
+======================================================================
+SIM124 complete.

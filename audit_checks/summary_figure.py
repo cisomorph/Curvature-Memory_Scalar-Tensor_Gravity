@@ -37,6 +37,10 @@ add('SIM141 running Λ0(a)', 'SIM141/output.json', 'LLR / Cassini fail', key='sc
 add('SIM142 G3 kinetic', 'SIM142/output.json', 'Cassini fail', key='scan_results')
 add('SIM143 + quintessence', 'SIM143/output.json', 'Cassini fail', key='scan_results')
 add('SIM144 mixed source', 'SIM144/SIM144_results.json', 'Cassini fail', key='scan_results')
+r124 = json.load(open(f'{R}/SIM124/Outputs/sim124_results.json')).get('results_C', [])
+if r124:
+    b = max(r124, key=lambda r: r['obs']['DR1']['delta_chi2_tot_vs_LCDM'])['obs']
+    entries.append(('SIM124 K(Ψ) hilltop', b['DR1']['delta_chi2_tot_vs_LCDM'], b['DR2']['delta_chi2_tot_vs_LCDM'], 'Cassini fail'))
 add('SIM131 ξΨR', 'SIM131/Outputs/sim131_results.json', 'cosmology fail', key='scan_xi')
 
 col = {'reference': '#7f7f7f', 'Cassini fail': '#d6604d', 'passes Cassini+LLR': '#1a9850',

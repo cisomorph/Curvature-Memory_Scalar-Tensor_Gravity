@@ -4,7 +4,7 @@ Running log of the independent audit, bug fixes and reruns of the CMSTG simulati
 Started 2026-10-22. Auditor: Claude (Opus 5.5), Claude Code session.
 
 - Working copy: `/home/aion/CMSTG-fixes` (fresh clone of `cisomorph/Curvature-Memory_Scalar-Tensor_Gravity`, branch `audit-fixes`, base commit `cd03006`).
-- Committed on branch `audit-fixes` and pushed to `origin` on 2026-10-22 at the user's request. The SIM124 rerun was still running at that point; its results follow in a later commit. `main` is untouched.
+- Committed on branch `audit-fixes` and pushed to `origin` on 2026-10-22 at the user's request (commit `7b5f22c`). The SIM124 results were added in a follow-up commit, also pushed at the user's request. `main` is untouched and no PR has been opened.
 - Not available on this machine: CLASS, classy, CAMB, the Planck plikHM likelihood and clipy. Sims that need them (SIM88, SIM97, SIM98) can't be rerun here.
 - Available: Python 3.10, NumPy 2.2.6, SciPy 1.15.3, emcee 3.1.6, matplotlib.
 
@@ -42,7 +42,7 @@ Started 2026-10-22. Auditor: Claude (Opus 5.5), Claude Code session.
 | SIM135 | bi-scalar ξφR | FAIL | FAIL / PASS | +9.0 / +19.6 (ξ = 0.03) | 145× Cassini |
 | SIM136 | Horndeski G^{μν}∂Ψ∂Ψ | FAIL | **FAIL (c_T)** | +4.6 at best | c_T² − 1 ≥ 2.4e-11 ≫ GW170817 |
 | SIM123 | hilltop DE, no Λ_b | FAIL | PASS / PASS | +9.3 / +21.5 | 162× Cassini |
-| SIM124 | K(Ψ) = e^{−αΨ²} | FAIL | (see section 6) | | |
+| SIM124 | K(Ψ) = e^{−αΨ²} (hilltop) | FAIL | **FAIL** (fine-tuned: needs Ψ_ini ≈ 2.25–2.40) | the two solutions that reach Ψ0 = 2.62: +4.2 / +11.0 (α = 0), +6.1 / +15.6 (α = 0.1) | 41× / 82× Cassini |
 | SIM141 | running Λ0(a) | PARTIAL ("θ* 63σ") | PARTIAL / PASS | +9.5 / +21.4 (tanh) | LLR 14σ or Cassini 13× |
 | SIM142 | G3(Ψ)□Ψ (kinetic) | FAIL | FAIL / PASS | ≈ the Phase 1 gain (+5.4 … +6.5); quadratic c3 = 0.1 is a **ghost** | ~50× Cassini |
 | SIM143 | Ψ + quintessence | FAIL | TRIVIAL | φ adds nothing beyond Phase 1 | ~50× Cassini |
@@ -96,6 +96,8 @@ Summary figure: `audit_logs/audit_summary.png`, made by `audit_checks/summary_fi
 15. Ported and reran SIM122 (DR1 and DR2), SIM123 and SIM121B. Evaluated the SIM126/129 toys with corrected observables.
 16. SIM124 hung on one case. Added a per-case 60 s watchdog (unresolved cases recorded in its output) and reran.
 17. Wrote the executive summary (section 0).
+18. Committed (`7b5f22c`) and pushed branch `audit-fixes` at the user's request, while SIM124 was still running.
+19. SIM124 finished: verdict FAIL (fine-tuned; the solutions reaching Ψ0 = 2.62 fail Cassini by 41× and 82×). Added it to section 0, section 6, its `results.md` and the summary figure, then committed and pushed as a follow-up at the user's request.
 
 ---
 
@@ -451,6 +453,24 @@ Per-bin χ² is exact, because DESI's covariance is block-diagonal by tracer bin
   - Any β_m ≥ 0.1 or ξ_R ≥ 1: no solution. ξ_R = 0.1: huge FAIL.
 - **Cassini 66–135× for every cosmology pass** (the direct matter coupling adds α² = 8β_m²). Not viable.
 - The published claim "no case satisfies DESI and θ*" (the completeness argument for Paper I's no-go) is false in the corrected pipeline. Small-coupling cases pass the cosmology tests; local gravity is what excludes them.
+
+### SIM124 — non-canonical kinetic term K(Ψ) = e^{−αΨ²} with the hilltop potential; log `audit_logs/SIM124.log`
+- Published bugs:
+  - Friedmann with ρ = ω divided by 3F (no GR limit).
+  - **The F'R curvature source was missing from the field equation**, although F(Ψ)R is in the action.
+  - θ* integrated r_s from z = 0 to 1090; it must be z* → ∞.
+  - A second variant of the non-DESI table.
+- Audited: corrected equations with the source restored; λ calibrated to H0 (no bare Λ); z_ini = 1500; Ψ'_ini = 0.
+  - Each case gets a 20 s watchdog. For α ≥ 0.3 and large Ψ_ini, K drops (e.g. 0.30) and the field runs away; the integration crawls and the case is recorded as unresolved. That is 41 cases, listed in `Outputs/sim124_results.json`.
+- Part A, Ψ(z=0) over (α, Ψ_ini): no roll from the hilltop. Ψ(z=0) ≈ 1.09–1.2 × Ψ_ini for small Ψ_ini. For α ≥ 0.3 the field runs away from Ψ_ini ≈ 2 (α = 0.3–1.0), ≈ 1 (α = 1.5–3) or ≈ 0.5 (α = 5).
+- Part B, Ψ_ini(α) with Ψ(z=0) = 2.62:
+  - α = 0: Ψ_ini = 2.403 (ΔΨ = 0.22).
+  - α = 0.1: Ψ_ini = 2.246 (ΔΨ = 0.37).
+  - α ≥ 0.2: no bracketed crossing. The upper bracket runs away, so the Ψ0 = 2.62 locus lies between the largest finite trial and the runaway boundary and is not resolved here.
+- Part C (θ*-matched):
+  - α = 0: H0 = 66.66, Δχ² = +4.24 (DR1) / +10.99 (DR2), Cassini 41×.
+  - α = 0.1: H0 = 67.09, Δχ² = +6.09 / +15.60, Cassini 82× (K ≈ 0.5 strengthens the coupling).
+- **Verdict FAIL**, same as published but on a corrected basis. Reaching Ψ0 = 2.62 needs Ψ_ini ≈ 2.25–2.40, i.e. fine-tuning, not a roll from the hilltop. The published version needed Ψ_ini ∈ [1.84, 2.57]. Every solution that reaches Ψ0 = 2.62 fails Cassini.
 
 ### SIM123 — running F with hilltop dark energy, V = λ(Ψ² − v²)², v = 13.16, no bare Λ; log `audit_logs/SIM123.log`
 - Published bugs:

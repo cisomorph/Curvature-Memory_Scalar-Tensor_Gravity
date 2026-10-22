@@ -15,3 +15,14 @@ K(Ψ)=exp(-αΨ²) does NOT resolve the frozen-field problem. 'Viable' solutions
 ## Context
 
 Phase 1 canonical: Λ₀=0.003, Ψ̄=2.62 M_Pl, F_eff(z_CMB)=0.521, H₀≈67.59 km/s/Mpc.
+
+
+## Audit rerun (2026-10-22)
+
+**Audited verdict:** FAIL (published: FAIL)
+
+- Published bugs: Friedmann without a GR limit; the F'R curvature source was missing from the field equation; r_s integrated over 0 → z*; non-DESI H(z) table.
+- No roll from the hilltop. Reaching Ψ0 = 2.62 needs Ψ_ini = 2.403 (α = 0) or 2.246 (α = 0.1), i.e. fine-tuning. For α ≥ 0.2 the field runs away near the Ψ0 = 2.62 locus (unresolved; 20 s watchdog per case).
+- The solutions that reach Ψ0 = 2.62 (θ*-matched): Δχ² vs ΛCDM = +4.24 / +10.99 (α = 0) and +6.09 / +15.60 (α = 0.1) for DR1 / DR2, but they fail Cassini by 41× and 82×.
+- Data/statistics: official DESI DR1/DR2 likelihood, r_s to z = ∞, θ* = r_s(z*)/D_M(z*), proper statistics.
+- Details: `AUDIT_NOTES.md` (repo root); log: `audit_logs/SIM124.log`.

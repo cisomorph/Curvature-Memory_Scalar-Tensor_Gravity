@@ -1,45 +1,699 @@
 {
-  "sim": "SIM124",
   "verdict": "FAIL",
-  "modification": "L_kin = -exp(-alpha*Psi^2)/2 * (dPsi)^2",
-  "viable_solutions": [
+  "scan_A": [
     {
-      "alpha": 0.2,
-      "psi_ini_sol": 2.5700173695828044
+      "alpha": 0.0,
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892721840885364
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010892722003570011
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 0.05,
+      "psi_z0": 0.05446362973738521
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 0.1,
+      "psi_z0": 0.1089273827310614
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3267860950725034
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5446566725553605
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 1.0,
+      "psi_z0": 1.0894377921628922
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 2.0,
+      "psi_z0": 2.1799009360559967
+    },
+    {
+      "alpha": 0.0,
+      "psi_ini": 2.5,
+      "psi_z0": 2.725878322966258
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892721941168936
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.01,
+      "psi_z0": 0.01089273203205327
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.05,
+      "psi_z0": 0.05446488350587579
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10893741807774111
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3270585546683983
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5459322042535348
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 1.0,
+      "psi_z0": 1.1002039561019108
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 2.0,
+      "psi_z0": 2.289609366625911
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini": 2.5,
+      "psi_z0": 2.9943013079211322
     },
     {
       "alpha": 0.3,
-      "psi_ini_sol": 2.52714893921868
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892722141736641
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010892752089428862
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 0.05,
+      "psi_z0": 0.05446739229877232
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10895752903237538
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3276134494148134
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5486167494742364
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 1.0,
+      "psi_z0": 1.1269698760738878
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     },
     {
       "alpha": 0.5,
-      "psi_ini_sol": 2.3643154396427977
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892722342302462
     },
     {
-      "alpha": 0.7,
-      "psi_ini_sol": 2.1393045600344047
+      "alpha": 0.5,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010892772147336619
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 0.05,
+      "psi_z0": 0.054469902767452484
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10897769382874929
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3281820111692133
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5514936607346904
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 1.0,
+      "psi_z0": 1.1638315516171596
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     },
     {
       "alpha": 1.0,
-      "psi_ini_sol": 1.8399776566081758
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892722843725403
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010892822294451536
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 0.05,
+      "psi_z0": 0.05447618628040179
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10902834264461596
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 0.3,
+      "psi_z0": 0.32966626535756793
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5596622248026418
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 1.0,
+      "psi_z0": 1.3799783003776265
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     },
     {
       "alpha": 1.5,
-      "psi_ini_sol": 1.879188182424363
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892723345148445
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 0.01,
+      "psi_z0": 0.01089287244490827
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 0.05,
+      "psi_z0": 0.054482480299692305
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10907933221782774
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3312466319216783
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 0.5,
+      "psi_z0": 0.5695583327849257
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 1.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     },
     {
       "alpha": 2.0,
-      "psi_ini_sol": 1.9109131982982244
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892723846570114
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 0.01,
+      "psi_z0": 0.01089292259871964
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 0.05,
+      "psi_z0": 0.05448878484870436
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10913066562583586
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 0.3,
+      "psi_z0": 0.33293188532541046
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 0.5,
+      "psi_z0": 0.58177123484251
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 1.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     },
     {
       "alpha": 3.0,
-      "psi_ini_sol": 2.1372117989209216
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892724849411583
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010893022916384526
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.05,
+      "psi_z0": 0.054501425630471
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.1,
+      "psi_z0": 0.10923437645154128
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3366582617301618
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.5,
+      "psi_z0": 0.6175393554119972
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 1.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.001,
+      "psi_z0": 0.0010892726855112013
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.01,
+      "psi_z0": 0.010893223591899459
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.05,
+      "psi_z0": 0.054526834592767956
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.1,
+      "psi_z0": 0.1094460639378523
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.3,
+      "psi_z0": 0.3459186347229846
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.5,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 1.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 2.0,
+      "psi_z0": NaN
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 2.5,
+      "psi_z0": NaN
     }
   ],
-  "observables": [],
-  "structural_finding": "K(\u03a8)=exp(-\u03b1\u03a8\u00b2) does NOT resolve the frozen-field problem. 'Viable' solutions require \u03a8_ini \u2208 [1.84, 2.57] M_Pl \u2014 the field starts within 0.78 M_Pl of the target \u03a8\u2080=2.62 and barely rolls. This is fine-tuning, not dynamics. The hilltop bottleneck (\u03a8\u22480, K\u22481, V'\u22480, H large) is unchanged by the kinetic modification. Furthermore, all viable H(z=0) are unphysically large (up to ~10\u2076 km/s/Mpc), so no CMB acoustic scale match exists. Conclusion: non-canonical K(\u03a8)=exp(-\u03b1\u03a8\u00b2) kinetics cannot fix the Phase 2 frozen-field inconsistency. A fundamentally different potential or coupling structure is required.",
-  "reference_SIM121C": {
-    "chi2_DESI": 41.492,
-    "tension": 2.63
-  }
+  "viable": [
+    {
+      "alpha": 0.0,
+      "psi_ini_sol": 2.403084434234946
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini_sol": 2.246087235257797
+    }
+  ],
+  "results_C": [
+    {
+      "alpha": 0.0,
+      "psi_ini_sol": 2.403084434234946,
+      "obs": {
+        "H0": 66.65956889354834,
+        "f0": [
+          2.619735750030488
+        ],
+        "y0": [
+          0.0847910766786205
+        ],
+        "F_eff_today": 0.5205890461999634,
+        "theta_star_100": 1.0411000000000368,
+        "chi2_theta": 1.413752022910393e-20,
+        "r_drag": 149.61880240739612,
+        "Lb": 0.0,
+        "DR1": {
+          "label": "",
+          "chi2_DESI": 17.8018266212283,
+          "N_DESI": 12,
+          "n_params": 2,
+          "dof": 10,
+          "p_value": 0.058399983590992355,
+          "gof_sigma": 1.8926834125895087,
+          "chi2_theta": 1.413752022910393e-20,
+          "rms_pull_old_metric": 1.2179842165516863,
+          "delta_chi2_tot_vs_LCDM": 4.237301524818282
+        },
+        "DR2": {
+          "label": "",
+          "chi2_DESI": 21.31273689849054,
+          "N_DESI": 13,
+          "n_params": 2,
+          "dof": 11,
+          "p_value": 0.030272039477181403,
+          "gof_sigma": 2.1665125816676185,
+          "chi2_theta": 1.413752022910393e-20,
+          "rms_pull_old_metric": 1.2804066931580325,
+          "delta_chi2_tot_vs_LCDM": 10.98699400692724
+        },
+        "local_gravity": {
+          "alpha2": 0.00047391946566801397,
+          "gamma_minus_1": 0.0009473899447996093,
+          "cassini_ratio": 41.1908671652004,
+          "Gdot_over_G_per_yr": -1.7454590161386374e-13,
+          "llr_sigma": -3.2308671264982074,
+          "cassini_ok": false,
+          "llr_ok": false
+        }
+      },
+      "verdict": "PASS",
+      "fine_tuning_dPsi": 0.2169155657650541
+    },
+    {
+      "alpha": 0.1,
+      "psi_ini_sol": 2.246087235257797,
+      "obs": {
+        "H0": 67.08729040337448,
+        "f0": [
+          2.620129741773628
+        ],
+        "y0": [
+          0.16632516889249116
+        ],
+        "F_eff_today": 0.5205952395911803,
+        "theta_star_100": 1.0411000000000026,
+        "chi2_theta": 7.387875283027167e-23,
+        "r_drag": 149.3028348078126,
+        "Lb": 0.0,
+        "DR1": {
+          "label": "",
+          "chi2_DESI": 15.94431963906372,
+          "N_DESI": 12,
+          "n_params": 2,
+          "dof": 10,
+          "p_value": 0.10123744687294058,
+          "gof_sigma": 1.6388838735828255,
+          "chi2_theta": 7.387875283027167e-23,
+          "rms_pull_old_metric": 1.1526895953617824,
+          "delta_chi2_tot_vs_LCDM": 6.094808506982863
+        },
+        "DR2": {
+          "label": "",
+          "chi2_DESI": 16.701806554677823,
+          "N_DESI": 13,
+          "n_params": 2,
+          "dof": 11,
+          "p_value": 0.11701072901147364,
+          "gof_sigma": 1.5674449294445298,
+          "chi2_theta": 7.387875283027167e-23,
+          "rms_pull_old_metric": 1.133470048285279,
+          "delta_chi2_tot_vs_LCDM": 15.597924350739959
+        },
+        "local_gravity": {
+          "alpha2": 0.0009405186551814949,
+          "gamma_minus_1": 0.0018792698220372443,
+          "cassini_ratio": 81.70738356683671,
+          "Gdot_over_G_per_yr": -3.446318198786076e-13,
+          "llr_sigma": -5.468839735244837,
+          "cassini_ok": false,
+          "llr_ok": false
+        }
+      },
+      "verdict": "PASS",
+      "fine_tuning_dPsi": 0.37391276474220314
+    }
+  ],
+  "unresolved_cases": [
+    {
+      "alpha": 0.3,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 1.0
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 1.0
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 1.0
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.5
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 1.0
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 2.0
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 2.5
+    },
+    {
+      "alpha": 0.2,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 0.3,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 0.5,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 0.7,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 0.7,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 1.0,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 1.0287193273485018
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 1.5,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 1.0287193273485018
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 2.0,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 0.6478539425737128
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 1.0287193273485018
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 3.0,
+      "psi_ini": 2.5938
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 0.6478539425737128
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 1.0287193273485018
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 1.6334907992628989
+    },
+    {
+      "alpha": 5.0,
+      "psi_ini": 2.5938
+    }
+  ],
+  "published_pre_audit": {
+    "verdict": "FAIL",
+    "note": "'viable' solutions needed \u03a8_ini \u2208 [1.84, 2.57]"
+  },
+  "audit_note": "Audited 2026-10-22; see AUDIT_NOTES.md."
 }

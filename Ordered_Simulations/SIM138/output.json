@@ -1,119 +1,503 @@
 {
   "sim_id": "SIM138",
-  "timestamp": "2026-04-25T00:18:35.087241Z",
-  "action_spec": "Phase 1 canonical \u2014 diagnostic decomposition of DESI chi2",
-  "parameters": {
-    "H0": 67.59,
-    "Omega_m": 0.312,
-    "Lambda0": 0.003,
-    "F_eff": 0.521,
-    "r_d_Mpc": 147.56
-  },
-  "observational_targets": {
-    "dataset": "DESI Y1 BAO H(z) (6 bins, Adame et al. 2024 arXiv:2404.03002)",
-    "chi2": 13.152141644981672,
-    "dof": 6,
-    "tension_sqrt_chi2_per_N": 1.480548414438699,
-    "note_on_baseline": "Phase 2/3 scripts hardcode baseline chi2=18.26, tension=2.77\u03c3. Direct computation at Phase 1 canonical gives chi2=13.15, tension=1.481\u03c3. Discrepancy traced to SIM121C using MCMC MAP parameters (H0=77.76) not Phase 1 canonical (H0=67.59). The 2.77\u03c3 figure quoted in papers is consistent with chi2\u224846 via sqrt(46/6)=2.77\u03c3 at different parameter values."
-  },
-  "theoretical_checks": {
-    "gr_recovery": true,
-    "c_T_eq_c": true,
-    "no_tachyon": true,
-    "ward_identity": true,
-    "uv_finite": true,
-    "note": "Diagnostic sim; no new Lagrangian terms"
-  },
-  "lcdm_bestfit": {
-    "H0": 73.98744882874371,
-    "Omega_m": 0.28956004556494086,
-    "chi2": 2.3921929566691618,
-    "tension": 0.6314260258427166
-  },
-  "per_bin_residuals": {
-    "z_0.295": {
-      "bin": "BGS z=0.295",
-      "z": 0.295,
-      "H_model": 78.98926425598084,
-      "H_obs": 81.7,
-      "sigma": 4.5,
-      "delta": -2.7107357440191606,
-      "pull": -0.6023857208931468,
-      "chi2": 0.36286855673595614,
-      "frac_of_total": 0.027590073657274835
+  "timestamp": "2026-10-22T23:09:53.290532Z",
+  "releases": {
+    "DR1": {
+      "\u039bCDM": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 0.8635821686851939,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              0.9292912184483366
+            ]
+          },
+          "0.51": {
+            "chi2": 9.372414027980941,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.42240817112578843,
+              2.902876356338939
+            ]
+          },
+          "0.706": {
+            "chi2": 9.530353827916072,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              2.7246497625221946,
+              0.1712367935440384
+            ]
+          },
+          "0.93": {
+            "chi2": 0.8968225546405028,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.8293688445627639,
+              -0.7438190299387998
+            ]
+          },
+          "1.317": {
+            "chi2": 0.976533003679833,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.3740962475381743,
+              0.6534797445581576
+            ]
+          },
+          "1.491": {
+            "chi2": 0.00150475222714284,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              -0.038791135935195814
+            ]
+          },
+          "2.33": {
+            "chi2": 0.39791781091689765,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.5343175857261401,
+              0.5497372063184308
+            ]
+          }
+        },
+        "total": 22.039128146046583,
+        "r_drag": 147.09000000006063,
+        "H0": 67.2808914329966
+      },
+      "Phase 1 unlocked (\u03a8_ini=2.62)": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 0.22609238642356677,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              0.47549173118316873
+            ]
+          },
+          "0.51": {
+            "chi2": 7.582689636158777,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.8469673891054122,
+              2.723146406064728
+            ]
+          },
+          "0.706": {
+            "chi2": 6.804161164565188,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              2.337885000875421,
+              0.0666517896464735
+            ]
+          },
+          "0.93": {
+            "chi2": 0.6793422557629554,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.35702096858169846,
+              -0.8232595283309951
+            ]
+          },
+          "1.317": {
+            "chi2": 0.7081960776625511,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.17540766487027878,
+              0.6596223679662473
+            ]
+          },
+          "1.491": {
+            "chi2": 0.021316989969730395,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              -0.14600339026793313
+            ]
+          },
+          "2.33": {
+            "chi2": 0.5883902643328678,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.6649509621880929,
+              0.6535036950742374
+            ]
+          }
+        },
+        "total": 16.61018877487564,
+        "r_drag": 150.1579296217192,
+        "H0": 66.63953756998747
+      },
+      "w0waCDM (w0=-0.35, wa=-2.02)": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 0.02846201916890586,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              0.16870690314538367
+            ]
+          },
+          "0.51": {
+            "chi2": 2.9439388237253343,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -1.3124534080986419,
+              1.5740985791211874
+            ]
+          },
+          "0.706": {
+            "chi2": 2.703649577376399,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              1.6383867116736763,
+              -0.5627285390899524
+            ]
+          },
+          "0.93": {
+            "chi2": 2.1442745924651647,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.5989180330390987,
+              -0.9979048618054709
+            ]
+          },
+          "1.317": {
+            "chi2": 1.282372874790778,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.1670882817963754,
+              1.0777717930010975
+            ]
+          },
+          "1.491": {
+            "chi2": 0.01460274028947957,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              -0.12084179860246855
+            ]
+          },
+          "2.33": {
+            "chi2": 1.927790488186324,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.7277247955948022,
+              1.3864338003107384
+            ]
+          }
+        },
+        "total": 11.045091116002386,
+        "r_drag": 147.09000001768948,
+        "H0": 63.512628973685814
+      }
     },
-    "z_0.510": {
-      "bin": "LRG1 z=0.51",
-      "z": 0.51,
-      "H_model": 89.73403800407618,
-      "H_obs": 97.9,
-      "sigma": 4.4,
-      "delta": -8.165961995923823,
-      "pull": -1.8559004536190504,
-      "chi2": 3.4443664937433973,
-      "frac_of_total": 0.2618863594019784
-    },
-    "z_0.706": {
-      "bin": "LRG2 z=0.706",
-      "z": 0.706,
-      "H_model": 101.11028944677109,
-      "H_obs": 110.7,
-      "sigma": 6.2,
-      "delta": -9.589710553228912,
-      "pull": -1.5467275085853083,
-      "chi2": 2.3923659858145148,
-      "frac_of_total": 0.1818993476798013
-    },
-    "z_0.930": {
-      "bin": "LRG3 z=0.930",
-      "z": 0.93,
-      "H_model": 115.73803008461721,
-      "H_obs": 128.1,
-      "sigma": 5.6,
-      "delta": -12.361969915382787,
-      "pull": -2.2074946277469265,
-      "chi2": 4.873032531531542,
-      "frac_of_total": 0.3705124734108148
-    },
-    "z_1.317": {
-      "bin": "ELG z=1.317",
-      "z": 1.317,
-      "H_model": 144.51358221461606,
-      "H_obs": 156.4,
-      "sigma": 8.6,
-      "delta": -11.88641778538394,
-      "pull": -1.3821416029516211,
-      "chi2": 1.9103154106096767,
-      "frac_of_total": 0.14524747848488814
-    },
-    "z_2.330": {
-      "bin": "QSO+Ly\u03b1 z=2.330",
-      "z": 2.33,
-      "H_model": 236.27536602009215,
-      "H_obs": 240.8,
-      "sigma": 11.0,
-      "delta": -4.524633979907861,
-      "pull": -0.4113303618098056,
-      "chi2": 0.16919266654658557,
-      "frac_of_total": 0.01286426736524258
+    "DR2": {
+      "\u039bCDM": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 2.6357774646770054,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              1.6235077655117653
+            ]
+          },
+          "0.51": {
+            "chi2": 4.653288240092208,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.4393309169310284,
+              2.0827374151707843
+            ]
+          },
+          "0.706": {
+            "chi2": 14.631389592501376,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              2.033232116280495,
+              2.172482851974887
+            ]
+          },
+          "0.934": {
+            "chi2": 7.7299964534268355,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              2.7018786196210787,
+              -0.32334837804756805
+            ]
+          },
+          "1.321": {
+            "chi2": 2.4043927639692786,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              1.5434697972362112,
+              -0.47848866809537827
+            ]
+          },
+          "1.484": {
+            "chi2": 0.07995626909240738,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.2824063069084559,
+              0.12699228898096074
+            ]
+          },
+          "2.33": {
+            "chi2": 0.16493012165867282,
+            "quantities": [
+              "DH_over_rs",
+              "DM_over_rs"
+            ],
+            "pulls": [
+              -0.1490480375813435,
+              0.4051380469026347
+            ]
+          }
+        },
+        "total": 32.29973090541778,
+        "r_drag": 147.09000000006063,
+        "H0": 67.2808914329966
+      },
+      "Phase 1 unlocked (\u03a8_ini=2.62)": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 0.5249140175965704,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              0.7245095013846059
+            ]
+          },
+          "0.51": {
+            "chi2": 3.4155053335718444,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -1.0745933687558722,
+              1.8268006310274079
+            ]
+          },
+          "0.706": {
+            "chi2": 9.330118567318767,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              1.3468139840175808,
+              1.9859870965073612
+            ]
+          },
+          "0.934": {
+            "chi2": 3.568386851290122,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              1.8776338437068505,
+              -0.45779136860536757
+            ]
+          },
+          "1.321": {
+            "chi2": 1.2568442032819778,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              1.1208861263807788,
+              -0.4661347046662587
+            ]
+          },
+          "1.484": {
+            "chi2": 0.22143409021057558,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.4607362411309462,
+              0.1441758586625262
+            ]
+          },
+          "2.33": {
+            "chi2": 0.04259010149630115,
+            "quantities": [
+              "DH_over_rs",
+              "DM_over_rs"
+            ],
+            "pulls": [
+              0.026362188315193606,
+              0.1733788994968452
+            ]
+          }
+        },
+        "total": 18.359793164766156,
+        "r_drag": 150.1579296217192,
+        "H0": 66.63953756998747
+      },
+      "w0waCDM (w0=-0.39, wa=-1.84)": {
+        "per_bin": {
+          "0.295": {
+            "chi2": 0.34107976126442846,
+            "quantities": [
+              "DV_over_rs"
+            ],
+            "pulls": [
+              0.5840203431939921
+            ]
+          },
+          "0.51": {
+            "chi2": 2.239980237396132,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -1.4475698054111596,
+              0.3144774644965764
+            ]
+          },
+          "0.706": {
+            "chi2": 1.4678090982582144,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.4357508199349474,
+              0.8661693091424444
+            ]
+          },
+          "0.934": {
+            "chi2": 0.8777499002171107,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.5507521652895231,
+              -0.9019879667646898
+            ]
+          },
+          "1.321": {
+            "chi2": 0.4027338057052411,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              0.5154215650215102,
+              0.1342807449481149
+            ]
+          },
+          "1.484": {
+            "chi2": 0.48845362540353165,
+            "quantities": [
+              "DM_over_rs",
+              "DH_over_rs"
+            ],
+            "pulls": [
+              -0.6860677765686136,
+              0.45452945436935577
+            ]
+          },
+          "2.33": {
+            "chi2": 1.6583415886352206,
+            "quantities": [
+              "DH_over_rs",
+              "DM_over_rs"
+            ],
+            "pulls": [
+              1.1240839577309958,
+              0.08299419102728427
+            ]
+          }
+        },
+        "total": 7.476148016879881,
+        "r_drag": 147.09000001768948,
+        "H0": 63.38222976291918
+      }
     }
   },
-  "total_chi2": 13.152141644981672,
-  "total_chi2_reconstruction_check": 13.152141644981672,
-  "verdict": "DISTRIBUTED",
-  "dominant_bins": [
-    "LRG3 z=0.930",
-    "LRG1 z=0.51"
-  ],
-  "recommended_tier2_priority": "SIM142",
-  "concentration": {
-    "top1_frac": 0.3705124734108148,
-    "top2_frac": 0.6323988328127932,
-    "excess_top1_frac": 0.36316613791146435
+  "verdict": "DIAGNOSTIC",
+  "published_pre_audit": {
+    "verdict": "DISTRIBUTED",
+    "chi2_phase1": 13.15,
+    "note": "non-DESI H(z) table; \"DESI prefers H0\u224874\" was an artifact of that table"
   },
-  "failure_mode": "DESI tension is distributed across multiple bins; no single-bin systematic provides an escape. Dominant bins: ['LRG3 z=0.930', 'LRG1 z=0.51'].",
-  "derived_vs_phenom": {
-    "H(z)": "derived (Friedmann from Phase 1 canonical parameters)",
-    "LCDM_bestfit": "phenomenological fit to DESI data for comparison"
-  }
+  "audit_note": "Audited 2026-10-22; see AUDIT_NOTES.md."
 }

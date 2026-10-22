@@ -124,3 +124,14 @@ The TIER1_SUMMARY.md elevated SIM142 to first priority because braiding was expe
 | UV finiteness | ✓ Inherited from Phase 1; G₃_Ψ vertices suppressed by memory kernel |
 
 All theoretical checks pass. Failure is on observational mechanism, not theory.
+
+
+## Audit rerun (2026-10-22)
+
+**Audited verdict:** faithful FAIL / θ*-matched PASS (published: FAIL/STRUCTURAL) — Cassini ~50×
+
+- G3(Ψ)□Ψ is equivalent to the kinetic rescaling K = 1 − 2G3_Ψ.
+- Quadratic c3 = 0.1 gives K < 0: a ghost.
+- The cosmology gain is mostly the Phase-1 unlocked background: +5.4 … +6.5 (DR1), with c3 adding at most ~1.1.
+- Data/statistics: official DESI DR1/DR2 likelihood, r_s to z = ∞, θ* = r_s(z*)/D_M(z*), χ²/p-value/GOF σ, and Δχ² vs ΛCDM in the same pipeline.
+- Details: `AUDIT_NOTES.md` (repo root); log: `audit_logs/`.

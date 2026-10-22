@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# AUDIT 2026-10-22: this script compares to a non-DESI H(z) table and (SIM129) integrates r_s
+# over the wrong limits with Ω_b in place of ω_b. Corrected observables for this model are produced
+# by Ordered_Simulations/common/audit_memory_field.py (results in Outputs/*_audit.json). See AUDIT_NOTES.md.
 """
 SIM126 — Cosmic Memory Field M(a): Back-reaction on Friedmann Equation
 CMSTG Framework, Flat FRW

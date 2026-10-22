@@ -1,0 +1,38 @@
+========================================================================
+SIM131 — CMSTG Phase 3: Curvature-Memory Scalar (ξΨR coupling)   [audited]
+========================================================================
+  ΛCDM reference (same pipeline), DESI DR1: χ² = 22.04/12 (GOF 2.08σ), H₀ = 67.28
+  ΛCDM reference (same pipeline), DESI DR2: χ² = 32.30/13 (GOF 3.07σ), H₀ = 67.28
+
+Part A: Reference run (ξ=1/6, Λ₀=0.003, Ψ_ini=0)
+         ξ=1/6, Λ₀=0.003 | faithful: H0= 67.40 100θ*=0.8920 χ²= 554.38 GOF=22.38σ Δχ²=-231794.16 | θ*-matched: no solution                                         
+    Ψ(z*) = 0.3349, Ψ₀ = 2.6684, F(z*) = 0.55615, F₀ = 0.96610  (Phase 1 F₀ = 0.52059)
+
+Part B: Λ₀ scan (ξ=1/6 fixed, Ψ_ini=0)
+                Λ₀=0.001 | faithful: H0= 67.40 100θ*=0.8970 χ²= 513.23 GOF=21.55σ Δχ²=-216516.81 | θ*-matched: no solution                                         
+                Λ₀=0.002 | faithful: H0= 67.40 100θ*=0.8945 χ²= 533.53 GOF=22.01σ Δχ²=-224062.77 | θ*-matched: no solution                                         
+                Λ₀=0.003 | faithful: H0= 67.40 100θ*=0.8920 χ²= 554.38 GOF=22.47σ Δχ²=-231794.16 | θ*-matched: no solution                                         
+                Λ₀=0.005 | faithful: H0= 67.40 100θ*=0.8870 χ²= 597.67 GOF=23.40σ Δχ²=-247812.18 | θ*-matched: no solution                                         
+                Λ₀=0.008 | faithful: H0= 67.40 100θ*=0.8793 χ²= 666.46 GOF=24.80σ Δχ²=-273215.87 | θ*-matched: no solution                                         
+                 Λ₀=0.01 | faithful: H0= 67.40 100θ*=0.8741 χ²= 714.75 GOF=25.74σ Δχ²=-291053.90 | θ*-matched: no solution                                         
+
+Part C: ξ scan (Λ₀=0.003 fixed, Ψ_ini=0)
+                  ξ=1/20 | faithful: H0= 67.40 100θ*=1.0202 χ²=  40.40 GOF= 4.17σ Δχ²=-4585.39 | θ*-matched: H0= 74.51 100θ*=1.0411 χ²=  71.02 GOF= 6.50σ Δχ²=  -48.98
+                  ξ=1/12 | faithful: H0= 67.40 100θ*=0.9880 χ²= 106.81 GOF= 8.60σ Δχ²=-29385.34 | θ*-matched: H0= 85.83 100θ*=1.0411 χ²= 555.34 GOF=22.49σ Δχ²= -533.30
+                   ξ=1/6 | faithful: H0= 67.40 100θ*=0.8920 χ²= 554.38 GOF=22.47σ Δχ²=-231794.16 | θ*-matched: no solution                                         
+                   ξ=1/4 | faithful: H0= 67.40 100θ*=0.8115 χ²=1166.20 GOF=33.31σ Δχ²=-549516.48 | θ*-matched: no solution                                         
+                   ξ=1/3 | faithful: H0= 67.40 100θ*=0.7521 χ²=1700.02 GOF=40.49σ Δχ²=-871047.24 | θ*-matched: no solution                                         
+
+Part D: best points
+  faithful best    :                   ξ=1/20 | faithful: H0= 67.40 100θ*=1.0202 χ²=  40.40 GOF= 4.17σ Δχ²=-4585.39 | θ*-matched: H0= 74.51 100θ*=1.0411 χ²=  71.02 GOF= 6.50σ Δχ²=  -48.98
+  θ*-matched best  :                   ξ=1/20 | faithful: H0= 67.40 100θ*=1.0202 χ²=  40.40 GOF= 4.17σ Δχ²=-4585.39 | θ*-matched: H0= 74.51 100θ*=1.0411 χ²=  71.02 GOF= 6.50σ Δχ²=  -48.98
+  DESI DR1 (θ*-matched best): χ² = 71.02, GOF 6.50σ, Δχ² vs ΛCDM = -48.98
+  DESI DR2 (θ*-matched best): χ² = 197.51, GOF 12.47σ, Δχ² vs ΛCDM = -165.21
+
+========================================================================
+SIM131 RESULT (audited): faithful = FAIL,  θ*-matched = FAIL
+  Published: FAIL (reference 'tension' 5.97σ, 100θ* 0.79661)
+========================================================================
+
+All outputs in: /home/aion/CMSTG-fixes/Ordered_Simulations/SIM131/Published_Scripts/../Outputs
+SIM131 complete.

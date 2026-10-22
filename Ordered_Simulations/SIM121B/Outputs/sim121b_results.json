@@ -1,20 +1,42 @@
 {
   "verdict": "FAIL",
-  "Geff_today": 0.9544084023638896,
-  "Geff_rec": 0.9614614402223071,
-  "rs_CMSTG_Mpc": 184.61165481025046,
-  "DA_CMSTG_Mpc": 15.314606238609318,
-  "theta_star_CMSTG": 12.054613219165248,
-  "theta_star_LCDM": 11.630313828848506,
-  "theta_ratio": 1.0364821961436919,
-  "H0_Planck": 67.4,
-  "H0_SH0ES": 73.0,
-  "H0_inferred": 55.0,
-  "H0_shift": -12.400000000000006,
-  "tension_LCDM": 5.008792269599524,
-  "tension_CMSTG": 16.099689437998485,
-  "tension_reduction_sigma": -11.09089716839896,
-  "pass_Geff_5pct": true,
-  "pass_moves_toward_SH0ES": false,
-  "pass_05sigma_reduction": false
+  "rows": {
+    "\u039bCDM": {
+      "H0_true": 67.2808914329966,
+      "tension_vs_SH0ES_sigma": 5.032274497893786
+    },
+    "Phase 1 frozen (F0=0.5206)": {
+      "H0_true": 65.93674339820303,
+      "note": "exact F0\u2013H0 degeneracy (SIM121C audit)",
+      "tension_vs_SH0ES_sigma": 6.2149976089589485
+    },
+    "Phase 1 unlocked (\u03a8_ini=2.62)": {
+      "H0_true": 66.6395375699875,
+      "F_today": 0.5249160597391209,
+      "tension_vs_SH0ES_sigma": 5.5966052237637856
+    }
+  },
+  "criteria": {
+    "H0_gt_68": false,
+    "tension_reduced_0p5": false
+  },
+  "lcdm_reference": {
+    "label": "LCDM (Planck omegas, h from theta*), DESI DR1",
+    "chi2_DESI": 22.039128146046583,
+    "N_DESI": 12,
+    "n_params": 0,
+    "dof": 12,
+    "p_value": 0.03708361393462556,
+    "gof_sigma": 2.0848423408001255,
+    "chi2_theta": 0.0,
+    "rms_pull_old_metric": 1.3552099513250884,
+    "h": 0.6728089143299659,
+    "H0": 67.2808914329966,
+    "r_drag": 147.09000000006063,
+    "theta_star_100": 1.0411000000991149
+  },
+  "published_pre_audit": {
+    "verdict": "FAIL"
+  },
+  "audit_note": "Audited 2026-10-22; see AUDIT_NOTES.md."
 }

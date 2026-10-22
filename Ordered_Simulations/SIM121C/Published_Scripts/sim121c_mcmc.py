@@ -2,7 +2,7 @@
 SIM121-C — CMSTG Phase 2: Joint DESI+Planck MCMC Parameter Estimation
 =====================================================================
 Performs a proper Bayesian parameter estimation for CMSTG Phase 2 against
-the combination of Planck CMB acoustic scale and DESI BAO H(z) data.
+the combination of Planck CMB acoustic scale and DESI BAO data.
 
 SIM121-B established that the CMSTG F₀ normalisation is the dominant CMB
 observable. This simulation treats (F₀, w₀, wₐ) as the primary CMSTG
@@ -10,52 +10,63 @@ parameters, with H₀ derived self-consistently from the Planck θ_*
 constraint at each MCMC step.
 
 Parameter space:
-  F₀   = ½ + Λ₀Ψ₀²  (CMSTG effective coupling today)
-  w₀               (DE EOS today)
-  wₐ               (DE EOS running: w(a)=w₀+wₐ(1-a))
+  F₀   = ½ + Λ₀Ψ₀²  (CMSTG effective coupling, Ψ frozen)
+  w₀               (DE EOS today)           — phenomenological (CPL), not derived
+  wₐ               (DE EOS running)         — phenomenological (CPL), not derived
   H₀               (derived from CMB θ_* at each step)
 
 Fixed (Planck 2018 physical densities):
-  Ω_m h²  = 0.1430  →  Ω_m = 0.1430 / (H₀/100)²
-  Ω_b h²  = 0.02237 →  (enters sound horizon r_s)
-  Ω_r h²  = 4.18×10⁻⁵
+  Ω_m h²  = 0.1430,  Ω_b h² = 0.02237,  Ω_r h² = 4.18×10⁻⁵
 
 Likelihood:
   ln L = −½ χ²_θ  −½ χ²_DESI
-  χ²_θ    = [(θ_*_CMSTG − θ_*_Planck) / σ_θ]²
-  χ²_DESI = Σᵢ [(H_CMSTG(zᵢ) − H_obs(zᵢ)) / σᵢ]²
+  χ²_θ    = [(100θ_*,CMSTG − 1.04110) / 0.00031]²   (≈0: H₀ is solved from it)
+  χ²_DESI = official DESI Gaussian BAO likelihood (D_M/r_d, D_H/r_d, D_V/r_d,
+            full covariance; DR1 by default, DR2 with --release DR2)
 
-CMB observables used:
-  100θ_MC = 1.04101 ± 0.00029  (Planck 2018 TT,TE,EE)
+AUDIT 2026-10-22 (see AUDIT_NOTES.md). Changes from the published version:
+  1. DESI data: the hardcoded "H(z)" table (81.7, 97.9, 110.7, 128.1, 156.4,
+     240.8) is not DESI data. Replaced with the official DESI BAO likelihood.
+  2. r_s was integrated only to z = 1e4 (r_d = 122.6 instead of 147.1 Mpc).
+     Now integrated to z = ∞.
+  3. θ_* used r_s(z_drag); now r_s(z_*). θ_obs was Planck 100θ_MC (+BAO);
+     now 100θ_* = 1.04110 ± 0.00031 (TT,TE,EE+lowE+lensing).
+  4. Flatness closure: Ω_DE = 1 − Ω_m − Ω_r gave H(z=0) = H₀·√(0.5/F₀) ≠ H₀.
+     Now Ω_DE = 2F₀ − Ω_m − Ω_r so the H₀ parameter is the Hubble constant.
+  5. "DESI tension" = √(χ²/N) is not a significance. Now reported: χ², dof,
+     p-value, Gaussian-equivalent σ, and Δχ² against ΛCDM and w₀wₐCDM run
+     through the same pipeline.
+  6. Prior w₀ + wₐ < 0 added (DE must not dominate at early times).
+  7. H₀ is stored as an emcee blob instead of being re-derived afterwards.
 
-DESI BAO Y1 (2024):
-  z=0.30: H=81.7±4.5; z=0.51: 97.9±4.4; z=0.71: 110.7±6.2
-  z=0.93: 128.1±5.6; z=1.32: 156.4±8.6; z=2.33: 240.8±11.0
-
-Pass criteria:
-  1. χ²_DESI / N_desi < 2  at best-fit
-  2. χ²_θ < 4  (within 2σ of Planck θ_*)
-  3. w₀ ∈ (−1.3, −0.7),  wₐ ∈ (−2, 1)  (physical DE)
-  4. F₀ ∈ [0.490, 0.560]  (G_eff within 10% of G_N)
-  5. DESI tension reduction vs SIM113 2.7σ reference
-
-Outputs:
-  • Corner plot: (F₀, w₀, wₐ, H₀) posterior
-  • H(z) best-fit vs DESI data
-  • w₀-wₐ confidence contours vs Planck+DESI benchmarks
-  • sim121c_results.json: MAP, credible intervals, tension σ
+Pass criteria (unchanged in intent):
+  1. χ²_DESI / N_DESI < 2  at best fit
+  2. χ²_θ < 4
+  3. w₀ ∈ (−1.3, −0.7)
+  4. F₀ ∈ [0.490, 0.560]
 """
 
 import numpy as np
-from scipy.integrate import quad
-from scipy.optimize import brentq
-import emcee, json, os, warnings
+import emcee, json, os, sys, argparse, warnings
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 warnings.filterwarnings('ignore')
 
-OUT  = os.path.join(os.path.dirname(__file__), '..', 'Outputs')
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(HERE, '..', '..', 'common'))
+import cmstg_obs as obs
+
+ap = argparse.ArgumentParser()
+ap.add_argument('--release', default='DR1', choices=['DR1', 'DR2'])
+ap.add_argument('--nsteps', type=int, default=3000)
+ap.add_argument('--nburn', type=int, default=800)
+args, _ = ap.parse_known_args()
+
+OUT = os.path.join(HERE, '..', 'Outputs')
+if args.release != 'DR1':
+    OUT = os.path.join(OUT, args.release)
 os.makedirs(OUT, exist_ok=True)
 
 plt.rcParams.update({'font.family': 'serif', 'font.size': 11,
@@ -64,527 +75,430 @@ plt.rcParams.update({'font.family': 'serif', 'font.size': 11,
 # ─────────────────────────────────────────────────────────────────────────────
 # PHYSICAL CONSTANTS AND PLANCK 2018 PRIORS
 # ─────────────────────────────────────────────────────────────────────────────
-c_kms        = 2.998e5        # km/s
+omh2_m        = obs.OMEGA_M
+omh2_b        = obs.OMEGA_B
+omh2_r        = obs.OMEGA_R
+theta_obs     = obs.THETA_STAR_100
+theta_obs_err = obs.THETA_STAR_100_ERR
 
-# Planck 2018 (TT,TE,EE+lowl+lowE) physical densities
-omh2_m       = 0.1430         # Ω_m h²
-omh2_b       = 0.02237        # Ω_b h²
-omh2_r       = 4.18e-5        # Ω_r h² (photons + 3ν)
-
-# Planck acoustic scale (100×θ_MC)
-theta_obs    = 1.04101        # ×100
-theta_obs_err= 0.00029        # ×100
-
-z_drag       = 1059.6
-z_star       = 1089.8
-
-# DESI BAO Y1 2024 — H(z) [km/s/Mpc]
-DESI_z = np.array([0.295, 0.510, 0.706, 0.930, 1.317, 2.330])
-DESI_H = np.array([ 81.7,  97.9, 110.7, 128.1, 156.4, 240.8])
-DESI_s = np.array([  4.5,   4.4,   6.2,   5.6,   8.6,  11.0])
+DESI = obs.DesiBAO(args.release)
 
 # SIM113 CMSTG reference
 SIM113_w0 = -0.973;  SIM113_wa = -0.41;  SIM113_F0 = 0.52059
+
+# Published (pre-audit) values, for the before/after record
+PUBLISHED = dict(map=dict(F0=0.5599845, w0=-0.6002629, wa=0.4862087, H0_label=75.957),
+                 chi2_DESI=41.4917, DESI_tension_sigma_old_metric=2.6297, verdict='PARTIAL')
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CMSTG HUBBLE RATE (frozen Ψ, CPL DE, exact F₀ normalisation)
 # ─────────────────────────────────────────────────────────────────────────────
 
-def E2_CMSTG(z, F0, w0, wa, H0):
+def make_H(F0, w0, wa, H0):
     """
-    H²(z)/H₀² in CMSTG with frozen Ψ ≈ Ψ₀:
-      3F₀ H² = ρ_m + ρ_r + ρ_DE
-    Physical densities fixed; Ω_i = Ω_i_phys / (F₀ × H₀²).
+    H(z) [km/s/Mpc] with frozen Ψ ≈ Ψ₀:  6F₀H² = ρ_m + ρ_r + ρ_DE  (GR: 3H² = ρ),
+    i.e. H² = (0.5/F₀)·H100²·(ω_m a⁻³ + ω_r a⁻⁴) + DE, with the DE amount fixed by
+    H(z=0) = H₀ (flatness).
     """
-    h       = H0 / 100.0
-    Om      = omh2_m / h**2          # Ω_m (physical density fixed)
-    Or      = omh2_r / h**2          # Ω_r
-    ODE     = 1.0 - Om - Or          # flat universe
-    fDE     = (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*z/(1+z))
-    # CMSTG Friedmann: H² = (ρ_m+ρ_r+ρ_DE)/(3F₀) with ρ_crit,0 = 3×½×H₀²
-    return (0.5/F0) * (Om*(1+z)**3 + Or*(1+z)**4 + ODE*fDE)
+    h = H0 / 100.0
+    Om, Or = omh2_m / h**2, omh2_r / h**2
+    ODE = 2.0 * F0 - Om - Or               # GR-normalised; gives E(0) = 1 exactly
+    g = 0.5 / F0
 
-def H_CMSTG(z, F0, w0, wa, H0):
-    return H0 * np.sqrt(max(E2_CMSTG(z, F0, w0, wa, H0), 0.0))
+    def H(z):
+        z = np.asarray(z, dtype=float)
+        a = 1.0 / (1.0 + z)
+        fDE = a**(-3.0 * (1.0 + w0 + wa)) * np.exp(-3.0 * wa * (1.0 - a))
+        return H0 * np.sqrt(g * (Om / a**3 + Or / a**4 + ODE * fDE))
+    return H
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CMB OBSERVABLES
-# ─────────────────────────────────────────────────────────────────────────────
-
-def r_s_CMSTG(F0, w0, wa, H0):
-    """Comoving sound horizon at z_drag [Mpc]."""
-    h        = H0 / 100.0
-    Ogam     = 2.469e-5 / h**2    # photon density (neutrinos handled via Ω_r)
-    def integrand(z):
-        R    = (3.0 * omh2_b / h**2) / (4.0 * Ogam * (1+z))
-        cs   = c_kms / np.sqrt(3.0*(1.0+R))
-        return cs / H_CMSTG(z, F0, w0, wa, H0)
-    val, _   = quad(integrand, z_drag, 1e4, limit=150, epsrel=1e-5)
-    return val
-
-def D_A_CMSTG(z_target, F0, w0, wa, H0):
-    """Angular diameter distance to z_target [Mpc]."""
-    val, _ = quad(lambda z: c_kms/H_CMSTG(z, F0, w0, wa, H0),
-                  0, z_target, limit=150, epsrel=1e-5)
-    return val / (1.0 + z_target)
-
-def theta_star_CMSTG(F0, w0, wa, H0):
-    """100×θ_* = 100 × r_s(z_drag)/D_C(z_*), D_C = D_A×(1+z) comoving."""
-    rs = r_s_CMSTG(F0, w0, wa, H0)
-    DA = D_A_CMSTG(z_star, F0, w0, wa, H0)
-    return 100.0 * rs / (DA * (1.0 + z_star))
 
 def H0_from_theta(F0, w0, wa, H0_lo=50.0, H0_hi=90.0):
-    """
-    Find H₀ such that 100θ_*(F₀,w₀,wₐ,H₀) = theta_obs.
-    Returns H₀ if found, else np.nan.
-    """
-    try:
-        fa = theta_star_CMSTG(F0, w0, wa, H0_lo) - theta_obs
-        fb = theta_star_CMSTG(F0, w0, wa, H0_hi) - theta_obs
-        if fa * fb > 0:
-            return np.nan
-        return brentq(lambda H: theta_star_CMSTG(F0, w0, wa, H) - theta_obs,
-                      H0_lo, H0_hi, xtol=0.01, maxiter=40)
-    except Exception:
-        return np.nan
+    """H₀ such that 100θ_*(F₀,w₀,wₐ,H₀) = θ_obs, or nan."""
+    h = obs.h_from_theta(lambda hh: make_H(F0, w0, wa, 100.0 * hh),
+                         h_lo=H0_lo / 100.0, h_hi=H0_hi / 100.0)
+    return 100.0 * h if np.isfinite(h) else np.nan
+
+
+def evaluate(F0, w0, wa):
+    """Full evaluation at one parameter point (H₀ from θ_*)."""
+    H0 = H0_from_theta(F0, w0, wa)
+    if np.isnan(H0) or H0 < 55 or H0 > 85:
+        return None
+    H = make_H(F0, w0, wa, H0)
+    rd = obs.r_drag(H)
+    th = obs.theta_star_100(H)
+    return dict(H0=H0, H=H, rd=rd, theta=th, chi2_theta=obs.chi2_theta(th),
+                chi2_DESI=DESI.chi2(H, rd))
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LIKELIHOOD
 # ─────────────────────────────────────────────────────────────────────────────
 
 def log_likelihood(theta_params):
-    """
-    theta_params = [F0, w0, wa]
-    H₀ is derived by matching CMB θ_*.
-    Returns (log_L, H0) or (-inf, nan).
-    """
     F0, w0, wa = theta_params
-
-    # Derive H₀ from CMB θ_*
-    H0 = H0_from_theta(F0, w0, wa)
-    if np.isnan(H0) or H0 < 55 or H0 > 85:
+    e = evaluate(F0, w0, wa)
+    if e is None:
         return -np.inf, np.nan
-
-    # CMB θ_* residual (should be ~0 since H₀ was solved from it,
-    # but include small numerical residual as soft constraint)
-    theta_CMSTG = theta_star_CMSTG(F0, w0, wa, H0)
-    chi2_theta = ((theta_CMSTG - theta_obs) / theta_obs_err)**2
-
-    # DESI H(z) likelihood
-    H_model = np.array([H_CMSTG(z, F0, w0, wa, H0) for z in DESI_z])
-    chi2_DESI = np.sum(((H_model - DESI_H) / DESI_s)**2)
-
-    return -0.5 * (chi2_theta + chi2_DESI), H0
+    return -0.5 * (e['chi2_theta'] + e['chi2_DESI']), e['H0']
 
 def log_prior(theta_params):
     F0, w0, wa = theta_params
     if not (0.490 <= F0 <= 0.560):  return -np.inf
     if not (-1.40 <= w0 <= -0.60):  return -np.inf
     if not (-2.50 <= wa <=  1.50):  return -np.inf
+    if w0 + wa >= 0.0:              return -np.inf
     return 0.0
 
 def log_prob(theta_params):
     lp = log_prior(theta_params)
     if not np.isfinite(lp):
-        return -np.inf
-    ll, _ = log_likelihood(theta_params)
-    return lp + ll
+        return -np.inf, np.nan
+    ll, H0 = log_likelihood(theta_params)
+    return lp + ll, H0
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PRE-SCAN: find good starting region before MCMC
-# ─────────────────────────────────────────────────────────────────────────────
-print("=" * 70)
-print("SIM121-C — CMSTG Phase 2: Joint DESI+Planck MCMC")
-print("=" * 70)
 
-print("\nPart A: Coarse grid scan to find starting region...")
-F0_grid  = np.linspace(0.495, 0.540, 12)
-w0_grid  = np.linspace(-1.30, -0.70, 15)
-wa_grid  = np.linspace(-1.50,  0.50, 15)
+def best_fit(free, x0, fixed):
+    """Minimise χ²_tot over the named free parameters (others fixed)."""
+    names = ['F0', 'w0', 'wa']
+    def f(x):
+        p = dict(fixed); p.update(zip(free, x))
+        v = [p[n] for n in names]
+        if not np.isfinite(log_prior(v)):
+            return 1e10
+        ll, _ = log_likelihood(v)
+        return -2 * ll if np.isfinite(ll) else 1e10
+    if not free:
+        return f([]), dict(fixed)
+    r = minimize(f, x0, method='Nelder-Mead',
+                 options=dict(xatol=1e-6, fatol=1e-6, maxiter=4000))
+    p = dict(fixed); p.update(zip(free, r.x))
+    return r.fun, p
 
-best_chi2 = np.inf
-best_params = None
-best_H0 = None
 
-scan_results = []
-for F0 in F0_grid:
-    for w0 in w0_grid:
-        for wa in wa_grid:
-            ll, H0 = log_likelihood([F0, w0, wa])
-            if np.isfinite(ll) and not np.isnan(H0):
-                chi2 = -2 * ll
-                scan_results.append((chi2, F0, w0, wa, H0))
-                if chi2 < best_chi2:
-                    best_chi2 = chi2
-                    best_params = [F0, w0, wa]
-                    best_H0 = H0
+if __name__ == '__main__':
+    # ─────────────────────────────────────────────────────────────────────────
+    # PRE-SCAN: find good starting region before MCMC
+    # ─────────────────────────────────────────────────────────────────────────
+    print("=" * 70)
+    print(f"SIM121-C — CMSTG Phase 2: Joint DESI+Planck MCMC   [DESI {args.release}, audited]")
+    print("=" * 70)
 
-scan_results.sort()
-print(f"  Grid: {len(F0_grid)}×{len(w0_grid)}×{len(wa_grid)} = "
-      f"{len(F0_grid)*len(w0_grid)*len(wa_grid)} points")
-print(f"  Valid points: {len(scan_results)}")
-print(f"\n  Top 5 grid minima:")
-print(f"  {'chi2':>8}  {'F0':>8}  {'w0':>8}  {'wa':>8}  {'H0':>8}")
-for chi2, F0, w0, wa, H0 in scan_results[:5]:
-    print(f"  {chi2:>8.3f}  {F0:>8.4f}  {w0:>8.4f}  {wa:>8.4f}  {H0:>8.3f}")
+    print("\nPart A: Coarse grid scan to find starting region...")
+    F0_grid  = np.linspace(0.495, 0.555, 13)
+    w0_grid  = np.linspace(-1.30, -0.62, 15)
+    wa_grid  = np.linspace(-2.40,  0.50, 15)
 
-if best_params is None:
-    print("ERROR: No valid grid points found.")
-    import sys; sys.exit(1)
+    scan_results = []
+    for F0 in F0_grid:
+        for w0 in w0_grid:
+            for wa in wa_grid:
+                if not np.isfinite(log_prior([F0, w0, wa])):
+                    continue
+                ll, H0 = log_likelihood([F0, w0, wa])
+                if np.isfinite(ll):
+                    scan_results.append((-2 * ll, F0, w0, wa, H0))
 
-# ─────────────────────────────────────────────────────────────────────────────
-# MCMC WITH EMCEE
-# ─────────────────────────────────────────────────────────────────────────────
-print(f"\nPart B: MCMC (emcee) around best-fit region...")
+    scan_results.sort()
+    print(f"  Valid points: {len(scan_results)}")
+    print(f"\n  Top 5 grid minima:")
+    print(f"  {'chi2':>8}  {'F0':>8}  {'w0':>8}  {'wa':>8}  {'H0':>8}")
+    for chi2, F0, w0, wa, H0 in scan_results[:5]:
+        print(f"  {chi2:>8.3f}  {F0:>8.4f}  {w0:>8.4f}  {wa:>8.4f}  {H0:>8.3f}")
+    if not scan_results:
+        print("ERROR: No valid grid points found.")
+        sys.exit(1)
+    best_params = list(scan_results[0][1:4])
 
-ndim    = 3
-nwalkers = 32
-nsteps   = 3000
-nburn    = 800
+    # ─────────────────────────────────────────────────────────────────────────
+    # MCMC WITH EMCEE
+    # ─────────────────────────────────────────────────────────────────────────
+    print(f"\nPart B: MCMC (emcee) around best-fit region...")
+    ndim, nwalkers = 3, 32
+    nsteps, nburn  = args.nsteps, args.nburn
 
-# Initialise walkers in a small ball around the grid best-fit
-rng      = np.random.default_rng(42)
-p0_center = np.array(best_params)
-scales    = np.array([0.003, 0.05, 0.15])
-p0        = p0_center + scales * rng.normal(size=(nwalkers, ndim))
+    rng       = np.random.default_rng(42)
+    p0_center = np.array(best_params)
+    scales    = np.array([0.003, 0.05, 0.15])
+    p0        = p0_center + scales * rng.normal(size=(nwalkers, ndim))
+    p0[:,0] = np.clip(p0[:,0], 0.491, 0.559)
+    p0[:,1] = np.clip(p0[:,1], -1.39, -0.61)
+    p0[:,2] = np.clip(p0[:,2], -2.49,  1.49)
+    for k in range(nwalkers):                       # keep every walker inside the prior
+        while not np.isfinite(log_prior(p0[k])):
+            p0[k] = p0_center + scales * rng.normal(size=ndim)
 
-# Clip to prior bounds
-p0[:,0] = np.clip(p0[:,0], 0.491, 0.559)
-p0[:,1] = np.clip(p0[:,1], -1.39, -0.61)
-p0[:,2] = np.clip(p0[:,2], -2.49,  1.49)
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, log_prob,
+                                    blobs_dtype=[('H0', float)])
+    print(f"  Burning in ({nburn} steps)...")
+    state = sampler.run_mcmc(p0, nburn, progress=False)
+    sampler.reset()
+    print(f"  Sampling ({nsteps} steps × {nwalkers} walkers)...")
+    sampler.run_mcmc(state, nsteps, progress=False)
 
-sampler = emcee.EnsembleSampler(nwalkers, ndim, log_prob)
+    flat_chain = sampler.get_chain(flat=True)
+    log_probs  = sampler.get_log_prob(flat=True)
+    H0_chain   = sampler.get_blobs(flat=True)['H0']
+    print(f"  Acceptance fraction: {np.mean(sampler.acceptance_fraction):.3f}")
+    try:
+        tau = sampler.get_autocorr_time(quiet=True)
+        print(f"  Autocorrelation times: {np.round(tau, 1)}  (chain length {nsteps})")
+    except Exception:
+        tau = np.full(ndim, np.nan)
 
-print(f"  Burning in ({nburn} steps)...")
-state   = sampler.run_mcmc(p0, nburn, progress=False)
-sampler.reset()
-print(f"  Sampling ({nsteps} steps × {nwalkers} walkers)...")
-sampler.run_mcmc(state, nsteps, progress=False)
+    idx_map = np.argmax(log_probs)
+    F0_map, w0_map, wa_map = flat_chain[idx_map]
+    e_map = evaluate(F0_map, w0_map, wa_map)
+    H0_map, theta_map = e_map['H0'], e_map['theta']
 
-# Extract flat chain
-flat_chain = sampler.get_chain(flat=True)
-log_probs  = sampler.get_log_prob(flat=True)
-print(f"  Acceptance fraction: {np.mean(sampler.acceptance_fraction):.3f}")
-print(f"  Chain shape: {flat_chain.shape}")
+    valid     = np.isfinite(H0_chain)
+    flat_full = np.column_stack([flat_chain[valid], H0_chain[valid]])
+    pct = np.percentile(flat_full, [16, 50, 84], axis=0)
 
-# MAP estimate
-idx_map    = np.argmax(log_probs)
-map_params = flat_chain[idx_map]
-F0_map, w0_map, wa_map = map_params
-_, H0_map = log_likelihood(map_params)
-theta_map = theta_star_CMSTG(F0_map, w0_map, wa_map, H0_map)
+    print(f"\n── Posterior Summary ──")
+    print(f"  {'Param':>6}  {'MAP':>10}  {'16%':>10}  {'50%':>10}  {'84%':>10}")
+    map_vals = [F0_map, w0_map, wa_map, H0_map]
+    for lbl, mv, p16, p50, p84 in zip(['F0','w0','wa','H0'], map_vals, pct[0], pct[1], pct[2]):
+        print(f"  {lbl:>6}  {mv:>10.4f}  {p16:>10.4f}  {p50:>10.4f}  {p84:>10.4f}")
 
-# Derive H₀ for each chain sample
-print(f"  Deriving H₀ for all chain samples...")
-H0_chain = np.array([H0_from_theta(r[0], r[1], r[2]) for r in flat_chain])
-valid     = np.isfinite(H0_chain)
-flat_full = np.column_stack([flat_chain[valid], H0_chain[valid]])  # (N, 4)
-
-# Percentile summaries
-labels_mc = [r'$F_0$', r'$w_0$', r'$w_a$', r'$H_0$']
-pct = np.percentile(flat_full, [16, 50, 84], axis=0)
-
-print(f"\n── Posterior Summary ──")
-print(f"  {'Param':>6}  {'MAP':>10}  {'16%':>10}  {'50%':>10}  {'84%':>10}")
-map_vals = [F0_map, w0_map, wa_map, H0_map]
-for lbl, mv, p16, p50, p84 in zip(['F0','w0','wa','H0'], map_vals,
-                                    pct[0], pct[1], pct[2]):
-    print(f"  {lbl:>6}  {mv:>10.4f}  {p16:>10.4f}  {p50:>10.4f}  {p84:>10.4f}")
-
-# ─────────────────────────────────────────────────────────────────────────────
-# DIAGNOSTICS
-# ─────────────────────────────────────────────────────────────────────────────
-ll_map, _ = log_likelihood([F0_map, w0_map, wa_map])
-chi2_map  = -2 * ll_map
-
-H_map_arr = np.array([H_CMSTG(z, F0_map, w0_map, wa_map, H0_map) for z in DESI_z])
-chi2_DESI_map = np.sum(((H_map_arr - DESI_H)/DESI_s)**2)
-chi2_theta_map = ((theta_map - theta_obs)/theta_obs_err)**2
-
-# SIM113 reference chi2
-ll_113, H0_113 = log_likelihood([SIM113_F0, SIM113_w0, SIM113_wa])
-chi2_113 = -2*ll_113 if np.isfinite(ll_113) else np.nan
-
-# LCDM reference (F0=0.5, w0=-1, wa=0)
-ll_lcdm, H0_lcdm = log_likelihood([0.5, -1.0, 0.0])
-chi2_lcdm = -2*ll_lcdm if np.isfinite(ll_lcdm) else np.nan
-
-# DESI tension at MAP
-tension_map = np.sqrt(chi2_DESI_map / len(DESI_z))
-tension_113 = np.sqrt(chi2_DESI_map / len(DESI_z))  # placeholder
-
-print(f"\n── Fit Quality ──")
-print(f"  {'Model':25}  {'chi2_tot':>10}  {'chi2_DESI':>11}  "
-      f"{'chi2_theta':>12}  {'H0':>8}  {'DESI tension':>14}")
-for model, chi2_t, chi2_d, chi2_th, H0_v in [
-    ('CMSTG MAP (this sim)',   chi2_map,  chi2_DESI_map, chi2_theta_map, H0_map),
-    ('SIM113 reference',      chi2_113,  np.nan,         np.nan,         H0_113 if not np.isnan(H0_113) else np.nan),
-    ('flat LCDM (F0=0.5)',    chi2_lcdm, np.nan,         np.nan,         H0_lcdm if not np.isnan(H0_lcdm) else np.nan),
-]:
-    print(f"  {model:25}  {chi2_t:>10.3f}  {chi2_d:>11.3f}  "
-          f"{chi2_th:>12.3f}  {H0_v:>8.3f}  "
-          f"{np.sqrt(chi2_d/len(DESI_z)):>14.3f}σ" if np.isfinite(chi2_d) else
-          f"  {model:25}  {chi2_t:>10.3f}")
-
-# H(z) table at MAP
-print(f"\n── H(z) at MAP: CMSTG vs DESI ──")
-print(f"  {'z':>5}  {'H_obs':>8}  {'H_MAP':>8}  {'pull':>6}")
-for z, Ho, s, Hm in zip(DESI_z, DESI_H, DESI_s, H_map_arr):
-    print(f"  {z:>5.3f}  {Ho:>8.1f}  {Hm:>8.2f}  {(Hm-Ho)/s:>6.2f}")
-
-# ─────────────────────────────────────────────────────────────────────────────
-# VERDICT
-# ─────────────────────────────────────────────────────────────────────────────
-pass_chi2   = chi2_DESI_map / len(DESI_z) < 2.0
-pass_theta  = chi2_theta_map < 4.0
-pass_w0     = -1.3 <= w0_map <= -0.7
-pass_F0     = 0.490 <= F0_map <= 0.560
-tension_sig = np.sqrt(chi2_DESI_map / len(DESI_z))
-improvement_vs_LCDM = chi2_lcdm - chi2_map if np.isfinite(chi2_lcdm) else np.nan
-
-print(f"\n{'='*70}")
-print("SIM121-C RESULT:")
-print()
-print(f"  MAP parameters:")
-print(f"    F₀   = {F0_map:.5f}  (Λ₀Ψ₀² = {F0_map-0.5:.5f})")
-print(f"    w₀   = {w0_map:.4f}")
-print(f"    wₐ   = {wa_map:.4f}")
-print(f"    H₀   = {H0_map:.3f} km/s/Mpc  (CMB-derived)")
-print()
-print(f"  Fit quality:")
-print(f"    χ²_DESI / N = {chi2_DESI_map:.3f} / {len(DESI_z)}"
-      f"  → {'PASS' if pass_chi2 else 'FAIL'}")
-print(f"    χ²_θ        = {chi2_theta_map:.4f}"
-      f"  → {'PASS' if pass_theta else 'FAIL'} (θ_* within {np.sqrt(chi2_theta_map):.1f}σ)")
-print(f"    DESI tension = {tension_sig:.2f}σ  (SIM113 reference: 2.70σ)")
-print()
-print(f"  Constraints:")
-print(f"    F₀ = {F0_map:.5f}  (deviation from GR: {100*(F0_map/0.5-1):.3f}%)"
-      f"  → {'PASS' if pass_F0 else 'FAIL'}")
-print(f"    w₀ = {w0_map:.4f}  → {'PASS' if pass_w0 else 'FAIL'}")
-print()
-print(f"  Improvement vs ΛCDM: Δχ² = {improvement_vs_LCDM:+.3f}" if np.isfinite(improvement_vs_LCDM)
-      else "  LCDM reference not available")
-
-PASS = pass_chi2 and pass_theta and pass_w0 and pass_F0
-PARTIAL = (pass_theta or pass_chi2) and not (pass_chi2 and pass_theta)
-
-if PASS:
-    print(f"\n  VERDICT: PASS")
-    print(f"  CMSTG Phase 2 parameter set ({F0_map:.4f}, {w0_map:.3f}, {wa_map:.3f}) is")
-    print(f"  jointly consistent with Planck CMB acoustic scale and DESI BAO.")
-elif PARTIAL:
-    print(f"\n  VERDICT: PARTIAL")
-    print(f"  CMSTG satisfies one of CMB/DESI but not both simultaneously.")
-else:
-    print(f"\n  VERDICT: FAIL")
-    print(f"  No CMSTG parameter set satisfies both CMB θ_* and DESI BAO.")
-print(f"{'='*70}")
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SAVE RESULTS JSON
-# ─────────────────────────────────────────────────────────────────────────────
-out_data = {
-    'verdict': 'PASS' if PASS else 'PARTIAL' if PARTIAL else 'FAIL',
-    'map': {'F0': float(F0_map), 'w0': float(w0_map), 'wa': float(wa_map),
-            'H0': float(H0_map)},
-    'posterior_50pct': {'F0': float(pct[1,0]), 'w0': float(pct[1,1]),
-                        'wa': float(pct[1,2]),  'H0': float(pct[1,3])},
-    'posterior_16pct': dict(zip(['F0','w0','wa','H0'], pct[0].tolist())),
-    'posterior_84pct': dict(zip(['F0','w0','wa','H0'], pct[2].tolist())),
-    'chi2_DESI_map': float(chi2_DESI_map),
-    'chi2_theta_map': float(chi2_theta_map),
-    'chi2_total_map': float(chi2_map),
-    'DESI_tension_sigma': float(tension_sig),
-    'theta_star_map': float(theta_map),
-    'theta_star_obs': float(theta_obs),
-    'SIM113_chi2': float(chi2_113) if np.isfinite(chi2_113) else None,
-    'LCDM_chi2':   float(chi2_lcdm) if np.isfinite(chi2_lcdm) else None,
-    'delta_chi2_vs_LCDM': float(improvement_vs_LCDM) if np.isfinite(improvement_vs_LCDM) else None,
-    'nwalkers': nwalkers, 'nsteps': nsteps, 'nburn': nburn,
-    'n_valid_samples': int(valid.sum()),
-}
-with open(os.path.join(OUT, 'sim121c_results.json'), 'w') as f:
-    json.dump(out_data, f, indent=2)
-
-# ─────────────────────────────────────────────────────────────────────────────
-# FIGURE 1: Corner-style marginals (manual, no corner library needed)
-# ─────────────────────────────────────────────────────────────────────────────
-print(f"\nGenerating figures...")
-
-param_names = [r'$F_0$', r'$w_0$', r'$w_a$', r'$H_0$ [km/s/Mpc]']
-param_ranges = [(0.492, 0.545), (-1.32, -0.65), (-2.0, 1.2), (58, 80)]
-
-fig, axes = plt.subplots(4, 4, figsize=(13, 12))
-for i in range(4):
-    for j in range(4):
-        ax = axes[i, j]
-        if j > i:
-            ax.axis('off')
+    # ─────────────────────────────────────────────────────────────────────────
+    # DIAGNOSTICS — every model through the same pipeline
+    # ─────────────────────────────────────────────────────────────────────────
+    fits = {}
+    for key, free, x0, fixed in [
+            ('LCDM',             [],                 [],                       dict(F0=0.5, w0=-1.0, wa=0.0)),
+            ('Phase1_frozen_F0', [],                 [],                       dict(F0=0.5 + 0.003 * 2.62**2, w0=-1.0, wa=0.0)),
+            ('SIM113_point',     [],                 [],                       dict(F0=SIM113_F0, w0=SIM113_w0, wa=SIM113_wa)),
+            ('F0_only',          ['F0'],             [0.51],                   dict(w0=-1.0, wa=0.0)),
+            ('w0waCDM',          ['w0', 'wa'],       [w0_map, wa_map],         dict(F0=0.5)),
+            ('CMSTG_full',       ['F0', 'w0', 'wa'], [F0_map, w0_map, wa_map], dict())]:
+        c2, p = best_fit(free, x0, fixed)
+        e = evaluate(p['F0'], p['w0'], p['wa'])
+        if e is None:
+            fits[key] = dict(params=p, valid=False)
             continue
-        xi = flat_full[:, j]
-        yi = flat_full[:, i]
-        if i == j:
-            ax.hist(xi, bins=40, color='#4393c3', alpha=0.8, density=True, edgecolor='k', lw=0.3)
-            ax.axvline(map_vals[i], color='#d6604d', lw=2, ls='--', label='MAP')
-            ax.axvline(pct[1,i],   color='k',        lw=1, ls=':')
-            if param_ranges[i]:
-                ax.set_xlim(param_ranges[i])
-            ax.set_yticks([])
-            if i == 3:
-                ax.axvline(73.0, color='#1a9641', lw=1.5, ls=':', alpha=0.8)  # SH0ES
-        else:
-            ax.hist2d(xi, yi, bins=35, cmap='Blues',
-                      range=[param_ranges[j] or [xi.min(),xi.max()],
-                             param_ranges[i] or [yi.min(),yi.max()]],
-                      density=True)
-            ax.plot(map_vals[j], map_vals[i], 'r*', ms=10, zorder=5)
-        if i == 3:
-            ax.set_xlabel(param_names[j], fontsize=10)
-        if j == 0 and i > 0:
-            ax.set_ylabel(param_names[i], fontsize=10)
-        ax.tick_params(labelsize=8)
+        s = obs.summarize_fit(e['chi2_DESI'], DESI.n, len(free), e['chi2_theta'], label=key)
+        s.update(params={k: float(v) for k, v in p.items()}, H0=float(e['H0']),
+                 r_drag=float(e['rd']), theta_star_100=float(e['theta']), valid=True)
+        fits[key] = s
 
-# SIM113 reference point
-for i in range(1, 4):
-    for j in range(0, i):
-        ref_vals = [SIM113_F0, SIM113_w0, SIM113_wa, H0_113 if not np.isnan(H0_113) else 67.0]
-        axes[i,j].plot(ref_vals[j], ref_vals[i], 'g^', ms=7, zorder=6,
-                        label='SIM113' if (i==1 and j==0) else '')
-        if i==1 and j==0:
-            axes[i,j].legend(fontsize=8, loc='upper right')
+    ref = fits['LCDM']
+    for key, s in fits.items():
+        if s.get('valid') and key != 'LCDM':
+            k = s['n_params']
+            d = ref['chi2_DESI'] + ref['chi2_theta'] - s['chi2_DESI'] - s['chi2_theta']
+            s['delta_chi2_vs_LCDM'] = float(d)          # > 0: better than ΛCDM
+            s['preference_over_LCDM_sigma'] = float(obs.delta_chi2_to_sigma(d, k)) if k > 0 else None
+    w0wa = fits['w0waCDM']; full = fits['CMSTG_full']
+    d_F0 = w0wa['chi2_DESI'] + w0wa['chi2_theta'] - full['chi2_DESI'] - full['chi2_theta']
+    full['delta_chi2_vs_w0waCDM'] = float(d_F0)
+    full['F0_preference_sigma'] = float(obs.delta_chi2_to_sigma(d_F0, 1))
 
-fig.suptitle('SIM121-C — CMSTG Joint Posterior: CMB+DESI', fontsize=13, y=1.00)
-fig.tight_layout()
-for ext in ['pdf','png']:
-    fig.savefig(os.path.join(OUT, f'sim121c_corner.{ext}'), dpi=130, bbox_inches='tight')
-print("  Saved sim121c_corner")
-plt.close(fig)
+    print(f"\n── Fit quality (DESI {args.release} + θ_*) ──")
+    print(f"  {'Model':20} {'k':>2} {'χ²_DESI':>8} {'dof':>4} {'p':>9} {'GOF σ':>6} "
+          f"{'Δχ² vs ΛCDM':>12} {'H0':>7}  params")
+    for key, s in fits.items():
+        if not s.get('valid'):
+            print(f"  {key:20} invalid (no θ* solution)")
+            continue
+        d = s.get('delta_chi2_vs_LCDM', 0.0)
+        print(f"  {key:20} {s['n_params']:>2} {s['chi2_DESI']:>8.2f} {s['dof']:>4} {s['p_value']:>9.2e} "
+              f"{s['gof_sigma']:>6.2f} {d:>+12.2f} {s['H0']:>7.2f}  "
+              + ", ".join(f"{k}={v:.4f}" for k, v in s['params'].items()))
+    print(f"\n  F₀ adds Δχ² = {d_F0:+.2f} beyond w₀wₐCDM → {full['F0_preference_sigma']:.2f}σ for F₀ ≠ ½")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FIGURE 2: w₀-wₐ plane with confidence contours
-# ─────────────────────────────────────────────────────────────────────────────
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    print(f"\n── DESI points at MAP ──")
+    print(f"  {'z':>6} {'quantity':>11} {'data':>8} {'σ':>6} {'MAP':>8} {'pull':>6}")
+    for row in DESI.table(e_map['H'], e_map['rd']):
+        print(f"  {row['z']:>6.3f} {row['quantity']:>11} {row['data']:>8.3f} {row['sigma']:>6.3f} "
+              f"{row['model']:>8.3f} {row['pull']:>+6.2f}")
 
-ax = axes[0]
-# Compute χ² on a (w0, wa) grid with F0, H0 marginalized (use MAP F0)
-w0g = np.linspace(-1.35, -0.65, 60)
-wag = np.linspace(-2.0, 1.2, 60)
-chi2_grid = np.full((len(wag), len(w0g)), np.inf)
-for iw, w0v in enumerate(w0g):
-    for iwa, wav in enumerate(wag):
-        ll_v, h0_v = log_likelihood([F0_map, w0v, wav])
-        if np.isfinite(ll_v) and not np.isnan(h0_v):
-            chi2_grid[iwa, iw] = -2*ll_v
+    # ─────────────────────────────────────────────────────────────────────────
+    # VERDICT
+    # ─────────────────────────────────────────────────────────────────────────
+    chi2_DESI_map  = e_map['chi2_DESI']
+    chi2_theta_map = e_map['chi2_theta']
+    pass_chi2   = chi2_DESI_map / DESI.n < 2.0
+    pass_theta  = chi2_theta_map < 4.0
+    pass_w0     = -1.3 <= w0_map <= -0.7
+    pass_F0     = 0.490 <= F0_map <= 0.560
+    gof_map     = obs.summarize_fit(chi2_DESI_map, DESI.n, 3, chi2_theta_map)
 
-chi2_min = chi2_grid[np.isfinite(chi2_grid)].min()
-dchi2 = chi2_grid - chi2_min
+    PASS = pass_chi2 and pass_theta and pass_w0 and pass_F0
+    PARTIAL = (pass_theta or pass_chi2) and not PASS
+    verdict = 'PASS' if PASS else 'PARTIAL' if PARTIAL else 'FAIL'
 
-W0G, WAG = np.meshgrid(w0g, wag)
-ax.contourf(W0G, WAG, dchi2, levels=[0, 2.30, 6.18, 11.8],
-            colors=['#d9f0d3','#a6dba0','#5aae61'], alpha=0.7)
-ax.contour(W0G, WAG, dchi2,  levels=[2.30, 6.18], colors='k', linewidths=1.2)
-ax.plot(w0_map, wa_map, 'r*', ms=14, zorder=5, label=f'MAP ({w0_map:.3f}, {wa_map:.3f})')
-ax.plot(SIM113_w0, SIM113_wa, 'g^', ms=10, zorder=5, label='SIM113 (-0.973, -0.41)')
-ax.plot(-1.0, 0.0, 'bs', ms=10, zorder=5, label=r'$\Lambda$CDM')
-# DESI 2024 contour (approximate, from published results)
-desi_w0_center, desi_wa_center = -0.827, -0.75
-ax.errorbar(desi_w0_center, desi_wa_center, xerr=0.07, yerr=0.35,
-            fmt='ko', ms=8, capsize=5, label='DESI+CMB+SNe 2024')
-ax.set_xlabel(r'$w_0$')
-ax.set_ylabel(r'$w_a$')
-ax.set_title(r'$w_0$-$w_a$ Posterior (CMSTG MAP F₀)')
-ax.legend(fontsize=9)
-ax.axhline(0, color='gray', ls=':', lw=0.8)
-ax.axvline(-1.0, color='gray', ls=':', lw=0.8)
-ctxt = ax.contourf(W0G, WAG, dchi2, levels=[0,2.30], colors='none')
-ax.text(0.03, 0.03,
-        r'Contours: 1$\sigma$, 2$\sigma$ ($\Delta\chi^2=2.30, 6.18$)',
-        transform=ax.transAxes, fontsize=9)
+    print(f"\n{'='*70}")
+    print("SIM121-C RESULT:")
+    print(f"  MAP: F₀ = {F0_map:.5f}, w₀ = {w0_map:.4f}, wₐ = {wa_map:.4f}, H₀ = {H0_map:.3f} (CMB-derived)")
+    print(f"  χ²_DESI = {chi2_DESI_map:.3f} for N = {DESI.n}, dof = {gof_map['dof']}: "
+          f"p = {gof_map['p_value']:.3g} → {gof_map['gof_sigma']:.2f}σ   "
+          f"[old metric √(χ²/N) = {gof_map['rms_pull_old_metric']:.2f}]")
+    print(f"  criteria: χ²/N<2 {'PASS' if pass_chi2 else 'FAIL'} | θ_* {'PASS' if pass_theta else 'FAIL'} | "
+          f"w₀ {'PASS' if pass_w0 else 'FAIL'} | F₀ {'PASS' if pass_F0 else 'FAIL'}")
+    print(f"  VERDICT: {verdict}")
+    print(f"  Published (pre-audit): F₀={PUBLISHED['map']['F0']:.4f}, 'H₀'={PUBLISHED['map']['H0_label']:.2f}, "
+          f"χ²={PUBLISHED['chi2_DESI']:.2f} on the non-DESI table, "
+          f"'tension'={PUBLISHED['DESI_tension_sigma_old_metric']:.2f}")
+    print(f"{'='*70}")
 
-# FIGURE 2b: H(z) best-fit
-ax = axes[1]
-z_plot = np.logspace(-2, 0.4, 300)
-H_map_plot = np.array([H_CMSTG(z, F0_map, w0_map, wa_map, H0_map) for z in z_plot])
-H_113_plot = np.array([H_CMSTG(z, SIM113_F0, SIM113_w0, SIM113_wa,
-                               H0_113 if not np.isnan(H0_113) else 67.0) for z in z_plot])
-H_lcdm_plot = np.array([H0_lcdm*np.sqrt(0.315*(1+z)**3 + 9e-5*(1+z)**4 + 0.685)
-                          for z in z_plot]) if not np.isnan(H0_lcdm) else H_map_plot
+    # ─────────────────────────────────────────────────────────────────────────
+    # SAVE RESULTS JSON
+    # ─────────────────────────────────────────────────────────────────────────
+    out_data = {
+        'verdict': verdict,
+        'desi_release': args.release,
+        'map': {'F0': float(F0_map), 'w0': float(w0_map), 'wa': float(wa_map), 'H0': float(H0_map)},
+        'posterior_50pct': dict(zip(['F0','w0','wa','H0'], pct[1].tolist())),
+        'posterior_16pct': dict(zip(['F0','w0','wa','H0'], pct[0].tolist())),
+        'posterior_84pct': dict(zip(['F0','w0','wa','H0'], pct[2].tolist())),
+        'chi2_DESI_map': float(chi2_DESI_map),
+        'N_DESI': DESI.n,
+        'gof_map': gof_map,
+        'chi2_theta_map': float(chi2_theta_map),
+        'theta_star_map': float(theta_map),
+        'theta_star_obs': float(theta_obs),
+        'r_drag_map': float(e_map['rd']),
+        'fits_same_pipeline': fits,
+        'desi_points_map': DESI.table(e_map['H'], e_map['rd']),
+        'nwalkers': nwalkers, 'nsteps': nsteps, 'nburn': nburn,
+        'acceptance_fraction': float(np.mean(sampler.acceptance_fraction)),
+        'autocorr_time': [float(t) for t in tau],
+        'n_valid_samples': int(valid.sum()),
+        'published_pre_audit': PUBLISHED,
+        'audit_note': 'Audited 2026-10-22: official DESI likelihood, r_s to infinity, '
+                      'theta*=r_s(z*)/D_M(z*), H0 closure fix, proper significance. See AUDIT_NOTES.md.',
+        'phenomenological_inputs': ['w0', 'wa (CPL dark energy, not derived from the action)'],
+    }
+    with open(os.path.join(OUT, 'sim121c_results.json'), 'w') as f:
+        json.dump(out_data, f, indent=2)
 
-ax.plot(z_plot, H_map_plot, color='#d6604d', lw=2.5, label=f'CMSTG MAP (H₀={H0_map:.1f})')
-ax.plot(z_plot, H_113_plot, color='#4dac26', lw=1.8, ls='--',
-        label=f'SIM113 (H₀={H0_113:.1f})')
-ax.plot(z_plot, H_lcdm_plot, color='#2166ac', lw=1.5, ls=':',
-        label=f'flat ΛCDM (H₀={H0_lcdm:.1f})')
-ax.errorbar(DESI_z, DESI_H, yerr=DESI_s, fmt='ko', ms=6, capsize=4,
-            zorder=5, label='DESI BAO 2024')
-ax.set_xlabel(r'Redshift $z$')
-ax.set_ylabel(r'$H(z)$ [km/s/Mpc]')
-ax.set_title(r'$H(z)$: CMSTG MAP vs Data')
-ax.legend(fontsize=9)
-ax.set_xlim(0.2, 2.5)
+    # ─────────────────────────────────────────────────────────────────────────
+    # FIGURE 1: Corner-style marginals
+    # ─────────────────────────────────────────────────────────────────────────
+    print(f"\nGenerating figures...")
+    param_names = [r'$F_0$', r'$w_0$', r'$w_a$', r'$H_0$ [km/s/Mpc]']
+    param_ranges = [(0.490, 0.560), (-1.40, -0.60), (-2.5, 1.0),
+                    (min(55, np.percentile(flat_full[:, 3], 0.5)),
+                     max(80, np.percentile(flat_full[:, 3], 99.5)))]
 
-fig.suptitle('SIM121-C — CMSTG Phase 2: CMB+DESI Joint Fit', fontsize=13, y=1.01)
-fig.tight_layout()
-for ext in ['pdf','png']:
-    fig.savefig(os.path.join(OUT, f'sim121c_contours.{ext}'), dpi=150, bbox_inches='tight')
-print("  Saved sim121c_contours")
-plt.close(fig)
+    fig, axes = plt.subplots(4, 4, figsize=(13, 12))
+    for i in range(4):
+        for j in range(4):
+            ax = axes[i, j]
+            if j > i:
+                ax.axis('off'); continue
+            xi, yi = flat_full[:, j], flat_full[:, i]
+            if i == j:
+                ax.hist(xi, bins=40, range=param_ranges[i], color='#4393c3', alpha=0.8,
+                        density=True, edgecolor='k', lw=0.3)
+                ax.axvline(map_vals[i], color='#d6604d', lw=2, ls='--')
+                ax.axvline(pct[1, i], color='k', lw=1, ls=':')
+                ax.set_xlim(param_ranges[i]); ax.set_yticks([])
+            else:
+                ax.hist2d(xi, yi, bins=35, cmap='Blues',
+                          range=[param_ranges[j], param_ranges[i]], density=True)
+                ax.plot(map_vals[j], map_vals[i], 'r*', ms=10, zorder=5)
+            if i == 3: ax.set_xlabel(param_names[j], fontsize=10)
+            if j == 0 and i > 0: ax.set_ylabel(param_names[i], fontsize=10)
+            ax.tick_params(labelsize=8)
+    fig.suptitle(f'SIM121-C (audited) — CMSTG joint posterior: θ* + DESI {args.release}',
+                 fontsize=13, y=1.00)
+    fig.tight_layout()
+    for ext in ['pdf', 'png']:
+        fig.savefig(os.path.join(OUT, f'sim121c_corner.{ext}'), dpi=130, bbox_inches='tight')
+    plt.close(fig)
+    print("  Saved sim121c_corner")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FIGURE 3: F₀ vs H₀ constraint from CMB
-# ─────────────────────────────────────────────────────────────────────────────
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    # ─────────────────────────────────────────────────────────────────────────
+    # FIGURE 2: w₀-wₐ plane + DESI distances relative to ΛCDM
+    # ─────────────────────────────────────────────────────────────────────────
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    ax = axes[0]
+    w0g = np.linspace(-1.35, -0.62, 45)
+    wag = np.linspace(-2.45, 0.6, 45)
+    chi2_grid = np.full((len(wag), len(w0g)), np.inf)
+    for iw, w0v in enumerate(w0g):
+        for iwa, wav in enumerate(wag):
+            if w0v + wav >= 0:
+                continue
+            ll_v, _ = log_likelihood([F0_map, w0v, wav])
+            if np.isfinite(ll_v):
+                chi2_grid[iwa, iw] = -2 * ll_v
+    dchi2 = chi2_grid - chi2_grid[np.isfinite(chi2_grid)].min()
+    W0G, WAG = np.meshgrid(w0g, wag)
+    ax.contourf(W0G, WAG, dchi2, levels=[0, 2.30, 6.18, 11.8],
+                colors=['#d9f0d3', '#a6dba0', '#5aae61'], alpha=0.7)
+    ax.contour(W0G, WAG, dchi2, levels=[2.30, 6.18], colors='k', linewidths=1.2)
+    ax.plot(w0_map, wa_map, 'r*', ms=14, zorder=5, label=f'MAP ({w0_map:.3f}, {wa_map:.3f})')
+    ax.plot(SIM113_w0, SIM113_wa, 'g^', ms=10, zorder=5, label='SIM113 (−0.973, −0.41)')
+    ax.plot(-1.0, 0.0, 'bs', ms=10, zorder=5, label=r'$\Lambda$CDM')
+    ax.set_xlabel(r'$w_0$'); ax.set_ylabel(r'$w_a$')
+    ax.set_title(rf'$w_0$–$w_a$ ($F_0$ = MAP {F0_map:.4f})')
+    ax.legend(fontsize=9)
+    ax.axhline(0, color='gray', ls=':', lw=0.8); ax.axvline(-1.0, color='gray', ls=':', lw=0.8)
 
-ax = axes[0]
-F0_range = np.linspace(0.490, 0.560, 60)
-H0_vals  = np.array([H0_from_theta(F0v, w0_map, wa_map) for F0v in F0_range])
-valid_F0 = np.isfinite(H0_vals)
-ax.plot(F0_range[valid_F0], H0_vals[valid_F0], color='#2166ac', lw=2.5,
-        label=r'H₀(F₀) from CMB $\theta_*$ at MAP $(w_0, w_a)$')
-ax.axhline(73.0, color='#1a9641', ls='--', lw=1.8, label='SH0ES H₀=73.0')
-ax.axhline(67.4, color='#d6604d', ls='--', lw=1.8, label='Planck H₀=67.4')
-ax.axvline(0.5,  color='gray', ls=':', lw=1, label='GR (F₀=½)')
-ax.axvline(F0_map, color='#7b2d8b', ls=':', lw=1.5)
-ax.plot(F0_map, H0_map, 'r*', ms=12, zorder=5)
-ax.set_xlabel(r'$F_0 = \frac{1}{2} + \Lambda_0 \Psi_0^2$')
-ax.set_ylabel(r'$H_0$ [km/s/Mpc]')
-ax.set_title(r'CMB-Derived $H_0$ vs $F_0$')
-ax.legend(fontsize=9)
-ax.set_xlim(F0_range[0], F0_range[-1])
-ax.text(0.03, 0.08,
-        r'Higher $F_0$ $\rightarrow$ lower CMB-inferred $H_0$' + '\n'
-        r'(opposite to needed for H$_0$ tension)',
-        transform=ax.transAxes, fontsize=9,
-        bbox=dict(boxstyle='round', fc='#fff0f0', alpha=0.9))
+    ax = axes[1]
+    H_l = make_H(0.5, -1.0, 0.0, fits['LCDM']['H0']); rd_l = obs.r_drag(H_l)
+    m_l = DESI.model(H_l, rd_l)
+    zz = np.linspace(0.05, 2.5, 120)
 
-ax = axes[1]
-# H₀ posterior from chain
-ax.hist(flat_full[:,3], bins=50, color='#4393c3', alpha=0.8,
-        density=True, edgecolor='k', lw=0.3, label='CMSTG posterior')
-ax.axvline(H0_map,  color='#d6604d', lw=2, ls='--', label=f'MAP H₀={H0_map:.2f}')
-ax.axvline(pct[1,3],color='k',       lw=1, ls=':',  label=f'Median H₀={pct[1,3]:.2f}')
-ax.axvline(73.0, color='#1a9641', lw=2, ls='-', alpha=0.8, label='SH0ES')
-ax.axvline(67.4, color='#b2182b', lw=2, ls='-', alpha=0.8, label='Planck')
-ax.set_xlabel(r'$H_0$ [km/s/Mpc]')
-ax.set_ylabel('Probability density')
-ax.set_title(r'CMSTG Marginal Posterior: $H_0$')
-ax.legend(fontsize=9)
-tension_cmstg = abs(73.0 - pct[1,3]) / np.sqrt(1.0**2 + 0.5**2)
-ax.text(0.97, 0.97,
-        f'CMSTG median H₀={pct[1,3]:.1f}\n'
-        f'SH0ES tension: {tension_cmstg:.1f}σ\n'
-        f'Planck tension: {abs(pct[1,3]-67.4)/0.5:.1f}σ',
-        transform=ax.transAxes, ha='right', va='top', fontsize=10,
-        bbox=dict(boxstyle='round', fc='white', alpha=0.9))
+    def curves(Hf, rd):
+        DMg = np.array([obs.comoving_distance(Hf, z, n=400) for z in zz])
+        DH = obs.C_KMS / Hf(zz)
+        return {'DM_over_rs': DMg / rd, 'DH_over_rs': DH / rd,
+                'DV_over_rs': (zz * DMg**2 * DH)**(1 / 3) / rd}
+    c_map, c_l = curves(e_map['H'], e_map['rd']), curves(H_l, rd_l)
+    for col, kind, mk in [('#d6604d', 'DM_over_rs', 'o'), ('#2166ac', 'DH_over_rs', 's'),
+                          ('#4dac26', 'DV_over_rs', '^')]:
+        sel = [i for i, k in enumerate(DESI.kind) if k == kind]
+        if sel:
+            ax.errorbar(DESI.z[sel], DESI.value[sel] / m_l[sel], yerr=DESI.sigma[sel] / m_l[sel],
+                        fmt=mk, color=col, ms=6, capsize=3,
+                        label=f'DESI {args.release} {kind.split("_")[0]}')
+        ax.plot(zz, c_map[kind] / c_l[kind], color=col, lw=1.8)
+    ax.axhline(1.0, color='k', lw=1, ls=':')
+    ax.set_xlabel('Redshift $z$'); ax.set_ylabel(r'$(D/r_d)\,/\,(D/r_d)_{\Lambda{\rm CDM}}$')
+    ax.set_title('DESI BAO relative to ΛCDM (lines: CMSTG MAP)')
+    ax.legend(fontsize=8)
+    fig.suptitle(f'SIM121-C (audited) — θ* + DESI {args.release}', fontsize=13, y=1.01)
+    fig.tight_layout()
+    for ext in ['pdf', 'png']:
+        fig.savefig(os.path.join(OUT, f'sim121c_contours.{ext}'), dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print("  Saved sim121c_contours")
 
-fig.suptitle('SIM121-C — CMB Constraint on CMSTG F₀ and H₀', fontsize=13, y=1.01)
-fig.tight_layout()
-for ext in ['pdf','png']:
-    fig.savefig(os.path.join(OUT, f'sim121c_F0_H0.{ext}'), dpi=150, bbox_inches='tight')
-print("  Saved sim121c_F0_H0")
-plt.close(fig)
+    # ─────────────────────────────────────────────────────────────────────────
+    # FIGURE 3: F₀ vs H₀ constraint from CMB
+    # ─────────────────────────────────────────────────────────────────────────
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    ax = axes[0]
+    F0_range = np.linspace(0.490, 0.560, 40)
+    H0_vals = np.array([H0_from_theta(F0v, w0_map, wa_map) for F0v in F0_range])
+    ok = np.isfinite(H0_vals)
+    ax.plot(F0_range[ok], H0_vals[ok], color='#2166ac', lw=2.5,
+            label=r'$H_0(F_0)$ from $\theta_*$ at MAP $(w_0, w_a)$')
+    ax.axhline(73.0, color='#1a9641', ls='--', lw=1.8, label='SH0ES 73.0')
+    ax.axhline(67.4, color='#d6604d', ls='--', lw=1.8, label='Planck 67.4')
+    ax.axvline(0.5, color='gray', ls=':', lw=1, label='GR ($F_0$=½)')
+    ax.plot(F0_map, H0_map, 'r*', ms=12, zorder=5)
+    ax.set_xlabel(r'$F_0 = \frac{1}{2} + \Lambda_0 \Psi_0^2$'); ax.set_ylabel(r'$H_0$ [km/s/Mpc]')
+    ax.set_title(r'CMB-derived $H_0$ vs $F_0$'); ax.legend(fontsize=9)
+    ax = axes[1]
+    ax.hist(flat_full[:, 3], bins=50, color='#4393c3', alpha=0.8, density=True, edgecolor='k', lw=0.3)
+    ax.axvline(H0_map, color='#d6604d', lw=2, ls='--', label=f'MAP {H0_map:.2f}')
+    ax.axvline(pct[1, 3], color='k', lw=1, ls=':', label=f'median {pct[1, 3]:.2f}')
+    ax.axvline(73.0, color='#1a9641', lw=2, alpha=0.8, label='SH0ES')
+    ax.axvline(67.4, color='#b2182b', lw=2, alpha=0.8, label='Planck')
+    ax.set_xlabel(r'$H_0$ [km/s/Mpc]'); ax.set_ylabel('Probability density')
+    ax.set_title(r'Marginal posterior: $H_0$'); ax.legend(fontsize=9)
+    fig.suptitle(f'SIM121-C (audited) — CMB constraint on F₀ and H₀ (DESI {args.release})',
+                 fontsize=13, y=1.01)
+    fig.tight_layout()
+    for ext in ['pdf', 'png']:
+        fig.savefig(os.path.join(OUT, f'sim121c_F0_H0.{ext}'), dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print("  Saved sim121c_F0_H0")
 
-print(f"\nAll outputs in: {os.path.abspath(OUT)}")
-print(f"MCMC complete. {valid.sum()} valid samples.")
+    print(f"\nAll outputs in: {os.path.abspath(OUT)}")
+    print(f"MCMC complete. {valid.sum()} valid samples.")

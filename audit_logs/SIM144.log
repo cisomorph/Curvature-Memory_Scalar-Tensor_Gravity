@@ -1,0 +1,39 @@
+========================================================================
+SIM144: Mixed-source φ (ξ_R, β_m) completeness probe   [audited]
+========================================================================
+  ξ_R=0.0   β_m=0.0   faithful      H0= 67.59 100θ*=1.0399 χ²DR1=  19.96 Δχ²DR1=  -13.36 Δχ²DR2=  -10.09 RSD= 0.87 Cassini×49 → FAIL_CMB
+  ξ_R=0.0   β_m=0.0   theta_matched H0= 68.00 100θ*=1.0411 χ²DR1=  16.61 Δχ²DR1=   +5.43 Δχ²DR2=  +13.94 RSD= 0.81 Cassini×49 → PASS
+  ξ_R=0.0   β_m=0.01  faithful      H0= 67.59 100θ*=1.0382 χ²DR1=  21.02 Δχ²DR1=  -84.93 Δχ²DR2=  -83.49 RSD= 1.06 Cassini×119 → FAIL_DESI
+  ξ_R=0.0   β_m=0.01  theta_matched H0= 68.55 100θ*=1.0411 χ²DR1=  14.11 Δχ²DR1=   +7.93 Δχ²DR2=  +19.76 RSD= 0.88 Cassini×119 → PASS
+  ξ_R=0.0   β_m=0.1   faithful      H0= 67.59 100θ*=0.7450 χ²DR1=5942.44 Δχ²DR1=-918300.04 Δχ²DR2=-929438.55 RSD=27147.85 Cassini×6483 → FAIL_DESI
+  ξ_R=0.0   β_m=0.1   theta_matched no solution
+  ξ_R=0.0   β_m=1.0   faithful      no solution
+  ξ_R=0.0   β_m=1.0   theta_matched no solution
+  ξ_R=0.01  β_m=0.0   faithful      H0= 67.59 100θ*=1.0391 χ²DR1=  20.34 Δχ²DR1=  -40.28 Δχ²DR2=  -37.67 RSD= 0.88 Cassini×66 → FAIL_DESI
+  ξ_R=0.01  β_m=0.0   theta_matched H0= 68.26 100θ*=1.0411 χ²DR1=  15.20 Δχ²DR1=   +6.84 Δχ²DR2=  +17.34 RSD= 0.78 Cassini×66 → PASS
+  ξ_R=0.01  β_m=0.01  faithful      H0= 67.59 100θ*=1.0350 χ²DR1=  23.18 Δχ²DR1= -391.73 Δχ²DR2= -394.13 RSD= 1.15 Cassini×135 → FAIL_DESI
+  ξ_R=0.01  β_m=0.01  theta_matched H0= 69.65 100θ*=1.0411 χ²DR1=  12.97 Δχ²DR1=   +9.07 Δχ²DR2=  +19.94 RSD= 0.79 Cassini×135 → PASS
+  ξ_R=0.01  β_m=0.1   faithful      H0= 67.59 100θ*=0.6754 χ²DR1=11335.55 Δχ²DR1=-1402712.31 Δχ²DR2=-1424010.10 RSD=84474.71 Cassini×6492 → FAIL_DESI
+  ξ_R=0.01  β_m=0.1   theta_matched no solution
+  ξ_R=0.01  β_m=1.0   faithful      no solution
+  ξ_R=0.01  β_m=1.0   theta_matched no solution
+  ξ_R=0.1   β_m=0.0   faithful      H0= 67.59 100θ*=0.9753 χ²DR1= 136.69 Δχ²DR1=-45183.08 Δχ²DR2=-45395.43 RSD= 1.43 Cassini×1238 → FAIL_DESI
+  ξ_R=0.1   β_m=0.0   theta_matched H0= 90.75 100θ*=1.0411 χ²DR1= 900.50 Δχ²DR1= -878.46 Δχ²DR2=-2639.85 RSD= 4.84 Cassini×1232 → FAIL_DESI
+  ξ_R=0.1   β_m=0.01  faithful      H0= 67.59 100θ*=0.9533 χ²DR1= 228.19 Δχ²DR1=-80360.10 Δχ²DR2=-80742.48 RSD= 3.31 Cassini×1247 → FAIL_DESI
+  ξ_R=0.1   β_m=0.01  theta_matched H0= 99.18 100θ*=1.0411 χ²DR1=1581.54 Δχ²DR1=-1559.50 Δχ²DR2=-4649.54 RSD= 6.58 Cassini×1242 → FAIL_DESI
+  ξ_R=0.1   β_m=0.1   faithful      no solution
+  ξ_R=0.1   β_m=0.1   theta_matched no solution
+  ξ_R=0.1   β_m=1.0   faithful      no solution
+  ξ_R=0.1   β_m=1.0   theta_matched no solution
+  ξ_R=1.0   β_m=0.0   faithful      H0= 67.59 100θ*=0.5553 χ²DR1=3284.85 Δχ²DR1=-2459059.82 Δχ²DR2=-2464873.92 RSD= 9.10 Cassini×5083 → FAIL_DESI
+  ξ_R=1.0   β_m=0.0   theta_matched no solution
+  ξ_R=1.0   β_m=0.01  faithful      H0= 67.59 100θ*=0.5089 χ²DR1=4076.80 Δχ²DR1=-2951272.69 Δχ²DR2=-2958466.33 RSD= 5.01 Cassini×4559 → FAIL_DESI
+  ξ_R=1.0   β_m=0.01  theta_matched no solution
+  ξ_R=1.0   β_m=0.1   faithful      no solution
+  ξ_R=1.0   β_m=0.1   theta_matched no solution
+  ξ_R=1.0   β_m=1.0   faithful      no solution
+  ξ_R=1.0   β_m=1.0   theta_matched no solution
+========================================================================
+SIM144 RESULT (audited): faithful = FAIL, θ*-matched = PASS   (published: FAIL/STRUCTURAL)
+========================================================================
+SIM144 complete.

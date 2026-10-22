@@ -1,0 +1,156 @@
+{
+  "sim": "SIM126",
+  "rows": [
+    {
+      "eps": 0.0,
+      "theta_star_100": 1.0360477979077245,
+      "r_drag": 146.2779903451273,
+      "H_z0": 67.40316772556021,
+      "DR1": {
+        "label": "",
+        "chi2_DESI": 27.821829168333547,
+        "N_DESI": 12,
+        "n_params": 1,
+        "dof": 11,
+        "p_value": 0.0034470366423711013,
+        "gof_sigma": 2.924776529534849,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.5226574677279836,
+        "delta_chi2_vs_param0": 0.0
+      },
+      "DR2": {
+        "label": "",
+        "chi2_DESI": 48.013488622732034,
+        "N_DESI": 13,
+        "n_params": 1,
+        "dof": 12,
+        "p_value": 3.108818483406413e-06,
+        "gof_sigma": 4.663496253148335,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.921807815228072,
+        "delta_chi2_vs_param0": 0.0
+      }
+    },
+    {
+      "eps": 2e-11,
+      "theta_star_100": 1.036434029768857,
+      "r_drag": 146.2779903451273,
+      "H_z0": 67.63490512938162,
+      "DR1": {
+        "label": "",
+        "chi2_DESI": 25.762995896682888,
+        "N_DESI": 12,
+        "n_params": 1,
+        "dof": 11,
+        "p_value": 0.007037805303790394,
+        "gof_sigma": 2.695050077086046,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.4652359280073546,
+        "delta_chi2_vs_param0": 2.058833271650659
+      },
+      "DR2": {
+        "label": "",
+        "chi2_DESI": 42.52615828382794,
+        "N_DESI": 13,
+        "n_params": 1,
+        "dof": 12,
+        "p_value": 2.7154018573963766e-05,
+        "gof_sigma": 4.19610851415681,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.808657774403395,
+        "delta_chi2_vs_param0": 5.487330338904094
+      }
+    },
+    {
+      "eps": 2e-10,
+      "theta_star_100": 1.0397639645763939,
+      "r_drag": 146.2779903451273,
+      "H_z0": 69.62692575302349,
+      "DR1": {
+        "label": "",
+        "chi2_DESI": 14.559306122049042,
+        "N_DESI": 12,
+        "n_params": 1,
+        "dof": 11,
+        "p_value": 0.2035737639473602,
+        "gof_sigma": 1.2714354889671096,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.1014878620169872,
+        "delta_chi2_vs_param0": 13.262523046284505
+      },
+      "DR2": {
+        "label": "",
+        "chi2_DESI": 14.860946739253064,
+        "N_DESI": 13,
+        "n_params": 1,
+        "dof": 12,
+        "p_value": 0.24912914458819513,
+        "gof_sigma": 1.1524671902854091,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 1.0691818129641528,
+        "delta_chi2_vs_param0": 33.15254188347897
+      }
+    },
+    {
+      "eps": 2e-09,
+      "theta_star_100": 1.064135689702599,
+      "r_drag": 146.2779903451273,
+      "H_z0": 84.01616317602841,
+      "DR1": {
+        "label": "",
+        "chi2_DESI": 259.45385867262274,
+        "N_DESI": 12,
+        "n_params": 1,
+        "dof": 11,
+        "p_value": 2.919436965290953e-49,
+        "gof_sigma": 14.753539361685048,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 4.649855362200552,
+        "delta_chi2_vs_param0": -231.6320295042892
+      },
+      "DR2": {
+        "label": "",
+        "chi2_DESI": 783.6667925727506,
+        "N_DESI": 13,
+        "n_params": 1,
+        "dof": 12,
+        "p_value": 5.2578381838810784e-160,
+        "gof_sigma": 26.95301973479459,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 7.764152301902292,
+        "delta_chi2_vs_param0": -735.6533039500187
+      }
+    },
+    {
+      "eps": 2e-08,
+      "theta_star_100": 1.1472978654680905,
+      "r_drag": 146.2779903451273,
+      "H_z0": 134.4691221633797,
+      "DR1": {
+        "label": "",
+        "chi2_DESI": 4030.741361833689,
+        "N_DESI": 12,
+        "n_params": 1,
+        "dof": 11,
+        "p_value": 0.0,
+        "gof_sigma": 62.94000331594416,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 18.327441542292277,
+        "delta_chi2_vs_param0": -4002.9195326653557
+      },
+      "DR2": {
+        "label": "",
+        "chi2_DESI": 11892.924062557588,
+        "N_DESI": 13,
+        "n_params": 1,
+        "dof": 12,
+        "p_value": 0.0,
+        "gof_sigma": 108.65434000989276,
+        "chi2_theta": 0.0,
+        "rms_pull_old_metric": 30.246327256452638,
+        "delta_chi2_vs_param0": -11844.910573934856
+      }
+    }
+  ],
+  "audit_note": "Audited observables 2026-10-22; model unchanged; see AUDIT_NOTES.md."
+}

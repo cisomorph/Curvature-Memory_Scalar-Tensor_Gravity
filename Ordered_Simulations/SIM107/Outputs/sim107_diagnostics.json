@@ -1,55 +1,161 @@
 {
   "Lambda0": 0.003,
+  "Psi_bar": 2.62,
   "m0": 0.001,
-  "Psi0_critical_Cassini": 1.1391967488087065,
-  "alpha2_at_Psi0_1": 8.892964281903015e-06,
-  "gamma_minus_1_Psi0_1": 1.778577039546203e-05,
+  "alpha2_at_Psi_bar": 0.0004740111652587422,
+  "gamma_minus_1_at_Psi_bar": 0.0009475731702548839,
   "cassini_bound": 2.3e-05,
-  "status_naive": "PASS",
-  "chi_sun": 1.0,
-  "status_thin_shell": "PASS",
-  "overall_verdict": "PASS",
-  "m_eff_environments": {
+  "excess_over_cassini": 41.19883348934278,
+  "Psi0_critical_Cassini": 0.3998534704627119,
+  "F0_max_Cassini": 0.5004796483935232,
+  "screening": {
+    "Phi_sun": 2.1224665804225957e-06,
+    "m_in_R_sun": 0.0002561663350493567,
+    "m_in_R_sun_published_sign": 0.0002725790410133009,
+    "thin_shell_dR_over_R": 13363797.686730599,
+    "range_at_1AU_m": 1.0197870784469862e+24,
+    "yukawa_factor_1AU": 0.9999999999998533,
+    "screened": false
+  },
+  "coupling_scan": [
+    {
+      "Psi0": 0.1,
+      "alpha2": 7.199552475818105e-07,
+      "gamma_minus_1": 1.4399094584932501e-06,
+      "cassini": "PASS",
+      "llr": "PASS",
+      "published_formula_gamma_minus_1": 1.7997838574773341e-07
+    },
+    {
+      "Psi0": 0.4,
+      "alpha2": 1.1508554052481564e-05,
+      "gamma_minus_1": 2.301684321437888e-05,
+      "cassini": "FAIL",
+      "llr": "PASS",
+      "published_formula_gamma_minus_1": 2.8744742211370967e-06
+    },
+    {
+      "Psi0": 0.5,
+      "alpha2": 1.797207140104278e-05,
+      "gamma_minus_1": 3.594349682299425e-05,
+      "cassini": "FAIL",
+      "llr": "PASS",
+      "published_formula_gamma_minus_1": 4.486520249909148e-06
+    },
+    {
+      "Psi0": 1.0,
+      "alpha2": 7.155521279725229e-05,
+      "gamma_minus_1": 0.00014310018603024187,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 1.7785770395585176e-05
+    },
+    {
+      "Psi0": 1.139,
+      "alpha2": 9.265988900294284e-05,
+      "gamma_minus_1": 0.00018530260788680693,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 2.2992177642550405e-05
+    },
+    {
+      "Psi0": 2.0,
+      "alpha2": 0.00028101289536953196,
+      "gamma_minus_1": 0.0005618678986140591,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 6.866219345191548e-05
+    },
+    {
+      "Psi0": 2.62,
+      "alpha2": 0.0004740111652587422,
+      "gamma_minus_1": 0.0009475731702548839,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 0.00011397073923218088
+    },
+    {
+      "Psi0": 2.9,
+      "alpha2": 0.0005754380768493028,
+      "gamma_minus_1": 0.00115021427660731,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 0.00013717648580495
+    },
+    {
+      "Psi0": 5.0,
+      "alpha2": 0.0015579020252726328,
+      "gamma_minus_1": 0.0031109574835810573,
+      "cassini": "FAIL",
+      "llr": "FAIL",
+      "published_formula_gamma_minus_1": 0.00034020677011472537
+    }
+  ],
+  "environments": {
     "Deep void": {
       "rho_sim": 0.00031678986272439284,
-      "m_eff": 0.0017031556524130017,
-      "lambda_Mpc": 2514156.5857080272
+      "m_eff2_derived": -6.801553799923421e-07,
+      "range_m": 1.602124621198016e+29,
+      "tachyonic": true,
+      "m_eff2_published": 2.900739176346357e-06
     },
     "Cosmic mean (z=0)": {
       "rho_sim": 0.9450000000000001,
-      "m_eff": 0.0753060422542574,
-      "lambda_Mpc": 56861.30716500267
+      "m_eff2_derived": -0.005006746931300077,
+      "range_m": 1.867336315373295e+27,
+      "tachyonic": true,
+      "m_eff2_published": 0.005671000000000001
     },
     "Galaxy cluster": {
       "rho_sim": 316.7898627243928,
-      "m_eff": 1.378673339245507,
-      "lambda_Mpc": 3105.884387626853
+      "m_eff2_derived": -1.6787323479185992,
+      "range_m": 1.0197873817219315e+26,
+      "tachyonic": true,
+      "m_eff2_published": 1.9007401763463567
     },
     "Milky Way disk": {
       "rho_sim": 316789.8627243928,
-      "m_eff": 43.5974675565721,
-      "lambda_Mpc": 98.21671395118706
+      "m_eff2_derived": -1678.7333454979876,
+      "range_m": 3.2248498971645045e+24,
+      "tachyonic": true,
+      "m_eff2_published": 1900.7391773463569
     },
-    "Interstellar (SS)": {
-      "rho_sim": 31678.986272439288,
-      "m_eff": 13.78672980204645,
-      "lambda_Mpc": 310.5885196476685
+    "Interplanetary 1 AU": {
+      "rho_sim": 3167898.627243928,
+      "m_eff2_derived": -16787.33346396708,
+      "range_m": 1.0197870784469862e+24,
+      "tachyonic": true,
+      "m_eff2_published": 19007.39176446357
     },
     "Solar corona": {
       "rho_sim": 316789862724392.8,
-      "m_eff": 1378672.976577969,
-      "lambda_Mpc": 0.0031058852046468885
+      "m_eff2_derived": -1678733346496.5657,
+      "range_m": 1.0197870784166556e+20,
+      "tachyonic": true,
+      "m_eff2_published": 1900739176346.357
     },
     "Solar interior": {
-      "rho_sim": 4.435058078141499e+29,
-      "m_eff": 51585219267585.74,
-      "lambda_Mpc": 8.300827370313518e-11
+      "rho_sim": 4.466737064413939e+29,
+      "m_eff2_derived": -2.367014018560158e+27,
+      "range_m": 2715813535240.516,
+      "tachyonic": true,
+      "m_eff2_published": 2.680042238648363e+27
     },
     "Earth surface": {
       "rho_sim": 1.7423442449841605e+30,
-      "m_eff": 102245124430972.08,
-      "lambda_Mpc": 4.187974755599102e-11
+      "m_eff2_derived": -9.233033405731111e+27,
+      "range_m": 1375080616020.6016,
+      "tachyonic": true,
+      "m_eff2_published": 1.0454065469904964e+28
     }
   },
-  "fifth_force_range_Mpc": 4282000.0
+  "overall_verdict": "FAIL",
+  "published_pre_audit": {
+    "overall_verdict": "PASS",
+    "evaluated_at_Psi0": 1.0,
+    "Psi0_critical_Cassini": 1.1391967488087065,
+    "gamma_minus_1_Psi0_1": 1.778577039546203e-05,
+    "chi_sun": 1.0
+  },
+  "audit_note": "Audited 2026-10-22: verdict at canonical Psi_bar; DEF coupling formula; derived m_eff sign; unit fixes (GM_sun, AU); Khoury-Weltman screening test."
 }

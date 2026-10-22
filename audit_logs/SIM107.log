@@ -1,0 +1,51 @@
+========================================================================
+SIM107: CMSTG Matter-Psi Coupling and Solar System Viability  [audited]
+========================================================================
+Lambda0 = 0.003, Psi_bar = 2.62, m0 = 0.001 H0, F(Psi_bar) = 0.52059
+Cassini bound: |gamma-1| < 2.3e-05
+
+─── Table 1: Fifth-force coupling vs background scalar value ───
+  Psi_0     alpha^2   |gamma-1|  x Cassini  Cassini    LLR    published |gamma-1|
+  0.100   7.200e-07   1.440e-06        0.1     PASS   PASS              1.800e-07
+  0.400   1.151e-05   2.302e-05        1.0     FAIL   PASS              2.874e-06
+  0.500   1.797e-05   3.594e-05        1.6     FAIL   PASS              4.487e-06
+  1.000   7.156e-05   1.431e-04        6.2     FAIL   FAIL              1.779e-05
+  1.139   9.266e-05   1.853e-04        8.1     FAIL   FAIL              2.299e-05
+  2.000   2.810e-04   5.619e-04       24.4     FAIL   FAIL              6.866e-05
+  2.620   4.740e-04   9.476e-04       41.2     FAIL   FAIL              1.140e-04  <- canonical
+  2.900   5.754e-04   1.150e-03       50.0     FAIL   FAIL              1.372e-04
+  5.000   1.558e-03   3.111e-03      135.3     FAIL   FAIL              3.402e-04
+
+─── Table 2: Effective Psi mass at Psi_bar (derived) vs published formula ───
+Environment              rho_sim  m_eff^2 [H0^2]   range [m]  published m^2
+Deep void              3.168e-04     -6.8016e-07   1.602e+29     2.9007e-06
+Cosmic mean (z=0)      9.450e-01     -5.0067e-03   1.867e+27     5.6710e-03
+Galaxy cluster         3.168e+02     -1.6787e+00   1.020e+26     1.9007e+00
+Milky Way disk         3.168e+05     -1.6787e+03   3.225e+24     1.9007e+03
+Interplanetary 1 AU    3.168e+06     -1.6787e+04   1.020e+24     1.9007e+04
+Solar corona           3.168e+14     -1.6787e+12   1.020e+20     1.9007e+12
+Solar interior         4.467e+29     -2.3670e+27   2.716e+12     2.6800e+27
+Earth surface          1.742e+30     -9.2330e+27   1.375e+12     1.0454e+28
+  (m_eff² < 0: the matter coupling destabilises rather than screens; a tachyonic
+   mode only grows on scales longer than its range, far larger than any of these bodies.)
+
+─── Screening (Sun) ───
+  Phi_N(Sun) = 2.122e-06   (published code used 65.5 from a unit error)
+  m_in * R_sun = 2.562e-04 derived, 2.726e-04 with the published sign  (screening needs >> 1)
+  KW thin-shell parameter ΔR/R = ΔΨ/(6βΦ_N) = 1.336e+07  (screening needs << 1)
+  Range at 1 AU = 1.020e+24 m  → Yukawa factor over 1 AU = 1.000000
+  Screened: False
+
+─── Cassini constraint ───
+  |gamma-1|(Psi_bar = 2.62) = 9.476e-04  = 41.2 x bound
+  Cassini requires |Psi_0| < 0.3999  →  F0 = 1/2 + Λ0Ψ0² < 0.500480  (|F0 − 1/2| < 4.80e-04)
+
+========================================================================
+OVERALL VERDICT (canonical Psi_bar = 2.62): FAIL
+  The unscreened Ψ-mediated force violates Cassini by 41x. No screening operates: the field is
+  effectively massless on Solar System scales and the Sun has no thin shell.
+  Viability needs |Ψ0| < 0.40 today (F0 within 4.8e-04 of GR) or a
+  screening mechanism that is not in the locked action.
+========================================================================
+
+Diagnostics saved to Outputs/sim107_diagnostics.json

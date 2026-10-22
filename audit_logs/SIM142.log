@@ -1,0 +1,25 @@
+========================================================================
+SIM142: Galileon G₃(Ψ)□Ψ (kinetic rescaling)   [audited]
+========================================================================
+  linear    c₃=1e-04 faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.96 Δχ²DR1= -13.38 Δχ²DR2= -10.10 RSD=0.87 Cassini×49 → FAIL_CMB
+  linear    c₃=1e-04 theta_matched H0= 68.00 100θ*=1.0411 χ²DR1= 16.61 Δχ²DR1=  +5.43 Δχ²DR2= +13.94 RSD=0.81 Cassini×49 → PASS
+  linear    c₃=1e-03 faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.96 Δχ²DR1= -13.48 Δχ²DR2= -10.21 RSD=0.87 Cassini×50 → FAIL_CMB
+  linear    c₃=1e-03 theta_matched H0= 68.00 100θ*=1.0411 χ²DR1= 16.60 Δχ²DR1=  +5.44 Δχ²DR2= +13.96 RSD=0.81 Cassini×50 → PASS
+  linear    c₃=1e-02 faithful      H0= 67.59 100θ*=1.0398 χ²DR1= 19.98 Δχ²DR1= -14.61 Δχ²DR2= -11.37 RSD=0.87 Cassini×51 → FAIL_CMB
+  linear    c₃=1e-02 theta_matched H0= 68.01 100θ*=1.0411 χ²DR1= 16.52 Δχ²DR1=  +5.52 Δχ²DR2= +14.17 RSD=0.81 Cassini×51 → PASS
+  linear    c₃=1e-01 faithful      H0= 67.59 100θ*=1.0393 χ²DR1= 20.26 Δχ²DR1= -32.17 Δχ²DR2= -29.41 RSD=0.87 Cassini×65 → FAIL_DESI
+  linear    c₃=1e-01 theta_matched H0= 68.20 100θ*=1.0411 χ²DR1= 15.54 Δχ²DR1=  +6.50 Δχ²DR2= +16.53 RSD=0.79 Cassini×65 → PASS
+  quadratic c₃=1e-04 faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.96 Δχ²DR1= -13.43 Δχ²DR2= -10.15 RSD=0.87 Cassini×49 → FAIL_CMB
+  quadratic c₃=1e-04 theta_matched H0= 68.00 100θ*=1.0411 χ²DR1= 16.61 Δχ²DR1=  +5.43 Δχ²DR2= +13.95 RSD=0.81 Cassini×49 → PASS
+  quadratic c₃=1e-03 faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.97 Δχ²DR1= -14.03 Δχ²DR2= -10.77 RSD=0.87 Cassini×50 → FAIL_CMB
+  quadratic c₃=1e-03 theta_matched H0= 68.01 100θ*=1.0411 χ²DR1= 16.56 Δχ²DR1=  +5.48 Δχ²DR2= +14.06 RSD=0.81 Cassini×50 → PASS
+  quadratic c₃=1e-02 faithful      H0= 67.59 100θ*=1.0396 χ²DR1= 20.11 Δχ²DR1= -21.65 Δχ²DR2= -18.62 RSD=0.87 Cassini×57 → FAIL_DESI
+  quadratic c₃=1e-02 theta_matched H0= 68.09 100θ*=1.0411 χ²DR1= 16.07 Δχ²DR1=  +5.97 Δχ²DR2= +15.27 RSD=0.80 Cassini×57 → PASS
+  quadratic c₃=1e-01 faithful      K(Ψ̄)=-0.048 → FAIL_GHOST
+  quadratic c₃=1e-01 theta_matched K(Ψ̄)=-0.048 → FAIL_GHOST
+========================================================================
+SIM142 RESULT (audited): faithful = FAIL, θ*-matched = PASS   (published: FAIL/STRUCTURAL)
+  Cosmology passes here are inherited from the Phase 1 unlocked background (SIM130);
+  Cassini (×~50) still excludes them — see local_gravity in output.json.
+========================================================================
+SIM142 complete.

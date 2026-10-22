@@ -107,3 +107,13 @@ This sim reveals a **new structural no-go** for all late-time H(z)-boosting mech
 ## Note on Phase 1 reference discrepancy
 
 As noted in SIM142, the ODE Phase 1 reference gives DESI tension 1.507σ (vs canonical 2.77σ) because the scalar starts at Ψ_ini=2.62 at z=1e5 and evolves to Ψ₀=2.882 at z=0 — not exactly at the Phase 1 attractor (Ψ̄=2.62 is the z=0 value). This is a trajectory artifact of the ODE IC, not a genuine improvement.
+
+
+## Audit rerun (2026-10-22)
+
+**Audited verdict:** faithful PARTIAL / θ*-matched PASS (published: PARTIAL, 'θ* 63σ') — local gravity fails
+
+- The 'structural anti-correlation' came from holding H0 and r_s (144.7 Mpc, hardcoded) fixed.
+- tanh a_tr = 0.67, γ = 1: Δχ² = +9.52 (DR1) / +21.39 (DR2), but Ġ/G = +1.1e-12 /yr (14σ vs LLR). γ = 0.5: Cassini 13.5×, LLR 6σ.
+- Data/statistics: official DESI DR1/DR2 likelihood, r_s to z = ∞, θ* = r_s(z*)/D_M(z*), χ²/p-value/GOF σ, and Δχ² vs ΛCDM in the same pipeline.
+- Details: `AUDIT_NOTES.md` (repo root); log: `audit_logs/`.

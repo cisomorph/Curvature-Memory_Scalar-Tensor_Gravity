@@ -126,3 +126,12 @@ Paper VIII declares:
 - A second structural no-go theorem covering all four Tier 2 mechanism classes
 - Phase 1 canonical CMSTG remains the final theory within the class of covariant scalar-tensor extensions with memory kernels
 - The 2.77σ DESI tension is a prediction, not a flaw; DESI Y3 is the next decisive test
+
+
+## Audit rerun (2026-10-22)
+
+**Audited verdict:** TRIVIAL (published: FAIL/STRUCTURAL)
+
+- Quintessence φ adds nothing beyond the Phase-1 unlocked gain once H0 is matched to θ*. Cassini ~50× (from Ψ).
+- Data/statistics: official DESI DR1/DR2 likelihood, r_s to z = ∞, θ* = r_s(z*)/D_M(z*), χ²/p-value/GOF σ, and Δχ² vs ΛCDM in the same pipeline.
+- Details: `AUDIT_NOTES.md` (repo root); log: `audit_logs/`.

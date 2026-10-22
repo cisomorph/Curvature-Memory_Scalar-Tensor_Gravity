@@ -1,0 +1,72 @@
+/home/aion/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+======================================================================
+SIM121-C — CMSTG Phase 2: Joint DESI+Planck MCMC   [DESI DR1, audited]
+======================================================================
+
+Part A: Coarse grid scan to find starting region...
+  Valid points: 2679
+
+  Top 5 grid minima:
+      chi2        F0        w0        wa        H0
+    11.700    0.4950   -0.6200   -1.3643    66.634
+    11.700    0.5000   -0.6200   -1.3643    66.300
+    11.700    0.5050   -0.6200   -1.3643    65.971
+    11.700    0.5100   -0.6200   -1.3643    65.646
+    11.700    0.5150   -0.6200   -1.3643    65.327
+
+Part B: MCMC (emcee) around best-fit region...
+  Burning in (800 steps)...
+  Sampling (3000 steps × 32 walkers)...
+  Acceptance fraction: 0.557
+  Autocorrelation times: [45.8 46.9 43.3]  (chain length 3000)
+
+── Posterior Summary ──
+   Param         MAP         16%         50%         84%
+      F0      0.4934      0.5007      0.5248      0.5484
+      w0     -0.6003     -0.9341     -0.7536     -0.6415
+      wa     -1.3567     -1.2942     -0.9814     -0.5169
+      H0     66.1916     63.9789     66.0889     68.5010
+
+── Fit quality (DESI DR1 + θ_*) ──
+  Model                 k  χ²_DESI  dof         p  GOF σ  Δχ² vs ΛCDM      H0  params
+  LCDM                  0    22.04   12  3.71e-02   2.08        +0.00   67.28  F0=0.5000, w0=-1.0000, wa=0.0000
+  Phase1_frozen_F0      0    22.04   12  3.71e-02   2.08        +0.00   65.94  F0=0.5206, w0=-1.0000, wa=0.0000
+  SIM113_point          0    14.17   12  2.90e-01   1.06        +7.87   68.20  F0=0.5206, w0=-0.9730, wa=-0.4100
+  F0_only               1    22.04   11  2.41e-02   2.26        +0.00   64.61  w0=-1.0000, wa=0.0000, F0=0.5422
+  w0waCDM               2    11.51   10  3.19e-01   1.00       +10.53   65.77  F0=0.5000, w0=-0.6000, wa=-1.3612
+  CMSTG_full            3    11.51    9  2.43e-01   1.17       +10.53   66.25  F0=0.4929, w0=-0.6000, wa=-1.3612
+
+  F₀ adds Δχ² = +0.00 beyond w₀wₐCDM → 0.00σ for F₀ ≠ ½
+
+── DESI points at MAP ──
+       z    quantity     data      σ      MAP   pull
+   0.295  DV_over_rs    7.925  0.151    7.919  -0.04
+   0.510  DM_over_rs   13.620  0.252   13.263  -1.42
+   0.510  DH_over_rs   20.983  0.611   22.199  +1.99
+   0.706  DM_over_rs   16.846  0.319   17.386  +1.69
+   0.706  DH_over_rs   20.079  0.595   19.921  -0.27
+   0.930  DM_over_rs   21.708  0.282   21.584  -0.44
+   0.930  DH_over_rs   17.876  0.346   17.607  -0.78
+   1.317  DM_over_rs   27.787  0.690   27.725  -0.09
+   1.317  DH_over_rs   13.824  0.422   14.263  +1.04
+   1.491  DV_over_rs   26.072  0.669   26.000  -0.11
+   2.330  DM_over_rs   39.708  0.943   39.045  -0.70
+   2.330  DH_over_rs    8.523  0.171    8.736  +1.25
+
+======================================================================
+SIM121-C RESULT:
+  MAP: F₀ = 0.49340, w₀ = -0.6003, wₐ = -1.3567, H₀ = 66.192 (CMB-derived)
+  χ²_DESI = 11.509 for N = 12, dof = 9: p = 0.242 → 1.17σ   [old metric √(χ²/N) = 0.98]
+  criteria: χ²/N<2 PASS | θ_* PASS | w₀ FAIL | F₀ PASS
+  VERDICT: PARTIAL
+  Published (pre-audit): F₀=0.5600, 'H₀'=75.96, χ²=41.49 on the non-DESI table, 'tension'=2.63
+======================================================================
+
+Generating figures...
+  Saved sim121c_corner
+  Saved sim121c_contours
+  Saved sim121c_F0_H0
+
+All outputs in: /home/aion/CMSTG-fixes/Ordered_Simulations/SIM121C/Outputs
+MCMC complete. 96000 valid samples.

@@ -1,0 +1,12 @@
+========================================================================
+SIM133 — Phase 3: Gauss–Bonnet sourcing   [audited]
+========================================================================
+                α̃=1e-08 | faithful: no solution                                          | θ*-matched: no solution                                         
+                α̃=1e-07 | faithful: no solution                                          | θ*-matched: no solution                                         
+                α̃=1e-06 | faithful: no solution                                          | θ*-matched: no solution                                         
+                α̃=1e-05 | faithful: no solution                                          | θ*-matched: no solution                                         
+                α̃=1e-04 | faithful: no solution                                          | θ*-matched: no solution                                         
+========================================================================
+SIM133 RESULT (audited): faithful = FAIL (no solution),  θ*-matched = FAIL (no solution)   (published: FAIL, 100θ* 63.03)
+========================================================================
+SIM133 complete.

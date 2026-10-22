@@ -1,0 +1,10 @@
+======================================================================
+SIM121-B — H₀ tension in CMSTG   [audited]
+======================================================================
+  ΛCDM                             H₀(true, θ*-matched) =  67.28   tension with SH0ES = 5.03σ
+  Phase 1 frozen (F0=0.5206)       H₀(true, θ*-matched) =  65.94   tension with SH0ES = 6.21σ
+  Phase 1 unlocked (Ψ_ini=2.62)    H₀(true, θ*-matched) =  66.64   tension with SH0ES = 5.60σ
+======================================================================
+SIM121-B RESULT (audited): FAIL — CMSTG lowers the true H₀ (F > ½ ⇒ smaller G_eff), so the Hubble tension gets worse, not better.   (published: FAIL)
+======================================================================
+SIM121-B complete.

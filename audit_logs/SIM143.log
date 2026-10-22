@@ -1,0 +1,46 @@
+========================================================================
+SIM143: Bi-scalar Ψ + quintessence φ   [audited]
+========================================================================
+  Phase 1 reference (U₀=0) faithful     : H0=67.59 χ²DR1=19.96 Δχ²DR1 vs ΛCDM=-13.36
+  Phase 1 reference (U₀=0) theta_matched: H0=68.00 χ²DR1=16.61 Δχ²DR1 vs ΛCDM=+5.43
+  exp λ=0.5 U₀=0.05        faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.90 Δχ²DR1= -12.79 Δχ²DR2=  -9.42 RSD=0.87 Λb=+0.298 → FAIL_DESI
+  exp λ=0.5 U₀=0.05        theta_matched H0= 67.99 100θ*=1.0411 χ²DR1= 16.62 Δχ²DR1=  +5.42 Δχ²DR2= +13.93 RSD=0.81 Λb=+0.304 → TRIVIAL_PASS
+  exp λ=0.5 U₀=0.20        faithful      H0= 67.59 100θ*=1.0402 χ²DR1= 19.11 Δχ²DR1=  -5.39 Δχ²DR2=  -0.71 RSD=0.85 Λb=+0.202 → FAIL_DESI
+  exp λ=0.5 U₀=0.20        theta_matched H0= 67.89 100θ*=1.0411 χ²DR1= 16.72 Δχ²DR1=  +5.32 Δχ²DR2= +13.72 RSD=0.81 Λb=+0.206 → TRIVIAL_PASS
+  exp λ=0.5 U₀=0.50        faithful      H0= 67.59 100θ*=1.0418 χ²DR1= 15.74 Δχ²DR1=  +1.07 Δχ²DR2= +11.17 RSD=0.77 Λb=+0.017 → FAIL_CMB
+  exp λ=0.5 U₀=0.50        theta_matched H0= 67.35 100θ*=1.0411 χ²DR1= 17.37 Δχ²DR1=  +4.67 Δχ²DR2= +12.33 RSD=0.80 Λb=+0.014 → TRIVIAL_PASS
+  exp λ=1.0 U₀=0.05        faithful      H0= 67.59 100θ*=1.0400 χ²DR1= 19.74 Δχ²DR1= -11.18 Δχ²DR2=  -7.54 RSD=0.87 Λb=+0.299 → FAIL_DESI
+  exp λ=1.0 U₀=0.05        theta_matched H0= 67.97 100θ*=1.0411 χ²DR1= 16.64 Δχ²DR1=  +5.40 Δχ²DR2= +13.89 RSD=0.81 Λb=+0.304 → TRIVIAL_PASS
+  exp λ=1.0 U₀=0.20        faithful      H0= 67.59 100θ*=1.0411 χ²DR1= 17.15 Δχ²DR1=  +4.88 Δχ²DR2= +12.78 RSD=0.80 Λb=+0.210 → PASS_PHENOMENOLOGICAL
+  exp λ=1.0 U₀=0.20        theta_matched H0= 67.60 100θ*=1.0411 χ²DR1= 17.06 Δχ²DR1=  +4.98 Δχ²DR2= +13.00 RSD=0.80 Λb=+0.210 → TRIVIAL_PASS
+  exp λ=1.0 U₀=0.50        faithful      H0= 67.59 100θ*=1.0461 χ²DR1= 13.36 Δχ²DR1=-252.69 Δχ²DR2=-240.39 RSD=0.60 Λb=+0.062 → FAIL_CMB
+  exp λ=1.0 U₀=0.50        theta_matched H0= 65.82 100θ*=1.0411 χ²DR1= 20.14 Δχ²DR1=  +1.90 Δχ²DR2=  +5.56 RSD=0.78 Λb=+0.038 → FAIL_DESI
+  exp λ=2.0 U₀=0.05        faithful      H0= 67.59 100θ*=1.0402 χ²DR1= 19.20 Δχ²DR1=  -6.08 Δχ²DR2=  -1.53 RSD=0.85 Λb=+0.301 → FAIL_DESI
+  exp λ=2.0 U₀=0.05        theta_matched H0= 67.90 100θ*=1.0411 χ²DR1= 16.71 Δχ²DR1=  +5.32 Δχ²DR2= +13.73 RSD=0.81 Λb=+0.306 → TRIVIAL_PASS
+  exp λ=2.0 U₀=0.20        faithful      H0= 67.59 100θ*=1.0434 χ²DR1= 13.88 Δχ²DR1= -46.83 Δχ²DR2= -33.97 RSD=0.70 Λb=+0.235 → FAIL_CMB
+  exp λ=2.0 U₀=0.20        theta_matched H0= 66.80 100θ*=1.0411 χ²DR1= 18.41 Δχ²DR1=  +3.62 Δχ²DR2=  +9.91 RSD=0.79 Λb=+0.224 → TRIVIAL_PASS
+  exp λ=2.0 U₀=0.50        faithful      H0= 67.59 100θ*=1.0536 χ²DR1= 29.27 Δχ²DR1=-1627.40 Δχ²DR2=-1647.94 RSD=0.51 Λb=+0.160 → FAIL_DESI
+  exp λ=2.0 U₀=0.50        theta_matched H0= 63.03 100θ*=1.0411 χ²DR1= 31.52 Δχ²DR1=  -9.49 Δχ²DR2= -25.33 RSD=0.79 Λb=+0.102 → FAIL_DESI
+  power n=1 U₀=0.05        faithful      H0= 67.59 100θ*=1.0400 χ²DR1= 19.75 Δχ²DR1= -11.19 Δχ²DR2=  -7.55 RSD=0.87 Λb=+0.299 → FAIL_DESI
+  power n=1 U₀=0.05        theta_matched H0= 67.97 100θ*=1.0411 χ²DR1= 16.64 Δχ²DR1=  +5.40 Δχ²DR2= +13.89 RSD=0.81 Λb=+0.304 → TRIVIAL_PASS
+  power n=1 U₀=0.20        faithful      H0= 67.59 100θ*=1.0410 χ²DR1= 17.33 Δχ²DR1=  +4.57 Δχ²DR2= +12.18 RSD=0.81 Λb=+0.208 → PASS_PHENOMENOLOGICAL
+  power n=1 U₀=0.20        theta_matched H0= 67.63 100θ*=1.0411 χ²DR1= 17.05 Δχ²DR1=  +4.99 Δχ²DR2= +13.03 RSD=0.80 Λb=+0.209 → TRIVIAL_PASS
+  power n=1 U₀=0.50        faithful      H0= 67.59 100θ*=1.0452 χ²DR1= 13.19 Δχ²DR1=-166.72 Δχ²DR2=-153.45 RSD=0.63 Λb=+0.052 → FAIL_CMB
+  power n=1 U₀=0.50        theta_matched H0= 66.16 100θ*=1.0411 χ²DR1= 19.74 Δχ²DR1=  +2.30 Δχ²DR2=  +6.63 RSD=0.79 Λb=+0.032 → FAIL_DESI
+  power n=2 U₀=0.05        faithful      H0= 67.59 100θ*=1.0402 χ²DR1= 19.20 Δχ²DR1=  -6.13 Δχ²DR2=  -1.60 RSD=0.85 Λb=+0.301 → FAIL_DESI
+  power n=2 U₀=0.05        theta_matched H0= 67.90 100θ*=1.0411 χ²DR1= 16.72 Δχ²DR1=  +5.32 Δχ²DR2= +13.73 RSD=0.81 Λb=+0.305 → TRIVIAL_PASS
+  power n=2 U₀=0.20        faithful      H0= 67.59 100θ*=1.0431 χ²DR1= 14.25 Δχ²DR1= -32.73 Δχ²DR2= -20.32 RSD=0.71 Λb=+0.231 → FAIL_CMB
+  power n=2 U₀=0.20        theta_matched H0= 66.91 100θ*=1.0411 χ²DR1= 18.32 Δχ²DR1=  +3.72 Δχ²DR2= +10.14 RSD=0.79 Λb=+0.221 → TRIVIAL_PASS
+  power n=2 U₀=0.50        faithful      H0= 67.59 100θ*=1.0515 χ²DR1= 22.19 Δχ²DR1=-1123.62 Δχ²DR2=-1129.59 RSD=0.52 Λb=+0.136 → FAIL_DESI
+  power n=2 U₀=0.50        theta_matched H0= 63.86 100θ*=1.0411 χ²DR1= 28.98 Δχ²DR1=  -6.94 Δχ²DR2= -17.98 RSD=0.79 Λb=+0.088 → FAIL_DESI
+  hilltop U₀=0.05          faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.96 Δχ²DR1= -13.36 Δχ²DR2= -10.08 RSD=0.87 Λb=+0.298 → FAIL_DESI
+  hilltop U₀=0.05          theta_matched H0= 68.00 100θ*=1.0411 χ²DR1= 16.61 Δχ²DR1=  +5.43 Δχ²DR2= +13.94 RSD=0.81 Λb=+0.304 → TRIVIAL_PASS
+  hilltop U₀=0.20          faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.95 Δχ²DR1= -13.27 Δχ²DR2=  -9.98 RSD=0.87 Λb=+0.198 → FAIL_DESI
+  hilltop U₀=0.20          theta_matched H0= 68.00 100θ*=1.0411 χ²DR1= 16.61 Δχ²DR1=  +5.43 Δχ²DR2= +13.94 RSD=0.81 Λb=+0.204 → TRIVIAL_PASS
+  hilltop U₀=0.50          faithful      H0= 67.59 100θ*=1.0399 χ²DR1= 19.85 Δχ²DR1= -12.33 Δχ²DR2=  -8.87 RSD=0.87 Λb=-0.002 → FAIL_DESI
+  hilltop U₀=0.50          theta_matched H0= 67.99 100θ*=1.0411 χ²DR1= 16.62 Δχ²DR1=  +5.42 Δχ²DR2= +13.93 RSD=0.81 Λb=+0.004 → TRIVIAL_PASS
+========================================================================
+SIM143 RESULT (audited): faithful = PASS_PHENOMENOLOGICAL, θ*-matched = TRIVIAL_PASS   (published: FAIL/STRUCTURAL)
+  Any pass still inherits Ψ's unscreened coupling (Cassini ~50×, see SIM107/SIM130).
+========================================================================
+SIM143 complete.

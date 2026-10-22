@@ -70,3 +70,13 @@ SIM140 should still run (it might find a solution at z_trans ~ 0.9 that clips bo
 ## Figures
 
 - `figures/sim138_desi_decomposition.pdf` — H(z) model vs DESI data; per-bin pull bar chart
+
+
+## Audit rerun (2026-10-22)
+
+**Audited verdict:** DIAGNOSTIC (published: DISTRIBUTED)
+
+- Official DESI, exact per-bin χ². ΛCDM misfit: z = 0.51 and 0.706 (DR1); z = 0.706, 0.934 and 0.51 (DR2).
+- The published 'DESI prefers H0 ≈ 74' was an artifact of the non-DESI table.
+- Data/statistics: official DESI DR1/DR2 likelihood, r_s to z = ∞, θ* = r_s(z*)/D_M(z*), χ²/p-value/GOF σ, and Δχ² vs ΛCDM in the same pipeline.
+- Details: `AUDIT_NOTES.md` (repo root); log: `audit_logs/`.

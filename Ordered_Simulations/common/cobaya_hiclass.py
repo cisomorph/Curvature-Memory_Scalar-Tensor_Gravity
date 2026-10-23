@@ -38,7 +38,7 @@ _cc.load_external_module = _loader
 # Settings validated in hi_class_model/README.md
 SMG_SETTINGS = dict(Omega_Lambda=0., Omega_fld=0., Omega_smg=-1., gravity_model='cmstg_attractor',
                     kineticity_safe_smg=1e-6, a_ini_over_a_today_default=1e-10, a_ini_test_qs_smg=1e-10,
-                    pert_ic_ini_z_ref_smg=1e9, cs2_safe_smg=1e-5)
+                    pert_ic_ini_z_ref_smg=1e9, cs2_safe_smg=1e-2)
 
 # Planck 2018 baseline neutrinos (one massive 0.06 eV state, N_eff = 3.046)
 NEUTRINOS = dict(N_ur=2.0328, N_ncdm=1, m_ncdm=0.06, T_ncdm=0.71611)

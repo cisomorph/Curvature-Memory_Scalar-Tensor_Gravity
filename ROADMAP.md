@@ -98,3 +98,8 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 - 2026-10-23: Phase 3.3 done: `cmstg_attractor` implemented in hi_class and validated against ΛCDM (GR limit), regulator convergence, and the project's own solver (H to 2e-5, F to 1e-5). Patch and docs in `hi_class_model/`. Next: build the hi_class Python wrapper, install the likelihoods, validate Cobaya on ΛCDM.
 - 2026-10-23: Phase 3.1–3.2 done (Cobaya + hi_class adapter `common/cobaya_hiclass.py`; Planck-point χ² match). SIM155 launched: 27 best fits (3 models × D1–D3 × 3 starts).
 - 2026-10-23: Phase 4 and 6 drafts (THEORY_NOTES.md, PAPER_CORRECTIONS.md); Phase 5.1 and 5.3 predictions for the survivor.
+- 2026-10-23: SIM155 v1 (Cobaya `minimize`/BOBYQA defaults) was stopped after D1.
+  - Starting points disagreed by up to 2.3 (ΛCDM) and 5.5 (w0wa) in χ², i.e. early termination; the χ² noise floor is only about 0.005.
+  - All CMSTG starts crashed: hi_class's c_s² test fails on turning-point 0/0 noise, and Cobaya passes −inf to BOBYQA.
+  - Fixes (method only; criteria unchanged): `cs2_safe_smg` 1e-5 → 1e-2 (justified in hi_class_model/README.md), and a new two-stage driver `SIM155/fit.py` (BOBYQA with a finite penalty for failures, then repeated MIGRAD polish).
+  - All models are rerun with v2 for a uniform comparison. The v1 results stay in `SIM155/fits/` for the record.

@@ -25,7 +25,7 @@ issue hi_class documents for Brans–Dicke.
     a_ini_test_qs_smg = 1.e-10
     pert_ic_ini_z_ref_smg = 1.e9
     kineticity_safe_smg = 1e-6
-    cs2_safe_smg = 1e-5
+    cs2_safe_smg = 1e-2      (was 1e-5; see note below)
 
 The model's scalar has no kinetic energy at the start and turns around near its attractor (z ≈ 7.4 for
 the SIM154 survivor). At those points the code's kinetic matrix and c_s² formula become 0/0, so a small
@@ -42,3 +42,13 @@ kineticity regulator is needed, and a tiny negative c_s² noise (≈ −1e-7) mu
 | background vs the project's own `st_solver` (survivor, z_ini = 1e8) | H/H_ΛCDM to 2e-5; F(z) to 1e-5 (z = 0 … 1090) |
 
 Runtime is about 5 s per full C_ℓ evaluation on one core.
+
+## Note on `cs2_safe_smg` (2026-10-23)
+In the SIM155 fits, about 30% of random points in the attractor region failed hi_class's gradient-instability test.
+In every case examined the most negative c_s² sat exactly at a turning point of the field (φ' changes sign): for
+example z = 0.31 against a flip at 0.32, and z = 5.17 against 5.22. The values were only −1.6e-5 … −3e-4.
+
+At a turning point the kinetic matrix and the c_s² numerator vanish together (0/0). For this theory class (canonical
+scalar, F(φ)R, F > 0) the scalar sound speed is luminal. So the tolerance is raised to 1e-2, more than 30× the
+observed noise. That still catches any sizable genuine gradient instability. The ghost (D > 0) and tensor
+(M*² > 0, c_T² > 0) tests stay active, and they guard against F → 0.

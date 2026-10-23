@@ -20,7 +20,24 @@ import hiclassy
 # the package re-exports the class under the module's name, so fetch the module itself
 _cc = importlib.import_module('cobaya.theories.classy.classy')
 
-_SHIM = types.SimpleNamespace(Class=hiclassy.HiClass,
+
+class _HiClass(hiclassy.HiClass):
+    """hiclassy raises CosmoSevereError for any failure in its input stage, which includes hi_class's shooting
+    for the Omega_smg = -1 closure. At an extreme parameter point that is an ordinary computation failure, and
+    Cobaya re-raises CosmoSevereError (aborting a whole fit) but assigns zero likelihood to CosmoComputationError.
+    Re-raise input-stage failures as CosmoComputationError; set-up errors (unread parameters etc.) stay severe."""
+
+    def compute(self, level=["distortions"]):
+        try:
+            return super().compute(level)
+        except hiclassy.CosmoSevereError as e:
+            msg = str(e)
+            if any(t in msg for t in ('did not read', 'Unknown computation level', 'bad call', 'Unrecognized')):
+                raise
+            raise hiclassy.CosmoComputationError('[input stage] ' + msg) from e
+
+
+_SHIM = types.SimpleNamespace(Class=_HiClass,
                               CosmoComputationError=hiclassy.CosmoComputationError,
                               CosmoSevereError=hiclassy.CosmoSevereError,
                               __version__='v3.4.0')

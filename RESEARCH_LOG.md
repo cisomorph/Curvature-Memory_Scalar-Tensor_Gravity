@@ -12,7 +12,7 @@ Related files:
 
 ## Environment (as of 2026-10-23)
 - **Machine:** 12 cores, 78 GB RAM, about 25 GB free disk.
-- **Python venv `/home/aion/cmstg-venv`** (outside the repo): Python 3.10, numpy 2.2.6, scipy 1.15.3, matplotlib, emcee 3.1.6, pytest 9.1.1, cobaya 3.6.2, cython 3.3.0, Py-BOBYQA, iminuit 2.33.0, hiclassy 3.4.0.1 (built from the patched source).
+- **Python venv `/home/aion/cmstg-venv`** (outside the repo): Python 3.10, numpy 2.2.6, scipy 1.15.3, matplotlib, emcee 3.1.6, pytest 9.1.1, cobaya 3.6.2, cython 3.3.0, Py-BOBYQA 1.5.0, iminuit 2.33.0 (used only by the abandoned v2 driver), hiclassy 3.4.0.1 (built from the patched source).
 - **hi_class:** `/home/aion/cmstg-codes/hi_class`, upstream v3.4.0.1 (`ece81a57`) plus local commit `6861aea5` on branch `cmstg-attractor`. The patch is mirrored in `hi_class_model/cmstg_attractor.patch`.
 - **Cobaya data:** `/home/aion/cobaya_packages` (250 MB):
   - Planck 2018 native low-ℓ TT and EE, plik-lite TTTEEE, lensing
@@ -34,6 +34,9 @@ Related files:
 | `d709e27` | THEORY_NOTES, PAPER_CORRECTIONS, survivor predictions |
 | `d1f9cc0` | SIM155 summary script |
 | `00494b6` | turning-point c_s² tolerance fix; SIM155 v2 driver |
+| `4421053` | this research log; SIM155 v1 records; driver budget overrides |
+| `c0e427f` | SIM155 v1 run configurations (yaml) kept; binary/temporary artefacts ignored |
+| (next) | SIM155 v3: tested optimiser `common/fitcore.py`, likelihood diagnostics, input-stage error fix; 27 fits launched |
 
 ---
 
@@ -125,6 +128,9 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
 - The w0wa best fit (start 2) has w0 = −0.72, wa = −0.92, H0 = 66.7. Best-to-best: w0wa improves on ΛCDM by Δχ² ≈ 8.1, before polishing.
 - **Problem 1: early termination.** Starting points disagree by up to 2.3 (ΛCDM) and 5.5 (w0wa) in χ².
   - The χ² noise floor, measured around the ΛCDM best point, is only about 0.005 (Δχ² for H0 ± 1e-4 … 1e-3).
+    **Correction (later the same day):** that probe used steps too small to cross hi_class's discrete sampling thresholds.
+    With steps of 0.004 proposal widths the noise is 0.07 RMS in χ² (see the v3 entry below). The conclusion still
+    holds: disagreements of 2–5 in χ² are 30–70× the noise, so they are early termination.
   - So the disagreement is the minimizer quitting early (rhoend = 0.05 and slow-progress rules along the H0–ω_cdm degeneracy), not noise.
 - **Problem 2: every CMSTG start crashed after about 20 evaluations.**
   - Random points near the survivor failed hi_class's c_s² test in 4 of 14 cases.
@@ -141,6 +147,44 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
 - All models are rerun with v2 so the comparison is uniform.
 - Status at the time of writing: a ΛCDM D1 test fit is running, plus an end-to-end CMSTG smoke test (tiny budget, output in `fits_v2_smoke/`, not a result).
 
+### 2026-10-23 — v2 abandoned (too slow); v3 optimiser built and tested; 27 fits launched (method only; criteria unchanged)
+- **Both v2 tests died at their time limits and produced no result:**
+  - The CMSTG smoke test (MAXFUN 30, NCALL 30) was killed by its 1200 s `timeout`. MIGRAD's Hessian evaluations are not counted by `ncall`, so its budget does not bound its run time.
+  - The ΛCDM D1 production test (`MAXT=1 OMP_NUM_THREADS=4 timeout 3000 python fit.py lcdm D1 1`) was killed after 50 min (exit 143). BOBYQA at rhoend 2e-5 with ≤ 2500 evaluations (1.7 s each) was still in stage 1, and v2 wrote output only at the end.
+  - At that rate 27 fits would take days. No v2 output exists, so nothing is lost by replacing it.
+- **v3 = `common/fitcore.py` (an optimiser module), driven by `SIM155/fit.py`:**
+  1. Coarse: Py-BOBYQA inside the prior box, axes scaled to [0, 1], ≤ 400 evaluations.
+  2. Curvature: central-difference Hessian at the current point, in units of the proposal widths. Eigenvalues are folded to |w| and floored at 1e-3, so neither noise nor non-convexity can stretch a direction by more than about 32 widths.
+  3. Fine: Py-BOBYQA in whitened coordinates, where −log(post) ≈ ½|u|². Steps 2–3 repeat (at most 3 rounds) until a round gains less than 0.1.
+  - The prior box is a continuous wall, f(clip x) + 50·|(x − clip x)/proposal|², so the rotated stage can approach an edge without a jump. This matters for CMSTG's GR edge (ξ = 0).
+  - A failed evaluation is retried up to 3 times at a 1e-3-width jitter. If all fail it scores best-so-far + 50; a Hessian stencil that fails is dropped.
+  - Output is written after every stage (`fits_v3/<run>.json`), including the inverse-Hessian (Laplace) errors.
+- **First v3 launch (19:08 EDT), stopped after about 5 min with no output:**
+  - The first draft regularised the Hessian in raw units, where eigenvalues span about 10⁷, so the floor was meaningless.
+  - It also used a hard 1e6 penalty at the box edges.
+  - Both were fixed as above.
+- **Diagnostics on the real D1 likelihood (`SIM155/diagnostics.py`; outputs `diag_noise.json`, `diag_fails_*.json`):**
+  - *Noise.* −log(post) was evaluated at 11 points spaced 0.004 proposal widths apart, along H0 and along ω_cdm, around the ΛCDM reference point.
+    - Residuals from a quadratic fit are random ±0.04 jumps between neighbouring points.
+    - RMS = 0.032 (H0) and 0.037 (ω_cdm) in −log(post), i.e. **0.07 in χ²**.
+    - This is hi_class's discrete k/ℓ sampling at default precision. It sets the precision of any best-fit χ² at about ±0.1, far below the pre-registered thresholds (6 and 3).
+  - *Failures.* 0 of 40 CMSTG-A points drawn from the fit's `ref` distribution fail with `cs2_safe_smg = 1e-2` (v1 failed 4/14 at 1e-5).
+    - −log(post) ranges 1205.5–1719 (median 1293).
+    - The best random point is Λ0 = 0.26, ξ = 0.064 (ξ²/4Λ0 = 0.004).
+- **Synthetic validation (`tests/test_fitcore.py`, in CI):** Gaussian −log(post) with correlations up to 0.995 and widths spanning five decades, at the measured noise.
+  - Over 36 benchmark problems (n = 7 and 9, interior and on-edge minima, noise 0.035–0.07, 0–5% random failures) the final excess over the true minimum was:
+    - typically 0.01–0.08;
+    - worst 0.17 at the measured noise and 0.53 at twice the noise plus failures;
+    - after 280–670 evaluations.
+  - Before the retry rule existed, 5% failures left excesses of 2–12. The retry rule removed that.
+- **hiclassy input-stage errors.** hiclassy raises `CosmoSevereError` for any failure in its input stage, which includes the Ω_smg = −1 closure shooting. Cobaya re-raises that error, so one extreme point would abort a whole fit, whereas it assigns zero likelihood to `CosmoComputationError`.
+  - `cobaya_hiclass._HiClass` now converts input-stage failures to `CosmoComputationError`.
+  - Set-up errors (unread parameters, unknown level) stay fatal.
+  - `fitcore` raises if no evaluation in the coarse stage succeeds, so a broken set-up cannot pass silently.
+- **Launch: 2026-10-23 19:22 EDT.** `SIM155/run_all_v3.sh` runs 27 fits (3 models × D1–D3 × seeds 1–3), 6 parallel jobs × 2 OpenMP threads.
+  - Order: CMSTG D1 first, then ΛCDM D1, w0wa D1, CMSTG D2/D3, then the rest.
+  - Expected cost: about 3 s per ΛCDM evaluation and 8 s per CMSTG evaluation; about 3.5 h in total.
+
 ---
 
 ## Decisions and deviations (with reasons)
@@ -149,6 +193,10 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
    - `summarize.py` recomputes C3 with the true F0 at every best fit, so the criterion itself is applied as registered.
 2. **v1 queue:** `best_of` was cut from Cobaya's default 2 to 1 for jobs not yet started (three seeds still meet "≥ 3 starts"). v1 was then superseded by v2.
 3. **c_s² tolerance and the v2 driver:** see above. Both are numerical-method changes made after seeing failures, documented before any v2 result was examined.
+4. **v3 driver replaces v2** (too slow; no v2 result was ever produced). Also a method-only change, documented before any v3 result: same data, models, priors, starts and criteria.
+5. **Seed spread as the convergence check.** Three seeds per model; the best is reported, and the spread between seeds is reported next to it.
+   - At the measured noise, a spread up to about 0.5 in χ² is expected.
+   - A larger spread triggers a re-fit from the best point, logged here, before any criterion is applied.
 
 ## Open issues
 - Measure the GR-limit residual (issue 2 above) as a Δχ² on the full likelihood.

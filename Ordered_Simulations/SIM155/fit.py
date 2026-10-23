@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
-SIM155 fit driver (v2): python fit.py MODEL DATA SEED   (MODEL: lcdm | w0wa | cmstgA; DATA: D1 | D2 | D3)
+SIM155 fit driver (v3): python fit.py MODEL DATA SEED   (MODEL: lcdm | w0wa | cmstgA; DATA: D1 | D2 | D3)
 
-Two-stage maximum-posterior fit, using Cobaya's model (theory + likelihoods + priors) for every evaluation:
-  1. BOBYQA (Py-BOBYQA), scaled to the prior box, from a seeded random start drawn from `ref`.
-     Failed evaluations (hi_class errors) return a large finite penalty, not +inf, so the solver keeps working.
-  2. MIGRAD (iminuit) from the BOBYQA point, restarted until two passes agree to 0.01 in −log(post).
-v1 (`run_fit.py`, Cobaya's `minimize`) stopped up to 2–5 χ² above the minimum and crashed on −inf;
-see ROADMAP log 2026-10-23. Criteria are unchanged (SPEC.md).
+Maximum-posterior fit with common/fitcore.py (tested in tests/test_fitcore.py). Every evaluation goes through
+Cobaya's model (theory + likelihoods + priors). From a seeded random start drawn from `ref`:
+  1. coarse : Py-BOBYQA in the prior box (≤ 400 evals)
+  2. Hessian: central differences at the current point (steps ½ proposal width), regularised in proposal units
+  3. fine   : Py-BOBYQA in whitened coordinates (≤ 400 evals); 2–3 repeat until a round gains < 0.05 in −log(post)
+Failed hi_class evaluations are retried at a 1e-3-proposal-width jitter; the prior box is a continuous wall.
+Progress is written to fits_v3/<run>.json after every stage; `sigma` holds Laplace (inverse-Hessian) errors.
+
+History:
+  - v1 (`run_fit.py`, Cobaya `minimize` defaults) stopped 2–5 in χ² above the minimum and crashed on −inf.
+  - v2 (BOBYQA rhoend 2e-5 then repeated MIGRAD) was correct but too slow (> 50 min per ΛCDM fit).
+  See RESEARCH_LOG.md. Pass criteria are unchanged (SPEC.md).
 """
 import json, os, sys, time
 import numpy as np
@@ -15,10 +21,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, '..', 'common'))
 from cobaya.model import get_model
 from cobaya_hiclass import HiClassCMSTG
-import pybobyqa
-from iminuit import Minuit
+import fitcore
 
-PENALTY = 1e6
+OUTDIR = os.path.join(HERE, os.environ.get('FIT_OUTDIR', 'fits_v3'))
 
 
 def build_info(model, data):
@@ -54,59 +59,34 @@ def build_info(model, data):
 
 def main(model, data, seed):
     t0 = time.time()
+    run = f'{model}_{data}_s{seed}'
+    os.makedirs(OUTDIR, exist_ok=True)
+    out = os.path.join(OUTDIR, run + '.json')
     m = get_model(build_info(model, data))
     names = list(m.parameterization.sampled_params())
     lo, hi = m.prior.bounds(confidence_for_unbounded=0.9999995).T
-    info_p = m.parameterization.sampled_params_info()
-    steps = np.array([info_p[n].get('proposal', 0.01 * (h - l)) for n, l, h in zip(names, lo, hi)])
-    nev = {'n': 0, 'fail': 0}
+    pinfo = m.parameterization.sampled_params_info()
+    prop = np.array([pinfo[n].get('proposal', 0.01 * (b - a)) for n, a, b in zip(names, lo, hi)])
+    x0 = m.prior.reference(random_state=np.random.default_rng(seed))
+    rec = dict(model=model, data=data, seed=seed, names=names, start=dict(zip(names, map(float, x0))),
+               proposal=dict(zip(names, map(float, prop))))
 
-    def f(x):
-        nev['n'] += 1
-        x = np.clip(x, lo, hi)
-        lp = m.logpost(x)
-        if not np.isfinite(lp):
-            nev['fail'] += 1
-            return PENALTY
-        return -lp
+    def save(stage, x, fx, info):
+        lls = m.loglikes(x, as_dict=True)[0]
+        chi2 = {k: -2.0 * float(v) for k, v in lls.items()}
+        rec.update(stage=stage, seconds=time.time() - t0, minimum=dict(zip(names, map(float, x))),
+                   minus_log_post=float(fx), chi2_total=float(sum(chi2.values())), chi2=chi2, optimiser=info)
+        json.dump(rec, open(out, 'w'), indent=2)
+        print(f"[{run}] {stage}: -logpost {fx:.4f}, chi2 {rec['chi2_total']:.3f}, {rec['seconds'] / 60:.1f} min",
+              flush=True)
 
-    rng = np.random.default_rng(seed)
-    x0 = m.prior.reference(random_state=rng)
-    f0 = f(x0)
-    # stage 1: BOBYQA in the scaled box
-    sol = pybobyqa.solve(f, x0, bounds=(lo, hi), scaling_within_bounds=True, rhobeg=0.05, rhoend=2e-5,
-                         maxfun=int(os.environ.get('MAXFUN', 2500)), seek_global_minimum=False, do_logging=False,
-                         user_params={'slow.max_slow_iters': 60})
-    x1, f1 = sol.x, sol.f
-    # stage 2: MIGRAD polish, repeated until two passes agree
-    passes = []
-    x, fx = x1.copy(), f1
-    for k in range(4):
-        mi = Minuit(lambda v: f(np.asarray(v)), x, name=names)
-        mi.errordef = Minuit.LIKELIHOOD
-        mi.limits = list(zip(lo, hi))
-        mi.errors = steps
-        mi.strategy = 1
-        mi.migrad(ncall=int(os.environ.get('NCALL', 1500)))
-        xn, fn = np.array(mi.values), mi.fval
-        passes.append(dict(fval=float(fn), valid=bool(mi.valid), edm=float(mi.fmin.edm)))
-        improved = fx - fn
-        if fn < fx:
-            x, fx = xn, fn
-        if improved < 0.01:
-            break
-    lls = m.loglikes(x, as_dict=True)[0]
-    chi2 = {k: -2.0 * float(v) for k, v in lls.items()}
-    res = dict(model=model, data=data, seed=seed, seconds=time.time() - t0, evaluations=nev['n'], failed_evaluations=nev['fail'],
-               start=dict(zip(names, map(float, x0))), f_start=float(f0), f_bobyqa=float(f1), bobyqa_flag=int(sol.flag),
-               migrad_passes=passes, converged=bool(len(passes) and passes[-1]['valid'] and (len(passes) < 4)),
-               minimum=dict(zip(names, map(float, x))), minus_log_post=float(fx),
-               chi2_total=float(sum(chi2.values())), chi2=chi2)
-    out = os.path.join(HERE, 'fits_v2', f'{model}_{data}_s{seed}.json')
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    json.dump(res, open(out, 'w'), indent=2)
-    print(json.dumps({k: res[k] for k in ('model', 'data', 'seed', 'seconds', 'evaluations', 'failed_evaluations',
-                                          'f_bobyqa', 'minus_log_post', 'chi2_total', 'converged')}, default=float))
+    x, fx, info = fitcore.minimize(lambda v: -m.logpost(v), x0, lo, hi, prop, save=save, seed=seed,
+                                   maxfun1=int(os.environ.get('MAXFUN1', 400)),
+                                   maxfun3=int(os.environ.get('MAXFUN3', 400)))
+    if info.get('sigma') is not None:
+        info['sigma'] = dict(zip(names, info['sigma']))
+    rec['converged'] = bool(info['rounds'] and info['rounds'][-1]['gain'] < 0.05)
+    save('final', x, fx, info)
 
 
 if __name__ == '__main__':

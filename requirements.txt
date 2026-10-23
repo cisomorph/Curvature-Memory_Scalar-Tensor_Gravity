@@ -3,3 +3,4 @@ scipy==1.15.3
 matplotlib
 emcee
 pytest
+Py-BOBYQA==1.5.0

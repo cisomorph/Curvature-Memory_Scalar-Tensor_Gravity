@@ -105,3 +105,7 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - All CMSTG starts crashed: hi_class's c_s² test fails on turning-point 0/0 noise, and Cobaya passes −inf to BOBYQA.
   - Fixes (method only; criteria unchanged): `cs2_safe_smg` 1e-5 → 1e-2 (justified in hi_class_model/README.md), and a new two-stage driver `SIM155/fit.py` (BOBYQA with a finite penalty for failures, then repeated MIGRAD polish).
   - All models are rerun with v2 for a uniform comparison. The v1 results stay in `SIM155/fits/` for the record.
+- 2026-10-23: v2 was too slow (a ΛCDM fit had not finished after 50 min; no v2 result exists) and was replaced by v3 (method only; criteria unchanged; details in RESEARCH_LOG.md):
+  - The optimiser is `common/fitcore.py`: coarse BOBYQA, then rounds of Hessian whitening plus BOBYQA, with failure retries and a continuous prior wall. It is unit-tested in CI on synthetic problems at the measured noise.
+  - Measured on the real likelihood: χ² noise 0.07 RMS (hi_class sampling at default precision), so best-fit χ² is good to about ±0.1. No CMSTG failures in 40 random points with the new c_s² tolerance.
+  - All 27 fits relaunched 19:22 EDT.

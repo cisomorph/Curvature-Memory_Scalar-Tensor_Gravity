@@ -45,13 +45,13 @@ Goal: map where the Solar-System-safe attractor models live, and whether they su
 Points passing C1–C4 go to Phase 3. If none pass, the attractor route is closed at background level and Phase 3 is not run for it.
 
 ## Phase 3 — Full CMB + BAO + supernovae (professional tools)
-- [~] 3.1 Environment (venv, Cobaya 3.6.2 and hi_class v3.4 built; likelihoods next): Python venv; Cobaya; hi_class built from source; likelihoods:
+- [x] 3.1 Environment (venv; Cobaya 3.6.2; hi_class v3.4 + Python wrapper; native Planck, DESI DR1/DR2, Pantheon+/Union3/DES-Y5 data): Python venv; Cobaya; hi_class built from source; likelihoods:
   - Planck 2018 plik-lite TTTEEE, low-ℓ, lensing
   - DESI DR2 BAO
   - Pantheon+ / Union3 / DES-Y5 SNe
-- [ ] 3.2 Validation: hi_class ΛCDM reproduces Planck 2018 best fit; Cobaya reproduces published ΛCDM χ² and parameters.
+- [x] 3.2 Validation (Planck-point χ²: low-ℓ TT 23.45, low-ℓ EE 396.12, plik-lite 583.16, lensing 8.86, matching Planck's published values): hi_class ΛCDM reproduces Planck 2018 best fit; Cobaya reproduces published ΛCDM χ² and parameters.
 - [x] 3.3 Implement the surviving model(s) in hi_class as a covariant Horndeski model (G2 = X, G4 = F(φ), with bare Λ); validate its background against `st_solver`.
-- [ ] 3.4 Best-fit and MCMC comparison: ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
+- [~] 3.4 Best-fit and MCMC comparison (SIM155 running): ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
   - **Pre-registered 2026-10-23, before any Phase 3 fit was run:**
     - Data, baseline D1: Planck 2018 (low-ℓ TT + low-ℓ EE + plik-lite TTTEEE + lensing, native Cobaya likelihoods)
       + DESI DR2 BAO + Pantheon+. Variants D2 and D3 swap Pantheon+ for Union3 and DES-Y5.
@@ -96,3 +96,4 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 - 2026-10-22: Phase 1 done: 16 tests pass locally; CI workflow added.
 - 2026-10-22: Phase 2 done: SIM154 run per its pre-registered SPEC. 2 of 70 points survive C1–C4. Next: Phase 3 environment (hi_class + Cobaya).
 - 2026-10-23: Phase 3.3 done: `cmstg_attractor` implemented in hi_class and validated against ΛCDM (GR limit), regulator convergence, and the project's own solver (H to 2e-5, F to 1e-5). Patch and docs in `hi_class_model/`. Next: build the hi_class Python wrapper, install the likelihoods, validate Cobaya on ΛCDM.
+- 2026-10-23: Phase 3.1–3.2 done (Cobaya + hi_class adapter `common/cobaya_hiclass.py`; Planck-point χ² match). SIM155 launched: 27 best fits (3 models × D1–D3 × 3 starts).

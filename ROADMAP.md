@@ -70,20 +70,20 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
     - "Competitive with w0waCDM" means a χ² within 3 of w0waCDM's.
 
 ## Phase 4 — Theory
-- [ ] 4.1 Can the attractor form F'(Ψ*) = 0 be derived from the curvature-memory idea rather than chosen?
-- [ ] 4.2 Relation to the Damour–Nordtvedt mechanism (GR as a cosmological attractor, PRL 70, 2217, 1993).
-- [ ] 4.3 Can the bare Λ be removed?
+- [~] 4.1 (notes in THEORY_NOTES.md) Can the attractor form F'(Ψ*) = 0 be derived from the curvature-memory idea rather than chosen?
+- [x] 4.2 (THEORY_NOTES.md: CMSTG attractors are a DN-class model; |γ−1| ≈ 1e-7 as DN predicts) Relation to the Damour–Nordtvedt mechanism (GR as a cosmological attractor, PRL 70, 2217, 1993).
+- [~] 4.3 (THEORY_NOTES.md: not by any audited model so far) Can the bare Λ be removed?
 - [ ] 4.4 Status of Paper III's UV claims (not audited yet).
 
 ## Phase 5 — Distinctive predictions
-- [ ] 5.1 Gravitational-wave standard sirens: d_GW/d_EM = √(F(0)/F(z)).
+- [x] 5.1 (survivor: |d_GW/d_EM − 1| < 1e-6 for z < 10, so sirens cannot test it) Gravitational-wave standard sirens: d_GW/d_EM = √(F(0)/F(z)).
 - [ ] 5.2 G(z) history as seen by BBN and the CMB.
-- [ ] 5.3 Growth of structure: fσ8(z), S8.
+- [~] 5.3 Growth of structure: fσ8(z), S8. Survivor (background level): fσ8 −2.5% (z = 0), −1.3% (z = 0.5) vs ΛCDM; σ8 −0.55%. Redo at the SIM155 best fit.
 
 ## Phase 6 — Papers
-- [ ] 6.1 Paper II: Cassini and "2.77σ" claims.
-- [ ] 6.2 Paper I: basis of Theorems 1 and 2.
-- [ ] 6.3 README: "no bare Λ", "G_eff/G = 1 − 15 ppm", the DESI "Y3 ~2027" wording.
+- [~] 6.1 (draft in PAPER_CORRECTIONS.md) Paper II: Cassini and "2.77σ" claims.
+- [~] 6.2 (draft in PAPER_CORRECTIONS.md) Paper I: basis of Theorems 1 and 2.
+- [~] 6.3 (draft in PAPER_CORRECTIONS.md) README: "no bare Λ", "G_eff/G = 1 − 15 ppm", the DESI "Y3 ~2027" wording.
 - [ ] 6.4 If a model survives Phase 3: one focused paper.
 
 ## Phase 7 — Independent review
@@ -97,3 +97,4 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 - 2026-10-22: Phase 2 done: SIM154 run per its pre-registered SPEC. 2 of 70 points survive C1–C4. Next: Phase 3 environment (hi_class + Cobaya).
 - 2026-10-23: Phase 3.3 done: `cmstg_attractor` implemented in hi_class and validated against ΛCDM (GR limit), regulator convergence, and the project's own solver (H to 2e-5, F to 1e-5). Patch and docs in `hi_class_model/`. Next: build the hi_class Python wrapper, install the likelihoods, validate Cobaya on ΛCDM.
 - 2026-10-23: Phase 3.1–3.2 done (Cobaya + hi_class adapter `common/cobaya_hiclass.py`; Planck-point χ² match). SIM155 launched: 27 best fits (3 models × D1–D3 × 3 starts).
+- 2026-10-23: Phase 4 and 6 drafts (THEORY_NOTES.md, PAPER_CORRECTIONS.md); Phase 5.1 and 5.3 predictions for the survivor.

@@ -52,7 +52,22 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 - [ ] 3.2 Validation: hi_class ΛCDM reproduces Planck 2018 best fit; Cobaya reproduces published ΛCDM χ² and parameters.
 - [x] 3.3 Implement the surviving model(s) in hi_class as a covariant Horndeski model (G2 = X, G4 = F(φ), with bare Λ); validate its background against `st_solver`.
 - [ ] 3.4 Best-fit and MCMC comparison: ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
-  - Criteria to be fixed in this file before 3.4 runs.
+  - **Pre-registered 2026-10-23, before any Phase 3 fit was run:**
+    - Data, baseline D1: Planck 2018 (low-ℓ TT + low-ℓ EE + plik-lite TTTEEE + lensing, native Cobaya likelihoods)
+      + DESI DR2 BAO + Pantheon+. Variants D2 and D3 swap Pantheon+ for Union3 and DES-Y5.
+    - Models:
+      - ΛCDM (6 parameters)
+      - w0waCDM (8)
+      - CMSTG attractor family A (8: + Λ0, ξ; φ_ini = 0 at a = 1e-10, on the radiation-era attractor, with bare Λ)
+    - Same code for all: hi_class + our adapter. Same helium treatment: YHe = 0.2454 + 0.438(ω_b − 0.02238) + 0.16(S − 1),
+      with S = √(G_BBN/G0) = √(2F0); S = 1 for ΛCDM and w0wa.
+    - Method: best fit (maximum likelihood) from at least 3 starting points per model; MCMC only if a model passes.
+    - **CMSTG passes Phase 3** if, on D1:
+      - (a) its best fit beats ΛCDM by Δχ² ≥ 6 (2 extra parameters);
+      - (b) the best-fit point still passes Phase 2's C2 (Cassini, LLR) and C3 (BBN);
+      - (c) Δχ² vs ΛCDM ≥ 6 also on at least one of D2/D3.
+    - Reported regardless: Δχ² and ΔAIC (= −Δχ² + 2Δk) vs ΛCDM and vs w0waCDM.
+    - "Competitive with w0waCDM" means a χ² within 3 of w0waCDM's.
 
 ## Phase 4 — Theory
 - [ ] 4.1 Can the attractor form F'(Ψ*) = 0 be derived from the curvature-memory idea rather than chosen?

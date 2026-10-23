@@ -531,3 +531,29 @@ What this means for the "2.77σ structural floor":
 Each affected sim folder has a `STALE_FIGURES.md` listing them. Nothing was deleted (they are still in git); removing or regenerating them is the user's call.
 
 Affected sims (file count): SIM121B (4), SIM122 (8), SIM123 (8), SIM124 (6), SIM126 (2), SIM129 (2), SIM130 (6), SIM131 (2), SIM132 (4), SIM133 (4), SIM134 (4), SIM135 (4), SIM136 (4), SIM138 (2), SIM142 (2), SIM143 (2), SIM144 (4).
+
+## 8. Recommended next steps (roadmap, 2026-10-22)
+
+1. **Lock in the corrected pipeline.**
+   - Turn the validation scripts in `common/` into automatic tests: GR limit, ΛCDM reproduction, DESI's published fits, Planck θ*.
+   - Every sim imports `common/`; no more per-sim copies of constants, data or r_s code.
+   - A sim that can't reproduce ΛCDM when its coupling is switched off doesn't get a verdict.
+2. **Do the attractor models (SIM132, SIM134) properly.**
+   - Widen the scan: Λ0 < 0.2 (the current optimum is at the grid edge), ξ free, initial conditions.
+   - BBN: G is about 7% higher at nucleosynthesis than today. Compare with a BBN code (e.g. PRyMordial, AlterBBN or PArthENoPE) and published G-variation bounds.
+   - Full CMB: implement in hi_class (F(φ)R plus a canonical scalar is a Horndeski subclass), then run Cobaya with Planck (+ ACT/SPT), DESI DR2 and supernovae (Pantheon+, Union3, DES-Y5).
+   - Perturbations: growth fσ8, S8, ISW, and stability (no ghost or gradient instability).
+   - Model comparison against ΛCDM and w0waCDM (Δχ², AIC/BIC, Bayesian evidence).
+3. **Theory.**
+   - Derive the attractor form (F'(Ψ*) = 0) from the curvature-memory idea instead of choosing it.
+   - Compare with the Damour–Nordtvedt mechanism (scalar-tensor theories driven toward GR as a cosmological attractor, PRL 70, 2217, 1993) and cite it.
+   - Ask whether the bare Λ can actually be removed, and revisit the UV claims of Paper III.
+4. **Distinctive predictions.**
+   - Gravitational-wave standard sirens: d_GW/d_EM = √(F(0)/F(z)) in this class of theory. Compute the size for the surviving models.
+   - The history of G(z) as seen by BBN and the CMB.
+   - Growth of structure with Euclid, Rubin and DESI peculiar velocities.
+5. **Correct the papers.**
+   - Paper II: the Cassini and "2.77σ" claims.
+   - Paper I: the basis of Theorems 1 and 2.
+   - README: "no bare Λ" and "G_eff/G = 1 − 15 ppm".
+6. **Get independent eyes.** Share this audit, the branch and the code with someone who knows scalar-tensor cosmology. My fixes should be checked too.

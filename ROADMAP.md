@@ -25,13 +25,13 @@ Goal: no result gets a verdict unless the code first reproduces known answers.
 ## Phase 2 — Attractor models (SIM132 / SIM134 families), background level → **SIM154**
 Goal: map where the Solar-System-safe attractor models live, and whether they survive BBN.
 
-- [ ] 2.1 Wide scan, θ*-matched, DESI DR1 + DR2:
+- [x] 2.1 Wide scan, θ*-matched, DESI DR1 + DR2:
   - subtractive F = ½(1 − 2Λ0Ψ²) + ξΨ
   - exponential F = ½e^{−2Λ0Ψ²} + ξΨ
   - Λ0 from 0.02 to 0.5, ξ from 1/24 to 1/4, Ψ_ini = 0
-- [ ] 2.2 Local gravity at z = 0: Cassini γ and LLR Ġ/G.
-- [ ] 2.3 BBN: speed-up S = √(G_BBN/G0) → Y_p and D/H (Kneller & Steigman 2004 fits), against observations.
-- [ ] 2.4 Verdict per point; list the survivors.
+- [x] 2.2 Local gravity at z = 0: Cassini γ and LLR Ġ/G.
+- [x] 2.3 BBN: speed-up S = √(G_BBN/G0) → Y_p and D/H (Kneller & Steigman 2004 fits), against observations.
+- [x] 2.4 Verdict per point; list the survivors. **Result (SIM154): 2 survivors**, family A and B at Λ0 = 0.15, ξ = 1/12. Δχ² vs ΛCDM = +7.0 / +17.7 (A) and +7.1 / +18.1 (B) for DR1 / DR2; BBN is the binding constraint (Y_p +1.8σ). Exploratory follow-up: map the survivor band finely and confirm BBN with a BBN code.
 
 **Pre-registered survival criteria for a parameter point (all must hold):**
 
@@ -78,3 +78,5 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 
 ## Log
 - 2026-10-22: roadmap locked at the user's request. Starting Phase 1, then Phase 2 (SIM154).
+- 2026-10-22: Phase 1 done: 16 tests pass locally; CI workflow added.
+- 2026-10-22: Phase 2 done: SIM154 run per its pre-registered SPEC. 2 of 70 points survive C1–C4. Next: Phase 3 environment (hi_class + Cobaya).

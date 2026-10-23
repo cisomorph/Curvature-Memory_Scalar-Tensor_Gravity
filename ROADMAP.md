@@ -19,7 +19,7 @@ Goal: no result gets a verdict unless the code first reproduces known answers.
   - Frozen-F0 degeneracy: χ²(F0 = 0.5206) = χ²(ΛCDM).
   - Cassini formula: Brans–Dicke limit γ − 1 = −1/(ω + 2).
   - Statistics helpers.
-- [~] 1.2 Continuous integration (`.github/workflows/tests.yml`): GitHub Actions runs the tests on every push to `audit-fixes`.
+- [x] 1.2 Continuous integration (green on GitHub) (`.github/workflows/tests.yml`): GitHub Actions runs the tests on every push to `audit-fixes`.
 - [x] 1.3 Shared code (policy; all audited sims already comply): all new sims import `Ordered_Simulations/common/`; constants and data live there only.
 
 ## Phase 2 — Attractor models (SIM132 / SIM134 families), background level → **SIM154**
@@ -45,12 +45,12 @@ Goal: map where the Solar-System-safe attractor models live, and whether they su
 Points passing C1–C4 go to Phase 3. If none pass, the attractor route is closed at background level and Phase 3 is not run for it.
 
 ## Phase 3 — Full CMB + BAO + supernovae (professional tools)
-- [ ] 3.1 Environment: Python venv; Cobaya; hi_class built from source; likelihoods:
+- [~] 3.1 Environment (venv, Cobaya 3.6.2 and hi_class v3.4 built; likelihoods next): Python venv; Cobaya; hi_class built from source; likelihoods:
   - Planck 2018 plik-lite TTTEEE, low-ℓ, lensing
   - DESI DR2 BAO
   - Pantheon+ / Union3 / DES-Y5 SNe
 - [ ] 3.2 Validation: hi_class ΛCDM reproduces Planck 2018 best fit; Cobaya reproduces published ΛCDM χ² and parameters.
-- [ ] 3.3 Implement the surviving model(s) in hi_class as a covariant Horndeski model (G2 = X, G4 = F(φ), with bare Λ); validate its background against `st_solver`.
+- [x] 3.3 Implement the surviving model(s) in hi_class as a covariant Horndeski model (G2 = X, G4 = F(φ), with bare Λ); validate its background against `st_solver`.
 - [ ] 3.4 Best-fit and MCMC comparison: ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
   - Criteria to be fixed in this file before 3.4 runs.
 
@@ -80,3 +80,4 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 - 2026-10-22: roadmap locked at the user's request. Starting Phase 1, then Phase 2 (SIM154).
 - 2026-10-22: Phase 1 done: 16 tests pass locally; CI workflow added.
 - 2026-10-22: Phase 2 done: SIM154 run per its pre-registered SPEC. 2 of 70 points survive C1–C4. Next: Phase 3 environment (hi_class + Cobaya).
+- 2026-10-23: Phase 3.3 done: `cmstg_attractor` implemented in hi_class and validated against ΛCDM (GR limit), regulator convergence, and the project's own solver (H to 2e-5, F to 1e-5). Patch and docs in `hi_class_model/`. Next: build the hi_class Python wrapper, install the likelihoods, validate Cobaya on ΛCDM.

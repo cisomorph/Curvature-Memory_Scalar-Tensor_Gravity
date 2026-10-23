@@ -1,0 +1,190 @@
+From 6861aea5496cfd4104bfa4c1515fdac2fb2010a0 Mon Sep 17 00:00:00 2001
+From: cisomorph <c.isomorph@gmail.com>
+Date: Fri, 23 Oct 2026 17:55:37 -0400
+Subject: [PATCH] Add cmstg_attractor model (CMSTG roadmap Phase 3) with
+ radiation-era attractor IC
+
+---
+ gravity_smg/gravity_models_smg.c | 97 +++++++++++++++++++++++++++++++-
+ include/background.h             |  3 +-
+ source/background.c              |  7 ++-
+ 3 files changed, 102 insertions(+), 5 deletions(-)
+
+diff --git a/gravity_smg/gravity_models_smg.c b/gravity_smg/gravity_models_smg.c
+index 08dc8779..3c7ea0f8 100644
+--- a/gravity_smg/gravity_models_smg.c
++++ b/gravity_smg/gravity_models_smg.c
+@@ -595,6 +595,32 @@ int gravity_models_gravity_properties_smg(
+      }
+    }
+ 
++  /** CMSTG attractor models (CMSTG audit roadmap, Ordered_Simulations/SIM154).
++   *
++   *   G2 = X - V0,  V0 = 3 p0 H0^2  (bare cosmological constant, tuned for closure)
++   *   G4 = F(phi):
++   *     family 0 (subtractive): F = 1/2 (1 - 2 L0 phi^2) + xi phi
++   *     family 1 (exponential): F = 1/2 exp(-2 L0 phi^2) + xi phi
++   *
++   * parameters_smg = [p0, Lambda0, xi, family, phi_ini, phi_prime_ini]
++   * The attractor F'(phi*) = 0 switches the fifth force off today.
++   */
++  if (strcmp(string1,"cmstg_attractor") == 0) {
++    pba->gravity_model_smg = cmstg_attractor;
++    pba->field_evolution_smg = _TRUE_;
++    flag2=_TRUE_;
++
++    pba->parameters_size_smg = 6;
++    class_read_list_of_doubles("parameters_smg",pba->parameters_smg,pba->parameters_size_smg);
++
++    if (has_tuning_index_smg == _FALSE_)
++      pba->tuning_index_smg = 0;   /* tune p0 (the bare Lambda) for closure */
++    if (has_dxdy_guess_smg == _FALSE_) {
++      pba->parameters_smg[0] = pba->Omega0_smg;
++      pba->tuning_dxdy_guess_smg = 1.;
++    }
++  }
++
+   /** Conformally coupled cubic galileon (cccg) with exponential coupling.
+    * See Zumalacarregui, PRD 102 023523 (2020) [arXiv:2003.06396]
+    *
+@@ -775,7 +801,7 @@ int gravity_models_gravity_properties_smg(
+ 
+   class_test(flag2==_FALSE_,
+              errmsg,
+-             "could not identify gravity_theory value, check that it is one of 'propto_omega', 'propto_omega_bh', 'propto_scale', 'constant_alphas', 'eft_alphas_power_law', 'eft_gammas_power_law', 'eft_gammas_exponential', 'brans_dicke', 'galileon', 'glpv_galileon', 'cccg_exp', 'nKGB', 'quintessence_monomial', 'quintessence_tracker', 'alpha_attractor_canonical' ...");
++             "could not identify gravity_theory value, check that it is one of 'propto_omega', 'propto_omega_bh', 'propto_scale', 'constant_alphas', 'eft_alphas_power_law', 'eft_gammas_power_law', 'eft_gammas_exponential', 'brans_dicke', 'galileon', 'glpv_galileon', 'cccg_exp', 'cmstg_attractor', 'nKGB', 'quintessence_monomial', 'quintessence_tracker', 'alpha_attractor_canonical' ...");
+ 
+   return _SUCCESS_;
+ }
+@@ -1003,6 +1029,33 @@ int gravity_models_get_Gs_smg(
+ 
+   }
+ 
++  else if(pba->gravity_model_smg == cmstg_attractor){
++
++    double V = 3.*pba->parameters_smg[0]*pow(pba->H0,2);
++    double L0 = pba->parameters_smg[1];
++    double xi = pba->parameters_smg[2];
++    int family = (int) pba->parameters_smg[3];
++
++    pgf->G2 = X - V;
++    pgf->G2_X = 1.;
++
++    if (family == 0) {
++      pgf->G4 = 0.5 - L0*phi*phi + xi*phi;
++      pgf->DG4 = -L0*phi*phi + xi*phi;
++      pgf->G4_phi = -2.*L0*phi + xi;
++      pgf->G4_phiphi = -2.*L0;
++      pgf->G4_phiphiphi = 0.;
++    }
++    else {
++      double e = exp(-2.*L0*phi*phi);
++      pgf->G4 = 0.5*e + xi*phi;
++      pgf->DG4 = 0.5*expm1(-2.*L0*phi*phi) + xi*phi;
++      pgf->G4_phi = -2.*L0*phi*e + xi;
++      pgf->G4_phiphi = (-2.*L0 + 8.*L0*L0*phi*phi)*e;
++      pgf->G4_phiphiphi = (24.*L0*L0*phi - 32.*L0*L0*L0*phi*phi*phi)*e;
++    }
++  }
++
+   else if(pba->gravity_model_smg == cccg_exp){
+ 
+     double M3 = pow(pba->H0,2);
+@@ -1537,6 +1590,41 @@ int gravity_models_initial_conditions_smg(
+ 			}
+ 			break;
+ 
++    /* CMSTG attractor IC. Started at rest, phi is sourced by the matter trace and,
++     * like Brans-Dicke, relaxes to a radiation-era attractor with phi' constant in
++     * conformal time:  phi'' + 2aH phi' = a^2 F' 3 rho_m / (2 F (1 + 3F'^2/F))
++     * (CLASS units, rho_phys = 3 rho_class, H^2 = rho_rad/(2F)), giving
++     *   phi' = 3 a^2 rho_m F' / (4 F aH (1 + 3F'^2/F)).
++     * Starting at phi' = 0 instead forces the stiff evolver to resolve the
++     * approach to the attractor at machine-noise level (very slow). The estimate
++     * is refined in background_initial_conditions (as for Brans-Dicke). */
++    case cmstg_attractor:
++      {
++        double phi_i = pba->parameters_smg[4];
++        double L0 = pba->parameters_smg[1];
++        double xi = pba->parameters_smg[2];
++        double F, Fp;
++        if ((int) pba->parameters_smg[3] == 0) {
++          F = 0.5 - L0*phi_i*phi_i + xi*phi_i;
++          Fp = -2.*L0*phi_i + xi;
++        }
++        else {
++          double e = exp(-2.*L0*phi_i*phi_i);
++          F = 0.5*e + xi*phi_i;
++          Fp = -2.*L0*phi_i*e + xi;
++        }
++        pvecback_integration[pba->index_bi_phi_smg] = phi_i;
++        if (pba->parameters_smg[5] == 0.) {
++          double rho_m = (pba->Omega0_b + pba->Omega0_cdm)*pow(pba->H0,2)/pow(a,3);
++          double aH = a*sqrt(rho_rad/(2.*F));
++          pvecback_integration[pba->index_bi_phi_prime_smg] = 3.*a*a*rho_m*Fp/(4.*F*aH*(1.+3.*Fp*Fp/F));
++        }
++        else {
++          pvecback_integration[pba->index_bi_phi_prime_smg] = pba->parameters_smg[5];
++        }
++      }
++      break;
++
+     /* cccg IC: similar to the Galileon, but the field value matters.
+      * Off the attractor the initial solution is dominated by the c3 term,
+      * phi = phi_ini + 2/3 phi'/(aH) during radiation domination.
+@@ -1726,6 +1814,13 @@ int gravity_models_print_stdout_smg(
+ 	    pba->parameters_smg[0],pba->parameters_smg[1],pba->parameters_smg[2],pba->phi_0_smg,pba->parameters_smg[3]);
+     break;
+ 
++    case cmstg_attractor:
++      printf("Modified gravity: CMSTG attractor (family %d) with parameters: \n", (int) pba->parameters_smg[3]);
++      printf(" -> p0 = %g, Lambda0 = %g, xi = %g, phi_ini = %g, phi_prime_ini = %g (phi_0 = %g)\n",
++        pba->parameters_smg[0],pba->parameters_smg[1],pba->parameters_smg[2],
++        pba->parameters_smg[4],pba->parameters_smg[5],pba->phi_0_smg);
++    break;
++
+     case cccg_exp:
+       printf("Modified gravity: cccg_exp (conformally coupled cubic galileon) with parameters: \n");
+       printf(" -> c_2 = %g, c_3 = %g, beta = %g, V0 = %g, \n    M2_ini = %g, Omega_smg_ini = %g (xi_end = %g) \n",
+diff --git a/include/background.h b/include/background.h
+index 32a25fa3..5da7c908 100644
+--- a/include/background.h
++++ b/include/background.h
+@@ -24,7 +24,8 @@ enum gravity_model {propto_omega, propto_omega_bh, propto_scale,
+     brans_dicke,
+     quintessence_monomial, quintessence_tracker,
+     alpha_attractor_canonical,
+-    cccg_exp
++    cccg_exp,
++    cmstg_attractor
+ };
+ 
+ /** model subclasses (_smg), e.g. branches of the conformally coupled cubic galileon */
+diff --git a/source/background.c b/source/background.c
+index 0ed42629..e18dca08 100644
+--- a/source/background.c
++++ b/source/background.c
+@@ -2433,8 +2433,9 @@ int background_initial_conditions(
+      iteration on the code's own phi'' (phi'' is almost exactly linear in phi'
+      here, so this converges in 2-3 steps). The analytic estimate set in
+      gravity_models_initial_conditions_smg provides the starting bracket. */
+-  if ((pba->has_smg == _TRUE_) && (pba->gravity_model_smg == brans_dicke)
+-      && (pba->parameters_smg[3] == 0.)) {
++  if ((pba->has_smg == _TRUE_)
++      && (((pba->gravity_model_smg == brans_dicke) && (pba->parameters_smg[3] == 0.))
++          || ((pba->gravity_model_smg == cmstg_attractor) && (pba->parameters_smg[5] == 0.)))) {
+     double x0 = 0., f0, x1, f1, x2;
+     int it;
+     x1 = pvecback_integration[pba->index_bi_phi_prime_smg];
+@@ -2457,7 +2458,7 @@ int background_initial_conditions(
+     class_call(background_functions(pba, a, pvecback_integration, long_info, pvecback),
+                pba->error_message, pba->error_message);
+     if (pba->background_verbose > 0)
+-      printf(" -> BD attractor IC: phi'_ini = %e (phi'' residual %e after %d secant steps)\n",
++      printf(" -> radiation-era attractor IC: phi'_ini = %e (phi'' residual %e after %d secant steps)\n",
+              x1, pvecback[pba->index_bg_phi_prime_prime_smg], it+1);
+   }
+ 
+-- 
+2.34.1
+

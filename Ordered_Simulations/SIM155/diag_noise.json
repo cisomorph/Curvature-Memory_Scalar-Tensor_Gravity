@@ -27,7 +27,15 @@
    1206.8456924656793
   ],
   "rms_residual": 0.031650096021717096,
-  "slope_per_proposal": 1.4880755618767039
+  "slope_per_proposal": 1.4880755618767039,
+  "chi2_noise_by_likelihood": {
+   "planck_2018_lowl.TT": 4.699843468153085e-05,
+   "planck_2018_lowl.EE": 9.770696620880821e-14,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 0.06360218970772538,
+   "planck_2018_lensing.native": 0.0003281312763203852,
+   "bao.desi_dr2.desi_bao_all": 1.7468425545416955e-05,
+   "sn.pantheonplus": 9.491274235492392e-10
+  }
  },
  "omega_cdm": {
   "step_in_proposals": [
@@ -57,6 +65,14 @@
    1206.8998787584255
   ],
   "rms_residual": 0.03695593678840303,
-  "slope_per_proposal": 5.5320023183746425
+  "slope_per_proposal": 5.5320023183746425,
+  "chi2_noise_by_likelihood": {
+   "planck_2018_lowl.TT": 0.00019425085103054818,
+   "planck_2018_lowl.EE": 9.770696620880821e-14,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 0.07422808242443266,
+   "planck_2018_lensing.native": 0.00037682519702979977,
+   "bao.desi_dr2.desi_bao_all": 2.0968596450812056e-05,
+   "sn.pantheonplus": 3.238707505216224e-09
+  }
  }
 }

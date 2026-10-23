@@ -1,0 +1,101 @@
+{
+ "point": {
+  "omega_b": 0.02237,
+  "omega_cdm": 0.12,
+  "H0": 67.5,
+  "logA": 3.044,
+  "n_s": 0.9649,
+  "tau_reio": 0.054,
+  "A_planck": 1.0
+ },
+ "lcdm": {
+  "planck_2018_lowl.TT": 23.527314370241072,
+  "planck_2018_lowl.EE": 396.04678534427984,
+  "planck_2018_highl_plik.TTTEEE_lite_native": 585.7223545244119,
+  "planck_2018_lensing.native": 8.883414597290873,
+  "bao.desi_dr2.desi_bao_all": 26.38568601866101,
+  "sn.pantheonplus": 1403.874702551699
+ },
+ "cmstg_L0=0.15_xi=0.0": {
+  "chi2": {
+   "planck_2018_lowl.TT": 23.479267098805508,
+   "planck_2018_lowl.EE": 396.04678534427984,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 585.9071113724024,
+   "planck_2018_lensing.native": 8.885526408443498,
+   "bao.desi_dr2.desi_bao_all": 26.385699982554303,
+   "sn.pantheonplus": 1403.8746051451465
+  },
+  "delta_vs_lcdm": {
+   "planck_2018_lowl.TT": -0.0480472714355642,
+   "planck_2018_lowl.EE": 0.0,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 0.18475684799045666,
+   "planck_2018_lensing.native": 0.0021118111526252648,
+   "bao.desi_dr2.desi_bao_all": 1.3963893294999252e-05,
+   "sn.pantheonplus": -9.740655264067755e-05
+  },
+  "delta_total": 0.13873794504817205
+ },
+ "cmstg_L0=0.5_xi=0.0": {
+  "chi2": {
+   "planck_2018_lowl.TT": 23.479267098805508,
+   "planck_2018_lowl.EE": 396.04678534427984,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 585.9071113724024,
+   "planck_2018_lensing.native": 8.885526408443498,
+   "bao.desi_dr2.desi_bao_all": 26.385699982554303,
+   "sn.pantheonplus": 1403.8746051451465
+  },
+  "delta_vs_lcdm": {
+   "planck_2018_lowl.TT": -0.0480472714355642,
+   "planck_2018_lowl.EE": 0.0,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 0.18475684799045666,
+   "planck_2018_lensing.native": 0.0021118111526252648,
+   "bao.desi_dr2.desi_bao_all": 1.3963893294999252e-05,
+   "sn.pantheonplus": -9.740655264067755e-05
+  },
+  "delta_total": 0.13873794504817205
+ },
+ "cmstg_L0=0.15_xi=0.0001": {
+  "chi2": {
+   "planck_2018_lowl.TT": 23.479283084331314,
+   "planck_2018_lowl.EE": 396.04678534427984,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 585.9082093826087,
+   "planck_2018_lensing.native": 8.88553011347988,
+   "bao.desi_dr2.desi_bao_all": 26.38570463290079,
+   "sn.pantheonplus": 1403.8746051648484
+  },
+  "delta_vs_lcdm": {
+   "planck_2018_lowl.TT": -0.048031285909758026,
+   "planck_2018_lowl.EE": 0.0,
+   "planck_2018_highl_plik.TTTEEE_lite_native": 0.1858548581967625,
+   "planck_2018_lensing.native": 0.002115516189007849,
+   "bao.desi_dr2.desi_bao_all": 1.8614239781555852e-05,
+   "sn.pantheonplus": -9.738685071170039e-05
+  },
+  "delta_total": 0.13986031586508219
+ },
+ "multi_point": {
+  "moves": [
+   {
+    "H0": 68.1,
+    "omega_cdm": 0.1188
+   },
+   {
+    "H0": 66.9,
+    "n_s": 0.9689
+   },
+   {
+    "omega_b": 0.02252,
+    "tau_reio": 0.06,
+    "logA": 3.056
+   }
+  ],
+  "delta_total": [
+   0.13873794504817205,
+   0.17352096073773282,
+   -0.12929061347540483,
+   -0.11361455981113977
+  ],
+  "mean": 0.01733843312484007,
+  "std": 0.16101716998771984
+ }
+}

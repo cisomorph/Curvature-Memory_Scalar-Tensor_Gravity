@@ -36,6 +36,7 @@ kineticity regulator is needed, and a tiny negative c_s² noise (≈ −1e-7) mu
 |---|---|
 | GR limit (Λ0 = ξ = 0): background vs ΛCDM | identical 100θ_s (1.043001); z_drag to 6e-9 |
 | GR limit: lensed C_ℓ vs ΛCDM | 2e-4 (TT), 4e-4 (EE), 9e-4 (TE) of peak; independent of the regulator, i.e. hi_class's scalar-sector numerics |
+| GR limit: full D1 likelihood (Planck 2018 + DESI DR2 + Pantheon+) vs ΛCDM, 4 cosmologies | Δχ² = +0.02 ± 0.08 (sd 0.16, evaluation noise): no systematic offset (`SIM155/gr_limit_chi2.py`) |
 | regulator convergence (survivor): κ = 1e-5 vs 1e-6 | 4e-6 (TT), 8e-6 (EE), 1e-5 (TE) |
 | regulator convergence: κ = 1e-4 vs 1e-6 | 4e-5 … 8e-5 |
 | survivor vs ΛCDM at the same H0 (the physical effect) | 2.5e-3 (TT), 6.6e-3 (EE), 1.1e-2 (TE) |

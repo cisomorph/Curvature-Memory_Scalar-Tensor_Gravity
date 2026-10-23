@@ -168,6 +168,8 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
     - Residuals from a quadratic fit are random ±0.04 jumps between neighbouring points.
     - RMS = 0.032 (H0) and 0.037 (ω_cdm) in −log(post), i.e. **0.07 in χ²**.
     - This is hi_class's discrete k/ℓ sampling at default precision. It sets the precision of any best-fit χ² at about ±0.1, far below the pre-registered thresholds (6 and 3).
+    - Breakdown by likelihood (rerun with per-likelihood χ²): plik-lite TTTEEE 0.064 / 0.074 (H0 / ω_cdm direction); lensing 0.0003; low-ℓ TT ≤ 0.0002; low-ℓ EE, DESI DR2 and Pantheon+ 0.
+    - So the noise is entirely high-ℓ C_ℓ sampling, as expected. A future MCMC could reduce it with tighter hi_class C_ℓ/k-sampling precision.
   - *Failures.* 0 of 40 CMSTG-A points drawn from the fit's `ref` distribution fail with `cs2_safe_smg = 1e-2` (v1 failed 4/14 at 1e-5).
     - −log(post) ranges 1205.5–1719 (median 1293).
     - The best random point is Λ0 = 0.26, ξ = 0.064 (ξ²/4Λ0 = 0.004).
@@ -185,6 +187,14 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
   - Order: CMSTG D1 first, then ΛCDM D1, w0wa D1, CMSTG D2/D3, then the rest.
   - Expected cost: about 3 s per ΛCDM evaluation and 8 s per CMSTG evaluation; about 3.5 h in total.
 
+### 2026-10-23 — Systematic check: χ² offset of the hi_class model in its exact GR limit (`SIM155/gr_limit_chi2.py`)
+- **Question:** in the exact GR limit (ξ = 0, so φ ≡ 0 and F ≡ ½) the hi_class CMSTG model differs from plain ΛCDM by 2e-4 … 9e-4 of the C_ℓ peaks (scalar-sector numerics, hi_class_model/README.md). Does that bias the CMSTG-vs-ΛCDM Δχ²?
+- **Method:** full D1 likelihood at the same parameters, CMSTG (ξ = 0) minus plain ΛCDM, at four cosmologies (Planck-like reference, then ±1σ moves in H0/ω_cdm, H0/n_s, ω_b/τ/logA).
+- **Result:** Δχ² = +0.139, +0.174, −0.129, −0.114. **Mean +0.02 ± 0.08 (sd 0.16).**
+  - At the reference point it is all plik-lite (+0.185) and low-ℓ TT (−0.048); DESI, Pantheon+ and low-ℓ EE are 0.
+  - It is identical for Λ0 = 0.15 and 0.5 (Λ0 is irrelevant at ξ = 0) and continuous at ξ = 1e-4 (+0.140).
+- **Conclusion:** no systematic offset. The scatter is evaluation noise; the difference of two noisy evaluations is expected to scatter by √2 × 0.07–0.1. CMSTG-vs-ΛCDM Δχ² values need no correction, only the ±0.1-level noise allowance. Output: `SIM155/gr_limit_chi2.json`.
+
 ---
 
 ## Decisions and deviations (with reasons)
@@ -199,7 +209,7 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
    - A larger spread triggers a re-fit from the best point, logged here, before any criterion is applied.
 
 ## Open issues
-- Measure the GR-limit residual (issue 2 above) as a Δχ² on the full likelihood.
+- ~~Measure the GR-limit residual (issue 2 above) as a Δχ² on the full likelihood.~~ Done 2026-10-23: no systematic offset (+0.02 ± 0.08); see the GR-limit entry in the chronology.
 - BBN uses linear fitting formulas (Kneller & Steigman 2004). Confirm the survivors with a BBN code.
 - The CMB data are Planck 2018 plik-lite, low-ℓ and lensing. DESI's published w0wa significance uses different CMB likelihoods (Planck PR4 CamSpec and ACT lensing), so numbers will differ somewhat.
 - Paper III (UV) and Paper IV (galactic) are not audited.

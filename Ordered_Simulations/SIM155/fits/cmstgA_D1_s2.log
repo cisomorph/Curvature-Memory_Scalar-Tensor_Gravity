@@ -1,0 +1,60 @@
+[output] Output to be read-from/written-into folder '/home/aion/CMSTG-fixes/Ordered_Simulations/SIM155/fits', with prefix 'cmstgA_D1_s2'
+[bao.desi_dr2.desi_bao_all] Initialized.
+[minimize] *WARNING* This run has been SEEDED with seed 2
+[minimize] Initializing
+[minimize] Run 1/1 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.022208659984032778), 'omega_cdm': np.float64(0.11975701659849153), 'H0': np.float64(67.20650450280098), 'logA': np.float64(3.069959741874387), 'n_s': np.float64(0.9635670890929481), 'tau_reio': np.float64(0.049761840559781986), 'cmstg_L0': np.float64(0.1085650267088205), 'cmstg_xi': np.float64(0.10865829062614618), 'A_planck': np.float64(1.0019067146851859)}
+[prior] *WARNING* There are unbounded parameters (['A_planck']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+[minimize] Starting run 1/1
+/home/aion/cmstg-venv/lib/python3.10/site-packages/cobaya/model.py:109: RuntimeWarning: overflow encountered in scalar add
+  self, "loglike", sum(self.loglikes) if self.loglikes is not None else None
+[minimize] *ERROR* Finished unsuccessfully. Reason: Linear algebra error, e.g. the interpolation points produced a singular linear system.
+[minimize] *ERROR* Minimization failed! Here is the raw result object:
+****** Py-BOBYQA Results ******
+Solution xmin = [-0.14094272  0.98399818  0.96925824 -0.71341336 -0.05882507  0.98106754
+  0.8449301  -0.60946878  0.11630796]
+Objective value f(xmin) = 1237.355835
+Needed 22 objective evaluations (at 22 points)
+Approximate gradient = [  2.37897559 -25.79073965 -22.17122597  18.09247628   0.99526129
+ -19.40356287  -3.27235997   9.96812217  -2.01614729]
+Approximate Hessian = [[ 6.47593182e+00 -3.38888425e+00 -3.33806549e+00  2.45632825e+00
+   2.02596000e-01 -3.37866714e+00 -2.90697035e+00  2.09897107e+00
+  -4.00570141e-01]
+ [-3.38888425e+00  2.93393760e+01  2.33045601e+01 -1.71486546e+01
+  -1.41441616e+00  2.35880083e+01  2.02944436e+01 -1.46538757e+01
+   2.79656509e+00]
+ [-3.33806549e+00  2.33045601e+01  3.87622445e+01 -1.68913598e+01
+  -1.39320603e+00  2.32342561e+01  1.99895152e+01 -1.44341179e+01
+   2.75462883e+00]
+ [ 2.45632825e+00 -1.71486546e+01 -1.68913598e+01  7.71252105e+01
+   1.02519665e+00 -1.70966383e+01 -1.47025110e+01  1.06212598e+01
+  -2.02700702e+00]
+ [ 2.02596000e-01 -1.41441616e+00 -1.39320603e+00  1.02519665e+00
+   5.43290401e+00 -1.41015198e+00 -1.21328329e+00  8.76046071e-01
+  -1.67185662e-01]
+ [-3.37866714e+00  2.35880083e+01  2.32342561e+01 -1.70966383e+01
+  -1.41015198e+00  5.16305078e+01  2.02318954e+01 -1.46096678e+01
+   2.78813432e+00]
+ [-2.90697035e+00  2.02944436e+01  1.99895152e+01 -1.47025110e+01
+  -1.21328329e+00  2.02318954e+01  2.44474695e+02 -1.25693610e+01
+   2.39889517e+00]
+ [ 2.09897107e+00 -1.46538757e+01 -1.44341179e+01  1.06212598e+01
+   8.76046071e-01 -1.46096678e+01 -1.25693610e+01  2.86449664e+01
+  -1.73210690e+00]
+ [-4.00570141e-01  2.79656509e+00  2.75462883e+00 -2.02700702e+00
+  -1.67185662e-01  2.78813432e+00  2.39889517e+00 -1.73210690e+00
+   4.67742764e+00]]
+Exit flag = -3
+Error (linear algebra): Singular matrix in mini-model interpolation (main loop)
+******************************
+
+{
+ "model": "cmstgA",
+ "data": "D1",
+ "seed": 2,
+ "seconds": 196.9767017364502,
+ "status": "not converged: LoggedError",
+ "minimum": null,
+ "chi2_total": null,
+ "chi2": {}
+}

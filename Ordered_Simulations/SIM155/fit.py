@@ -75,7 +75,7 @@ def main(model, data, seed):
     f0 = f(x0)
     # stage 1: BOBYQA in the scaled box
     sol = pybobyqa.solve(f, x0, bounds=(lo, hi), scaling_within_bounds=True, rhobeg=0.05, rhoend=2e-5,
-                         maxfun=2500, seek_global_minimum=False, do_logging=False,
+                         maxfun=int(os.environ.get('MAXFUN', 2500)), seek_global_minimum=False, do_logging=False,
                          user_params={'slow.max_slow_iters': 60})
     x1, f1 = sol.x, sol.f
     # stage 2: MIGRAD polish, repeated until two passes agree
@@ -87,7 +87,7 @@ def main(model, data, seed):
         mi.limits = list(zip(lo, hi))
         mi.errors = steps
         mi.strategy = 1
-        mi.migrad(ncall=1500)
+        mi.migrad(ncall=int(os.environ.get('NCALL', 1500)))
         xn, fn = np.array(mi.values), mi.fval
         passes.append(dict(fval=float(fn), valid=bool(mi.valid), edm=float(mi.fmin.edm)))
         improved = fx - fn

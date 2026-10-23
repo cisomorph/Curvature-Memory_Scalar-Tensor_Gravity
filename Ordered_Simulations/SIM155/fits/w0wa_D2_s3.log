@@ -1,0 +1,8 @@
+[output] Output to be read-from/written-into folder '/home/aion/CMSTG-fixes/Ordered_Simulations/SIM155/fits', with prefix 'w0wa_D2_s3'
+[bao.desi_dr2.desi_bao_all] Initialized.
+[minimize] *WARNING* This run has been SEEDED with seed 3
+[minimize] Initializing
+[minimize] Run 1/1 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.022448590835654203), 'omega_cdm': np.float64(0.1200588594197601), 'H0': np.float64(67.26742108003994), 'logA': np.float64(3.0650480519318224), 'n_s': np.float64(0.9712376413744912), 'tau_reio': np.float64(0.053209371827614524), 'w0_fld': np.float64(-0.7435359746547199), 'wa_fld': np.float64(-0.6476439538802007), 'A_planck': np.float64(1.001487838116528)}
+[prior] *WARNING* There are unbounded parameters (['A_planck']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+[minimize] Starting run 1/1

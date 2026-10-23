@@ -1,0 +1,10 @@
+{
+  "model": "cmstgA",
+  "data": "D1",
+  "seed": 1,
+  "seconds": 155.85566401481628,
+  "status": "not converged: LoggedError",
+  "minimum": null,
+  "chi2_total": null,
+  "chi2": {}
+}

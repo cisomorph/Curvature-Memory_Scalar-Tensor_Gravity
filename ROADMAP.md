@@ -1,5 +1,7 @@
 # CMSTG roadmap (locked 2026-10-22)
 
+The detailed, step-by-step record of this work is `RESEARCH_LOG.md`.
+
 This file is the plan agreed after the audit (`AUDIT_NOTES.md`). Pass/fail criteria are fixed here
 **before** the runs, following the project's own SPEC-before-run rule. Changing a criterion afterwards
 requires a dated note explaining why.

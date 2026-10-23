@@ -1,0 +1,43 @@
+{
+  "model": "lcdm",
+  "data": "D1",
+  "seed": 3,
+  "seconds": 533.9619557857513,
+  "status": "converged",
+  "minimum": {
+    "weight": 1.0,
+    "minuslogpost": 1201.9438,
+    "omega_b": 0.022393455,
+    "omega_cdm": 0.11822046,
+    "H0": 68.051434,
+    "logA": 3.044414,
+    "n_s": 0.96614646,
+    "tau_reio": 0.057196047,
+    "A_planck": 0.9998007,
+    "A_s": 2.0997723e-09,
+    "chi2__BAO": 14.735872,
+    "chi2__CMB": 1014.9951,
+    "chi2__SN": 1405.1081,
+    "minuslogprior": -15.475694,
+    "minuslogprior__0": -15.475694,
+    "chi2": 2434.8391,
+    "chi2__planck_2018_lowl.TT": 23.240449,
+    "chi2__planck_2018_lowl.EE": 396.59814,
+    "chi2__planck_2018_highl_plik.TTTEEE_lite_native": 586.05628,
+    "chi2__planck_2018_lensing.native": 9.1002629,
+    "chi2__bao.desi_dr2.desi_bao_all": 14.735872,
+    "chi2__sn.pantheonplus": 1405.1081
+  },
+  "chi2_total": 2434.8391,
+  "chi2": {
+    "chi2__BAO": 14.735872,
+    "chi2__CMB": 1014.9951,
+    "chi2__SN": 1405.1081,
+    "chi2__planck_2018_lowl.TT": 23.240449,
+    "chi2__planck_2018_lowl.EE": 396.59814,
+    "chi2__planck_2018_highl_plik.TTTEEE_lite_native": 586.05628,
+    "chi2__planck_2018_lensing.native": 9.1002629,
+    "chi2__bao.desi_dr2.desi_bao_all": 14.735872,
+    "chi2__sn.pantheonplus": 1405.1081
+  }
+}

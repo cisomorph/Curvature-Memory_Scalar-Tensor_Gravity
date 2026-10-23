@@ -1,0 +1,24 @@
+ -log(Like) = 1199.1953994513958
+  chi-sq    = 2398.3907989027916
+
+    1  2.239239538e-02   omega_b                                           omega\ b
+    2  1.197536829e-01   omega_cdm                                         omega\ cdm
+    3  6.728610682e+01   H0                                                H0
+    4  3.044904198e+00   logA                                              logA
+    6  9.661306847e-01   n_s                                               n\ s
+    7  5.470858291e-02   tau_reio                                          tau\ reio
+    8  -8.108901897e-01  w0_fld                                            w0\ fld
+    9  -6.981537724e-01  wa_fld                                            wa\ fld
+   10  1.000918897e+00   A_planck                                          y_\mathrm{cal}
+
+
+    5  2.100801850e-09   A_s                                               A\ s
+   11  1.036483762e+01   chi2__BAO                                         \chi^2_\mathrm{BAO}
+   12  1.010151216e+03   chi2__CMB                                         \chi^2_\mathrm{CMB}
+   13  1.404092217e+03   chi2__SN                                          \chi^2_\mathrm{SN}
+   14  2.308105777e+01   chi2__planck_2018_lowl.TT                         \chi^2_{\rm planck\ 2018\ lowl.TT}
+   15  3.960852889e+02   chi2__planck_2018_lowl.EE                         \chi^2_{\rm planck\ 2018\ lowl.EE}
+   16  5.821533993e+02   chi2__planck_2018_highl_plik.TTTEEE_lite_native   \chi^2_{\rm planck\ 2018\ highl\ plik.TTTEEE\ lite\ native}
+   17  8.831470222e+00   chi2__planck_2018_lensing.native                  \chi^2_{\rm planck\ 2018\ lensing.native}
+   18  1.036483762e+01   chi2__bao.desi_dr2.desi_bao_all                   \chi^2_{\rm bao.desi\ dr2.desi\ bao\ all}
+   19  1.404092217e+03   chi2__sn.pantheonplus                             \chi^2_{\rm sn.pantheonplus}

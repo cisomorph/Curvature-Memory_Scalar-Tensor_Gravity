@@ -1,0 +1,50 @@
+[output] Output to be read-from/written-into folder '/home/aion/CMSTG-fixes/Ordered_Simulations/SIM155/fits', with prefix 'cmstgA_D1_s1'
+[bao.desi_dr2.desi_bao_all] Initialized.
+[minimize] *WARNING* This run has been SEEDED with seed 1
+[minimize] Initializing
+[minimize] Run 1/1 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.0222739522207402), 'omega_cdm': np.float64(0.1204713272584808), 'H0': np.float64(67.26410856977587), 'logA': np.float64(3.0593618414635566), 'n_s': np.float64(0.9542087689787357), 'tau_reio': np.float64(0.046249155038463934), 'cmstg_L0': np.float64(0.13019990938648615), 'cmstg_xi': np.float64(0.10910493520628428), 'A_planck': np.float64(1.0020499094164974)}
+[prior] *WARNING* There are unbounded parameters (['A_planck']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+[minimize] Starting run 1/1
+/home/aion/cmstg-venv/lib/python3.10/site-packages/cobaya/model.py:109: RuntimeWarning: overflow encountered in scalar add
+  self, "loglike", sum(self.loglikes) if self.loglikes is not None else None
+[minimize] *ERROR* Finished unsuccessfully. Reason: Linear algebra error, e.g. the interpolation points produced a singular linear system.
+[minimize] *ERROR* Minimization failed! Here is the raw result object:
+****** Py-BOBYQA Results ******
+Solution xmin = [ 0.  0.  0. -1.  0.  0.  0.  0.  0.]
+Objective value f(xmin) = 1308.124789
+Needed 20 objective evaluations (at 20 points)
+Approximate gradient = [   7.76736353  -76.16136849  -70.56962423   64.24858247    1.48015722
+ -109.69898743  -87.40561004   23.02407873  -10.76702903]
+Approximate Hessian = [[ 2.00321852  0.          0.          0.          0.          0.
+   0.          0.          0.        ]
+ [ 0.         22.98452488  0.          0.          0.          0.
+   0.          0.          0.        ]
+ [ 0.          0.         33.56900378  0.          0.          0.
+   0.          0.          0.        ]
+ [ 0.          0.          0.         45.98893013  0.          0.
+   0.          0.          0.        ]
+ [ 0.          0.          0.          0.          1.26527771  0.
+   0.          0.          0.        ]
+ [ 0.          0.          0.          0.          0.         45.90653121
+   0.          0.          0.        ]
+ [ 0.          0.          0.          0.          0.          0.
+  82.42665263  0.          0.        ]
+ [ 0.          0.          0.          0.          0.          0.
+   0.          8.07346062  0.        ]
+ [ 0.          0.          0.          0.          0.          0.
+   0.          0.          0.49933052]]
+Exit flag = -3
+Error (linear algebra): Singular matrix in mini-model interpolation (main loop)
+******************************
+
+{
+ "model": "cmstgA",
+ "data": "D1",
+ "seed": 1,
+ "seconds": 155.85566401481628,
+ "status": "not converged: LoggedError",
+ "minimum": null,
+ "chi2_total": null,
+ "chi2": {}
+}

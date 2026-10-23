@@ -1,0 +1,40 @@
+[output] Output to be read-from/written-into folder '/home/aion/CMSTG-fixes/Ordered_Simulations/SIM155/fits', with prefix 'cmstgA_D1_s3'
+[bao.desi_dr2.desi_bao_all] Initialized.
+[minimize] *WARNING* This run has been SEEDED with seed 3
+[minimize] Initializing
+[minimize] Run 1/1 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.022448590835654203), 'omega_cdm': np.float64(0.1200588594197601), 'H0': np.float64(67.26742108003994), 'logA': np.float64(3.0650480519318224), 'n_s': np.float64(0.9712376413744912), 'tau_reio': np.float64(0.053209371827614524), 'cmstg_L0': np.float64(0.15952886670170685), 'cmstg_xi': np.float64(0.08601111196283216), 'A_planck': np.float64(1.001487838116528)}
+[prior] *WARNING* There are unbounded parameters (['A_planck']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+[minimize] Starting run 1/1
+/home/aion/cmstg-venv/lib/python3.10/site-packages/cobaya/model.py:109: RuntimeWarning: overflow encountered in scalar add
+  self, "loglike", sum(self.loglikes) if self.loglikes is not None else None
+[minimize] *ERROR* Finished unsuccessfully. Reason: Linear algebra error, e.g. the interpolation points produced a singular linear system.
+[minimize] *ERROR* Minimization failed! Here is the raw result object:
+****** Py-BOBYQA Results ******
+Solution xmin = [ 0.  0.  0. -1.  0.  0.  0.  0.  0.]
+Objective value f(xmin) = 1242.409923
+Needed 19 objective evaluations (at 19 points)
+Approximate gradient = [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+Approximate Hessian = [[0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+Exit flag = -3
+Error (linear algebra): Singular matrix in mini-model interpolation (main loop)
+******************************
+
+{
+ "model": "cmstgA",
+ "data": "D1",
+ "seed": 3,
+ "seconds": 161.0655117034912,
+ "status": "not converged: LoggedError",
+ "minimum": null,
+ "chi2_total": null,
+ "chi2": {}
+}

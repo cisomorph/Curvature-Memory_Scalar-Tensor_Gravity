@@ -1,0 +1,64 @@
+[output] Output to be read-from/written-into folder '/home/aion/CMSTG-fixes/Ordered_Simulations/SIM155/fits', with prefix 'lcdm_D1_s3'
+[bao.desi_dr2.desi_bao_all] Initialized.
+[minimize] *WARNING* This run has been SEEDED with seed 3
+[minimize] Initializing
+[minimize] Run 1/2 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.022448590835654203), 'omega_cdm': np.float64(0.1200588594197601), 'H0': np.float64(67.26742108003994), 'logA': np.float64(3.0650480519318224), 'n_s': np.float64(0.9712376413744912), 'tau_reio': np.float64(0.053209371827614524), 'A_planck': np.float64(1.0011292805069056)}
+[minimize] Run 2/2 will start from random initial point:
+[minimize] {'omega_b': np.float64(0.0223461780230599), 'omega_cdm': np.float64(0.12089270286991677), 'H0': np.float64(67.96775276223579), 'logA': np.float64(3.051785494141162), 'n_s': np.float64(0.9717023372466176), 'tau_reio': np.float64(0.05226679942829515), 'A_planck': np.float64(0.9994897729455201)}
+[prior] *WARNING* There are unbounded parameters (['A_planck']). Prior bounds are given at 0.9999995 confidence level. Beware of likelihood modes at the edge of the prior
+[minimize] Starting run 1/2
+[minimize] Run 1/2 converged.
+[minimize] Starting run 2/2
+[minimize] Run 2/2 converged.
+[minimize] Finished successfully!
+[minimize] *WARNING* Modest spread in minima: [1202.2622171312087, 1201.9438497669462]
+[minimize] -log(posterior) minimized to 1201.94
+[minimize] Parameter values at minimum:
+   weight  minuslogpost   omega_b  omega_cdm         H0      logA       n_s  tau_reio  A_planck           A_s  chi2__BAO    chi2__CMB     chi2__SN  minuslogprior  minuslogprior__0         chi2  chi2__planck_2018_lowl.TT  chi2__planck_2018_lowl.EE  chi2__planck_2018_highl_plik.TTTEEE_lite_native  chi2__planck_2018_lensing.native  chi2__bao.desi_dr2.desi_bao_all  chi2__sn.pantheonplus
+0     1.0    1201.94385  0.022393    0.11822  68.051434  3.044414  0.966146  0.057196  0.999801  2.099772e-09  14.735872  1014.995131  1405.108083     -15.475694        -15.475694  2434.839087                  23.240449                  396.59814                                       586.056279                          9.100263                        14.735872            1405.108083
+[minimize] Full set of minima:
+{'0': (1202.2622171312087, True), '1': (1201.9438497669462, True)}
+{
+ "model": "lcdm",
+ "data": "D1",
+ "seed": 3,
+ "seconds": 533.9619557857513,
+ "status": "converged",
+ "minimum": {
+  "weight": 1.0,
+  "minuslogpost": 1201.9438,
+  "omega_b": 0.022393455,
+  "omega_cdm": 0.11822046,
+  "H0": 68.051434,
+  "logA": 3.044414,
+  "n_s": 0.96614646,
+  "tau_reio": 0.057196047,
+  "A_planck": 0.9998007,
+  "A_s": 2.0997723e-09,
+  "chi2__BAO": 14.735872,
+  "chi2__CMB": 1014.9951,
+  "chi2__SN": 1405.1081,
+  "minuslogprior": -15.475694,
+  "minuslogprior__0": -15.475694,
+  "chi2": 2434.8391,
+  "chi2__planck_2018_lowl.TT": 23.240449,
+  "chi2__planck_2018_lowl.EE": 396.59814,
+  "chi2__planck_2018_highl_plik.TTTEEE_lite_native": 586.05628,
+  "chi2__planck_2018_lensing.native": 9.1002629,
+  "chi2__bao.desi_dr2.desi_bao_all": 14.735872,
+  "chi2__sn.pantheonplus": 1405.1081
+ },
+ "chi2_total": 2434.8391,
+ "chi2": {
+  "chi2__BAO": 14.735872,
+  "chi2__CMB": 1014.9951,
+  "chi2__SN": 1405.1081,
+  "chi2__planck_2018_lowl.TT": 23.240449,
+  "chi2__planck_2018_lowl.EE": 396.59814,
+  "chi2__planck_2018_highl_plik.TTTEEE_lite_native": 586.05628,
+  "chi2__planck_2018_lensing.native": 9.1002629,
+  "chi2__bao.desi_dr2.desi_bao_all": 14.735872,
+  "chi2__sn.pantheonplus": 1405.1081
+ }
+}

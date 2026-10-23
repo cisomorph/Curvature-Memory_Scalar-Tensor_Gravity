@@ -1,0 +1,268 @@
+theory:
+  hiclass:
+    cmstg_model: false
+    cmstg_family: 0
+    path: null
+    speed: 0.2
+    stop_at_error: false
+    extra_args:
+      non_linear: halofit
+      lensing: 'yes'
+      Omega_Lambda: 0.0
+      use_ppf: 'yes'
+    ignore_obsolete: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: v3.4.0
+    external: !!python/name:cobaya_hiclass.HiClassCMSTG ''
+    input_params:
+    - omega_b
+    - omega_cdm
+    - H0
+    - A_s
+    - n_s
+    - tau_reio
+    - w0_fld
+    - wa_fld
+    output_params: []
+likelihood:
+  planck_2018_lowl.TT:
+    lmin: 2
+    lmax: 29
+    type: CMB
+    aliases:
+    - lowT
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_lowl.EE:
+    type: CMB
+    aliases:
+    - lowE
+    speed: -1
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_highl_plik.TTTEEE_lite_native:
+    path: null
+    dataset_file: plik_lite_v22.dataset
+    dataset_params:
+      use_cl: tt te ee
+    aliases:
+    - plikHM_TTTEEE
+    speed: 200
+    type: CMB
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  planck_2018_lensing.native:
+    path: null
+    dataset_file: lensing/2018/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.dataset
+    dataset_params: null
+    l_max: null
+    aliases:
+    - lensing
+    speed: 50
+    type: CMB
+    map_separator: x
+    stop_at_error: false
+    version: null
+    input_params:
+    - A_planck
+    output_params: []
+  bao.desi_dr2.desi_bao_all:
+    path: null
+    measurements_file: bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_mean.txt
+    cov_file: bao_data/desi_bao_dr2/desi_gaussian_bao_ALL_GCcomb_cov.txt
+    rs_fid: 1
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  sn.pantheonplus:
+    path: null
+    dataset_file: PantheonPlus/config.dataset
+    dataset_params: null
+    aliases:
+    - PantheonPlus
+    use_abs_mag: false
+    speed: 100
+    type: SN
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+params:
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.00015
+    proposal: 0.0001
+    renames:
+    - omegabh2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.0012
+    proposal: 0.001
+    renames:
+    - omegach2
+  H0:
+    prior:
+      min: 50.0
+      max: 85.0
+    ref:
+      dist: norm
+      loc: 67.5
+      scale: 0.6
+    proposal: 0.5
+  logA:
+    prior:
+      min: 2.9
+      max: 3.2
+    ref:
+      dist: norm
+      loc: 3.044
+      scale: 0.014
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    derived: true
+    renames:
+    - As
+  n_s:
+    prior:
+      min: 0.9
+      max: 1.05
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.004
+    proposal: 0.003
+    renames:
+    - ns
+  tau_reio:
+    prior:
+      min: 0.02
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.005
+    renames:
+    - tau
+  w0_fld:
+    prior:
+      min: -2.0
+      max: 0.0
+    ref:
+      dist: norm
+      loc: -0.8
+      scale: 0.1
+    proposal: 0.05
+    renames:
+    - w
+  wa_fld:
+    prior:
+      min: -3.0
+      max: 2.0
+    ref:
+      dist: norm
+      loc: -0.6
+      scale: 0.3
+    proposal: 0.1
+    renames:
+    - wa
+  A_planck:
+    prior:
+      dist: norm
+      loc: 1
+      scale: 0.0025
+    ref:
+      dist: norm
+      loc: 1
+      scale: 0.002
+    proposal: 0.0005
+    latex: y_\mathrm{cal}
+    renames: calPlanck
+  chi2__BAO:
+    latex: \chi^2_\mathrm{BAO}
+    derived: true
+  chi2__CMB:
+    latex: \chi^2_\mathrm{CMB}
+    derived: true
+  chi2__SN:
+    latex: \chi^2_\mathrm{SN}
+    derived: true
+sampler:
+  minimize:
+    method: bobyqa
+    ignore_prior: false
+    max_evals: 3000
+    best_of: 1
+    confidence_for_unbounded: 0.9999995
+    seed: 2
+    override_scipy: null
+    override_bobyqa:
+      rhoend: 0.05
+    override_iminuit: null
+    covmat: null
+    covmat_params: null
+    version: null
+    supports_periodic_params: false
+    fallback_covmat_scale: 4
+packages_path: /home/aion/cobaya_packages
+output: w0wa_D1_s2
+version: 3.6.2

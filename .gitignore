@@ -41,3 +41,9 @@ Papers/phase4/
 
 # OS
 .DS_Store
+
+# SIM155 run artefacts (binary / temporary)
+Ordered_Simulations/SIM155/fits/*.dill_pickle
+Ordered_Simulations/SIM155/fits/*.locked
+Ordered_Simulations/SIM155/fits_v2_smoke/
+Ordered_Simulations/SIM155/fit_smoke_tmp.py

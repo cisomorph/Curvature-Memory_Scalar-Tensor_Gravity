@@ -1,0 +1,99 @@
+theory:
+  hiclass:
+    external: !!python/name:cobaya_hiclass.HiClassCMSTG ''
+    cmstg_model: true
+    cmstg_family: 0
+    extra_args:
+      non_linear: halofit
+      lensing: 'yes'
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE_lite_native: null
+  planck_2018_lensing.native: null
+  bao.desi_dr2.desi_bao_all: null
+  sn.union3: null
+params:
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.00015
+    proposal: 0.0001
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.0012
+    proposal: 0.001
+  H0:
+    prior:
+      min: 50.0
+      max: 85.0
+    ref:
+      dist: norm
+      loc: 67.5
+      scale: 0.6
+    proposal: 0.5
+  logA:
+    prior:
+      min: 2.9
+      max: 3.2
+    ref:
+      dist: norm
+      loc: 3.044
+      scale: 0.014
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.9
+      max: 1.05
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.004
+    proposal: 0.003
+  tau_reio:
+    prior:
+      min: 0.02
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.005
+  cmstg_L0:
+    prior:
+      min: 0.02
+      max: 1.0
+    ref:
+      dist: uniform
+      loc: 0.1
+      scale: 0.2
+    proposal: 0.02
+  cmstg_xi:
+    prior:
+      min: 0.0
+      max: 0.3
+    ref:
+      dist: uniform
+      loc: 0.05
+      scale: 0.07
+    proposal: 0.01
+sampler:
+  minimize:
+    method: bobyqa
+    seed: 1
+    best_of: 1
+    max_evals: 3000
+packages_path: /home/aion/cobaya_packages
+output: cmstgA_D2_s1

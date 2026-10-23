@@ -36,7 +36,7 @@ out = os.path.join(HERE, 'fits', f'{model}_{data}_s{seed}')
 info = {'packages_path': '/home/aion/cobaya_packages',
         'theory': {'hiclass': {'external': HiClassCMSTG, 'cmstg_model': cm, 'cmstg_family': 0, 'extra_args': extra}},
         'likelihood': like, 'params': params,
-        'sampler': {'minimize': {'method': 'bobyqa', 'seed': seed, 'max_evals': int(os.environ.get('MAX_EVALS', 3000))}},
+        'sampler': {'minimize': {'method': 'bobyqa', 'seed': seed, 'best_of': int(os.environ.get('BEST_OF', 1)), 'max_evals': int(os.environ.get('MAX_EVALS', 3000))}},
         'output': out, 'force': True}
 t0 = time.time()
 try:

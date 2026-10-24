@@ -124,10 +124,14 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - the surviving DHOST theories keep a cosmologically set coupling (Hirano, Kobayashi & Yamauchi 2019);
   - thin-shell hides Ġ but leaves no cosmology (WHK).
   - Option 2 merges into option 1: coupling only the dark sector means baryons never feel a drift.
-- [ ] 9.2 Option 1, SIM157 "dark curvature memory": CMSTG's A = (2F)^{-1/2} acting on dark matter only, with a pinned-thawing trigger (DPT). Background (compressed Planck + DESI DR2 + Pantheon+) plus linear growth (eBOSS DR16 fσ8).
+- [x] 9.2 Option 1, SIM157 "dark curvature memory": CMSTG's A = (2F)^{-1/2} acting on dark matter only, with a pinned-thawing trigger (DPT). Background (compressed Planck + DESI DR2 + Pantheon+) plus linear growth (eBOSS DR16 fσ8).
+  - **Result 2026-10-24: FAIL (a)** (SIM157/RESULT.md).
+    - Δχ²_bg = +2.88 (TQ +2.77, w0wa +7.68); growth fine; coupling off early.
+    - The apparent phantom crossing is in the right direction but has the wrong shape (w_eff −0.96 → −1.22 at z = 1).
+    - S8 +6%, from a dark fifth force ≈ 2× gravity.
   - **Pre-registered (SIM157/SPEC.md, committed before any run):** DPT passes if Δχ²_bg vs ΛCDM ≥ 6, growth no worse than ΛCDM by more than 4 in χ²_RSD, and β ≈ 0 before recombination.
   - Expectation: TQ < DPT < w0wa.
-- [ ] 9.3 Only if 9.2 passes: a Boltzmann implementation of the coupled perturbations (CLASS) and a full fit with SIM155's machinery.
+- [x] 9.3 Only if 9.2 passes: a Boltzmann implementation of the coupled perturbations (CLASS) and a full fit with SIM155's machinery. **Not applicable** (9.2 failed).
 
 
 
@@ -167,3 +171,7 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - DARK_COUPLING_NOTES.md written (model, equations, literature: Khoury–Lin–Trodden 2025 and 2026 coupled-DE papers).
   - eBOSS DR16 fσ8 read from the paper's Table III.
   - SIM157 pre-registered.
+- 2026-10-24: **SIM157 done: FAIL (a).**
+  - Dark curvature memory (coupling on dark matter only) adds +0.11 over thawing quintessence (background +2.88 vs w0wa +7.68).
+  - It produces a right-direction but wrong-shape phantom crossing and raises S8 by 6%.
+  - Across SIM155–157, every tested form of curvature memory tops out near Δχ² ≈ +3 (limits: BBN, LLR, growth), against +8…+9 for w0waCDM.

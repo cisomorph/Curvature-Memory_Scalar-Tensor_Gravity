@@ -294,6 +294,31 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
   - The 72-point grid showed a strong-coupling region the free fits had missed. Three extra starts there give the unconstrained optimum +4.95 at α_M(0) = −0.111 (56× LLR), Λ0 = 0.88.
 - **Conclusion.** Universally coupled F(Ψ)R curvature memory cannot produce the DESI-preferred dynamics: early it is BBN-limited (SIM155), late it is limited by LLR (Vainshtein) or WHK (thin-shell). The remaining directions are different theories (ROADMAP 8.4).
 
+### 2026-10-24 — Phase 9: options 1 and 2 (SCREENING_NOTES §6, DARK_COUPLING_NOTES.md, SIM157)
+- **Option 2 (theory/literature): no GW-consistent way to hide Ġ for a universally coupled F(Ψ)R.**
+  - Luminal Horndeski has G_N = 1/(16πG4(φ0(t))) inside Vainshtein (Kobayashi 2019, eq. 177).
+  - The DHOST theories that survive the GW constraints keep a cosmologically set coupling (Hirano, Kobayashi & Yamauchi 2019).
+  - Thin-shell screening hides Ġ but leaves no cosmology (WHK).
+  - Option 2 therefore merges into option 1.
+- **Option 1, "dark curvature memory".** CMSTG's A = (2F)^{-1/2} acts on dark matter only; equations in DARK_COUPLING_NOTES. eBOSS DR16 RSD-only fσ8 was read from the paper's Table III (pdftotext).
+- **SIM157** was pre-registered and committed (78a19db) before any code ran.
+- **Method problems found and fixed before any SIM157 result existed** (the only run, a grid, was killed at its 50-min limit without output):
+  1. **H(z) table interpolation.** The first DarkBG version interpolated H(z) from the adaptive ODE steps. That shifted one thawing case by ≈ 3 in χ², because the compressed prior constrains D_M(z*) to 3e-4.
+     - Now H(z) is evaluated from the constraint on the dense ODE solution: it matches analytic ΛCDM to < 1e-9; ΛCDM = w0wa(−1, 0) and TQ = DPT(Λ0 → 0) to 1e-4.
+     - SIM156 cross-check: its TQ and ΛCDM best-fit χ² reproduce to ≤ 0.001 with the exact solver. st_solver's 1500-point table was fine.
+  2. **Hang at the singular point of A.** A = (1 − 2Λ0φ²)^{-1/2} diverges where F → 0, and the integrator crawled toward it.
+     - Now a terminal event stops at 2Λ0φ² = 0.95 (point = unphysical/failed), plus a 10-s per-evaluation alarm.
+     - The guard was first written with threshold 0.05 instead of 0.95, which would have rejected valid points. Caught in testing and fixed.
+  3. **Validation results.** V4 holds exactly. V5: ΛCDM fσ8 from the simple growth solver matches hi_class to 0.1% at z = 0, 0.5, 1.0 (tolerance 2%).
+- **Grid** (63 points, 16 min). Points where every cosmology drives the field into A's singular point are now recorded as unphysical instead of crashing the pool (one crash before any result).
+- **Results (joint best fits):**
+  - ΛCDM χ² 1427.79; w0wa +8.01 joint (+7.68 bg); TQ +2.67 (+2.77 bg).
+  - **DPT +3.15 (+2.88 bg)** at Λ0 = 3.07, v1 = 0.30, with dark matter 6.8% heavier today and S8 0.857 vs 0.809.
+  - Pre-registered verdict: **FAIL (a)**; (b) and (c) pass.
+  - Of the 6 DPT starts (3 random, 3 at the best grid points), only the grid-started one reached the strong-coupling optimum; the others converged to the TQ-like weak-coupling point (+2.67…+2.69). The same pattern as SIM156.
+- **Diagnostic bug found after the fits.** dark.w_eff returned z in descending order, so np.interp gave wrong *printed* w_eff values; the plotted curve was right. Fixed and recomputed: w_eff = −0.96, −1.02, −1.06, −1.22, −1.57 at z = 0, 0.3, 0.5, 1, 1.5. The criteria do not use w_eff.
+- **Physics.** The attractor makes the dark coupling quadratic (β = 2Λ0δφ), so the mass change is second order and late. The apparent phantom crossing is in the right direction but too weak today and too steep at z > 1. Strong coupling brings a dark fifth force (≈ 2× gravity at the best fit) that raises S8.
+
 ---
 
 ## Decisions and deviations (with reasons)

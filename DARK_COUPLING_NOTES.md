@@ -55,6 +55,13 @@ The coupling function A = (2F)^{-1/2} is CMSTG's conformal factor; only the set 
 ## 4. Pre-registered test: SIM157
 See Ordered_Simulations/SIM157/SPEC.md and ROADMAP Phase 9.
 
+## 5. Result (2026-10-24): FAIL. Right signature, wrong shape (SIM157/RESULT.md)
+- **Background.** DPT improves the background fit by only Δχ² = +2.88 (thawing quintessence +2.77; w0waCDM +7.68). Joint with fσ8: +3.15.
+- **Signature.** The apparent phantom crossing appears in the right direction: w_eff = −0.96 today, −1.06 at z = 0.5, −1.22 at z = 1. It is too weak today and too steep at z ≳ 1.
+- **Why: the attractor makes the coupling quadratic** (β = 2Λ0δφ), so the dark-matter mass change is second order and late.
+  - Making it large needs a dark fifth force 2β² = 8Λ0(A − 1), ≈ 2× gravity at the best fit, which raises S8 by 6%.
+  - The S8 *lowering* of Khoury–Lin–Trodden needs dark matter lighter since early times, which the attractor (coupling = 0 before recombination) forbids.
+
 ## References (verified 2026-10-24)
 - J. Khoury, M.-X. Lin, M. Trodden, *Apparent w < −1 and a lower S8 from dark axion and dark baryons interactions*, PRL 135, 181001 (2025), arXiv:2503.16415.
 - arXiv:2604.08449, *Coupled dark energy and dark matter for DESI: an effective guide to the phantom divide* (2026).

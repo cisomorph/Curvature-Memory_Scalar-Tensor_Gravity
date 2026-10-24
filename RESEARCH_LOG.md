@@ -240,6 +240,11 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
 - **Scheduling.** Profile jobs fill CPU slots as the main fits finish, matched on `^…/python (fit|profile).py` so the xargs wrappers are not counted.
   - A first version of the runner matched the wrappers as well, so it would have waited for all 27 fits. It was stopped before starting anything.
 - D2/D3 profiles will be run only if criterion (c) could matter, i.e. only if CMSTG passes (a) and (b) on D1.
+- **Update, same evening (before any profile job had started).** Free seed 1 ended after its 3 rounds without converging (last gain 0.29).
+  - Its end point: χ² 2428.10 (Δχ² = +4.51 vs ΛCDM), Λ0 = 0.288, ξ = 0.201, **ΔF = 0.035**, φ* = 0.35, H0 = 66.50, ω_b = 0.02227. Still drifting to larger ΔF and lower H0, and the valley bends (φ* rises with ΔF).
+  - The grid now extends to ΔF = 0.048 and 0.056. The box ξ ≤ 0.3 ends the valley near ΔF ≈ 0.05.
+  - The Λ0 start guess follows the bend: φ*(ΔF) = 0.28 + 4·max(0, ΔF − 0.018).
+  - The runner was restarted with 10 points in the order 0.040, 0.048, 0.012, 0.032, 0.024, 0.056, 0.008, 0.016, 0.004, 0.020.
 
 ---
 

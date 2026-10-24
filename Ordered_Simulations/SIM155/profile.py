@@ -4,14 +4,14 @@ SIM155 profile likelihood of CMSTG-A in the attractor strength ΔF = F* − ½ =
     python profile.py DATA DF        (e.g. python profile.py D1 0.012)
 
 Why: the free CMSTG fits (fit.py) end in a long, curved, nearly flat valley in (Λ0, ξ, H0). Along it the attractor
-field φ* = ξ/(2Λ0) stays ≈ 0.28 while ΔF and H0 change, and χ² changes by < 1. Local optimisers stop at different
+field φ* = ξ/(2Λ0) stays ≈ 0.28–0.35 while ΔF and H0 change, and χ² changes by < 1. Local optimisers stop at different
 points of such a valley (seed spreads > 0.5 in χ²). Fixing ΔF and minimising over everything else is the standard
 remedy: min over the ΔF grid of the profile is the best fit, and the profile shows directly how much improvement
 survives where BBN allows it (C3 needs ΔF ≲ 0.012). This is a method for finding the best fit; data, model, priors
 and the pre-registered criteria are unchanged (the pre-registered box ξ ≤ 0.3 is kept: Λ0 ≤ 0.0225/ΔF).
 
 At fixed ΔF the sampled CMSTG parameter is Λ0 (flat prior); ξ = 2√(Λ0 ΔF) is computed. Starts: the six ΛCDM
-parameters from the D1 ΛCDM best fit, Λ0 on the valley guess ΔF/0.28².
+parameters from the D1 ΛCDM best fit, Λ0 on the valley guess ΔF/φ*(ΔF)².
 Output: profile/cmstgA_<DATA>_dF<DF>.json (fit.py format, plus 'dF').
 """
 import json, os, sys, time
@@ -23,14 +23,17 @@ import fitcore
 from fit import build_info
 
 OUTDIR = os.path.join(HERE, 'profile')
-PHI_STAR = 0.28                                        # valley guess, from the free fits
+def phi_guess(dF):
+    """Valley guess for φ* = ξ/(2Λ0) from the free D1 fits: (ΔF, φ*) = (0.009, 0.29), (0.011, 0.28), (0.024, 0.30),
+    (0.035, 0.35), i.e. ≈ 0.28 up to ΔF ≈ 0.018 and rising beyond. Only the start depends on it."""
+    return 0.28 + 4.0 * max(0.0, dF - 0.018)
 
 
 def setup(data, dF):
     """Cobaya model at fixed ΔF, its sampled names, box, proposals and start point."""
     info = build_info('cmstgA', data)
     L_hi = min(1.0, 0.0225 / dF)                       # keeps ξ = 2√(Λ0 ΔF) ≤ 0.3 (pre-registered box)
-    L_ref = float(np.clip(dF / PHI_STAR**2, 0.03, 0.9 * L_hi))
+    L_ref = float(np.clip(dF / phi_guess(dF)**2, 0.03, 0.9 * L_hi))
     info['params']['cmstg_L0'] = dict(prior={'min': 0.02, 'max': L_hi},
                                       ref={'dist': 'norm', 'loc': L_ref, 'scale': 0.1 * L_ref}, proposal=0.15 * L_ref)
     info['params']['cmstg_xi'] = {'value': f'lambda cmstg_L0: 2*np.sqrt(cmstg_L0*{dF!r})'}
@@ -52,7 +55,7 @@ def main(data, dF):
     os.makedirs(OUTDIR, exist_ok=True)
     out = os.path.join(OUTDIR, run + '.json')
     m, names, lo, hi, prop, x0 = setup(data, dF)
-    rec = dict(model='cmstgA', data=data, dF=dF, phi_star_guess=PHI_STAR, names=names,
+    rec = dict(model='cmstgA', data=data, dF=dF, phi_star_guess=phi_guess(dF), names=names,
                start=dict(zip(names, map(float, x0))), proposal=dict(zip(names, map(float, prop))))
 
     def save(stage, x, fx, oinfo):

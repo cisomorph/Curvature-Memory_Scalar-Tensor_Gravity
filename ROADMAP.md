@@ -53,7 +53,12 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - Pantheon+ / Union3 / DES-Y5 SNe
 - [x] 3.2 Validation (Planck-point χ²: low-ℓ TT 23.45, low-ℓ EE 396.12, plik-lite 583.16, lensing 8.86, matching Planck's published values): hi_class ΛCDM reproduces Planck 2018 best fit; Cobaya reproduces published ΛCDM χ² and parameters.
 - [x] 3.3 Implement the surviving model(s) in hi_class as a covariant Horndeski model (G2 = X, G4 = F(φ), with bare Λ); validate its background against `st_solver`.
-- [~] 3.4 Best-fit and MCMC comparison (SIM155 running): ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
+- [x] 3.4 Best-fit and MCMC comparison: ΛCDM vs w0waCDM vs model(s). Report Δχ², AIC/BIC and posteriors.
+  - **Result 2026-10-24 (SIM155/RESULT.md): CMSTG-A FAILS the pre-registered criteria.**
+    - Δχ² vs ΛCDM = +4.65 (D1), +4.50 (D2), +3.19 (D3), all < 6.
+    - At the best fit C3 fails (Y_p +3.25σ).
+    - w0waCDM gains +9.2 … +19.6.
+    - MCMC not run (pre-registered: only if a model passes).
   - **Pre-registered 2026-10-23, before any Phase 3 fit was run:**
     - Data, baseline D1: Planck 2018 (low-ℓ TT + low-ℓ EE + plik-lite TTTEEE + lensing, native Cobaya likelihoods)
       + DESI DR2 BAO + Pantheon+. Variants D2 and D3 swap Pantheon+ for Union3 and DES-Y5.
@@ -79,14 +84,20 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 
 ## Phase 5 — Distinctive predictions
 - [x] 5.1 (survivor: |d_GW/d_EM − 1| < 1e-6 for z < 10, so sirens cannot test it) Gravitational-wave standard sirens: d_GW/d_EM = √(F(0)/F(z)).
-- [ ] 5.2 G(z) history as seen by BBN and the CMB.
-- [~] 5.3 Growth of structure: fσ8(z), S8. Survivor (background level): fσ8 −2.5% (z = 0), −1.3% (z = 0.5) vs ΛCDM; σ8 −0.55%. Redo at the SIM155 best fit.
+- [x] 5.2 G(z) history as seen by BBN and the CMB. At the SIM155 best fit: G_BBN/G0 = 1.080, G_rec/G0 = 1.0025, G = G0 for z ≲ 10. At the best BBN-allowed point: 1.023 and 1.005. The modification is early (`SIM155/growth.json`).
+- [x] 5.3 Growth of structure: fσ8(z), S8.
+  - Survivor (background level): fσ8 −2.5% (z = 0), −1.3% (z = 0.5) vs ΛCDM; σ8 −0.55%.
+  - **Superseded by the full Boltzmann result (SIM155):**
+    - best fit: S8 = 0.871 (+7.5%), σ8 +3.9%, fσ8 +3.3 … +3.9% (z = 0–1);
+    - BBN-allowed point: S8 +2.5%.
+    - The background-level estimate held the other parameters at fixed Planck values. With every parameter refit, growth is enhanced, not suppressed.
+    - At ΔF ≈ 0.011, close to the old survivor: σ8 +1.9%, fσ8 +1.2% (z = 0) and +1.6% (z = 0.5).
 
 ## Phase 6 — Papers
 - [~] 6.1 (draft in PAPER_CORRECTIONS.md) Paper II: Cassini and "2.77σ" claims.
 - [~] 6.2 (draft in PAPER_CORRECTIONS.md) Paper I: basis of Theorems 1 and 2.
 - [~] 6.3 (draft in PAPER_CORRECTIONS.md) README: "no bare Λ", "G_eff/G = 1 − 15 ppm", the DESI "Y3 ~2027" wording.
-- [ ] 6.4 If a model survives Phase 3: one focused paper.
+- [x] 6.4 If a model survives Phase 3: one focused paper. **Not applicable**: no model survived (SIM155). PAPER_CORRECTIONS.md records what the papers should say instead.
 
 ## Phase 7 — Independent review
 - [ ] 7.1 Share the audit, branch and code with a scalar-tensor cosmologist; my fixes need checking too.
@@ -110,3 +121,10 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - Measured on the real likelihood: χ² noise 0.07 RMS (hi_class sampling at default precision), so best-fit χ² is good to about ±0.1. No CMSTG failures in 40 random points with the new c_s² tolerance.
   - All 27 fits relaunched 19:22 EDT.
 - 2026-10-23 (evening): interim SIM155 results for D1. ΛCDM: seeds agree to 0.025 in −log(post); H0 = 68.30 ± 0.28. w0waCDM: Δχ² = +9.2 vs ΛCDM (w0 = −0.85, wa = −0.55). CMSTG-A: about +3.3 … +4.0 so far, but its seeds stop at different points of a flat, curved (Λ0, ξ, H0) valley along which the BBN-relevant ΔF = ξ²/(4Λ0) varies from 0.009 to 0.024. Method addition (criteria unchanged): a profile likelihood in ΔF fixes the best fit (`SIM155/profile.py`; RESEARCH_LOG decision 6).
+- 2026-10-24: **Phase 3 done; SIM155 verdict FAIL** (pre-registered criteria).
+  - The CMSTG attractor improves on ΛCDM by at most Δχ² = +4.65 (D1), only where BBN excludes it (Y_p +3.25σ). Where BBN allows it the gain is +3.25 (ΔAIC +0.75).
+  - w0waCDM gains +9.2 … +19.6.
+  - The model's G change happens before recombination, so it cannot mimic late-time dark energy, and it raises S8.
+  - Phase 5.2/5.3 done at the full-CMB best fits.
+  - THEORY_NOTES 4.5: structural tension between local gravity and late-time evolution; screening is the open question.
+  - Remaining: 4.1, 4.3, 4.4 (theory), 7.1 (independent review).

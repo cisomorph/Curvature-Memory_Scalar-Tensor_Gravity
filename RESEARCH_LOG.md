@@ -246,6 +246,35 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
   - The Λ0 start guess follows the bend: φ*(ΔF) = 0.28 + 4·max(0, ΔF − 0.018).
   - The runner was restarted with 10 points in the order 0.040, 0.048, 0.012, 0.032, 0.024, 0.056, 0.008, 0.016, 0.004, 0.020.
 
+### 2026-10-24 — SIM155 complete: pre-registered verdict FAIL (Ordered_Simulations/SIM155/RESULT.md)
+**27 free fits** (finished 23:58 EDT on 2026-10-23) **plus the 10-point D1 profile** (finished on 2026-10-24).
+
+| data | ΛCDM χ² | w0waCDM Δχ² | CMSTG-A Δχ² (source) | CMSTG − w0wa |
+|---|---|---|---|---|
+| D1 | 2432.60 | +9.19 | **+4.65** (profile, ΔF = 0.040) | −4.54 |
+| D2 | 1055.25 | +15.53 | +4.50 (free seed 1) | −11.02 |
+| D3 | 2676.22 | +19.60 | +3.19 (free seed 3) | −16.41 |
+
+- **Criteria.**
+  - (a) fails: +4.65 < 6.
+  - (b) fails: C2 passes (|γ−1| = 2.9e-8), but C3 fails at the best fit (Y_p +3.25σ, D/H +2.24σ; F0 = F* = 0.540).
+  - (c) fails: D2 +4.50, D3 +3.19.
+  - Not competitive with w0waCDM: χ² gap 4.5–16.4, against the pre-registered "within 3".
+- **Profile (D1).** Δχ²: +2.4 (ΔF = 0.004), +3.0 (0.008), +3.0 (0.012), +3.5 (0.016), +3.8 (0.020), +4.1 (0.024), +4.5 (0.032), +4.65 (0.040), +3.5 (0.048), +3.9 (0.056).
+  - The BBN edge (Y_p pull = 2σ) is at ΔF ≈ 0.015.
+  - The best BBN-allowed point is free seed 3 (ΔF = 0.0113): **Δχ² = +3.25**, ΔAIC = +0.75. Exploratory, not a criterion.
+- **Physics** (`growth.py`; χ² breakdown in RESULT.md).
+  - At the best fit G at BBN is 8.0% stronger than today, 0.25% stronger at z = 1090, and equal to today for z ≲ 10. So the effect is early (between BBN and recombination).
+  - Gains come from plik-lite (−3.35), low-ℓ EE (−1.13) and DESI (−1.86). Pantheon+ gets worse (+0.60); w0waCDM gains −2.59 there. CMSTG cannot mimic late-time dark energy.
+  - S8 = 0.871 (+7.5% vs ΛCDM 0.811) at the best fit, and +2.5% at the BBN-allowed point. Both worsen the weak-lensing S8 tension.
+- **SIM154's gain shrank.** Its +17.7 (DESI DR2, background level, fixed Planck ω's, against a fixed ΛCDM) shrank to +4.65 in the joint fit. ΛCDM re-adjusts and its DESI χ² drops from ≈ 30 to 12.7. w0waCDM likewise fell from +23.8 to +9.2.
+- **Theory consequences** (THEORY_NOTES 4.5). There is a structural tension for Damour–Nordtvedt-class models of this type:
+  - local gravity needs the field at the attractor today, while a late-time dark-energy-like signal needs it still moving;
+  - fast convergence makes the effect early and BBN-limited;
+  - escaping that needs screening, or a separate dark-energy sector.
+- **ROADMAP consequences.** MCMC was pre-registered only for a model that passes, so it is not run. 6.4 ("one focused paper if a model survives") does not apply. 5.2 and 5.3 are done at the full-CMB best fits.
+- **Runs not repeated.** D2/D3 CMSTG profiles (they cannot change the verdict); a family B fit (not pre-registered; SIM154 shows it is nearly identical to A near the attractor).
+
 ---
 
 ## Decisions and deviations (with reasons)

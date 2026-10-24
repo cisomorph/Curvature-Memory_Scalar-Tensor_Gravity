@@ -27,6 +27,22 @@ for r in done:
     seeds.setdefault(key, []).append(r)
     if key not in best or r['chi2_eff'] < best[key]['chi2_eff']:     # best = lowest minimised objective
         best[key] = r
+for r in best.values():
+    r['source'] = f"free fit, seed {r['seed']}"
+
+# Profile likelihood in ΔF = ξ²/(4Λ0) (RESEARCH_LOG decision 6). Compared on χ²_eff, because −log(post) carries
+# model-dependent flat-prior constants (the profile samples Λ0 only, over a ΔF-dependent range).
+prof = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(HERE, 'profile', 'cmstgA_*.json')))]
+for r in prof:
+    r['chi2_eff'] = r['chi2_total'] + ((r['minimum'].get('A_planck', 1.0) - 1.0) / SIG_APL) ** 2
+    rr = (r.get('optimiser') or {}).get('rounds') or []
+    r['converged'] = bool(rr and rr[-1]['gain'] < 0.1)
+    r['source'] = f"profile, ΔF = {r['dF']:.3f}"
+prof_done = sorted((r for r in prof if r.get('stage') == 'final'), key=lambda r: (r['data'], r['dF']))
+for r in prof_done:
+    key = ('cmstgA', r['data'])
+    if key in best and r['chi2_eff'] < best[key]['chi2_eff']:
+        best[key] = r
 
 
 def cmstg_checks(mini):
@@ -85,7 +101,7 @@ for d in ('D1', 'D2', 'D3'):
         table[(m, d)] = dict(chi2=b['chi2_total'], dchi2_vs_lcdm=dchi, dAIC_vs_lcdm=daic, dchi2_vs_w0wa=dw,
                              chi2_eff=b['chi2_eff'], dchi2_eff_vs_lcdm=deff,
                              seed_chi2=sorted(c2), seed_chi2_eff=sorted(ce), seed_spread=spread, n_converged=nconv, n_fits=len(c2),
-                             best_seed=b['seed'], minimum=b['minimum'], chi2_parts=b['chi2'],
+                             best_source=b['source'], minimum=b['minimum'], chi2_parts=b['chi2'],
                              sigma=b['optimiser'].get('sigma'), evaluations=b['optimiser']['evaluations'],
                              failed_evaluations=b['optimiser']['failed_evaluations'])
         print(f"{d:4} {m:7} {b['chi2_total']:9.2f} {fmt(dchi):>12} {fmt(daic):>13} {fmt(dw):>12} {fmt(deff):>16} "
@@ -98,6 +114,53 @@ running = sorted(f"{r['model']}_{r['data']}_s{r['seed']} ({r.get('stage')}: χ²
 if running:
     print('running:', ', '.join(running))
 
+profile_rows = []
+if prof:
+    ref_eff = {d: best[('lcdm', d)]['chi2_eff'] for d in ('D1', 'D2', 'D3') if ('lcdm', d) in best}
+    ref_chi = {d: best[('lcdm', d)]['chi2_total'] for d in ('D1', 'D2', 'D3') if ('lcdm', d) in best}
+    print('\nProfile likelihood in ΔF = ξ²/(4Λ0) (CMSTG-A; Δ vs the ΛCDM best fit of the same data):')
+    print(f"{'data':4} {'ΔF':>6} {'stage':7} {'χ²':>9} {'Δχ²':>7} {'Δχ²_eff':>8} {'Λ0':>7} {'ξ':>7} {'φ*':>6} {'H0':>6} "
+          f"{'ω_b':>8} {'Y_p pull':>8} {'D/H pull':>8}  C2 C3")
+    md += ['', '## Profile likelihood in ΔF = ξ²/(4Λ0) (CMSTG-A)', '',
+           '| data | ΔF | stage | χ² | Δχ² vs ΛCDM | Δχ²_eff vs ΛCDM | Λ0 | ξ | φ* | H0 | ω_b | Y_p pull | D/H pull | C2 | C3 |',
+           '|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|']
+    for r in sorted(prof, key=lambda r: (r['data'], r['dF'])):
+        mn, ck = r['minimum'], cmstg_checks(r['minimum'])
+        row = dict(data=r['data'], dF=r['dF'], stage=r['stage'], converged=r['converged'], chi2=r['chi2_total'],
+                   chi2_eff=r['chi2_eff'], dchi2_vs_lcdm=ref_chi[r['data']] - r['chi2_total'],
+                   dchi2_eff_vs_lcdm=ref_eff[r['data']] - r['chi2_eff'], minimum=mn, checks=ck)
+        profile_rows.append(row)
+        phi = mn['cmstg_xi'] / (2 * mn['cmstg_L0'])
+        print(f"{r['data']:4} {r['dF']:6.3f} {r['stage']:7} {r['chi2_total']:9.2f} {row['dchi2_vs_lcdm']:+7.2f} "
+              f"{row['dchi2_eff_vs_lcdm']:+8.2f} {mn['cmstg_L0']:7.4f} {mn['cmstg_xi']:7.4f} {phi:6.3f} {mn['H0']:6.2f} "
+              f"{mn['omega_b']:8.5f} {ck['bbn']['pull_Yp']:+8.2f} {ck['bbn']['pull_DH']:+8.2f}  {str(ck['C2'])[0]}  {str(ck['C3'])[0]}")
+        md.append(f"| {r['data']} | {r['dF']:.3f} | {r['stage']} | {r['chi2_total']:.2f} | {row['dchi2_vs_lcdm']:+.2f} | "
+                  f"{row['dchi2_eff_vs_lcdm']:+.2f} | {mn['cmstg_L0']:.4f} | {mn['cmstg_xi']:.4f} | {phi:.3f} | {mn['H0']:.2f} | "
+                  f"{mn['omega_b']:.5f} | {ck['bbn']['pull_Yp']:+.2f} | {ck['bbn']['pull_DH']:+.2f} | {ck['C2']} | {ck['C3']} |")
+
+# Exploratory (not a pre-registered criterion): the best D1 CMSTG point that passes C2 and C3, among the finished
+# profile points and the free fits.
+bbn_best = None
+if ('lcdm', 'D1') in best:
+    cands = [dict(source=f"profile, ΔF = {x['dF']:.3f}", dF=x['dF'], chi2=x['chi2'], chi2_eff=x['chi2_eff'],
+                  minimum=x['minimum'], checks=x['checks'])
+             for x in profile_rows if x['data'] == 'D1' and x['stage'] == 'final']
+    for r in seeds.get(('cmstgA', 'D1'), []):
+        mn = r['minimum']
+        cands.append(dict(source=f"free fit, seed {r['seed']}", dF=mn['cmstg_xi'] ** 2 / (4 * mn['cmstg_L0']),
+                          chi2=r['chi2_total'], chi2_eff=r['chi2_eff'], minimum=mn, checks=cmstg_checks(mn)))
+    ok = [x for x in cands if x['checks']['C2'] and x['checks']['C3']]
+    if ok:
+        bbn_best = min(ok, key=lambda x: x['chi2_eff'])
+        bbn_best['dchi2_vs_lcdm'] = best[('lcdm', 'D1')]['chi2_total'] - bbn_best['chi2']
+        bbn_best['dchi2_eff_vs_lcdm'] = best[('lcdm', 'D1')]['chi2_eff'] - bbn_best['chi2_eff']
+        line = (f"Exploratory (not a pre-registered criterion): the best D1 CMSTG point that passes C2 and C3 "
+                f"({bbn_best['source']}, ΔF = {bbn_best['dF']:.4f}, H0 = {bbn_best['minimum']['H0']:.2f}, Y_p pull "
+                f"{bbn_best['checks']['bbn']['pull_Yp']:+.2f}) has Δχ² = {bbn_best['dchi2_vs_lcdm']:+.2f} "
+                f"(Δχ²_eff {bbn_best['dchi2_eff_vs_lcdm']:+.2f}) vs ΛCDM.")
+        print(line)
+        md += ['', f'- {line}']
+
 verdict, checks, crit = 'INCOMPLETE', {}, {}
 if ('cmstgA', 'D1') in table and ('lcdm', 'D1') in table:
     t1 = table[('cmstgA', 'D1')]
@@ -109,7 +172,7 @@ if ('cmstgA', 'D1') in table and ('lcdm', 'D1') in table:
     complete = all(k in table for k in [(m, d) for m in K for d in ('D1', 'D2', 'D3')])
     verdict = ('PASS' if all(crit.values()) else 'FAIL') if complete else 'INCOMPLETE'
     mn = t1['minimum']
-    lines = [f"CMSTG-A best fit (D1): Λ0 = {mn['cmstg_L0']:.4f}, ξ = {mn['cmstg_xi']:.4f}, ξ²/(4Λ0) = "
+    lines = [f"CMSTG-A best fit (D1, {t1['best_source']}): Λ0 = {mn['cmstg_L0']:.4f}, ξ = {mn['cmstg_xi']:.4f}, ξ²/(4Λ0) = "
              f"{mn['cmstg_xi']**2 / (4 * mn['cmstg_L0']):.5f}, H0 = {mn['H0']:.2f}; F0 = {checks['F0']:.5f} "
              f"(attractor {checks['F_attractor']:.5f})",
              f"(a) Δχ²(D1) = {t1['dchi2_vs_lcdm']:+.2f} ≥ 6: {crit['a']}",
@@ -122,5 +185,6 @@ if ('cmstgA', 'D1') in table and ('lcdm', 'D1') in table:
 
 open(os.path.join(HERE, 'results.md'), 'w').write('# SIM155 best fits (generated by summarize.py)\n\n' + '\n'.join(md) + '\n')
 json.dump(dict(verdict=verdict, criteria=crit, table={f'{m}_{d}': v for (m, d), v in table.items()},
-               cmstg_checks=checks, n_runs=len(runs), n_finished=len(done), running=running),
+               cmstg_checks=checks, profile=profile_rows, bbn_allowed_best=bbn_best, n_runs=len(runs),
+               n_finished=len(done), running=running),
           open(os.path.join(HERE, 'output.json'), 'w'), indent=2, default=float)

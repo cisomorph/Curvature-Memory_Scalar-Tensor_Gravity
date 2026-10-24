@@ -30,7 +30,9 @@ The CMSTG attractor models are a member of this class:
 - The SIM154 survivors have |γ − 1| ≈ 1e-7, squarely in the DN range.
 
 What CMSTG adds: the source term (ξΨR) that moves Ψ *away* from Ψ = 0, so G changes by about 2% between BBN and today.
-That change, not the attractor itself, is what improves the DESI fit. Any paper must cite DN and position the work
+That change, not the attractor itself, is what improves the DESI fit.
+**Refined by SIM155 (full CMB, see 4.5):** at the full-CMB best fits the change happens between BBN and recombination,
+not at late times, and it improves the CMB damping tail and the BAO scale rather than mimicking dynamical dark energy. Any paper must cite DN and position the work
 relative to it. There is also later literature on nonminimally coupled scalars and DESI that should be surveyed
 before claiming novelty.
 
@@ -44,3 +46,20 @@ Not audited.
 - Two-loop finiteness of a scalar-tensor theory and a negative β-function for Λ0 are strong claims; they need an independent check.
 - If the fixed point is Λ0 → 0 (GR), the attractor models' Λ0 ≈ 0.15 needs an explanation.
 - The sign of the quadratic term is flipped relative to Phase 1, so Paper III's results may not carry over at all.
+
+## 4.5 What the full-CMB fits show (SIM155, 2026-10-24): an early-universe effect, and a structural tension
+Full hi_class + Planck 2018 + DESI DR2 + SN fits (Ordered_Simulations/SIM155/RESULT.md):
+- **When G changes.** In the best-fit region the field reaches its attractor before recombination.
+  - At the D1 best fit, G at BBN is 7–8% stronger than today, 0.2% stronger at recombination (z ≈ 1090), and equal to today from z ≈ 10 on.
+  - The reason: in the matter era the effective mass of Ψ around Ψ* is of order √(Λ0 R/F) ~ H for Λ0 ~ 0.3, so the field settles within about an e-fold of matter–radiation equality.
+- **What it changes.** CMSTG is therefore an *early* modification of gravity. After recombination its expansion is ΛCDM-like (with bare Λ) at shifted parameters.
+  - It improves the fit through the CMB damping tail and the sound horizon r_d: plik-lite −3.4, low-ℓ EE −1.1, DESI −1.9 in χ².
+  - It does not help the supernovae (+0.6). w0waCDM gains −2.6 there.
+  - So the model cannot reproduce the late-time w(z) signal that drives DESI's preference for dynamical dark energy.
+- **BBN.** The early change of G is exactly what BBN measures (S = √(G_BBN/G0) = √(2F0)). The improvement grows with ΔF = ξ²/(4Λ0) up to ΔF ≈ 0.04 (Δχ² ≈ +4.7), but BBN allows only ΔF ≲ 0.015 (Δχ² ≈ +3).
+- **The structural tension (any Damour–Nordtvedt-class model of this type).**
+  - Local gravity needs the field at the attractor today: |γ − 1| ∝ α0² ∝ F'(Ψ0)².
+  - A late-time dark-energy-like signal needs the field still evolving at z ≲ 2, i.e. F' ≠ 0 recently.
+  - Fast convergence (large Λ0) satisfies Cassini but makes the effect early (BBN-limited, no late-time signal). Slow convergence (small Λ0) gives late-time evolution but fails Cassini (SIM154: Λ0 ≤ 0.05 fails).
+  - Escaping this needs a mechanism that separates local tests from cosmological evolution, i.e. screening (chameleon, symmetron or Vainshtein-type terms such as G3 or G4(X)). Alternatively the late-time signal must come from a separate dark-energy sector, which brings back the bare-Λ issue of 4.3.
+  - This is the most useful theoretical question for CMSTG now: can "curvature memory" be given a screening form?

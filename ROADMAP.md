@@ -102,6 +102,18 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
 ## Phase 7 — Independent review
 - [ ] 7.1 Share the audit, branch and code with a scalar-tensor cosmologist; my fixes need checking too.
 
+## Phase 8 — Screened curvature memory (exploratory; added 2026-10-24 at the user's request)
+- [x] 8.1 Theory map (SCREENING_NOTES.md):
+  - **Thin-shell screening.** The CMSTG attractor is a symmetron in the curvature. Screening the Sun and Milky Way needs Λ0 ≳ 8e4, after which the cosmological ΔF ≲ 3e-6 (WHK no-go): no-go.
+  - **Vainshtein screening** (genuine cubic Galileon). Cassini is screened, but LLR caps |α_M(0)| ≲ 0.002, since Ġ is not screened. Late-time effects driven by the coupling are then ≲ 0.1% unless tuned or reduced to quintessence.
+  - Ways out need a different theory (dark-sector-only coupling; screening of Ġ; tuned bands).
+- [ ] 8.2 SIM156, the quantitative check of the Vainshtein branch: "pinned-thawing" CMSTG vs ΛCDM, w0wa and thawing quintessence on compressed Planck + DESI DR2 + Pantheon+.
+  - **Pre-registered (SIM156/SPEC.md, committed before any run):**
+    - Validation V1–V3 (distance priors reproduced; Pantheon+ χ² matches SIM155 to 1.0; w0wa's Δχ² within ±3 of SIM155's 9.19).
+    - PT passes if, with |α_M(0)| ≤ 0.002, Δχ² vs ΛCDM ≥ 6 and BBN (C3) passes.
+    - Prediction: PT ≈ TQ < w0wa.
+- [ ] 8.3 Only if 8.2 passes: full hi_class fit (cubic Galileon + F(Ψ)R) with SIM155's machinery.
+
 ---
 
 ## Log
@@ -128,3 +140,7 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - Phase 5.2/5.3 done at the full-CMB best fits.
   - THEORY_NOTES 4.5: structural tension between local gravity and late-time evolution; screening is the open question.
   - Remaining: 4.1, 4.3, 4.4 (theory), 7.1 (independent review).
+- 2026-10-24: Phase 8 opened at the user's request ("can we explore that idea?" — screening).
+  - 8.1 theory map done (SCREENING_NOTES.md; literature verified: WHK 2012; Babichev et al. 2011; Burrage & Dombrowski 2020; Creminelli et al. 2020; Chen, Huang & Wang 2019).
+  - The project's SIM142 "Galileon" was a rescaled kinetic term with no screening; a genuine cubic Galileon was never tested.
+  - SIM156 pre-registered.

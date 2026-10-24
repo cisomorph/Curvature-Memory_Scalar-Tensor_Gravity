@@ -11,11 +11,21 @@ K = {'lcdm': 0, 'w0wa': 2, 'cmstgA': 2}            # extra parameters relative t
 FITDIR = os.path.join(HERE, os.environ.get('FIT_OUTDIR', 'fits_v3'))
 runs = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(FITDIR, '*.json')))]
 done = [r for r in runs if r.get('stage') == 'final']
+SIG_APL = 0.0025                                   # plik-lite's Gaussian prior on A_planck (1 ± 0.0025)
+for r in runs:
+    # χ² = sum of likelihood χ² (as pre-registered and as reported by Cobaya). The fit minimises −log(post), which
+    # also contains A_planck's Gaussian prior; χ²_eff = χ² + ((A_planck − 1)/0.0025)² is the quantity actually
+    # minimised (up to model-dependent constants from flat-prior widths) and is reported alongside.
+    r['chi2_eff'] = r['chi2_total'] + ((r['minimum'].get('A_planck', 1.0) - 1.0) / SIG_APL) ** 2
+    # converged = the optimiser stopped on its own criterion (last round gained < fitcore's tol = 0.1), not because
+    # the rounds ran out. fit.py's own flag used 0.05, inconsistent with tol; recomputed here from the stored gains.
+    rr = (r.get('optimiser') or {}).get('rounds') or []
+    r['converged'] = bool(rr and rr[-1]['gain'] < 0.1)
 best, seeds = {}, {}
 for r in done:
     key = (r['model'], r['data'])
     seeds.setdefault(key, []).append(r)
-    if key not in best or r['chi2_total'] < best[key]['chi2_total']:
+    if key not in best or r['chi2_eff'] < best[key]['chi2_eff']:     # best = lowest minimised objective
         best[key] = r
 
 
@@ -53,10 +63,11 @@ def fmt(v, f='+.2f'):
 
 
 table, md = {}, []
-hdr = f"{'data':4} {'model':7} {'χ²':>9} {'Δχ² vs ΛCDM':>12} {'ΔAIC vs ΛCDM':>13} {'Δχ² vs w0wa':>12} {'seed spread':>11}  conv  n"
+hdr = (f"{'data':4} {'model':7} {'χ²':>9} {'Δχ² vs ΛCDM':>12} {'ΔAIC vs ΛCDM':>13} {'Δχ² vs w0wa':>12} "
+       f"{'Δχ²_eff vs ΛCDM':>16} {'seed spread':>11}  conv  evals")
 print(hdr)
-md += ['| data | model | best χ² | Δχ² vs ΛCDM | ΔAIC vs ΛCDM | Δχ² vs w0wa | seed spread | converged | fits |',
-       '|---|---|---|---|---|---|---|---|---|']
+md += ['| data | model | best χ² | Δχ² vs ΛCDM | ΔAIC vs ΛCDM | Δχ² vs w0wa | Δχ²_eff vs ΛCDM | seed spread (χ²_eff) | converged | fits |',
+       '|---|---|---|---|---|---|---|---|---|---|']
 for d in ('D1', 'D2', 'D3'):
     ref, w = best.get(('lcdm', d)), best.get(('w0wa', d))
     for m in ('lcdm', 'w0wa', 'cmstgA'):
@@ -67,19 +78,23 @@ for d in ('D1', 'D2', 'D3'):
         daic = None if dchi is None else -dchi + 2 * K[m]                              # < 0: preferred
         dw = None if w is None else w['chi2_total'] - b['chi2_total']                  # > 0: better than w0wa
         c2 = [r['chi2_total'] for r in seeds[(m, d)]]
-        spread = max(c2) - min(c2)
+        ce = [r['chi2_eff'] for r in seeds[(m, d)]]
+        spread = max(ce) - min(ce)                                                     # in the minimised quantity
         nconv = sum(bool(r.get('converged')) for r in seeds[(m, d)])
+        deff = None if ref is None else ref['chi2_eff'] - b['chi2_eff']
         table[(m, d)] = dict(chi2=b['chi2_total'], dchi2_vs_lcdm=dchi, dAIC_vs_lcdm=daic, dchi2_vs_w0wa=dw,
-                             seed_chi2=sorted(c2), seed_spread=spread, n_converged=nconv, n_fits=len(c2),
+                             chi2_eff=b['chi2_eff'], dchi2_eff_vs_lcdm=deff,
+                             seed_chi2=sorted(c2), seed_chi2_eff=sorted(ce), seed_spread=spread, n_converged=nconv, n_fits=len(c2),
                              best_seed=b['seed'], minimum=b['minimum'], chi2_parts=b['chi2'],
                              sigma=b['optimiser'].get('sigma'), evaluations=b['optimiser']['evaluations'],
                              failed_evaluations=b['optimiser']['failed_evaluations'])
-        print(f"{d:4} {m:7} {b['chi2_total']:9.2f} {fmt(dchi):>12} {fmt(daic):>13} {fmt(dw):>12} {spread:11.2f}  "
-              f"{nconv}/{len(c2)}  {b['optimiser']['evaluations']}")
-        md.append(f"| {d} | {m} | {b['chi2_total']:.2f} | {fmt(dchi)} | {fmt(daic)} | {fmt(dw)} | {spread:.2f} | "
+        print(f"{d:4} {m:7} {b['chi2_total']:9.2f} {fmt(dchi):>12} {fmt(daic):>13} {fmt(dw):>12} {fmt(deff):>16} "
+              f"{spread:11.2f}  {nconv}/{len(c2)}  {b['optimiser']['evaluations']}")
+        md.append(f"| {d} | {m} | {b['chi2_total']:.2f} | {fmt(dchi)} | {fmt(daic)} | {fmt(dw)} | {fmt(deff)} | {spread:.2f} | "
                   f"{nconv}/{len(c2)} | {len(c2)} |")
 
-running = sorted(f"{r['model']}_{r['data']}_s{r['seed']} ({r.get('stage')})" for r in runs if r.get('stage') != 'final')
+running = sorted(f"{r['model']}_{r['data']}_s{r['seed']} ({r.get('stage')}: χ² {r['chi2_total']:.2f})"
+                 for r in runs if r.get('stage') != 'final')
 if running:
     print('running:', ', '.join(running))
 

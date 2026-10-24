@@ -195,6 +195,52 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
   - It is identical for Λ0 = 0.15 and 0.5 (Λ0 is irrelevant at ξ = 0) and continuous at ξ = 1e-4 (+0.140).
 - **Conclusion:** no systematic offset. The scatter is evaluation noise; the difference of two noisy evaluations is expected to scatter by √2 × 0.07–0.1. CMSTG-vs-ΛCDM Δχ² values need no correction, only the ±0.1-level noise allowance. Output: `SIM155/gr_limit_chi2.json`.
 
+### 2026-10-23 (evening) — SIM155 v3 interim results (D1), the CMSTG valley, and the profile likelihood
+**Finished fits, D1 = Planck 2018 + DESI DR2 + Pantheon+**. −log(post) is the minimised quantity; χ²_eff = χ² + ((A_planck − 1)/0.0025)².
+
+| model | −log(post), seeds 1/2/3 | spread | best χ² | best χ²_eff | Δχ² vs ΛCDM | ΔAIC vs ΛCDM | best-fit parameters |
+|---|---|---|---|---|---|---|---|
+| ΛCDM | 1200.929 / 1200.914 / 1200.939 | 0.025 | 2432.605 | 2432.785 | 0 | 0 | H0 = 68.30 ± 0.28, ω_cdm = 0.1179, ω_b = 0.02251 |
+| w0waCDM | 1198.643 / 1198.604 / 1198.566 | 0.077 | 2423.415 | 2423.485 | +9.19 | −5.19 | w0 = −0.850, wa = −0.552, H0 = 67.68 |
+
+- **Optimiser performance.** Each fit took 285–620 evaluations (20–46 min) with no failed evaluations. Round 1 gained 6.5, against a predicted 5.7; the last round gained ≈ 0.01, against a predicted ≈ 0.05.
+- **Laplace errors match published posteriors.** The ΛCDM inverse-Hessian errors (σ(H0) = 0.28, σ(ω_cdm) = 6.2e-4, σ(n_s) = 0.0033, σ(τ) = 0.0071) match published DESI DR2 + CMB widths. This validates the curvature step.
+- **v3 beats v1.** The v3 ΛCDM optimum (−log(post) 1200.914) is 0.20 better than v1's best (1201.112).
+  - v1's lower likelihood-only χ² (2432.49 vs 2432.61) came from pulling A_planck 0.83σ off its prior, which cost 0.69 in prior χ² (χ²_eff 2433.18 vs 2432.79).
+  - Hence χ²_eff is reported alongside χ², and each model's best seed is chosen by the minimised quantity.
+- **w0waCDM agrees with DESI DR2.** w0 = −0.85, wa = −0.55, Δχ² = 9.2 for CMB + DESI DR2 + Pantheon+. DESI DR2 reports w0 = −0.838 ± 0.055, wa = −0.62^{+0.22}_{−0.19} and Δχ²_MAP ≈ −10.7 with different CMB likelihoods (PR4 CamSpec + ACT lensing).
+- **Convergence flag.** `fit.py` flags convergence when the last round gains less than 0.05, but `fitcore` stops at tol = 0.1. So w0wa s1, which stopped on a 0.0999 gain, was labelled unconverged.
+  - `summarize.py` recomputes the flag from the stored gains with 0.1.
+  - `fit.py` is not edited mid-run, because queued jobs load it when they start.
+
+**CMSTG-A on D1: a long, flat, curved valley.** The three seeds stop at nearly the same χ² at different points:
+
+| seed | stage | −log(post) | χ² | Λ0 | ξ | ΔF = ξ²/(4Λ0) | φ* = ξ/(2Λ0) | H0 |
+|---|---|---|---|---|---|---|---|---|
+| 1 | round 2 (round 3 running) | 1197.660 | 2428.64 | 0.266 | 0.159 | 0.0237 | 0.30 | 67.17 |
+| 2 | round 2 | 1198.044 | 2429.43 | 0.110 | 0.063 | 0.0090 | 0.29 | 68.31 |
+| 3 | final ("converged") | 1198.025 | 2429.36 | 0.145 | 0.081 | 0.0114 | 0.28 | 68.14 |
+
+- **Shape of the valley.** Along it the attractor field φ* ≈ 0.28–0.30 stays fixed while ΔF and H0 change; it is the F–H0 degeneracy found in the audit, partly broken by the CMB.
+  - χ² falls slowly with ΔF: about 0.7 between ΔF = 0.011 and 0.024.
+  - The Hessian has 1–2 negative eigenvalues in proposal units, the signature of a curved valley.
+- **Seed 3 stopped early.** It "converged" (round gain 0.03) about 0.37 in −log(post) above seed 1, which was still improving. A local optimiser in a curved valley can stop on a small round gain far from the valley's minimum.
+- **BBN.** C3 needs ΔF ≲ 0.012 (SIM154). So the best-fit location matters for criterion (b), and where in the valley a seed stops is set by the optimiser, not by the data.
+
+**Decision (method only; criteria unchanged): profile likelihood in ΔF (`SIM155/profile.py`, `run_profile.sh`).**
+- **Why.** This follows decision 5 (a seed spread > 0.5 in χ² triggers a re-fit). It was made after seeing the seed spread above, but before any profile result.
+- **How.**
+  - At fixed ΔF, Λ0 is sampled with its flat prior and ξ = 2√(Λ0 ΔF) is computed. The pre-registered box ξ ≤ 0.3 is kept by Λ0 ≤ 0.0225/ΔF; along the valley this caps ΔF at about 0.042.
+  - Everything else is minimised with the same `fitcore` optimiser.
+  - Each point starts from the ΛCDM D1 best fit, with Λ0 at the valley guess ΔF/0.28².
+- **Grid (D1).** ΔF = 0.004, 0.008, 0.012, 0.016, 0.020, 0.024, 0.032, 0.040.
+- **What it gives.**
+  - min over ΔF of the profile, compared with the best free seed, is the CMSTG best fit used for criteria (a)–(b).
+  - The profile also shows how much improvement survives where BBN allows (ΔF ≲ 0.012). That reading is reported as exploratory, outside the pre-registered verdict.
+- **Scheduling.** Profile jobs fill CPU slots as the main fits finish, matched on `^…/python (fit|profile).py` so the xargs wrappers are not counted.
+  - A first version of the runner matched the wrappers as well, so it would have waited for all 27 fits. It was stopped before starting anything.
+- D2/D3 profiles will be run only if criterion (c) could matter, i.e. only if CMSTG passes (a) and (b) on D1.
+
 ---
 
 ## Decisions and deviations (with reasons)
@@ -207,6 +253,9 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
 5. **Seed spread as the convergence check.** Three seeds per model; the best is reported, and the spread between seeds is reported next to it.
    - At the measured noise, a spread up to about 0.5 in χ² is expected.
    - A larger spread triggers a re-fit from the best point, logged here, before any criterion is applied.
+6. **CMSTG best fit from a profile likelihood in ΔF = ξ²/(4Λ0)** (see the evening entry): the free CMSTG fits stop at different points of a flat, curved valley.
+   - The best fit is the lower of (i) the best free seed and (ii) the minimum of the profile.
+   - Same data, priors (including the box ξ ≤ 0.3) and criteria.
 
 ## Open issues
 - ~~Measure the GR-limit residual (issue 2 above) as a Δχ² on the full likelihood.~~ Done 2026-10-23: no systematic offset (+0.02 ± 0.08); see the GR-limit entry in the chronology.

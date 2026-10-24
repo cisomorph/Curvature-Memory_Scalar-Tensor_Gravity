@@ -107,12 +107,16 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - **Thin-shell screening.** The CMSTG attractor is a symmetron in the curvature. Screening the Sun and Milky Way needs Λ0 ≳ 8e4, after which the cosmological ΔF ≲ 3e-6 (WHK no-go): no-go.
   - **Vainshtein screening** (genuine cubic Galileon). Cassini is screened, but LLR caps |α_M(0)| ≲ 0.002, since Ġ is not screened. Late-time effects driven by the coupling are then ≲ 0.1% unless tuned or reduced to quintessence.
   - Ways out need a different theory (dark-sector-only coupling; screening of Ġ; tuned bands).
-- [ ] 8.2 SIM156, the quantitative check of the Vainshtein branch: "pinned-thawing" CMSTG vs ΛCDM, w0wa and thawing quintessence on compressed Planck + DESI DR2 + Pantheon+.
+- [x] 8.2 SIM156, the quantitative check of the Vainshtein branch: "pinned-thawing" CMSTG vs ΛCDM, w0wa and thawing quintessence on compressed Planck + DESI DR2 + Pantheon+.
+  - **Result 2026-10-24: FAIL, as predicted** (SIM156/RESULT.md). Validation V1–V3 passed (w0wa +7.68 vs SIM155's 9.19).
+  - Within |α_M(0)| ≤ 0.002, PT = thawing quintessence = +2.77; the fit switches the coupling off.
+  - Unconstrained, PT reaches +4.95, but at α_M(0) = −0.11 (56× LLR).
   - **Pre-registered (SIM156/SPEC.md, committed before any run):**
     - Validation V1–V3 (distance priors reproduced; Pantheon+ χ² matches SIM155 to 1.0; w0wa's Δχ² within ±3 of SIM155's 9.19).
     - PT passes if, with |α_M(0)| ≤ 0.002, Δχ² vs ΛCDM ≥ 6 and BBN (C3) passes.
     - Prediction: PT ≈ TQ < w0wa.
-- [ ] 8.3 Only if 8.2 passes: full hi_class fit (cubic Galileon + F(Ψ)R) with SIM155's machinery.
+- [x] 8.3 Only if 8.2 passes: full hi_class fit (cubic Galileon + F(Ψ)R) with SIM155's machinery. **Not applicable** (8.2 failed).
+- [ ] 8.4 Open directions, each a different theory (SCREENING_NOTES §4): dark-sector-only coupling; screening of Ġ; tuned bands. Not started; the user's choice.
 
 ---
 
@@ -144,3 +148,4 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - 8.1 theory map done (SCREENING_NOTES.md; literature verified: WHK 2012; Babichev et al. 2011; Burrage & Dombrowski 2020; Creminelli et al. 2020; Chen, Huang & Wang 2019).
   - The project's SIM142 "Galileon" was a rescaled kinetic term with no screening; a genuine cubic Galileon was never tested.
   - SIM156 pre-registered.
+- 2026-10-24: **SIM156 done: FAIL, as predicted.** Screened (Vainshtein) curvature memory within the LLR bound adds nothing to thawing quintessence (+2.77 vs ΛCDM; w0wa +7.68). Even ignoring LLR, the maximum is +4.95 at 56× the bound. Conclusion (SCREENING_NOTES): universally coupled F(Ψ)R curvature memory cannot produce the DESI-preferred dynamics, early (BBN) or late (LLR / WHK).

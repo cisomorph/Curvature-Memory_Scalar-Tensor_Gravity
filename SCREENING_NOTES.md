@@ -10,7 +10,10 @@ produces a DESI-sized late-time effect?
 - **Vainshtein screening** (adding a genuine cubic Galileon term) screens Cassini easily, but it cannot screen the *time* variation of G. Lunar Laser Ranging then caps the running of the Planck mass today at |α_M| ≲ 0.002 per e-fold. A late-time effect driven by the F(Ψ)R coupling is then limited to ~0.1% of H(z). Larger effects require either tuning (F freezing exactly now) or that the coupling plays no role, in which case the model is just quintessence.
 - **Ways out need a different theory**: non-universal (dark-sector-only) coupling, theories in which the time variation of G is also screened, or accepting fine-tuned narrow bands.
 
-The quantitative check is SIM156 (pre-registered in ROADMAP Phase 8).
+The quantitative check is SIM156 (pre-registered in ROADMAP Phase 8). **Result: FAIL, as predicted.**
+- Within the LLR bound, pinned-thawing CMSTG = thawing quintessence (+2.77 vs ΛCDM, against w0waCDM's +7.68).
+- Ignoring LLR it reaches +4.95, but only by running the Planck mass 56× faster than LLR allows.
+- See Ordered_Simulations/SIM156/RESULT.md.
 
 Units: 8πG = 1 (reduced Planck mass M_pl = 1), GR is F = ½, Ψ canonical. Field equation from
 S = ∫√-g [F(Ψ)R − ½(∂Ψ)² − V(Ψ)] + S_m:

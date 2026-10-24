@@ -275,6 +275,25 @@ v1 best-fit χ² (Planck + DESI DR2 + Pantheon+, D1):
 - **ROADMAP consequences.** MCMC was pre-registered only for a model that passes, so it is not run. 6.4 ("one focused paper if a model survives") does not apply. 5.2 and 5.3 are done at the full-CMB best fits.
 - **Runs not repeated.** D2/D3 CMSTG profiles (they cannot change the verdict); a family B fit (not pre-registered; SIM154 shows it is nearly identical to A near the attractor).
 
+### 2026-10-24 — Phase 8: can curvature memory be screened? (SCREENING_NOTES.md, SIM156)
+- **The request.** The user asked to explore screening ("can we explore that idea?").
+- **Literature checked against the papers:**
+  - Wang–Hui–Khoury 2012 (no-go for thin-shell screening);
+  - Babichev–Deffayet–Esposito-Farèse 2011 (Vainshtein does not screen Ġ);
+  - Burrage & Dombrowski 2020 (|α_M| ≲ 0.002 from LLR);
+  - Creminelli et al. 2020 (|α_B| ≲ 1e-2 from GW-induced instabilities);
+  - recent DESI + non-minimal coupling papers (arXiv:2606.14014 "very narrow bands"; arXiv:2609.10133; Wolf et al. 2025).
+  - The Planck distance-prior table (Chen, Huang & Wang 2019) was read from the PDF, because an automated summary had the correlation signs wrong.
+- **Theory map** (SCREENING_NOTES):
+  - The family-A attractor plus a quartic potential is exactly a symmetron in the curvature. Screening the Sun and Milky Way needs Λ0 ≳ 8e4, and then ΔF ≲ 3e-6: no-go.
+  - A genuine cubic Galileon screens Cassini, but LLR caps α_M.
+  - The project's SIM142 "Galileon" was a rescaled kinetic term with no screening.
+- **SIM156** (pre-registered and committed in ed37175 before running): pinned-thawing CMSTG on compressed Planck + DESI DR2 + Pantheon+.
+  - Validation passed: V1 (K_R = 0.99999, K_lA = 0.99802); V2 (Pantheon+ χ² 1405.58, identical to SIM155); V3 (w0wa +7.68).
+  - Within |α_M(0)| ≤ 0.002: +2.77, identical to thawing quintessence (the coupling switches off). FAIL (a), as predicted.
+  - The 72-point grid showed a strong-coupling region the free fits had missed. Three extra starts there give the unconstrained optimum +4.95 at α_M(0) = −0.111 (56× LLR), Λ0 = 0.88.
+- **Conclusion.** Universally coupled F(Ψ)R curvature memory cannot produce the DESI-preferred dynamics: early it is BBN-limited (SIM155), late it is limited by LLR (Vainshtein) or WHK (thin-shell). The remaining directions are different theories (ROADMAP 8.4).
+
 ---
 
 ## Decisions and deviations (with reasons)

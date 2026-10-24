@@ -115,6 +115,21 @@ late trigger: **"pinned thawing" CMSTG**.
 - Compare with ΛCDM, w0waCDM and minimally coupled thawing quintessence, under the LLR bound.
 - Section 3 predicts that within |α_M| ≤ 0.002 it does no better than thawing quintessence.
 
+## 6. Option 2: can the drift of G be hidden while the coupling stays universal? (2026-10-24)
+Literature map (checked against the papers):
+- **Horndeski with c_T = 1** (all that survives GW170817). Inside the Vainshtein radius the local Newton constant is 8πG_N = 1/(2G4(φ0(t))), set by the scalar's *cosmological* value φ0(t) (Kobayashi, Rep. Prog. Phys. 82, 086901 (2019), eq. 177; Babichev, Deffayet & Esposito-Farèse 2011).
+  - So G_N drifts whenever the cosmological Planck mass drifts, and LLR applies (|α_M| ≲ 0.002).
+  - With G4 = F(φ) this is exactly CMSTG's F. **No hiding.**
+- **DHOST theories that survive both GW constraints** (c_T = 1 and no GW decay; Hirano, Kobayashi & Yamauchi, PRD 99, 104051 (2019)). Near a body standard gravity is recovered "with a modified gravitational coupling" set by the cosmological background, and Vainshtein screening is broken *inside* matter. The local G still follows the cosmological evolution; the inside-matter breaking adds constraints rather than removing LLR. **No hiding.**
+- **Thin-shell screening** (chameleon/symmetron). This *does* decouple local G: inside screened bodies the field sits at its local minimum, independent of the cosmological value. But WHK (§1) then makes the cosmological effect negligible. **Hiding, but with nothing left to hide.**
+- **Not changing G at all** (α_M = 0, G4 = const; dark-energy dynamics from braiding, kinetic gravity braiding). There is no drift to hide, and phantom crossing is possible through α_B.
+  - But GW-induced instabilities require |α_B| ≲ 1e-2 (Creminelli et al. 2020).
+  - It is not curvature memory in the F(Ψ)R sense.
+- **Coupling only the dark sector** (option 1). Baryons never feel the field, so there is no Ġ and no fifth force for them. **This is the one clean way to "hide" the drift.**
+
+**Conclusion for option 2.** No known theory consistent with GW170817 and the GW-decay bounds hides the drift of a universally coupled F(Ψ)R. Option 2 therefore merges into option 1, which DARK_COUPLING_NOTES.md and SIM157 test.
+- Residual frontier: EFT loopholes to the GW-instability bound; non-universal couplings inside the visible sector, which are tightly limited by equivalence-principle tests.
+
 ## References (verified 2026-10-24)
 - J. Wang, L. Hui, J. Khoury, *No-go theorems for generalized chameleon field theories*, PRL 109, 241301 (2012), arXiv:1208.4612.
 - E. Babichev, C. Deffayet, G. Esposito-Farèse, *Constraints on shift-symmetric scalar-tensor theories with a Vainshtein mechanism from bounds on the time variation of G*, PRL 107, 251102 (2011), arXiv:1107.1569.
@@ -126,3 +141,6 @@ late trigger: **"pinned thawing" CMSTG**.
 - W. J. Wolf, P. G. Ferreira, C. García-García, PRD 111, L041303 (2025), arXiv:2409.17019.
 - arXiv:2606.14014, *Constraints on stable scalar–tensor dark energy from DESI data and Solar System tests* (2026).
 - arXiv:2609.10133, *Safe phantom divide crossing from unscreened non-minimal coupling to gravity* (2026).
+- T. Kobayashi, *Horndeski theory and beyond: a review*, Rep. Prog. Phys. 82, 086901 (2019), arXiv:1901.07183 (§5.2, eq. 177: G_N inside the Vainshtein radius).
+- S. Hirano, T. Kobayashi, D. Yamauchi, *Screening mechanism in DHOST theories evading gravitational wave constraints*, PRD 99, 104051 (2019), arXiv:1903.08399.
+- P. Creminelli, M. Lewandowski, G. Tambalo, F. Vernizzi, *Gravitational wave decay into dark energy*, JCAP 12 (2018) 025.

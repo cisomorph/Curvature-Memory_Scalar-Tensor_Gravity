@@ -116,7 +116,20 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
     - PT passes if, with |α_M(0)| ≤ 0.002, Δχ² vs ΛCDM ≥ 6 and BBN (C3) passes.
     - Prediction: PT ≈ TQ < w0wa.
 - [x] 8.3 Only if 8.2 passes: full hi_class fit (cubic Galileon + F(Ψ)R) with SIM155's machinery. **Not applicable** (8.2 failed).
-- [ ] 8.4 Open directions, each a different theory (SCREENING_NOTES §4): dark-sector-only coupling; screening of Ġ; tuned bands. Not started; the user's choice.
+- [~] 8.4 Open directions, each a different theory (SCREENING_NOTES §4). The user chose option 1 (dark-sector-only coupling) and option 2 (screening of Ġ) on 2026-10-24, so they continue in Phase 9.
+
+## Phase 9 — Dark curvature memory and hiding the drift of G (added 2026-10-24 at the user's request)
+- [x] 9.1 Option 2, theory/literature (SCREENING_NOTES §6). No GW-consistent theory hides Ġ for a universally coupled F(Ψ)R:
+  - luminal Horndeski has G_N = 1/(16πG4(φ0(t))) inside Vainshtein (Kobayashi 2019);
+  - the surviving DHOST theories keep a cosmologically set coupling (Hirano, Kobayashi & Yamauchi 2019);
+  - thin-shell hides Ġ but leaves no cosmology (WHK).
+  - Option 2 merges into option 1: coupling only the dark sector means baryons never feel a drift.
+- [ ] 9.2 Option 1, SIM157 "dark curvature memory": CMSTG's A = (2F)^{-1/2} acting on dark matter only, with a pinned-thawing trigger (DPT). Background (compressed Planck + DESI DR2 + Pantheon+) plus linear growth (eBOSS DR16 fσ8).
+  - **Pre-registered (SIM157/SPEC.md, committed before any run):** DPT passes if Δχ²_bg vs ΛCDM ≥ 6, growth no worse than ΛCDM by more than 4 in χ²_RSD, and β ≈ 0 before recombination.
+  - Expectation: TQ < DPT < w0wa.
+- [ ] 9.3 Only if 9.2 passes: a Boltzmann implementation of the coupled perturbations (CLASS) and a full fit with SIM155's machinery.
+
+
 
 ---
 
@@ -149,3 +162,8 @@ Points passing C1–C4 go to Phase 3. If none pass, the attractor route is close
   - The project's SIM142 "Galileon" was a rescaled kinetic term with no screening; a genuine cubic Galileon was never tested.
   - SIM156 pre-registered.
 - 2026-10-24: **SIM156 done: FAIL, as predicted.** Screened (Vainshtein) curvature memory within the LLR bound adds nothing to thawing quintessence (+2.77 vs ΛCDM; w0wa +7.68). Even ignoring LLR, the maximum is +4.95 at 56× the bound. Conclusion (SCREENING_NOTES): universally coupled F(Ψ)R curvature memory cannot produce the DESI-preferred dynamics, early (BBN) or late (LLR / WHK).
+- 2026-10-24: Phase 9 opened ("i like option 1 and 2").
+  - 9.1: option 2 is closed in theory; it merges into option 1 (SCREENING_NOTES §6).
+  - DARK_COUPLING_NOTES.md written (model, equations, literature: Khoury–Lin–Trodden 2025 and 2026 coupled-DE papers).
+  - eBOSS DR16 fσ8 read from the paper's Table III.
+  - SIM157 pre-registered.
